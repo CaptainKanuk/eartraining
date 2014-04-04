@@ -5,4 +5,6 @@ from pages import views
 
 urlpatterns = patterns('',
     url(r'^$', views.index, name='index'),
-    url(r'^about/$', views.about, name='about'),) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    url(r'^about/$', views.about, name='about'),
+    url(r'^vextest/$', views.vextest, name='vextest'),
+) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
