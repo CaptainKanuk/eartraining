@@ -7,8 +7,8 @@ admin.autodiscover()
 handler404 = 'eartraining.pages.views.notfound'
 
 urlpatterns = patterns('',
-    url('handler404', 'pages.views.notfound'),
-    url('handler500', 'pages.views.notfound'),
+                       #url('handler404', 'pages.views.notfound'),
+                       #    url('handler500', 'pages.views.notfound'),
     #url(r'^$', 'eartraining.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
     url(r'^admin/', include(admin.site.urls)),
