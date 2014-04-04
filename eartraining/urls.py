@@ -9,7 +9,7 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
     url(r'^admin/', include(admin.site.urls)),
     #===============HOMEPAGE URLS===================
-    url(r'^homepage/', include('homepage.urls')),
-    url(r'^$', include('homepage.urls')),
+    url(r'^homepage/', include('pages.urls')),
+    url(r'^$', include('pages.urls')),
     #url(r'^$', 'eartraining.views.home', name='home'),
 )
