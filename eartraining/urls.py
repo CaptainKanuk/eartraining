@@ -21,4 +21,8 @@ urlpatterns = patterns('',
     url(r'^home/', index, name='index'),
     url(r'^$', index, name='index'),
     #url(r'^$', 'eartraining.views.home', name='home'),
-) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+                       ) #+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+urlpatterns += patterns('',
+                        (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
+                        )
