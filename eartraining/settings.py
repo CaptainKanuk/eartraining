@@ -11,8 +11,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-PROJECT_PATH = os.path.join(BASE_DIR, os.pardir)
-PROJECT_PATH = os.path.abspath(PROJECT_PATH)
+PROJECT_PATH = os.path.abspath(BASE_DIR)
 
 TEMPLATE_PATH = os.path.join(PROJECT_PATH, 'templates')
 
@@ -102,6 +101,8 @@ STATIC_URL = '/static/'
 #                    os.path.join(BASE_DIR, 'static'),
 #)
 
+
 TEMPLATE_DIRS = (
     TEMPLATE_PATH,
+    #os.path.join(os.path.dirname(__file__), 'templates').replace('\\','/'),
 )
