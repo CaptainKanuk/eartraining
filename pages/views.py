@@ -13,3 +13,7 @@ def index(request):
 def about(request):
 	context=RequestContext(request)
 	return render_to_response('pages/about.html', context)
+
+def notfound(request):
+	context=RequestContext(request)
+	return render_to_response('pages/404.html', context)
