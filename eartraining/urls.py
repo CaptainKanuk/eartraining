@@ -4,7 +4,7 @@ from django.conf import settings
 from django.contrib import admin
 admin.autodiscover()
 
-handler404 = 'eartraining.pages.views.notfound'
+#handler404 = 'eartraining.pages.views.notfound'
 
 urlpatterns = patterns('',
                        #url('handler404', 'pages.views.notfound'),
