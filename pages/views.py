@@ -8,8 +8,8 @@ from django.http import HttpResponse
 def index(request):
 	context=RequestContext(request)
 	context_dict={'boldmessage': "I am bold font from the context"}
-	return render_to_response('homepage/index.html', context_dict, context)
+	return render_to_response('pages/index.html', context_dict, context)
 
 def about(request):
 	context=RequestContext(request)
-	return render_to_response('homepage/about.html', context)
+	return render_to_response('pages/about.html', context)
