@@ -17,12 +17,12 @@
                                 <!-- Latest compiled and minified CSS -->
                                 <link href="{{ STATIC_URL }}/css/bootstrap.min.css" rel="stylesheet" type="text/css">
                                     
-                                <!-- Optional theme -->
+                                <!-- Optional theme
                                 <link href="{{ STATIC_URL }}/css/bootstrap-theme.min.css" rel="stylesheet"  type="text/css">
-                                    
-                                <!-- Latest compiled and minified JavaScript -->
+                                -->    
+                                <!-- Latest compiled and minified JavaScript
                                 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-                                    
+                                -->    
                                 <!-- Custom styles for this template -->
                                 <link href="{{ STATIC_URL }}/css/cover.css" rel="stylesheet" type="text/css">
                                     
