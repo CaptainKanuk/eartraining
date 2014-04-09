@@ -159,8 +159,3 @@ body {
     width: 700px;
   }
 }
-
-.navbar-fixed-top{
-}
-.navbar{
-}
