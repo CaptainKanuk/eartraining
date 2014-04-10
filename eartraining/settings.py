@@ -23,7 +23,7 @@ TEMPLATE_PATH = os.path.join(PROJECT_PATH, 'templates')
 SECRET_KEY = '8v8ytp^o52s5oys!6n98rp#-%ta2t-$jiok3^to%q@t@c^=tji'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 TEMPLATE_DEBUG = True
 
@@ -95,10 +95,10 @@ ALLOWED_HOSTS = ['*']
 
 # Static asset configuration
 STATIC_ROOT = 'staticfiles'
-STATIC_URL = '/static/'
+STATIC_URL = 'static/'
 
 STATICFILES_DIRS = (
-        os.path.join(BASE_DIR, 'static'),
+        os.path.join(BASE_DIR, 'static/'),
 )
 
 
