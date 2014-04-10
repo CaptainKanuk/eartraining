@@ -8,9 +8,6 @@ a:focus,
 a:hover {
   color: #fff;
 }
-p, div {
-   font-family: 'Raleway';
-}
 
 /* Custom default button */
 .btn-default,
