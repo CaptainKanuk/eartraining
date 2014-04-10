@@ -33,6 +33,11 @@
                                                 <!-- Custom styles for this template -->
                                                 <link href="{{ STATIC_URL }}/css/cover.css" rel="stylesheet" type="text/css">
                                                     
+                                                    <!-- Javascript Stuff -->
+                                                    <script src="http://code.jquery.com/jquery-latest.js"></script>
+                                                    <script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js"></script>
+
+                                                    
                                                     <!-- Just for debugging purposes. Don't actually copy thisd line! -->
                                                     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
                                                     
@@ -41,10 +46,19 @@
                                                      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
                                                      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
                                                      <![endif]-->
+                                                    <script>
+                                                        $(function(){
+                                                          $("#includeMenu").load("{{ STATIC_URL }}/html/menu.html");
+                                                          });
+                                                        </script>
+                                                    <script>
+                                                        $(function(){
+                                                          $("#includeFooter").load("{{ STATIC_URL }}/html/footer.html");
+                                                          });
+                                                        </script>
                                                     </head>
     
     <body>
-        body { padding-top: 70px; }
         <div class="site-wrapper">
             
             <div class="site-wrapper-inner">
@@ -60,21 +74,7 @@
                      </ul>
                      </div>
                      </div> -->
-                    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-                        <div class="container">
-                            <a class="navbar-brand" href="/index">SuperTonic</a>
-                            <u1 class="nav navbar-nav navbar-right">
-                                <li class="active"><a href="/train">Train</a></li>
-                                
-                                
-                                <li><a href="/intervals">Intervals</a></li>
-                                
-                                <li><a href="/about">About</a></li>
-                                <li><a href="/help">Help</a></li>
-                                <li><a href="/signin">Sign-In</a></li>
-                            </u1>
-                        </div>
-                    </nav>
+                    <div id="includeMenu"></div>
                     <div class="inner cover">
                         
                         <h1 class="cover-heading">About</h1>
@@ -85,11 +85,7 @@
 			<p class = "lead"> Contact the makers of SuperTonic at: blahblahblah@blah.blah </p>
                     </div>
                     
-                    <div class="mastfoot">
-                        <div class="inner">
-                            <p>Copyright Ear Training 2014, by <a href="pages/about/">us</a>.</p>
-                        </div>
-                    </div>
+                   <div id="includeFooter"></div>
                     
                 </div>
                 
@@ -103,5 +99,6 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <script src="{{STATIC_URL}}/js/bootstrap.min.js"></script>
         <script src="{{STATIC_URL}}/js/docs.min.js"></script>
+        
     </body>
 </html>
