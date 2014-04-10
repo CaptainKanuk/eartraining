@@ -14,15 +14,15 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
     url(r'^admin/', include(admin.site.urls)),
     #===============PAGES URLS===================
-    url(r'^pages/', include('pages.urls')),
+    #url(r'^pages/', include('pages.urls')),
     #===============PAGES DIRECT LINK============
     url(r'^about/', about, name = 'about'),
     url(r'^vextest/', vextest, name='vextest'),
     url(r'^home/', index, name='index'),
     url(r'^$', index, name='index'),
     #url(r'^$', 'eartraining.views.home', name='home'),
-                       ) #+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+                       )
 
 urlpatterns += patterns('',
-                        (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
-                        )
+                       (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
+                       )
