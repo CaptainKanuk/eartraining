@@ -10,9 +10,25 @@ def index(request):
 	context_dict={'boldmessage': "I am bold font from the context"}
 	return render_to_response('pages/index.html', context_dict, context)
 
+def register(request):
+	context=RequestContext(request)
+	return render_to_response('pages/register.html', context)
+
+def intervals(request):
+	context=RequestContext(request)
+	return render_to_response('pages/intervals.html', context)
+
 def about(request):
 	context=RequestContext(request)
 	return render_to_response('pages/about.html', context)
+
+def contact(request):
+	context=RequestContext(request)
+	return render_to_response('pages/contact.html', context)
+
+def help(request):
+	context=RequestContext(request)
+	return render_to_response('pages/help.html', context)
 
 def vextest(request):
 	context=RequestContext(request)

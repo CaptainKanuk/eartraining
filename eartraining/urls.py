@@ -8,19 +8,20 @@ admin.autodiscover()
 handler404 = 'pages.views.notfound'
 
 urlpatterns = patterns('',
-                       #url('handler404', notfound, name='notfound'),
-                       #url('handler500', notfound, name='notfound'),
-    #url(r'^$', 'eartraining.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
     url(r'^admin/', include(admin.site.urls)),
     #===============PAGES URLS===================
     #url(r'^pages/', include('pages.urls')),
-    #===============PAGES DIRECT LINK============
-    url(r'^about/', about, name = 'about'),
-    url(r'^vextest/', vextest, name='vextest'),
+    #===============PAGES DIRECT LINKs============
     url(r'^home/', index, name='index'),
+    url(r'^index/', index, name = 'index'),
+    url(r'^register/', register, name = 'register'),
+    url(r'^intervals/', intervals, name = 'intervals'),
+    url(r'^about/', about, name = 'about'),                       
+    url(r'^contact/', contact, name = 'contact'),
+    url(r'^help/', help, name = 'help'),
     url(r'^$', index, name='index'),
-    #url(r'^$', 'eartraining.views.home', name='home'),
+    #===============TESTING URLS====================
+    url(r'^vextest/', vextest, name='vextest'),
                        )
 
 urlpatterns += patterns('',
