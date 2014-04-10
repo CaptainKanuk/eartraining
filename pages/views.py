@@ -10,9 +10,13 @@ def index(request):
 	context_dict={'boldmessage': "I am bold font from the context"}
 	return render_to_response('pages/index.html', context_dict, context)
 
-def register(request):
+def signin(request):
 	context=RequestContext(request)
-	return render_to_response('pages/register.html', context)
+	return render_to_response('pages/signin.html', context)
+
+def train(request):
+	context=RequestContext(request)
+	return render_to_response('pages/train.html', context)
 
 def intervals(request):
 	context=RequestContext(request)
@@ -21,10 +25,6 @@ def intervals(request):
 def about(request):
 	context=RequestContext(request)
 	return render_to_response('pages/about.html', context)
-
-def contact(request):
-	context=RequestContext(request)
-	return render_to_response('pages/contact.html', context)
 
 def help(request):
 	context=RequestContext(request)

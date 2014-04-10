@@ -14,10 +14,10 @@ urlpatterns = patterns('',
     #===============PAGES DIRECT LINKs============
     url(r'^home/', index, name='index'),
     url(r'^index/', index, name = 'index'),
-    url(r'^register/', register, name = 'register'),
+    url(r'^signin/', signin, name = 'signin'),
+    url(r'^train/', train, name = 'train'),
     url(r'^intervals/', intervals, name = 'intervals'),
     url(r'^about/', about, name = 'about'),                       
-    url(r'^contact/', contact, name = 'contact'),
     url(r'^help/', help, name = 'help'),
     url(r'^$', index, name='index'),
     #===============TESTING URLS====================
