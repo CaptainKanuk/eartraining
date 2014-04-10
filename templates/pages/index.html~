@@ -1,45 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-      <link href="http://fonts.googleapis.com/css?family=Raleway:100" rel="stylesheet" type="text/css">
         <meta charset="utf-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
                 <meta name="viewport" content="width=device-width, initial-scale=1">
                     <meta name="description" content="">
                         <meta name="author" content="">
-<<<<<<< HEAD
-                            <!--<link rel="shortcut icon" href="../../assets/ico/favicon.ico">-->
+                            <link href="http://fonts.googleapis.com/css?family=Raleway:100" rel="stylesheet" type="text/css">
                                 
-                                <title>Cover Template for Bootstrap</title>
-=======
                                 <title>SuperTonic</title>
->>>>>>> 3c2ba2feacb5c54f010c24f67284d2e15a00204c
                                 
                                 <!-- Bootstrap core CSS -->
                                 <!--<link href="{{STATIC_URL}}css/bootstrap.min.css" rel="stylesheet">
                                 <!--<link href="{{STATIC_URL}}css/bootstrap-theme.min.css" rel="stylesheet">
-                                
+                                    
                                 <!-- Latest compiled and minified CSS -->
-<<<<<<< HEAD
                                 <link href="{{ STATIC_URL }}/css/bootstrap.min.css" rel="stylesheet" type="text/css">
                                     
-                                <!-- Optional theme -->
+                                <!-- Optional theme
                                 <link href="{{ STATIC_URL }}/css/bootstrap-theme.min.css" rel="stylesheet"  type="text/css">
-                                    
-                                <!-- Latest compiled and minified JavaScript -->
-=======
-                                <link href="{{ STATIC_URL }}/css/bootstrap.css" rel="stylesheet" type="text/css">
-                                    
-                                <!-- Optional theme -->
-                                <link href="{{ STATIC_URL }}/css/bootstrap-theme.css" rel="stylesheet"  type="text/css">
+                                -->    
                                 <!-- Latest compiled and minified JavaScript
->>>>>>> 3c2ba2feacb5c54f010c24f67284d2e15a00204c
                                 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
                                 -->    
                                 <!-- Custom styles for this template -->
                                 <link href="{{ STATIC_URL }}/css/cover.css" rel="stylesheet" type="text/css">
                                     
-                                    <!-- Just for debugging purposes. Don't actually copy thisd line! -->
+                                    <!-- Just for debugging purposes. Don't actually copy this line! -->
                                     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
                                     
                                     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -50,31 +37,23 @@
     </head>
     
     <body>
-body { padding-top: 70px; }
-      <div class="site-wrapper">
-
-  <div class="site-wrapper-inner">
-      <div class="cover-container">
-
-          <!-- <div class="masthead clearfix">
-            <div class="inner">
-              <h3 class="masthead-brand">SuperTonic</h3>
-              <ul class="nav masthead-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">Features</a></li>
-                <li><a href="#">Contact</a></li>
-              </ul>
-            </div>
-          </div> -->
-          <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-        <div class="container">
-          <a class="navbar-brand" href="#">SuperTonic</a>
-          <u1 class="nav navbar-nav navbar-right">
+        
+      <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      	<div class="container">
+          <a class="brand" href="#">SuperTonic</a>
+          <u1 class="nav pull-right">
             <li><a href="#">About</a></li>
             <li><a href="#">Contact Us</a></li>
           </u1>
-        </div>
+      	</div>
       </nav>
+      
+      <div class="site-wrapper">
+
+	<div class="site-wrapper-inner">
+
+	  <div class="cover-container">
+
 	    <div class="inner cover">
 	
 	      <h1 class="cover-heading">Next Generation Ear-Training</h1>

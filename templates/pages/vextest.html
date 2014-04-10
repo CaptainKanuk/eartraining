@@ -1,6 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+
+          <title>My practice vexflow</title>
+  
+          <link href='http://fonts.googleapis.com/css?family=OFL+Sorts+Mill+Goudy+TT|Yanone+Kaffeesatz|Tangerine'
+           rel='stylesheet' type='text/css'>
+          <link href="http://www.vexflow.com/vextab/style.css" media="screen" rel="Stylesheet" type="text/css" />
+
+
+          <!-- VexFlow Compiled Source -->
+          <script src="{{STATIC_URL}}/js/vexflow-debug.js"></script>
+          <script src="{{ STATIC_URL }}/js/vexflow-min.js"></script>
+
+          <!-- Support Sources -->
+          <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+         
+          <style type="text/css">
+            canvas {
+              background: #fff;
+              padding: 10px;
+              border-radius: 8px;
+              border: 10px solid #456;
+            }
+
+            div.egcode {
+              font-family: Courier;
+              font-size: 14px;
+            }
+          </style>
+
         <meta charset="utf-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
                 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -58,6 +88,22 @@
                     <div class="inner cover">
                         <h1 class="cover-heading">Vextest</h1>
                         <p class="lead">Do some music stuff.</p>
+
+                          <h2>Test basics</h2>
+                            <div class="one">
+                                <canvas width=525 height=120></canvas>
+                                <p/>
+                                <script>
+                          var canvas = $("div.one canvas")[0];
+                          var renderer = new Vex.Flow.Renderer(canvas,
+                            Vex.Flow.Renderer.Backends.CANVAS);
+
+                          var ctx = renderer.getContext();
+                          var stave = new Vex.Flow.Stave(10, 0, 500);
+                          stave.addClef("treble").setContext(ctx).draw();
+                                </script>
+                            </div>
+
                         <p class="lead">
                         <a href="#" class="btn btn-lg btn-default">Learn more</a>
                         </p>
