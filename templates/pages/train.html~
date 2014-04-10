@@ -77,8 +77,8 @@
                     </nav>
                     <div class="inner cover">
                         
-                        <h1 class="cover-heading">home page</h1>
-                        <p class="lead">SuperTonic is the beautiful, interactive ear-training application for musicians and non-musicians alike. Improve your sight-reading and music knowledge with just a few progressive games!</p>
+                        <h1 class="cover-heading">It's time to learn some music theory!</h1> 
+                        <p class="lead"> To get started, choose a game category from below. </p> 
                         <a href="/train" class="btn btn-lg btn-default">Let's start.</a>
                     
                     </div>
