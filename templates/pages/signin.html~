@@ -2,58 +2,84 @@
 <html lang="en">
     <head>
       <link href="http://fonts.googleapis.com/css?family=Raleway:100" rel="stylesheet" type="text/css">
-        <meta charset="utf-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                <meta name="viewport" content="width=device-width, initial-scale=1">
-                    <meta name="description" content="">
-                        <meta name="author" content="">
-                            <!--<link rel="shortcut icon" href="../../assets/ico/favicon.ico">-->
-                                
-                                <title>SuperTonic</title>
-                                
-                                <!-- Bootstrap core CSS -->
-                                <!--<link href="{{STATIC_URL}}css/bootstrap.min.css" rel="stylesheet">
-                                <!--<link href="{{STATIC_URL}}css/bootstrap-theme.min.css" rel="stylesheet">
-                                
-                                <!-- Latest compiled and minified CSS -->
-                                <link href="{{ STATIC_URL }}/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!--<link rel="shortcut icon" href="../../assets/ico/favicon.ico">-->
+      <link rel="icon" type="image/ico" href="{{ STATIC_URL }}/images/favicon.ico">                                
+      <title>SuperTonic</title>
+      
+      <!-- Bootstrap core CSS -->
+      <!--<link href="{{STATIC_URL}}css/bootstrap.min.css" rel="stylesheet">
+          <!--<link href="{{STATIC_URL}}css/bootstrap-theme.min.css" rel="stylesheet">
+                         
+       
+                <!-- Latest compiled and minified CSS -->
+                <link href="{{ STATIC_URL }}/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+                         
+		<!--style type = "text/css">
+		.container {width: 500px;}
+		.container input {width:100%;}
+		</style-->
+                <!-- Optional theme -->
+		<style>
+		  table.login
+		  {
+		  margin-left:auto;
+		  margin-right:auto;
+		  padding:15px;
+		  }
+		  tr.spaceUnder > td
+	  {
+	  padding-bottom: 1em;
+	  }
+	  td.spaceLeft 
+	  {
+	  padding-left: 1em;
+	  }
+	  td.spaceRight
+	  {
+	  padding-right:1em;
+	  }
+		</style>
+
+                <link href="{{ STATIC_URL }}/css/bootstrap-theme.min.css" rel="stylesheet"  type="text/css">
                                     
-                                <!-- Optional theme -->
-                                <link href="{{ STATIC_URL }}/css/bootstrap-theme.min.css" rel="stylesheet"  type="text/css">
+                <!-- Latest compiled and minified JavaScript -->
+                <link href="{{ STATIC_URL }}/css/bootstrap.css" rel="stylesheet" type="text/css">
                                     
-                                <!-- Latest compiled and minified JavaScript -->
-                                <link href="{{ STATIC_URL }}/css/bootstrap.css" rel="stylesheet" type="text/css">
+                <!-- Optional theme -->
+                <link href="{{ STATIC_URL }}/css/bootstrap-theme.css" rel="stylesheet"  type="text/css">
+                <!-- Latest compiled and minified JavaScript
+                     <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+                     -->    
+                <!-- Custom styles for this template -->
+                <link href="{{ STATIC_URL }}/css/cover.css" rel="stylesheet" type="text/css">
                                     
-                                <!-- Optional theme -->
-                                <link href="{{ STATIC_URL }}/css/bootstrap-theme.css" rel="stylesheet"  type="text/css">
-                                <!-- Latest compiled and minified JavaScript
-                                <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-                                -->    
-                                <!-- Custom styles for this template -->
-                                <link href="{{ STATIC_URL }}/css/cover.css" rel="stylesheet" type="text/css">
+                <!-- Javascript Stuff -->
+                <script src="http://code.jquery.com/jquery-latest.js"></script>
+                <script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js"></script>
+                
+                <!-- Just for debugging purposes. Don't actually copy thisd line! -->
+                <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
                                     
-                                    <!-- Javascript Stuff -->
-                                    <script src="http://code.jquery.com/jquery-latest.js"></script>
-                                    <script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js"></script>
-                                    
-                                    <!-- Just for debugging purposes. Don't actually copy thisd line! -->
-                                    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-                                    
-                                    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-                                    <!--[if lt IE 9]>
-                                     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-                                     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-                                     <![endif]-->
-                                    <script>
-                                        $(function(){
-                                          $("#includeMenu").load("{{ STATIC_URL }}/html/menu.html");
-                                          });
-                                        </script>
-                                    <script>
-                                        $(function(){
-                                          $("#includeFooter").load("{{ STATIC_URL }}/html/footer.html");
-                                          });
-                                        </script>
+                <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                <!--[if lt IE 9]>
+                    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+                    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+                    <![endif]-->
+                <script>
+                  $(function(){
+                  $("#includeMenu").load("{{ STATIC_URL }}/html/menu.html");
+                  });
+                </script>
+                <script>
+                  $(function(){
+                  $("#includeFooter").load("{{ STATIC_URL }}/html/footer.html");
+                  });
+                </script>
     </head>
     
     <body>
@@ -73,22 +99,72 @@
               </ul>
             </div>
           </div> -->
-                              <div id="includeMenu"></div>
+          <div id="includeMenu"></div>
+	  <!--div id="container" style="width:500px"-->
+	    <br><br><br>
+	    <div style="float:left; width: 50%;">
+	    <!--div style="height:200px;width:100px;float:left;"-->
+	      <h1 class="cover-heading">One of us! One of us! </h1>
+		<form name="login">
+		  <!--label>Username</label>
+		  <input type="text" name="userid"> <br />
+		  <label>Password</label>
+		  <input type+"text" name="pswrd"> <br />
+		</form-->
+		  <br><br><br><br>
+		  <table class="login">
+		    <tr class = "spaceUnder">
+		    <td class="spaceRight" align="right"> Username:     </td>
+		    <td class="spaceLeft" align="left"><input type="text" name="userid"/> </td>
+		    </tr>
+		    <tr class="spaceUnder">
+		    <td class="spaceRight" align="right"> Password:     </td>
+		    <td class="spaceLeft" align="left"><input type="password" name="pswrd"/> </td>
+		  </tr>
+		  </table> <br>  
+		  <input type="button" onclick="check(this.form)" value="Login"/>
+		</form>
+		<script language="javascript">
+		  function check(form) {
+		  if(form.userid.value == "myuserid" && form.pswrd.value == "mypswrd") {
+		  window.open('target.html')
+		  }
+		  else {
+		  alert("Error Password or Username Incorrect")
+		  }
+		  }
+		</script>
+	    </div>
+	    <div style="float:left; width: 50%;">
+	      <!--div style="height:200px;width:400px;float:left;"-->
+	      <h1 class="cover-heading"> Join ussss </h1>
+	      <form name="register">
+		<br><br><br>
+		<table class="login">
+		  <tr class = "spaceUnder">
+		    <td class="spaceRight" align="right"> Desired Username: </td>
+		    <td class="spaceLeft" align="left"><input type="text" name="desuserid"/> </td>
+		  </tr>
+		  <tr class = "spaceUnder"> 
+		    <td class="spaceRight" align="right"> Password: </td>
+		    <td class="spaceLeft" align="left"><input type="text" name="pswrd1"/> </td>
+		  </tr>
+		  <tr class = "spaceUnder">
+		    <td class="spaceRight" align="right"> Confirm Password: </td>
+		    <td class="spaceLeft" align="left"><input type="text" name="pswrd2"/> </td>
+		  </tr>
+		</table><br>
+		<input type="button" onclick="register(this.form)" value="Register"/>
+	      </form>
 
-	  <br><br><br>
-	  <div style="float:left; width: 50%;">
-	    <h1 class="cover-heading">One of us! One of us! </h1>
-	  </div>
-	  <div style="float:right; width: 50%;">
-	    <h1 class="cover-heading"> Join ussss </h1>
-	  </div>
-<div style="float:center;">          
-<div id="includeFooter"></div>
-</div>
-            
-      </div>
-          
-  </div>
+	    </div>
+	    <div id="footer" style="background-color:#FFA500;height: 10%; width:100%; line-height: 10%; clear:both;position:fixed; bottom:0;text-align:center;">
+	      <div class="inner">
+		<p>Copyright Ear Training 2014, by <a href="pages/about/">us</a>.</p>
+	      </div>
+	    </div>
+	  <!--/div-->
+        
             
         
         <!-- Bootstrap core JavaScript
