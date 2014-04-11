@@ -6,11 +6,18 @@ var labels = ["choice_one", "choice_two", "choice_three", "choice_four"];
 var prompt = "prompt";
 
 var englishNames = ["unison", "second", "third", "fourth", "fifth", "sixth", "seventh", "octave", "ninth", "tenth", "eleventh", "twelfth", "thirteenth", "fourteenth", "fifthteenth", "double octave","Summon Satan"];
-var englishAccidentals = ["perfect", "major", "minor", "augmented", "diminished"];
+var englishModifierClass = [0, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 666];
+//grouped into the two classes
+var englishAccidentals = [["perfect", "augmented", "diminished"], [ "major", "minor", "augmented", "dimished"]];
+
+
+//For mapping the numbers to vexflow notation
+var scaleNotesStrings = [["a"], ["a#", "bb"], ["b"], "c", "c#", "d", "d#", "e", "f", "f#", "g", "g#"];
+var representation;
 
 var defaultColor = "#000000";
-var correctColor = "#67E300";
-var incorrectColor = "#E40045";
+var correctColor = "#439400";
+var incorrectColor = "#94002D";
 
 var canvas1, canvas2, canvas3, canvas4;
 
@@ -22,6 +29,7 @@ var stave1, stave2, stave3, stave4;
 
 var correctChoice;
 var correctInterval;
+var correctIntervalModifier;
 
 function drawStaff(elem)
 {
@@ -68,16 +76,32 @@ function drawStaff(elem)
     
     
 }
-function noteToString(note)
+
+//takes a note and an index into the array of possible represetations
+//
+function noteToString(note, representation)
 {
-    note = note % 11;
+    tone = note % 11;
+    var string = scaleNotesString[tone];
+    if(accidental == 0){
+        //flat, so go up one scale element
+        string = scaleNotesString[tone+1];
+        string
+    }
+    else if(accidental == 1){
+        //natural, so do nothing
+    }
+    else{
+        //sharp, so
+        
+    }
     var temp;
     if (note == 0)
         return "c/4";
     else if (note == 1)
     {
         temp = "db/4";
-        if (Math.random() < .5)
+        if (accidental == 1)
             temp = "c#/4";
         return temp;
     }
@@ -230,10 +254,14 @@ function setup(elem)
 
 function getRandomInterval(){
     //Generate random interval
-    var interval = Math.floor(Math.random()*13.0);
-    var base = Math.floor(Math.random()*13.0);
+    var interval = Math.floor(Math.random()*12.0);
+    var base = Math.floor(Math.random()*12.0);
     var top = base + interval;
-    return [base, top];
+    if(englishModifierClass[interval]){
+        
+    }
+    //var modifier =
+    return [base, top, modifier];
 }
 
 function intervalToNotes(interval){
@@ -319,6 +347,8 @@ function changeBorderColors(){
 function chooseAnswer(answer){
     var promptField = document.getElementById(prompt);
     changeBorderColors();
+    alert(answer);
+    alert(correctInterval);
     if( answer==correctChoice ){
         promptField.innerHTML = "Got it!";
     }
