@@ -1,8 +1,8 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import patterns, include, url, views
 from django.conf.urls.static import static
 from django.conf import settings
 from django.contrib import admin
-from pages.views import *
+from eartraining.views import *
 admin.autodiscover()
 
 handler404 = 'pages.views.notfound'
@@ -23,7 +23,7 @@ urlpatterns = patterns('',
     #===============TESTING URLS====================
     url(r'^vextest/', vextest, name='vextest'),
     #===============DATABASE STUFF==================
-    url(r'^add_user/', add_user, name='add_user'), 
+    url(r'^add_user/', views.add_user, name='add_user'), 
                        )
 
 urlpatterns += patterns('',
