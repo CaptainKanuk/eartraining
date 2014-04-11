@@ -247,10 +247,8 @@ function getNewIntervals()
     correctChoice = outelem;
     correctInterval = interval;
     //show the intervals on the canvas
-    alert(outelem);
     showInterval(notes, outelem);
     for(var i = 0; i < labels.length; i++){
-        alert(labels[i]);
         if(i != select){
             //populate the wrong answers
             showInterval(intervalToNotes(getRandomInterval()), labels[i]);
