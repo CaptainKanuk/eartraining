@@ -6,7 +6,7 @@
 
 
 //For mapping the numbers to vexflow notation
-var scaleNoteNames = [["b#","c"], ["c#", "db"], ["d"], ["d#","eb"], ["e","fb"], ["e#","f"], ["f#","gb"], ["g"], ["g#","ab"], ["a"], ["a#", "bb"], ["b", "cb"]];
+var pitchClassNames = ["c", "c#", "d", "d#", "e", "f", "f#", "g", "g#", "a", "a#", "b"];
 
 
 function showIntervalName(){
@@ -17,18 +17,8 @@ function showIntervalName(){
     var tonediff = top - base;
     
     //don't need, maybe
-    var baser = correctInterval[1];
-    var topr = correctInterval[3];
-    
-    /*var scaleNoteNames = [["b#","c"], ["c#", "db"], ["d"], ["d#","eb"], ["e","fb"], ["e#","f"], ["f#","gb"], ["g"], ["g#","ab"], ["a"], ["a#", "bb"], ["b", "cb"]];
-    
-    c - c#
-    d - d#
-    e - e#
-    f - f#
-    g - g#
-    a - a#
-    b - b#*/
+    var base_offset = correctInterval[1];
+    var top_offset = correctInterval[3];
     
     /*var string ="";
     switch(tonediff)

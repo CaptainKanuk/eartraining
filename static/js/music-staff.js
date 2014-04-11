@@ -9,8 +9,8 @@ var prompt = "prompt";
 
 
 //For mapping the numbers to vexflow notation
-var scaleNoteNames = [["b#","c"], ["c#", "db"], ["d"], ["d#","eb"], ["e","fb"], ["e#","f"], ["f#","gb"], ["g"], ["g#","ab"], ["a"], ["a#", "bb"], ["b", "cb"]];
-
+var pitchClassNames = ["c", "c#", "d", "d#", "e", "f", "f#", "g", "g#", "a", "a#", "b"];
+var middleC = 60;//semitone starting point
 
 var defaultColor = "#000000";
 var correctColor = "#439400";
@@ -25,6 +25,7 @@ var ctx1, ctx2, ctx3, ctx4;
 var stave1, stave2, stave3, stave4;
 
 var correctChoice;
+//intervals are [basetone, baseoffset, toptone, topoffset]
 var correctInterval;
 
 function drawStaff(elem)
@@ -75,41 +76,42 @@ function drawStaff(elem)
 
 //takes a note and an index into the array of possible represetations
 //trusts caller to not input representation out of range
-function noteToString(note, representation)
+function noteToString(note, offset)
 {
-    tone = note % 12;
-    var string = scaleNoteNames[tone][representation];
-    if(note == 0 && representation == 0){
-        string = string.concat("/3");
-    }
-    else if(note < 12){
-        if(note == 11 && representation == 1){
-            string = string.concat("/5");
-        }
-        else{
-            string = string.concat("/4");
-        }
-    }
-    else if(note < 23){
-        if(note == 12 && representation == 0){
-            string = string.concat("/4");
-        }
-        else if(note == 13 && representation == 1){
-            string = string.concat("/4");
-        }
-        else{
-            string = string.concat("/5");
+    
+    //Determine representation for note
+    var writtenNote = note + offset;
+    var octave = Math.floor(writtenNote / 12)-1;//60 (middleC) maps to octave 4
+    var pitchClass = writtenNote % 12;
+
+    //here's the base note
+    var writtenNoteString  = pitchClassNames[pitchClass];
+    
+    //if offset is negative then just add sharps
+    if(offset < 0){
+        for(var i = 0; i < -offset; i++){
+            writtenNoteString = writtenNoteString.concat("#");
         }
     }
-    else{
-        if(representation == 1){
-            string = string.concat("/6");
+    else if(offset > 0){
+        if(writtenNoteString.length == 2){
+            //start by stripping sharp
+            writtenNoteString = writtenNoteString.charAt(0);
+            for(var i = 0; i < (offset-1); i++){
+                writtenNoteString = writtenNoteString.concat("b");
+            }
         }
-        else{
-            string = string.concat("/5");
+        else{//no starting sharp so just add that many flats
+            for(var i = 0; i < offset; i++){
+                writtenNoteString = writtenNoteString.concat("b");
+            }
         }
     }
-    return string;
+    
+    //add octave string
+    writtenNoteString = writtenNoteString.concat("/",octave);
+    
+    return writtenNoteString;
 }
 
 function showInterval(notes, elem)
@@ -168,12 +170,12 @@ function setup(elem)
 
 function getRandomInterval(){
     //Generate random interval
-    var base = Math.floor(Math.random()*13.0);
-    var interval = Math.floor(Math.random()*12.0);
+    var base = Math.floor(Math.random()*13.0)+60;
+    var interval = Math.floor(Math.random()*13.0);
     var top = base + interval;
-    var baser = Math.floor(Math.random()*scaleNoteNames[base%12].length);
-    var topr = Math.floor(Math.random()*scaleNoteNames[top%12].length);
-    return [base, baser, top, topr];
+    var base_offset = Math.floor(Math.random()*3)-1;
+    var top_offset = Math.floor(Math.random()*3)-1;
+    return [base, base_offset, top, top_offset];
 }
 
 function intervalToNotes(interval){
@@ -186,14 +188,30 @@ function intervalToNotes(interval){
     var Stop = noteToString(top,topr);
     var noteB = new Vex.Flow.StaveNote({ keys: [Sbase], duration: "h" });
     var noteT = new Vex.Flow.StaveNote({ keys: [Stop], duration: "h" });
-    if (Sbase.charAt(1) == "#")
-        noteB.addAccidental(0, new Vex.Flow.Accidental("#"));
-    if (Sbase.charAt(1) == "b")
-        noteB.addAccidental(0, new Vex.Flow.Accidental("b"));
-    if (Stop.charAt(1) == "#")
-        noteT.addAccidental(0, new Vex.Flow.Accidental("#"));
-    if (Stop.charAt(1) == "b")
-        noteT.addAccidental(0, new Vex.Flow.Accidental("b"));
+    if (Sbase.charAt(1) == "#"){
+        if (Sbase.charAt(2) == "#")
+            noteB.addAccidental(0, new Vex.Flow.Accidental("##"));
+        else
+            noteB.addAccidental(0, new Vex.Flow.Accidental("#"));
+    }
+    if (Sbase.charAt(1) == "b"){
+        if (Sbase.charAt(2) == "b")
+            noteB.addAccidental(0, new Vex.Flow.Accidental("bb"));
+        else
+            noteB.addAccidental(0, new Vex.Flow.Accidental("b"));
+    }
+    if (Stop.charAt(1) == "#"){
+        if (Stop.charAt(2) == "#")
+            noteT.addAccidental(0, new Vex.Flow.Accidental("##"));
+        else
+            noteT.addAccidental(0, new Vex.Flow.Accidental("#"));
+    }
+    if (Stop.charAt(1) == "b"){
+        if (Stop.charAt(2) == "b")
+            noteT.addAccidental(0, new Vex.Flow.Accidental("bb"));
+        else
+            noteT.addAccidental(0, new Vex.Flow.Accidental("b"));
+    }
 
     var notes = [
                  noteB, noteT
@@ -218,11 +236,13 @@ function getNewIntervals()
 
     correctChoice = outelem;
     correctInterval = interval;
+    showInterval(intervalToNotes(interval), correctChoice);
     //show the intervals on the canvas
     for(var i = 0; i < labels.length; i++){
         if(i != select){
             //populate the wrong answers
-            showInterval(intervalToNotes(getRandomInterval()), labels[i]);
+            interval = getRandomInterval();
+            showInterval(intervalToNotes(interval), labels[i]);
         }
     }
     //finally, make the correct interval display as a prompt
