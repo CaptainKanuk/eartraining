@@ -23,16 +23,24 @@
             
         <!-- Optional theme -->
         <link href="{{ STATIC_URL }}/css/bootstrap-theme.css" rel="stylesheet"  type="text/css">
+            
+            <!-- Bootstrap core JavaScript
+             ================================================== -->
+            <!-- Placed at the end of the document so the pages load faster -->
+            <!-- Javascript Stuff -->
+            <script src="http://code.jquery.com/jquery-latest.js"></script>
+            <script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+            <script src="{{STATIC_URL}}/js/bootstrap.min.js"></script>
+            <script src="{{STATIC_URL}}/js/docs.min.js"></script>
+            <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+            <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+            
             <!-- Latest compiled and minified JavaScript
              <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
              -->
             <!-- Custom styles for this template -->
             <link href="{{ STATIC_URL }}/css/cover.css" rel="stylesheet" type="text/css">
-
-            <!-- Javascript Stuff -->
-            <script src="http://code.jquery.com/jquery-latest.js"></script>
-            <script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js"></script>
-
         
             <!-- Just for debugging purposes. Don't actually copy thisd line! -->
             <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -44,8 +52,8 @@
              <![endif]-->
             <script>
                 $(function(){
-                  $("#includeMenu").load("{{ STATIC_URL }}/html/menu.html");
-                  });
+                    $("#includeMenu").load("{{ STATIC_URL }}/html/menu.html");
+                });
             </script>
             <script>
                 $(function(){
@@ -89,11 +97,5 @@
             
         </div>
         
-        <!-- Bootstrap core JavaScript
-         ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <script src="{{STATIC_URL}}/js/bootstrap.min.js"></script>
-        <script src="{{STATIC_URL}}/js/docs.min.js"></script>
     </body>
 </html>
