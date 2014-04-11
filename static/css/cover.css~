@@ -11,12 +11,14 @@ a:hover {
 p, div {
    font-family: 'Raleway';
 }
-
+.dropdown-menu {
+text-shadow: none;
+}
 /* Custom default button */
 .btn-default,
 .btn-default:hover,
 .btn-default:focus {
-  color: #333;
+  color: #fff;
   text-shadow: none; /* Prevent inheritence from `body` */
   background-color: #fff;
   border: 1px solid #fff;
