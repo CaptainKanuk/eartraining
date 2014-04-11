@@ -2,6 +2,12 @@
 //Uses Vexflow
 //MM, DGM, AR, ST for COS 333 Spring 2014
 
+var labels = ["choice_one", "choice_two", "choice_three", "choice_four"];
+var prompt = "prompt";
+
+var englishNames = ["unison", "second", "third", "fourth", "fifth", "sixth", "seventh", "octave", "ninth", "tenth", "eleventh", "twelfth", "thirteenth", "fourteenth", "fifthteenth", "double octave","Summon Satan"];
+var englishAccidentals = ["perfect", "major", "minor", "augmented", "diminished"];
+
 var canvas1, canvas2, canvas3, canvas4;
 
 var renderer1, renderer2, renderer3, renderer4;
@@ -9,6 +15,9 @@ var renderer1, renderer2, renderer3, renderer4;
 var ctx1, ctx2, ctx3, ctx4;
 
 var stave1, stave2, stave3, stave4;
+
+var correctChoice;
+var correctInterval;
 
 function drawStaff(elem)
 {
@@ -160,27 +169,10 @@ function noteToString(note)
     else if (note == 24)
         return "c/6";
 }
-function showInterval(elem)
+
+function showInterval(notes, elem)
 {
-    var interval = Math.floor(Math.random()*13);
-    var base = Math.floor(Math.random()*13);
-    var top = base + interval;
-    var Sbase = noteToString(base);
-    var Stop = noteToString(top);
-    var noteB = new Vex.Flow.StaveNote({ keys: [Sbase], duration: "h" });
-    var noteT = new Vex.Flow.StaveNote({ keys: [Stop], duration: "h" });
-    if (Sbase.charAt(1) == "#")
-        noteB.addAccidental(0, new Vex.Flow.Accidental("#"));
-    if (Sbase.charAt(1) == "b")
-        noteB.addAccidental(0, new Vex.Flow.Accidental("b"));
-    if (Stop.charAt(1) == "#")
-        noteT.addAccidental(0, new Vex.Flow.Accidental("#"));
-    if (Stop.charAt(1) == "b")
-        noteT.addAccidental(0, new Vex.Flow.Accidental("b"));
-    
-    var notes = [
-                 noteB, noteT
-                 ];
+    //print out the interval to the elem canvas
     
     var voice = new Vex.Flow.Voice({
                                    num_beats: 4,
@@ -213,25 +205,86 @@ function verify()
     alert("HELLO");
 }
 
+function clearCanvases(){
+    ctx1.clearRect(0,0,250,120);
+    ctx2.clearRect(0,0,250,120);
+    ctx3.clearRect(0,0,250,120);
+    ctx4.clearRect(0,0,250,120);
+}
+
+function drawStaves(){
+    for(var i = 0; i < labels.length; i++){
+        drawStaff(labels[i]);
+    }
+}
+
 function setup(elem)
 {
-    drawStaff(elem);
-    if (elem == "choice_one")
-    {
-        ctx1.clearRect(0,0,250,120);
-    }
-    if (elem == "choice_two")
-    {
-        ctx2.clearRect(0,0,250,120);
-    }
-    if (elem == "choice_three")
-    {
-        ctx3.clearRect(0,0,250,120);
-    }
-    if (elem == "choice_four")
-    {
-        ctx4.clearRect(0,0,250,120);
-    }
     drawStaff(elem); 
     showInterval(elem);
+}
+
+function getRandomInterval(){
+    //Generate random interval
+    var interval = Math.floor(Math.random()*13.0);
+    var base = Math.floor(Math.random()*13.0);
+    var top = base + interval;
+    return [base, top];
+}
+
+function intervalToNotes(interval){
+    //convert interval int values to vexflow notes
+    var base = interval[0]
+    var top = interval[1];
+    var Sbase = noteToString(base);
+    var Stop = noteToString(top);
+    var noteB = new Vex.Flow.StaveNote({ keys: [Sbase], duration: "h" });
+    var noteT = new Vex.Flow.StaveNote({ keys: [Stop], duration: "h" });
+    if (Sbase.charAt(1) == "#")
+        noteB.addAccidental(0, new Vex.Flow.Accidental("#"));
+    if (Sbase.charAt(1) == "b")
+        noteB.addAccidental(0, new Vex.Flow.Accidental("b"));
+    if (Stop.charAt(1) == "#")
+        noteT.addAccidental(0, new Vex.Flow.Accidental("#"));
+    if (Stop.charAt(1) == "b")
+        noteT.addAccidental(0, new Vex.Flow.Accidental("b"));
+
+    var notes = [
+                 noteB, noteT
+                 ];
+    
+    return notes;
+}
+
+function showIntervalName(){
+    var promptField = document.getElementById(prompt);
+    promptField.innerHTML = "Pick the ".concat(englishNames[correctInterval[1]-correctInterval[0]]);
+}
+
+function getNewIntervals()
+{
+    clearCanvases();
+    drawStaves();
+    //Get a random interval
+    var interval = getRandomInterval();
+    var notes = intervalToNotes(interval);
+    //choose which canvas will draw it
+    var select = Math.floor(Math.random()*labels.length);
+    var outelem = labels[select];
+    
+    var outelem;
+
+    rightChoice = outelem;
+    correctInterval = interval;
+    
+    //show the intervals on the canvas
+    showInterval(notes, outelem);
+    for(var i = 0; i < labels.length; i++){
+        if(i != select){
+            //populate the wrong answers
+            showInterval(intervalToNotes(getRandomInterval()), labels[i]);
+        }
+    }
+    //finally, make the correct interval display as a prompt
+    showIntervalName();
 }
