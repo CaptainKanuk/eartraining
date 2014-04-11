@@ -1,100 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-      <link href="http://fonts.googleapis.com/css?family=Raleway:100" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Raleway:100" rel="stylesheet" type="text/css">
         <meta charset="utf-8">
-            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                <meta name="viewport" content="width=device-width, initial-scale=1">
-                    <meta name="description" content="">
-                        <meta name="author" content="">
-                            <!--<link rel="shortcut icon" href="../../assets/ico/favicon.ico">-->
-                                
-                                <title>SuperTonic</title>
-                                
-                                <!-- Bootstrap core CSS -->
-                                <!--<link href="{{STATIC_URL}}css/bootstrap.min.css" rel="stylesheet">
-                                <!--<link href="{{STATIC_URL}}css/bootstrap-theme.min.css" rel="stylesheet">
-                                
-                                <!-- Latest compiled and minified CSS -->
-                                <link href="{{ STATIC_URL }}/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-                                    
-                                <!-- Optional theme -->
-                                <link href="{{ STATIC_URL }}/css/bootstrap-theme.min.css" rel="stylesheet"  type="text/css">
-                                    
-                                <!-- Latest compiled and minified JavaScript -->
-                                <link href="{{ STATIC_URL }}/css/bootstrap.css" rel="stylesheet" type="text/css">
-                                    
-                                <!-- Optional theme -->
-                                <link href="{{ STATIC_URL }}/css/bootstrap-theme.css" rel="stylesheet"  type="text/css">
-                                <!-- Latest compiled and minified JavaScript
-                                <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-                                -->    
-                                <!-- Custom styles for this template -->
-                                <link href="{{ STATIC_URL }}/css/cover.css" rel="stylesheet" type="text/css">
-                                    
-                                    <!-- Javascript Stuff -->
-                                    <script src="http://code.jquery.com/jquery-latest.js"></script>
-                                    <script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js"></script>
-                                    
-                                    <!-- Just for debugging purposes. Don't actually copy thisd line! -->
-                                    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-                                    
-                                    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-                                    <!--[if lt IE 9]>
-                                     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-                                     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-                                     <![endif]-->
-                                    <script>
-                                        $(function(){
-                                          $("#includeMenu").load("{{ STATIC_URL }}/html/menu.html");
-                                          });
-                                        </script>
-                                    <script>
-                                        $(function(){
-                                          $("#includeFooter").load("{{ STATIC_URL }}/html/footer.html");
-                                          });
-                                        </script>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+            <!--<link rel="shortcut icon" href="../../assets/ico/favicon.ico">-->
+        
+        <title>SuperTonic</title>
+        
+        <!-- Latest compiled and minified CSS -->
+        <link href="{{ STATIC_URL }}/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+            
+        <!-- Optional theme -->
+        <link href="{{ STATIC_URL }}/css/bootstrap-theme.min.css" rel="stylesheet"  type="text/css">
+            
+        <!-- Latest compiled and minified JavaScript -->
+        <link href="{{ STATIC_URL }}/css/bootstrap.css" rel="stylesheet" type="text/css">
+            
+        <!-- Optional theme -->
+        <link href="{{ STATIC_URL }}/css/bootstrap-theme.css" rel="stylesheet"  type="text/css">
+        <!-- Latest compiled and minified JavaScript
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        -->    
+        <!-- Custom styles for this template -->
+        <link href="{{ STATIC_URL }}/css/cover.css" rel="stylesheet" type="text/css">
+            
+            <!-- Javascript Stuff -->
+            <script src="http://code.jquery.com/jquery-latest.js"></script>
+            <script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js"></script>
+            <!-- Bootstrap core JavaScript
+             ================================================== -->
+            <script src="{{STATIC_URL}}/js/bootstrap.min.js"></script>
+            <script src="{{STATIC_URL}}/js/docs.min.js"></script>
+            
+
+            <script>
+                $(function(){
+                  $("#includeMenu").load("{{ STATIC_URL }}/html/menu.html");
+                  });
+                </script>
+            <script>
+                $(function(){
+                  $("#includeFooter").load("{{ STATIC_URL }}/html/footer.html");
+                  });
+            </script>
+            <script>
+                function loadCanvas(){
+                    $("canvas").slideToggle("slow");
+                };
+            </script>
     </head>
     
     <body>
-        <!-- body { padding-top: 70px; }-->
-      <div class="site-wrapper">
-
-  <div class="site-wrapper-inner">
-      <div class="cover-container">
-
-          <!-- <div class="masthead clearfix">
-            <div class="inner">
-              <h3 class="masthead-brand">SuperTonic</h3>
-              <ul class="nav masthead-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">Features</a></li>
-                <li><a href="#">Contact</a></li>
-              </ul>
-            </div>
-          </div> -->
-                              <div id="includeMenu"></div>
-	        <div class="inner cover">
-		  
-		        <h1 class="cover-heading">Intervals</h1>
+        <div class="site-wrapper">
+            <div class="site-wrapper-inner">
+                <div class="cover-container">
+                    <div id="includeMenu"></div>
+                    <div class="inner cover">
+                        <h1 class="cover-heading">Intervals</h1>
 			            <p class="lead"> 
-              <p class="lead">
-                <a href="#" class="btn btn-lg btn-default">Let's start.</a>
-              </p>
-            </div>
-<div id="includeFooter"></div>
-                    
+                        <p class="lead">
+                            <a href="#" onclick="loadCanvas()" class="btn btn-lg btn-default">Let's start.</a>
+                        </p>
+                        <div id="choice">
+                            <canvas width="200" height="100"
+                                style="border:1px solid #000000;" align="center">
+                            </canvas>
+                            <table align="center">
+                                <tr>
+                                    <td><canvas width="200" height="100"
+                                        style="border:1px solid #000000;">
+                                    </canvas></td>
+                                    <td><canvas width="200" height="100"
+                                        style="border:1px solid #FF0000;">
+                                    </canvas></td>
+                                </tr>
+                                <tr>
+                                    <td><canvas width="200" height="100"
+                                        style="border:1px solid #00FF00;">
+                                    </canvas></td>
+                                    <td><canvas width="200" height="100"
+                                        style="border:1px solid #0000FF;">
+                                    </canvas></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div id="includeFooter"></div>
                 </div>
-                
             </div>
-            
         </div>
-        
-        <!-- Bootstrap core JavaScript
-         ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <script src="{{STATIC_URL}}/js/bootstrap.min.js"></script>
-        <script src="{{STATIC_URL}}/js/docs.min.js"></script>
     </body>
 </html>
