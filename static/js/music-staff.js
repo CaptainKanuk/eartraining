@@ -11,6 +11,7 @@ var prompt = "prompt";
 //For mapping the numbers to vexflow notation
 var scaleNoteNames = [["b#","c"], ["c#", "db"], ["d"], ["d#","eb"], ["e","fb"], ["e#","f"], ["f#","gb"], ["g"], ["g#","ab"], ["a"], ["a#", "bb"], ["b", "cb"]];
 
+
 var defaultColor = "#000000";
 var correctColor = "#439400";
 var incorrectColor = "#94002D";
@@ -201,33 +202,6 @@ function intervalToNotes(interval){
                  ];
     
     return notes;
-}
-
-function showIntervalName(){
-    var promptField = document.getElementById(prompt);
-    var tonediff = correctInterval[2] - correctInterval[0];
-    var base = correctInterval[0];
-    var top = correctInterval[2];
-    
-    //don't need, maybe
-    var baser = correctInterval[1];
-    var topr = correctInterval[3];
-    
-    /*var string ="";
-    switch(tonediff)
-    {
-        case 0:
-            string = "unison";
-            if (top-base == 1)
-                string = "diminished second";
-        case 1:
-            if (base == top)
-                string == "augmented unison";
-            if (top-base == 2)
-                string = "minor second";
-                
-    }*/
-    promptField.innerHTML = "Pick the ".concat(tonediff);
 }
 
 function getNewIntervals()
