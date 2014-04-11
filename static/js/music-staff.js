@@ -169,9 +169,7 @@ function setup(elem)
 function getRandomInterval(){
     //Generate random interval
     var base = Math.floor(Math.random()*13.0);
-    alert(base);
     var interval = Math.floor(Math.random()*12.0);
-    alert(interval);
     var top = base + interval;
     var baser = Math.floor(Math.random()*scaleNoteNames[base%12].length);
     var topr = Math.floor(Math.random()*scaleNoteNames[top%12].length);
@@ -221,7 +219,6 @@ function getNewIntervals()
     correctChoice = outelem;
     correctInterval = interval;
     //show the intervals on the canvas
-    showInterval(notes, outelem);
     for(var i = 0; i < labels.length; i++){
         if(i != select){
             //populate the wrong answers
