@@ -18,7 +18,7 @@ text-shadow: none;
 .btn-default,
 .btn-default:hover,
 .btn-default:focus {
-  color: #fff;
+  color: #333;
   text-shadow: none; /* Prevent inheritence from `body` */
   background-color: #fff;
   border: 1px solid #fff;
