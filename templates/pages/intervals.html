@@ -67,10 +67,15 @@
         </script>
         <script>
             $("canvas").slideToggle("fast");
-            function loadCanvas(){
+            function progress(){
                 var button = document.getElementById("start");
-                button.innerHTML="Next Interval";
-                $("canvas").slideToggle("slow");
+                if(button.innerHTML=="Let's start."){
+                    button.innerHTML="Next Interval";
+                    $("canvas").slideToggle("slow");
+                }
+                else{
+                    getNewIntervals();
+                }
             };
         </script>
     </head>
@@ -84,9 +89,9 @@
                         <h1 class="cover-heading">Intervals</h1>
 			            <p class="lead">
                         <div id="choice">
-                            <canvas width="150" height="50"
-                                style="border:4px solid #000000;display:none;" align="center">
-                            </canvas>
+                            <h3 id="prompt" align="center">
+                                Click the button to get an interval!
+                            </h3>
                             <table align="center">
                                 <tr>
                                     <td>
@@ -127,7 +132,7 @@
                         </div>
                     </div>
                     <p class="lead">
-                    <a href="#" id="start" onclick="loadCanvas()" class="btn btn-lg btn-default">Let's start.</a>
+                    <a href="#" id="start" onclick="progress()" class="btn btn-lg btn-default">Let's start.</a>
                     </p>
                     <div id="includeFooter"></div>
                 </div>
