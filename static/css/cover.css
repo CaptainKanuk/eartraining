@@ -24,7 +24,9 @@ text-shadow: none;
   border: 1px solid #fff;
 }
 
-
+input, textarea{
+    color: #333;
+}
 /*
  * Base structure
  */
