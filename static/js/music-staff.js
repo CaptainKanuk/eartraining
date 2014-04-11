@@ -5,14 +5,11 @@
 var labels = ["choice_one", "choice_two", "choice_three", "choice_four"];
 var prompt = "prompt";
 
-var englishNames = [["unison"], ["minor second", "second"], "third", "fourth", "fifth", "sixth", "seventh", "octave", "ninth", "tenth", "eleventh", "twelfth", "thirteenth", "fourteenth", "fifthteenth", "double octave","Summon Satan"];
-var englishModifierClass = [0, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 666];
-//grouped into the two classes
-var englishAccidentals = [["perfect", "augmented", "diminished"], [ "major", "minor", "augmented", "dimished"]];
+//Summon Satan
 
 
 //For mapping the numbers to vexflow notation
-var scaleNoteNames = [["a"], ["a#", "bb"], ["b", "cb"], ["b#","c"], ["c#", "db"], ["d"], ["d#","eb"], ["e","fb"], ["e#","f"], ["f#","gb"], ["g"], ["g#","ab"]];
+var scaleNoteNames = [["b#","c"], ["c#", "db"], ["d"], ["d#","eb"], ["e","fb"], ["e#","f"], ["f#","gb"], ["g"], ["g#","ab"], ["a"], ["a#", "bb"], ["b", "cb"]];
 
 var defaultColor = "#000000";
 var correctColor = "#439400";
@@ -79,13 +76,37 @@ function drawStaff(elem)
 //trusts caller to not input representation out of range
 function noteToString(note, representation)
 {
-    tone = note % 11;
+    tone = note % 12;
     var string = scaleNoteNames[tone][representation];
-    if(note < 11){
-        string = string.concat("/4");
+    if(note == 0 && representation == 0){
+        string = string.concat("/3");
+    }
+    else if(note < 12){
+        if(note == 11 && representation == 1){
+            string = string.concat("/5");
+        }
+        else{
+            string = string.concat("/4");
+        }
+    }
+    else if(note < 23){
+        if(note == 12 && representation == 0){
+            string = string.concat("/4");
+        }
+        else if(note == 13 && representation == 1){
+            string = string.concat("/4");
+        }
+        else{
+            string = string.concat("/5");
+        }
     }
     else{
-        string = string.concat("/5");
+        if(representation == 1){
+            string = string.concat("/6");
+        }
+        else{
+            string = string.concat("/5");
+        }
     }
     return string;
 }
@@ -146,11 +167,13 @@ function setup(elem)
 
 function getRandomInterval(){
     //Generate random interval
+    var base = Math.floor(Math.random()*13.0);
+    alert(base);
     var interval = Math.floor(Math.random()*12.0);
-    var base = Math.floor(Math.random()*12.0);
+    alert(interval);
     var top = base + interval;
-    var baser = Math.floor(Math.random()*scaleNoteNames[base%11].length);
-    var topr = Math.floor(Math.random()*scaleNoteNames[top%11].length);
+    var baser = Math.floor(Math.random()*scaleNoteNames[base%12].length);
+    var topr = Math.floor(Math.random()*scaleNoteNames[top%12].length);
     return [base, baser, top, topr];
 }
 
@@ -182,8 +205,29 @@ function intervalToNotes(interval){
 
 function showIntervalName(){
     var promptField = document.getElementById(prompt);
+    var tonediff = correctInterval[2] - correctInterval[0];
+    var base = correctInterval[0];
+    var top = correctInterval[2];
     
-    promptField.innerHTML = "Pick the ".concat(englishNames[correctInterval[1]-correctInterval[0]]);
+    //don't need, maybe
+    var baser = correctInterval[1];
+    var topr = correctInterval[3];
+    
+    /*var string ="";
+    switch(tonediff)
+    {
+        case 0:
+            string = "unison";
+            if (top-base == 1)
+                string = "diminished second";
+        case 1:
+            if (base == top)
+                string == "augmented unison";
+            if (top-base == 2)
+                string = "minor second";
+                
+    }*/
+    promptField.innerHTML = "Pick the ".concat(tonediff);
 }
 
 function getNewIntervals()
@@ -202,10 +246,11 @@ function getNewIntervals()
 
     correctChoice = outelem;
     correctInterval = interval;
-    
     //show the intervals on the canvas
+    alert(outelem);
     showInterval(notes, outelem);
     for(var i = 0; i < labels.length; i++){
+        alert(labels[i]);
         if(i != select){
             //populate the wrong answers
             showInterval(intervalToNotes(getRandomInterval()), labels[i]);
