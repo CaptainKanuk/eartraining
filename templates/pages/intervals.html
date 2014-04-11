@@ -76,8 +76,9 @@
                     getNewIntervals();
                 }
                 else{
-                    $("canvas").slideToggle("slow");
-                    getNewIntervals();
+                    $("canvas").slideToggle("slow", function () {
+                        getNewIntervals();
+                    });
                     $("canvas").slideToggle("slow");
                 }
             };
