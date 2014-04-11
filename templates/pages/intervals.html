@@ -60,7 +60,12 @@
             $(function(){
               $("#includeMenu").load("{{ STATIC_URL }}/html/menu.html");
               });
-            </script>
+        </script>
+        <script>
+            $(function(){
+              $("#includeProgress").load("{{ STATIC_URL }}/html/progress.html");
+              });
+        </script>
         <script>
             $(function(){
               $("#includeFooter").load("{{ STATIC_URL }}/html/footer.html");
@@ -90,56 +95,59 @@
             <div class="site-wrapper-inner">
                 <div class="cover-container">
                     <div id="includeMenu"></div>
-                    <div class="inner cover">
-                        <h1 class="cover-heading">Intervals</h1>
-			            <p class="lead">
-                        <div id="choice">
-                            <h3 id="prompt" align="center">
-                                Click the button to get an interval!
-                            </h3>
-                            <table align="center">
-                                <tr>
-                                    <td>
-                                        <canvas id="choice_one" onclick="chooseAnswer('choice_one')" width="220" height="100"
-                                        style="border:4px solid #000000;display:none;">
-                                            <script>
-                                                setup("choice_one");
-                                            </script>
-                                        </canvas>
-                                    </td>
-                                    <td>
-                                        <canvas id="choice_two" onclick="chooseAnswer('choice_two')" width="220" height="100"
-                                        style="border:4px solid #000000;display:none;">
-                                            <script>
-                                                setup("choice_two");
-                                            </script>
-                                        </canvas>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <canvas id="choice_three" onclick="chooseAnswer('choice_three')" width="220" height="100"
-                                        style="border:4px solid #000000;display:none;">
-                                            <script>
-                                                setup("choice_three");
-                                            </script>
-                                    </canvas>
-                                    </td>
-                                    <td>
-                                        <canvas id="choice_four" onclick="chooseAnswer('choice_four')" width="220" height="100"
-                                        style="border:4px solid #000000;display:none;">
-                                            <script>
-                                                setup("choice_four");
-                                            </script>
-                                    </canvas></td>
-                                </tr>
-                            </table>
+                        <div class="inner cover">
+                            <!-- PROGRESS STUFF GOES HERE -->
+                            <div id="includeProgress"></div>
+                            <h1 class="cover-heading">Intervals</h1>
+                            <p class="lead">
+                            <div id="choice">
+                                <h3 id="prompt" align="center">
+                                    Click the button to get an interval!
+                                </h3>
+                                <table align="center">
+                                    <tr>
+                                        <td>
+                                            <canvas id="choice_one" onclick="chooseAnswer('choice_one')" width="220" height="100"
+                                                style="border:4px solid #000000;display:none;">
+                                                <script>
+                                                    setup("choice_one");
+                                                    </script>
+                                            </canvas>
+                                        </td>
+                                        <td>
+                                            <canvas id="choice_two" onclick="chooseAnswer('choice_two')" width="220" height="100"
+                                                style="border:4px solid #000000;display:none;">
+                                                <script>
+                                                    setup("choice_two");
+                                                    </script>
+                                            </canvas>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <canvas id="choice_three" onclick="chooseAnswer('choice_three')" width="220" height="100"
+                                                style="border:4px solid #000000;display:none;">
+                                                <script>
+                                                    setup("choice_three");
+                                                    </script>
+                                            </canvas>
+                                        </td>
+                                        <td>
+                                            <canvas id="choice_four" onclick="chooseAnswer('choice_four')" width="220" height="100"
+                                                style="border:4px solid #000000;display:none;">
+                                                <script>
+                                                    setup("choice_four");
+                                                    </script>
+                                            </canvas>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
                         </div>
+                        <p class="lead">
+                        <a href="#" id="start" onclick="progress()" class="btn btn-lg btn-default">Let's start.</a>
+                        </p>
                     </div>
-                    <p class="lead">
-                    <a href="#" id="start" onclick="progress()" class="btn btn-lg btn-default">Let's start.</a>
-                    </p>
-                    <!--div id="includeFooter"></div-->
                 </div>
             </div>
         </div>

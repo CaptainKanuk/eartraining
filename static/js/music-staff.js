@@ -28,6 +28,10 @@ var correctChoice;
 //intervals are [basetone, baseoffset, toptone, topoffset]
 var correctInterval;
 
+//=================VARIABLES FOR PROGRESS IN THE GAME===================
+var progress;//expressed as percent completion
+var heartsLeft;//Number of chances to get it wrong
+
 function drawStaff(elem)
 {
     if (elem == "choice_one")
