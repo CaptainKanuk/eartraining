@@ -8,6 +8,10 @@ var prompt = "prompt";
 var englishNames = ["unison", "second", "third", "fourth", "fifth", "sixth", "seventh", "octave", "ninth", "tenth", "eleventh", "twelfth", "thirteenth", "fourteenth", "fifthteenth", "double octave","Summon Satan"];
 var englishAccidentals = ["perfect", "major", "minor", "augmented", "diminished"];
 
+var defaultColor = "#000000";
+var correctColor = "#67E300";
+var incorrectColor = "#E40045";
+
 var canvas1, canvas2, canvas3, canvas4;
 
 var renderer1, renderer2, renderer3, renderer4;
@@ -264,6 +268,7 @@ function showIntervalName(){
 function getNewIntervals()
 {
     clearCanvases();
+    resetBorderColors();
     drawStaves();
     //Get a random interval
     var interval = getRandomInterval();
@@ -274,7 +279,7 @@ function getNewIntervals()
     
     var outelem;
 
-    rightChoice = outelem;
+    correctChoice = outelem;
     correctInterval = interval;
     
     //show the intervals on the canvas
@@ -287,4 +292,37 @@ function getNewIntervals()
     }
     //finally, make the correct interval display as a prompt
     showIntervalName();
+}
+
+function resetBorderColors(){
+    for(var i = 0; i < labels.length; i++){
+        var canvasElement = document.getElementById(labels[i]);
+        canvasElement.style.border = "4px solid ".concat(defaultColor);
+    }
+}
+
+//Change the border colors to reflect a good or bad answer
+function changeBorderColors(){
+    for(var i = 0; i < labels.length; i++){
+        var canvasElement = document.getElementById(labels[i]);
+        if(labels[i]==correctChoice){
+            canvasElement.style.border = "4px solid ".concat(correctColor);
+        }
+        else{
+            canvasElement.style.border = "4px solid ".concat(incorrectColor);
+        }
+    }
+}
+
+//Called by the canvas on click
+//Determines whether the choice was correct
+function chooseAnswer(answer){
+    var promptField = document.getElementById(prompt);
+    changeBorderColors();
+    if( answer==correctChoice ){
+        promptField.innerHTML = "Got it!";
+    }
+    else{
+        promptField.innerHTML = "Uh-oh!";
+    }
 }
