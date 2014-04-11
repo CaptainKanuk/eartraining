@@ -5,15 +5,14 @@
 var labels = ["choice_one", "choice_two", "choice_three", "choice_four"];
 var prompt = "prompt";
 
-var englishNames = ["unison", "second", "third", "fourth", "fifth", "sixth", "seventh", "octave", "ninth", "tenth", "eleventh", "twelfth", "thirteenth", "fourteenth", "fifthteenth", "double octave","Summon Satan"];
+var englishNames = [["unison"], ["minor second", "second"], "third", "fourth", "fifth", "sixth", "seventh", "octave", "ninth", "tenth", "eleventh", "twelfth", "thirteenth", "fourteenth", "fifthteenth", "double octave","Summon Satan"];
 var englishModifierClass = [0, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 666];
 //grouped into the two classes
 var englishAccidentals = [["perfect", "augmented", "diminished"], [ "major", "minor", "augmented", "dimished"]];
 
 
 //For mapping the numbers to vexflow notation
-var scaleNotesStrings = [["a"], ["a#", "bb"], ["b"], "c", "c#", "d", "d#", "e", "f", "f#", "g", "g#"];
-var representation;
+var scaleNoteNames = [["a"], ["a#", "bb"], ["b", "cb"], ["b#","c"], ["c#", "db"], ["d"], ["d#","eb"], ["e","fb"], ["e#","f"], ["f#","gb"], ["g"], ["g#","ab"]];
 
 var defaultColor = "#000000";
 var correctColor = "#439400";
@@ -29,7 +28,6 @@ var stave1, stave2, stave3, stave4;
 
 var correctChoice;
 var correctInterval;
-var correctIntervalModifier;
 
 function drawStaff(elem)
 {
@@ -78,124 +76,18 @@ function drawStaff(elem)
 }
 
 //takes a note and an index into the array of possible represetations
-//
+//trusts caller to not input representation out of range
 function noteToString(note, representation)
 {
     tone = note % 11;
-    var string = scaleNotesString[tone];
-    if(accidental == 0){
-        //flat, so go up one scale element
-        string = scaleNotesString[tone+1];
-        string
-    }
-    else if(accidental == 1){
-        //natural, so do nothing
+    var string = scaleNoteNames[tone][representation];
+    if(note < 11){
+        string = string.concat("/4");
     }
     else{
-        //sharp, so
-        
+        string = string.concat("/5");
     }
-    var temp;
-    if (note == 0)
-        return "c/4";
-    else if (note == 1)
-    {
-        temp = "db/4";
-        if (accidental == 1)
-            temp = "c#/4";
-        return temp;
-    }
-    else if (note == 2)
-        return "d/4";
-    else if (note == 3)
-    {
-        temp = "eb/4";
-        if (Math.random() < .5)
-            temp = "d#/4";
-        return temp;
-    }
-    else if (note == 4)
-        return "e/4";
-    else if (note == 5)
-        return "f/4";
-    else if (note == 6)
-    {
-        temp = "gb/4";
-        if (Math.random() < .5)
-            temp = "f#/4";
-        return temp;
-    }
-    else if (note == 7)
-        return "g/4";
-    else if (note == 8)
-    {
-        temp = "ab/4";
-        if (Math.random() < .5)
-            temp = "g#/4";
-        return temp;
-    }
-    else if (note == 9)
-        return "a/5";
-    else if (note == 10)
-    {
-        temp = "bb/5";
-        if (Math.random() < .5)
-            temp = "a#/5";
-        return temp;
-    }
-    else if (note == 11)
-        return "b/5";
-    else if (note == 12)
-        return "c/5";
-    else if (note == 13)
-    {
-        temp = "c#/5";
-        if (Math.random() < .5)
-            temp = "db/5";
-        return temp;
-    }
-    else if (note == 14)
-        return "d/5";
-    else if (note == 15)
-    {
-        temp = "d#/5";
-        if (Math.random() < .5)
-            temp = "eb/5";
-        return temp;
-    }
-    else if (note == 16)
-        return "e/5";
-    else if (note == 17)
-        return "f/5";
-    else if (note == 18)
-    {
-        temp = "f#/5";
-        if (Math.random() < .5)
-            temp = "gb/5";
-        return temp;
-    }
-    else if (note == 19)
-        return "g/5";
-    else if (note == 20)
-    {
-        temp = "g#/5";
-        if (Math.random() < .5)
-            temp = "ab/6";
-        return temp;
-    }
-    else if (note == 21)
-        return "a/6";
-    else if (note == 22)
-    {
-        temp = "a#/6";
-        if (Math.random() < .5)
-            temp = "bb/6";
-        return temp;
-    }
-    else if (note == 23)
-        return "b/6";
-    else if (note == 24)
-        return "c/6";
+    return string;
 }
 
 function showInterval(notes, elem)
@@ -257,19 +149,19 @@ function getRandomInterval(){
     var interval = Math.floor(Math.random()*12.0);
     var base = Math.floor(Math.random()*12.0);
     var top = base + interval;
-    if(englishModifierClass[interval]){
-        
-    }
-    //var modifier =
-    return [base, top, modifier];
+    var baser = Math.floor(Math.random()*scaleNoteNames[base%11].length);
+    var topr = Math.floor(Math.random()*scaleNoteNames[top%11].length);
+    return [base, baser, top, topr];
 }
 
 function intervalToNotes(interval){
     //convert interval int values to vexflow notes
-    var base = interval[0]
-    var top = interval[1];
-    var Sbase = noteToString(base);
-    var Stop = noteToString(top);
+    var base = interval[0];
+    var baser = interval[1];
+    var top = interval[2];
+    var topr = interval[3]
+    var Sbase = noteToString(base,baser);
+    var Stop = noteToString(top,topr);
     var noteB = new Vex.Flow.StaveNote({ keys: [Sbase], duration: "h" });
     var noteT = new Vex.Flow.StaveNote({ keys: [Stop], duration: "h" });
     if (Sbase.charAt(1) == "#")
@@ -290,6 +182,7 @@ function intervalToNotes(interval){
 
 function showIntervalName(){
     var promptField = document.getElementById(prompt);
+    
     promptField.innerHTML = "Pick the ".concat(englishNames[correctInterval[1]-correctInterval[0]]);
 }
 
@@ -347,8 +240,6 @@ function changeBorderColors(){
 function chooseAnswer(answer){
     var promptField = document.getElementById(prompt);
     changeBorderColors();
-    alert(answer);
-    alert(correctInterval);
     if( answer==correctChoice ){
         promptField.innerHTML = "Got it!";
     }
