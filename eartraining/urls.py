@@ -23,8 +23,13 @@ urlpatterns = patterns('',
     #===============TESTING URLS====================
     url(r'^vextest/', vextest, name='vextest'),
     #===============DATABASE STUFF==================
-    url(r'^add_user/', add_user, name='add_user'), 
-                       )
+    url(r'^add_user/', add_user, name='add_user'),
+    #===============USER AUTHENTICATION=============
+                       #url(r'^accounts/auth/', auth_view, name='auth_view'),
+                       #url(r'^accounts/logout/', logout, name='logout'),
+                       #url(r'^accounts/loggedin/', loggedin, name='loggedin'),
+                       #url(r'^accounts/invalid/', invalid, name='invalid'),
+)
 
 urlpatterns += patterns('',
                        (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
