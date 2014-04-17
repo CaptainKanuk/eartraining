@@ -2,9 +2,11 @@ from django.shortcuts import render
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 from pages.forms import RegisterForm
+from django.http import HttpResponse
+from django.contrib import auth
+from django.core.context_processors import csrf
 
 # Create your views here.
-from django.http import HttpResponse
 
 def index(request):
 	context=RequestContext(request)
@@ -13,6 +15,7 @@ def index(request):
 
 def signin(request):
 	context=RequestContext(request)
+        #context.update(csrf(request))
 	return render_to_response('pages/signin.html', context)
 
 def train(request):
@@ -38,6 +41,12 @@ def vextest(request):
 def notfound(request):
 	context=RequestContext(request)
 	return render_to_response('pages/404.html', context)
+
+#def login(request):
+#   print "Hello"
+#   context = RequestContext(request)
+#   context.update(csrf(request))
+#   return render_to_response('login.html',context)
 
 def add_user(request):
     context = RequestContext(request)

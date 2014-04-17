@@ -25,7 +25,6 @@ urlpatterns = patterns('',
     #===============DATABASE STUFF==================
     url(r'^add_user/', add_user, name='add_user'),
     #===============USER AUTHENTICATION=============
-                       #url(r'^accounts/login/', login, name='login'),
                        #url(r'^accounts/auth/', auth_view, name='auth_view'),
                        #url(r'^accounts/logout/', logout, name='logout'),
                        #url(r'^accounts/loggedin/', loggedin, name='loggedin'),

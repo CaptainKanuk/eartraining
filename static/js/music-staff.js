@@ -11,6 +11,8 @@ var prompt = "prompt";
 //For mapping the numbers to vexflow notation
 var pitchClassNames = ["c", "c#", "d", "d#", "e", "f", "f#", "g", "g#", "a", "a#", "b"];
 var middleC = 60;//semitone starting point
+var middleCHz = 261.625565;
+var semitoneConstant = 1.05946;
 
 var defaultColor = "#000000";
 var correctColor = "#439400";
@@ -273,6 +275,7 @@ function changeBorderColors(){
 //Called by the canvas on click
 //Determines whether the choice was correct
 function chooseAnswer(answer){
+    playASound();
     if(!answerChosen){
         answerChosen = true;
         var promptField = document.getElementById(prompt);
@@ -286,4 +289,31 @@ function chooseAnswer(answer){
             answeredIncorrectly();
         }
     }
+}
+
+//convert the semitone number to a frequency
+function semitoneToFrequency(semitone){
+    return middleCHz * Math.pow(semitoneConstant, semitone - middleC );
+}
+
+function playASound(){
+    
+    var audio = new Audio(); // create the HTML5 audio element
+    var wave = new RIFFWAVE(); // create an empty wave file
+    var data = []; // yes, it's an array
+    var gain = 40;
+    
+    wave.header.sampleRate = 44100; // set sample rate to 44KHz
+    wave.header.numChannels = 2; // two channels (stereo)
+    
+    var i = 0;
+    while (i<100000) {
+        data[i++] = 128+Math.round(40*Math.sin(2*Math.pi*1/40*i)); // left speaker
+        //data[i++] = 128+Math.round(40*Math.sin(i/40)); // right speaker
+    }
+    
+    wave.Make(data); // make the wave file
+    audio.src = wave.dataURI; // set audio source
+    audio.play(); // we should hear two tones one on each speaker
+    
 }
