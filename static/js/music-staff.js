@@ -275,13 +275,14 @@ function changeBorderColors(){
 //Called by the canvas on click
 //Determines whether the choice was correct
 function chooseAnswer(answer){
-    playASound();
     if(!answerChosen){
         answerChosen = true;
         var promptField = document.getElementById(prompt);
         changeBorderColors();
         if( answer==correctChoice ){
             promptField.innerHTML = "Got it!";
+            playInterval(semitoneToFrequency(correctInterval[0]), semitoneToFrequency(correctInterval[2]), 1, 40);
+            
             answeredCorrectly();
         }
         else{
@@ -296,20 +297,30 @@ function semitoneToFrequency(semitone){
     return middleCHz * Math.pow(semitoneConstant, semitone - middleC );
 }
 
-function playASound(){
+function playInterval(freq1, freq2, length, gain){
     
     var audio = new Audio(); // create the HTML5 audio element
     var wave = new RIFFWAVE(); // create an empty wave file
     var data = []; // yes, it's an array
-    var gain = 40;
+    var sR = 44100;
     
-    wave.header.sampleRate = 44100; // set sample rate to 44KHz
+    wave.header.sampleRate = sR; // set sample rate to 44KHz
     wave.header.numChannels = 2; // two channels (stereo)
     
+    var newF1 = freq1/sR * 2 * Math.PI;
+    var newF2 = freq2/sR * 2 * Math.PI;
+    
+    var samples = length * sR;
+    
     var i = 0;
-    while (i<100000) {
-        data[i++] = 128+Math.round(40*Math.sin(2*Math.pi*1/40*i)); // left speaker
-        //data[i++] = 128+Math.round(40*Math.sin(i/40)); // right speaker
+    while (i<samples) {
+        data[i++] = 128+Math.round(gain*Math.sin(newF1*i)); // left speaker
+        data[i++] = 128+Math.round(gain*Math.sin(newF1*i)); // right speaker
+    }
+    
+    while (i<2*samples) {
+        data[i++] = 128+Math.round(gain*Math.sin(newF2*i)); // left speaker
+        data[i++] = 128+Math.round(gain*Math.sin(newF2*i)); // right speaker
     }
     
     wave.Make(data); // make the wave file
