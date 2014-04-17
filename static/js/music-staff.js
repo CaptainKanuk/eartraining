@@ -279,7 +279,6 @@ function chooseAnswer(answer){
         changeBorderColors();
         if( answer==correctChoice ){
             promptField.innerHTML = "Got it!";
-            alert("Here we go!");
             answeredCorrectly();
         }
         else{

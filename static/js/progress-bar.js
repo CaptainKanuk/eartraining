@@ -20,7 +20,6 @@ var numberOfQuestionsInModule = 10;//default to 10 questions, need this for prog
 //Update the progress bar.
 function answeredCorrectly(){
     updateProgress();
-    alert("Got here!");
 }
 
 //Invoked on incorrect answer.
@@ -33,11 +32,10 @@ function answeredIncorrectly(){
 //update the progress variable and the progress bar
 function updateProgress(){
     quiz_progress = quiz_progress + (100/numberOfQuestionsInModule);
-    alert(quiz_progress);
     document.getElementById(p_bar_label).style.width= (quiz_progress) +'%';
 }
 
 function loseHP(amount){
     HP = HP - amount;
-    alert(HP);
+    alert("You have "+HP+" HP left.");
 }
