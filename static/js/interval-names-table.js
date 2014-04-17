@@ -16,21 +16,23 @@ function showIntervalName(){
     var top = correctInterval[2];
     var tonediff = top - base;
     
-    //don't need, maybe
     var base_offset = correctInterval[1];
     var top_offset = correctInterval[3];
+
+    var base_written = base + base_offset;
+    var top_written = top + top_offset;
     
-    /*var string ="";
+    var string ="";
     switch(tonediff)
     {
         case 0:
             string = "perfect unison";
-            if (baser != topr)
+            if (top_written - base_written == 2)
                 string = "diminished second";
             break;
         case 1:
             string = "minor second";
-            if (base == top)
+            if (top_written - base_written == 2)
                 string == "augmented unison";
             if (top-base == 2)
                 string = "minor second";
@@ -71,6 +73,6 @@ function showIntervalName(){
         default:
             string = tonediff;
             
-    }*/
+    }
     promptField.innerHTML = "Pick the ".concat(tonediff);
 }

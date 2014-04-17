@@ -27,10 +27,7 @@ var stave1, stave2, stave3, stave4;
 var correctChoice;
 //intervals are [basetone, baseoffset, toptone, topoffset]
 var correctInterval;
-
-//=================VARIABLES FOR PROGRESS IN THE GAME===================
-var progress;//expressed as percent completion
-var heartsLeft;//Number of chances to get it wrong
+var answerChosen = true;
 
 function drawStaff(elem)
 {
@@ -276,12 +273,18 @@ function changeBorderColors(){
 //Called by the canvas on click
 //Determines whether the choice was correct
 function chooseAnswer(answer){
-    var promptField = document.getElementById(prompt);
-    changeBorderColors();
-    if( answer==correctChoice ){
-        promptField.innerHTML = "Got it!";
-    }
-    else{
-        promptField.innerHTML = "Uh-oh!";
+    if(!answerChosen){
+        answerChosen = true;
+        var promptField = document.getElementById(prompt);
+        changeBorderColors();
+        if( answer==correctChoice ){
+            promptField.innerHTML = "Got it!";
+            alert("Here we go!");
+            answeredCorrectly();
+        }
+        else{
+            promptField.innerHTML = "Uh-oh!";
+            answeredIncorrectly();
+        }
     }
 }
