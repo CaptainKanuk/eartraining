@@ -20,14 +20,14 @@ urlpatterns = patterns('',
     url(r'^about/', about, name = 'about'),
     url(r'^help/', help, name = 'help'),
     url(r'^$', index, name='index'),
-    #===============TESTING URLS====================
-    url(r'^vextest/', vextest, name='vextest'),
     #===============USER AUTHENTICATION=============
-    url(r'^add_user/', add_user, name='add_user'),
-    url(r'^auth/', auth_user, name='auth_user'),
+    url(r'^auth_user/', auth_user, name='auth_user'),
     url(r'^logout/', logout, name='logout'),
     url(r'^loggedin/', loggedin, name='loggedin'),
     url(r'^invalid/', invalid_login, name='invalid_login'),
+    #===============USER REGISTRATION===============
+    url(r'^register/$', register_user, name='register_user'),
+    url(r'^register_success/', register_success, name='register_success'),
 )
 
 urlpatterns += patterns('',

@@ -1,12 +1,15 @@
 from django.shortcuts import render
 from django.template import RequestContext
 from django.shortcuts import render_to_response
-from pages.forms import RegisterForm
+#from pages.forms import RegisterForm
 from django.http import HttpResponse
 from django.contrib import auth
 from django.core.context_processors import csrf
+from django.contrib.auth.forms import UserCreationForm
 
-# Create your views here.
+#=======================================================================
+#===========================PAGE LINKS==================================
+#=======================================================================
 
 def index(request):
 	context=RequestContext(request)
@@ -34,38 +37,15 @@ def help(request):
 	context=RequestContext(request)
 	return render_to_response('pages/help.html', context)
 
-def vextest(request):
-	context=RequestContext(request)
-	return render_to_response('pages/vextest.html', context)
-
 def notfound(request):
 	context=RequestContext(request)
 	return render_to_response('pages/404.html', context)
 
-#def login(request):
-#   print "Hello"
-#   context = RequestContext(request)
-#   context.update(csrf(request))
-#   return render_to_response('login.html',context)
+#=======================================================================
+#===========================USER AUTH===================================
+#=======================================================================
 
-def add_user(request):
-    context = RequestContext(request)
-
-    if request.method == "POST":
-        form = RegisterForm(request.POST)
-
-        if form.is_valid():
-            form.save(commit=True)
-
-            return index(request)
-        else:
-            print form.errors
-
-    else: 
-        form = RegisterForm()
-
-    return render_to_response('pages/signin.html', {'form': form}, context)
-
+#Try to login
 def auth_user(request):
     username = request.POST.get('username', '')
     password = request.POST.get('password', '')
@@ -78,32 +58,55 @@ def auth_user(request):
     else:
         return HttpResponseRedirect('/invalid')
     
-    if request.method == "POST":
-        form = RegisterForm(request.POST)
-        
-        if form.is_valid():
-            form.save(commit=True)
-            
-            return index(request)
-        else:
-            print form.errors
-    
-    else:
-        form = RegisterForm()
-    
-    return render_to_response('pages/signin.html', {'form': form}, context)
+#    if request.method == 'POST':
+#        form = RegisterForm(request.POST)
+#        
+#        if form.is_valid():
+#            form.save(commit=True)
+#            
+#            return index(request)
+#        else:
+#            print form.errors
+#    
+#    else:
+#        form = RegisterForm()
+#    
+#    return render_to_response('pages/signin.html', {'form': form}, context)
 
 def logout(request):
     context=RequestContext(request)
     #context.update(csrf(request))
-    return render_to_response('pages/404.html', context)
+    return render_to_response('pages/logout.html', context)
 
 def loggedin(request):
     context=RequestContext(request)
     #context.update(csrf(request))
-    return render_to_response('pages/404.html', context)
+    return render_to_response('pages/loggedin.html', context)
 
 def invalid_login(request):
     context=RequestContext(request)
     #context.update(csrf(request))
-    return render_to_response('pages/404.html', context)
+    return render_to_response('pages/invalid.html', context)
+
+#Try to make a new user
+def register_user(request):
+    context = RequestContext(request)
+            
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        #argTest = {}
+        #argTest['test'] = form.is_valid()
+        #return render_to_response('pages/register.html', argTest, context)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/register_success/')
+
+#    args = {}
+    #   args.update(csrf(request))
+
+#args['form'] = UserCreationForm()
+    return render_to_response('pages/404.html',context)
+
+#Success page on registering a user
+def register_success(request):
+    return render_to_response('pages/register_success.html')

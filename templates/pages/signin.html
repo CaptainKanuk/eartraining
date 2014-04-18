@@ -98,7 +98,7 @@
                 <input type="text" name="username" value="" id="username"><br>
                 <label for="password"> Password: </label>
                 <input type ="password" name="password" value="" id="password"><br>
-                <input type="submit" name="submit" value="Create User" />
+                <input type="submit" name="submit" value="Log in!" />
             </form-->
 	    </div>
 	    <div style="float:left; width: 50%;">
@@ -106,18 +106,16 @@
             {% if form.errors %}
             <p class="error"> Sorry, that's not a valid username or password </p>
             {% endif %}
-            <form method="post" action="/add_user/">
+            <form method="post" action="/register/">
                 {% csrf_token %}
                 <label for="username"> Who are you? </label>
                 <input type="text" name="username" value="" id="username"><br>
-                <label for="password"> Secret Code: </label>
-                <input type ="password" name="password" value="" id="password"><br>
-                <label for="password"> What was the code again? </label>
-                <input type ="password" name="password" value="" id="password2"><br>
+                <label for="password1"> Secret Code: </label>
+                <input type ="password" name="password1" value="" id="password1"><br>
+                <label for="password2"> What was the code again? </label>
+                <input type ="password" name="password2" value="" id="password2"><br>
                 <input type="submit" name="submit" value="Create User" />
             </form>
-            <form name="register">
-	    </div>
         <div id="includeFooter"></div>
 	    <!--div id="footer" style="background-color:#FFbf00;height: 10%; width:100%; line-height: 10%; clear:both;position:fixed; bottom:0;text-align:center;">
 	      <div class="inner">
