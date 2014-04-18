@@ -83,70 +83,39 @@
     </head>
     
     <body>
-        <!-- body { padding-top: 70px; }> 
-      <div class="site-wrapper">
-
-  <div class="site-wrapper-inner">
-      <div class="cover-container">
-
-          <!-- <div class="masthead clearfix">
-            <div class="inner">
-              <h3 class="masthead-brand">SuperTonic</h3>
-              <ul class="nav masthead-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">Features</a></li>
-                <li><a href="#">Contact</a></li>
-              </ul>
-            </div>
-          </div> -->
-          <div id="includeMenu"></div>
-	  <!--div id="container" style="width:500px"-->
+        <div id="includeMenu"></div>
+        
 	    <br><br><br>
+        
 	    <div style="float:left; width: 50%;">
-	    <!--div style="height:200px;width:100px;float:left;"-->
-	      <h1 class="cover-heading">One of us! One of us! </h1>
-		<!--form name="login">
-		  <!--label>Username</label>
-		  <input type="text" name="userid"> <br />
-		  <label>Password</label>
-		  <input type+"text" name="pswrd"> <br />
-		</form-->
-		  <!--br><br><br><br>
-		  <table class="login">
-		    <tr class = "spaceUnder">
-		    <td class="spaceRight" align="right"> Username:     </td>
-		    <td class="spaceLeft" align="left"><input type="text" name="userid"/> </td>
-		    </tr>
-		    <tr class="spaceUnder">
-		    <td class="spaceRight" align="right"> Password:     </td>
-		    <td class="spaceLeft" align="left"><input type="password" name="pswrd"/> </td>
-		  </tr>
-		  </table> <br>  
-		  <input type="button" onclick="check(this.form)" value="Login"/>
-		</form>
-		<script language="javascript">
-		  function check(form) {
-		  if(form.userid.value == "myuserid" && form.pswrd.value == "mypswrd") {
-		  window.open('target.html')
-		  }
-		  else {
-		  alert("Error Password or Username Incorrect")
-		  }
-		  }
-		</script-->
-		  <form id="RegisterForm" method="post" action="/add_user/">
-		    {% csrf_token %}
-		    {% for field in form.visible_fields %}
-		    {{ field.errors }}
-		    {{ field.help_text }}
-		    {{ field }}
-		    {% endfor %}
-
-		    <input type="submit" name="submit" value="Create User" />
-		  </form>
+            <h1 class="cover-heading"> Come on in! </h1>
+            {% if form.errors %}
+                <p class="error"> Sorry, that's not a valid username or password </p>
+            {% endif %}
+            <table method="post" action="/add_user/">
+                {% csrf_token %}
+                <tr class="spaceUnder">
+                    <td class="spaceRight" align="center">
+                        <label for="username"> Username: </label>
+                        <input type="text" name="username" value="" id="username">
+                    </td>
+                </tr>
+                <tr class="spaceUnder">
+                    <td class="spaceRight" align="center">
+                        <label for="password"> Password: </label>
+                        <input type ="password" name="password" value="" id="password">
+                    </td>
+                </tr>
+                <tr class="spaceUnder">
+                    <td class="spaceRight" align="center">
+                        <label for="password"> Password: </label>
+                        <input type ="password" name="password" value="" id="password">
+                    </td>
+                </tr>
+            </table>
+            <input type="submit" name="submit" value="Create User" />
 	    </div>
 	    <div style="float:left; width: 50%;">
-	      <!--div style="height:200px;width:400px;float:left;"-->
 	      <h1 class="cover-heading"> Join ussss </h1>
 	      <form name="register">
 		<br><br><br>

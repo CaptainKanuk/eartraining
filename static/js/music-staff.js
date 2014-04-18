@@ -281,13 +281,13 @@ function chooseAnswer(answer){
         changeBorderColors();
         if( answer==correctChoice ){
             promptField.innerHTML = "Got it!";
-            playInterval(semitoneToFrequency(correctInterval[0]), semitoneToFrequency(correctInterval[2]), 1, 40);
-            
+            playInterval(semitoneToFrequency(correctInterval[0]), semitoneToFrequency(correctInterval[2]), 2, 40);
             answeredCorrectly();
         }
         else{
             promptField.innerHTML = "Uh-oh!";
             answeredIncorrectly();
+            playInterval(semitoneToFrequency(correctInterval[0]), semitoneToFrequency(correctInterval[2]), 2, 40);
         }
     }
 }
