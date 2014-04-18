@@ -32,47 +32,104 @@ function showIntervalName(){
             break;
         case 1:
             string = "minor second";
-            if (top_written - base_written == 2)
-                string == "augmented unison";
-            if (top-base == 2)
-                string = "minor second";
+            if (top_written - base_written == 0)
+                string = "augmented unison";
+            if (top_written - base_written == 3)
+                string ="doubly diminished third";
             break;
         case 2:
-            string = "minor second";
+            string = "major second";
+            if (top_written - base_written == 3)
+                string = "diminished third";
+            if (top_written - base_written == 0)
+                string ="doubly augmented unison";
             break;
         case 3:
-            string = "minor second";
+            string = "minor third";
+            if (top_written - base_written == 2)
+                string = "augmented second";
+            if (top_written - base_written == 5)
+                string ="doubly diminished fourth";
             break;
         case 4:
-            string = "minor second";
+            string = "major third";
+            if (top_written - base_written == 5)
+                string = "diminshed fourth";
+            if (top_written - base_written == 2)
+                string ="doubly augmented second";
             break;
         case 5:
-            string = "minor second";
+            string = "perfect fourth";
+            if (top_written - base_written == 4)
+                string ="augmented third";
+            if (top_written - base_written == 7)
+                string ="doubly diminished fifth";
+
             break;
         case 6:
-            string = "minor second";
-            break;
+            if (Math.random() < 0.5) {
+                string = "tritone";
+                break;
+            }
+            else
+            {
+                string = "augmented fourth";
+                if (top_written - base_written == 7)
+                    string = "diminished fifth";
+                if (top_written - base_written == 4 || top_written - base_written == 3)
+                    string = "doubly augmented third";
+
+                break;
+            }
         case 7:
-            string = "minor second";
+            string = "perfect fifth";
+            if (top_written - base_written == 9)
+                string ="diminished sixth";
+            if (top_written - base_written == 5)
+                string = "doubly augmented fourth";
             break;
         case 8:
-            string = "minor second";
+            string = "minor sixth";
+            if (top_written - base_written == 7)
+                string ="augmented fifth";
+            if (top_written - base_written == 11)
+                string ="doubly diminished seventh";
+            if (top_written - base_written == 5)
+                string = "doubly augmented fourth";
             break;
         case 9:
-            string = "minor second";
+            string = "major sixth";
+            if (top_written - base_written == 10)
+                string ="diminished seventh";
+            if (top_written - base_written == 7)
+                string = "doubly augmented fifth";
             break;
         case 10:
-            string = "minor second";
+            string = "minor seventh";
+            if (top_written - base_written == 9)
+                string ="augmented sixth";
+            if (top_written - base_written == 12)
+                string = "doubly diminished octave";
             break;
         case 11:
-            string = "minor second";
+            string = "major seventh";
+            if (top_written - base_written == 12 || top_written - base_written == 13)
+                string ="diminshed octave";
+            if (top_written - base_written == 9)
+                string = "doubly augmented sixth";
             break;
         case 12:
-            string = "minor second";
+            string = "octave";
+            if (top_written - base_written == 11)
+                string ="augmented seventh";
+            if (top_written - base_written == 13)
+                string = "diminished ninth";
             break;
         default:
             string = tonediff;
+
+        //diminished octave, major 7, octave, major 6
             
     }
-    promptField.innerHTML = "Pick the ".concat(tonediff);
+    promptField.innerHTML = "Pick the ".concat(string);
 }
