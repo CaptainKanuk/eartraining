@@ -9,11 +9,14 @@
                             <meta name="author" content="">
                                 <!--<link rel="shortcut icon" href="../../assets/ico/favicon.ico">-->
                                 
-                                <title>SuperTonic</title>
-                                
                                 <link rel="icon" type="image/ico" href="{{ STATIC_URL }}/images/favicon.ico">
+                                    <title>SuperTonic</title>
                                     
-                                    <!-- Latest compiled and minified CSS -->
+                                    <!-- Bootstrap core CSS -->
+                                    <!--<link href="{{STATIC_URL}}css/bootstrap.min.css" rel="stylesheet">
+                                     <!--<link href="{{STATIC_URL}}css/bootstrap-theme.min.css" rel="stylesheet">
+                                     
+                                     <!-- Latest compiled and minified CSS -->
                                     <link href="{{ STATIC_URL }}/css/bootstrap.min.css" rel="stylesheet" type="text/css">
                                         
                                         <!-- Optional theme -->
@@ -24,23 +27,25 @@
                                                 
                                                 <!-- Optional theme -->
                                                 <link href="{{ STATIC_URL }}/css/bootstrap-theme.css" rel="stylesheet"  type="text/css">
-                                                    
-                                                    <!-- Bootstrap core JavaScript
-                                                     ================================================== -->
-                                                    <!-- Placed at the end of the document so the pages load faster -->
-                                                    <!-- Javascript Stuff -->
-                                                    <script src="http://code.jquery.com/jquery-latest.js"></script>
-                                                    <script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js"></script>
-                                                    <script src="{{STATIC_URL}}/js/bootstrap.min.js"></script>
-                                                    <script src="{{STATIC_URL}}/js/docs.min.js"></script>
-                                                    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-                                                    
                                                     <!-- Latest compiled and minified JavaScript
                                                      <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
                                                      -->
                                                     <!-- Custom styles for this template -->
                                                     <link href="{{ STATIC_URL }}/css/cover.css" rel="stylesheet" type="text/css">
                                                         
+                                                        <!-- Javascript Stuff -->
+                                                        <script src="http://code.jquery.com/jquery-latest.js"></script>
+                                                        <script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js"></script>
+                                                        
+                                                        
+                                                        <!-- Just for debugging purposes. Don't actually copy thisd line! -->
+                                                        <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+                                                        
+                                                        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+                                                        <!--[if lt IE 9]>
+                                                         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+                                                         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+                                                         <![endif]-->
                                                         <script>
                                                             $(function(){
                                                               $("#includeMenu").load("{{ STATIC_URL }}/html/menu.html");
@@ -51,8 +56,7 @@
                                                               $("#includeFooter").load("{{ STATIC_URL }}/html/footer.html");
                                                               });
                                                             </script>
-    </head>
-    
+                                                        </head>
     <body>
         
         <div class="site-wrapper">
@@ -66,7 +70,7 @@
                     <div class="inner cover">
                         <h1 class="cover-heading">You're in!</h1>
                         <p class="lead">
-                        <a href="home" class="btn btn-lg btn-default">Take me back home.</a>
+                        <a href="/home" class="btn btn-lg btn-default">Take me back home.</a>
                         </p>
                     </div>
                     

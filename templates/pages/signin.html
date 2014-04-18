@@ -89,23 +89,19 @@
         
 	    <div style="float:left; width: 50%;">
             <h1 class="cover-heading"> Come on in! </h1>
-            {% if form.errors %}
                 <p class="error"> Sorry, that's not a valid username or password </p>
-            {% endif %}
-            <!--form method="post" action="/auth_user/">
+            <form method="post" action="/auth_user/">
                 {% csrf_token %}
                 <label for="username"> Username: </label>
                 <input type="text" name="username" value="" id="username"><br>
                 <label for="password"> Password: </label>
                 <input type ="password" name="password" value="" id="password"><br>
                 <input type="submit" name="submit" value="Log in!" />
-            </form-->
+            </form>
 	    </div>
 	    <div style="float:left; width: 50%;">
             <h1 class="cover-heading"> Join Ussss </h1>
-            {% if form.errors %}
-            <p class="error"> Sorry, that's not a valid username or password </p>
-            {% endif %}
+            {{ errorMsg }}
             <form method="post" action="/register/">
                 {% csrf_token %}
                 <label for="username"> Who are you? </label>

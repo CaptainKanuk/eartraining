@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 #from pages.forms import RegisterForm
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.contrib import auth
 from django.core.context_processors import csrf
 from django.contrib.auth.forms import UserCreationForm
@@ -95,7 +95,9 @@ def invalid_login(request):
 #Try to make a new user
 def register_user(request):
     context = RequestContext(request)
-            
+    
+    errorMsg = ''
+    
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         #argTest = {}
@@ -103,22 +105,27 @@ def register_user(request):
         #return render_to_response('pages/register.html', argTest, context)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/register_success/')
+            return HttpResponseRedirect('/register_success/', context)
         else:
-            return register_failure(request)
+            for error in form.errors:
+                if 'username' in error:
+                    errorMsg = errorMsg + 'Someone else already snagged that username :(\n'
+                if 'password' in error:
+                    errorMsg = errorMsg + 'The passwords don\'t quite match just yet.\n'
 
     args = {}
     args.update(csrf(request))
-
-    args['form'] = UserCreationForm()
-    return render_to_response('pages/404.html',context)
+    args['errorMsg'] = errorMsg
+    return render_to_response('pages/signin.html',args, context)
 
 #Success page on registering a user
 def register_success(request):
-    return render_to_response('pages/register_success.html')
+    context=RequestContext(request)
+    return render_to_response('pages/register_success.html',context)
 
 #Failure page with tips on how to fix it
 def register_failure(request):
+    context=RequestContext(request)
     args = {}
     args['errors'] = UserCreationForm(request.POST).errors
-    return render_to_response('pages/register_failure.html', args)
+    return render_to_response('pages/register_failure.html', args, context)
