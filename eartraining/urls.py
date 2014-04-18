@@ -22,13 +22,13 @@ urlpatterns = patterns('',
     url(r'^help/', help, name = 'help'),
     url(r'^$', index, name='index'),
     #===============USER AUTHENTICATION=============
-    url(r'^auth_user/', auth_user, name='auth_user'),
-    url(r'^logout/', logout, name='logout'),
-    url(r'^loggedin/', loggedin, name='loggedin'),
-    url(r'^invalid/', invalid_login, name='invalid_login'),
+    url(r'^auth_user/$', auth_user, name='auth_user'),
+    url(r'^logout/$', logout, name='logout'),
+    url(r'^loggedin/$', loggedin, name='loggedin'),
+    url(r'^invalid/$', invalid_login, name='invalid_login'),
     #===============USER REGISTRATION===============
     url(r'^register/$', register_user, name='register_user'),
-    url(r'^register_success/', register_success, name='register_success'),
+    url(r'^register_success/$', register_success, name='register_success'),
 )
 
 urlpatterns += patterns('',
