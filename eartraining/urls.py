@@ -22,13 +22,12 @@ urlpatterns = patterns('',
     url(r'^$', index, name='index'),
     #===============TESTING URLS====================
     url(r'^vextest/', vextest, name='vextest'),
-    #===============DATABASE STUFF==================
-    url(r'^add_user/', add_user, name='add_user'),
     #===============USER AUTHENTICATION=============
-                       #url(r'^accounts/auth/', auth_view, name='auth_view'),
-                       #url(r'^accounts/logout/', logout, name='logout'),
-                       #url(r'^accounts/loggedin/', loggedin, name='loggedin'),
-                       #url(r'^accounts/invalid/', invalid, name='invalid'),
+    url(r'^add_user/', add_user, name='add_user'),
+    url(r'^auth/', auth_user, name='auth_user'),
+    url(r'^logout/', logout, name='logout'),
+    url(r'^loggedin/', loggedin, name='loggedin'),
+    url(r'^invalid/', invalid_login, name='invalid_login'),
 )
 
 urlpatterns += patterns('',

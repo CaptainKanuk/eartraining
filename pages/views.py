@@ -65,3 +65,45 @@ def add_user(request):
         form = RegisterForm()
 
     return render_to_response('pages/signin.html', {'form': form}, context)
+
+def auth_user(request):
+    username = request.POST.get('username', '')
+    password = request.POST.get('password', '')
+    
+    user = auth.authenticate(username=username, password=password)
+    
+    if user is not None:
+        auth.login(request, user)
+        return HttpResponseRedirect('/loggedin')
+    else:
+        return HttpResponseRedirect('/invalid')
+    
+    if request.method == "POST":
+        form = RegisterForm(request.POST)
+        
+        if form.is_valid():
+            form.save(commit=True)
+            
+            return index(request)
+        else:
+            print form.errors
+    
+    else:
+        form = RegisterForm()
+    
+    return render_to_response('pages/signin.html', {'form': form}, context)
+
+def logout(request):
+    context=RequestContext(request)
+    #context.update(csrf(request))
+    return render_to_response('pages/404.html', context)
+
+def loggedin(request):
+    context=RequestContext(request)
+    #context.update(csrf(request))
+    return render_to_response('pages/404.html', context)
+
+def invalid_login(request):
+    context=RequestContext(request)
+    #context.update(csrf(request))
+    return render_to_response('pages/404.html', context)
