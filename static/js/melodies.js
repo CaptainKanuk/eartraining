@@ -28,13 +28,14 @@ var stave1, stave2, stave3, stave4;
 
 var correctChoice;
 //intervals are [basetone, baseoffset, toptone, topoffset]
-var correctInterval;
+var correctMelody;
 var answerChosen = true;
 
 function drawStaff(elem)
 {
     if (elem == "choice_one")
     {
+        alert("ONE");
         canvas1 = document.getElementById("choice_one");
         renderer1 = new Vex.Flow.Renderer(canvas1,
                                           Vex.Flow.Renderer.Backends.CANVAS);
@@ -77,6 +78,7 @@ function drawStaff(elem)
     
 }
 
+
 //takes a note and an index into the array of possible represetations
 //trusts caller to not input representation out of range
 function noteToString(note, offset)
@@ -117,6 +119,7 @@ function noteToString(note, offset)
     return writtenNoteString;
 }
 
+/*
 function showInterval(notes, elem)
 {
     //print out the interval to the elem canvas
@@ -146,9 +149,10 @@ function showInterval(notes, elem)
         voice.draw(ctx4, stave4);
     }
 }
+*/
 
 
-function showInterval(notes, elem)
+function showMelody(notes, elem)
 {
     var voice = new Vex.Flow.Voice({
                            num_beats: notes.length,
@@ -182,10 +186,11 @@ function verify()
 }
 
 function clearCanvases(){
-    ctx1.clearRect(0,0,250,120);
-    ctx2.clearRect(0,0,250,120);
-    ctx3.clearRect(0,0,250,120);
-    ctx4.clearRect(0,0,250,120);
+    alert("WHAT");
+    ctx1.clearRect(0,0,500,120);
+    ctx2.clearRect(0,0,500,120);
+    ctx3.clearRect(0,0,500,120);
+    ctx4.clearRect(0,0,500,120);
 }
 
 function drawStaves(){
@@ -193,13 +198,19 @@ function drawStaves(){
         drawStaff(labels[i]);
     }
 }
-
+/*
 function setup(elem)
 {
     drawStaff(elem); 
     showInterval(elem);
 }
+*/
+function setup(elem)
+{
+    drawStaff(elem); 
+}
 
+/*
 function getRandomInterval(){
     //Generate random interval
     var base = Math.floor(Math.random()*13.0)+60;
@@ -209,6 +220,7 @@ function getRandomInterval(){
     var top_offset = Math.floor(Math.random()*3)-1;
     return [base, base_offset, top, top_offset];
 }
+*/
 
 function getRandomNote(){
     //generate random note
@@ -239,7 +251,7 @@ function getNewMelodies()
     resetBorderColors();
     drawStaves();
     //Get a random melody
-    var melody = getRandomMelody();
+    var melody = getRandomMelody(4);
     var notes = melodyToNotes(melody);
     //choose which canvas will draw it
     var select = Math.floor(Math.random()*labels.length);
@@ -254,7 +266,7 @@ function getNewMelodies()
     for(var i = 0; i < labels.length; i++){
         if(i != select){
             //populate the wrong answers
-            melody = getRandomMelody();
+            melody = getRandomMelody(4);
             showMelody(melodyToNotes(melody), labels[i]);
         }
     }
@@ -294,6 +306,16 @@ function melodyToNotes(melody)
         //HERE
         notes[i] = noteVex;
     }
+    var fillRests = 4-length%4;
+    var tail = i;
+    if (fillRests < 4)
+    {
+        while (i < tail + fillRests) { 
+            notes[i] = new Vex.Flow.StaveNote({ keys: ["b/4"], duration: "qr" });
+            i++;
+        }
+    }
+        
     return notes;
 }
 
@@ -303,6 +325,7 @@ function rythToString(beat, length)
     ;
 }
 
+/*
 function intervalToNotes(interval){
     //convert interval int values to vexflow notes
     var base = interval[0];
@@ -344,7 +367,8 @@ function intervalToNotes(interval){
     
     return notes;
 }
-
+*/
+/*
 function getNewIntervals()
 {
     clearCanvases();
@@ -373,7 +397,7 @@ function getNewIntervals()
     //finally, make the correct interval display as a prompt
     showIntervalName();
 }
-
+*/
 function resetBorderColors(){
     for(var i = 0; i < labels.length; i++){
         var canvasElement = document.getElementById(labels[i]);
@@ -404,14 +428,14 @@ function chooseAnswer(answer){
         if( answer==correctChoice ){
             promptField.innerHTML = "Got it!";
             //playInterval(semitoneToFrequency(correctInterval[0]), semitoneToFrequency(correctInterval[2]), 2, 30);
-            playInterval(correctInterval[0], correctInterval[2], 2, 30);
+            playMelody(correctMelody, 30);
             answeredCorrectly();
         }
         else{
             promptField.innerHTML = "Uh-oh!";
             answeredIncorrectly();
             //playInterval(semitoneToFrequency(correctInterval[0]), semitoneToFrequency(correctInterval[2]), 2, 30);
-            playInterval(correctInterval[0], correctInterval[2], 2, 30);
+            playMelody(correctMelody, 30);
         }
     }
 }

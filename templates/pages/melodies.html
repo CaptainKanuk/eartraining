@@ -33,6 +33,7 @@
         <script src="{{ STATIC_URL }}/js/vexflow-min.js"></script>
         <script src="{{ STATIC_URL }}/js/interval-names-table.js"></script>
         <script src="{{ STATIC_URL }}/js/music-staff.js"></script>
+        <script src="{{ STATIC_URL }}/js/melodies.js"></script>
         <script src="{{ STATIC_URL }}/js/progress-bar.js"></script>
         <script src="{{ STATIC_URL }}/js/riffwave.js"></script>
         
@@ -79,13 +80,13 @@
                 answerChosen = false;
                 var button = document.getElementById("start");
                 if(button.innerHTML=="Let's start."){
-                    button.innerHTML="Next Interval";
+                    button.innerHTML="Next Melody.";
                     $("canvas").slideToggle("slow");
-                    getNewIntervals();
+                    getNewMelodies();
                 }
                 else{
                     $("canvas").slideToggle("slow", function () {
-                        getNewIntervals();
+                        getNewMelodies();
                     });
                     $("canvas").slideToggle("slow");
                 }
@@ -100,11 +101,11 @@
             <div class="cover-container">
               <div id="includeMenu"></div>
               <div class="inner cover">
-                <h1 class="cover-heading">Intervals</h1>
+                <h1 class="cover-heading">Melodies</h1>
                 <p class="lead">
                   <div id="choice">
                                 <h3 id="prompt" align="center">
-                                  Click the button to get an interval!
+                                  Click the button to get an melody!
                                 </h3>
                                 <table align="center">
                                     <tr>
@@ -112,6 +113,7 @@
                                             <canvas id="choice_one" onclick="chooseAnswer('choice_one')" width="440" height="100"
                                                 style="border:4px solid #000000;display:none;">
                                                 <script>
+                                                    verify();
                                                     setup("choice_one");
                                                     </script>
                                             </canvas>
