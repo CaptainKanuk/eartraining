@@ -14,9 +14,9 @@ def index(request):
 	return render_to_response('pages/index.html', context_dict, context)
 
 def signin(request):
-	context=RequestContext(request)
-        #context.update(csrf(request))
-	return render_to_response('pages/signin.html', context)
+    context=RequestContext(request)
+    context.update(csrf(request))
+    return render_to_response('pages/signin.html', context)
 
 def train(request):
 	context=RequestContext(request)
