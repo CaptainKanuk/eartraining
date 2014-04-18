@@ -168,11 +168,12 @@
 	      </form>
 
 	    </div>
-	    <div id="footer" style="background-color:#FFbf00;height: 10%; width:100%; line-height: 10%; clear:both;position:fixed; bottom:0;text-align:center;">
+        <div id="includeFooter"></div>
+	    <!--div id="footer" style="background-color:#FFbf00;height: 10%; width:100%; line-height: 10%; clear:both;position:fixed; bottom:0;text-align:center;">
 	      <div class="inner">
 		<p>Copyright Ear Training 2014, by <a href="pages/about/">us</a>.</p>
 	      </div>
-	    </div>
+	    </div!>
 	  <!--/div-->
         
             

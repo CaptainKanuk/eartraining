@@ -134,14 +134,17 @@
 		  }
 		  }
 		</script-->
-		  <form id="RegisterForm" method="post" action="/add_user/">
-		    {% csrf_token %}
-		    {% for field in form.visible_fields %}
-		    {{ field.errors }}
-		    {{ field.help_text }}
-		    {{ field }}
-		    {% endfor %}
+		  {% if form.errors %}
+		  <p class="error"> Sorry, that's not a valid username or password </p>
+		  {% endif %}
 
+		  <form method="post" action="/add_user/">
+		    {% csrf_token %}
+		    <label for="username"> Username: </label>
+		    <input type="text" name="username" value="" id="username"> <br> <br>
+		    <label for="password"> Password: </label>
+		    <input type ="password" name="password" value="" id="password"> 
+		    <br><br>
 		    <input type="submit" name="submit" value="Create User" />
 		  </form>
 	    </div>
