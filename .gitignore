@@ -1,5 +1,5 @@
 venv
 *.pyc
 staticfiles
-.DS_Store
+*.DS_Store
 db*

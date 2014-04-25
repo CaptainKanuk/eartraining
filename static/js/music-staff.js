@@ -324,7 +324,7 @@ function playMelody(melArray, gain)
         length = melArray[numnote][1];
 
         gainstepI = (length*2) * gain/sR;
-        gainstepD = (-(length)/3)*gain/sR;
+        gainstepD = (-(length*2)/3)*gain/sR;
 
         freq = semitoneToFrequency(melArray[numnote][0])/sR * 2 * Math.PI;
 
