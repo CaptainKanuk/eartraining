@@ -32,7 +32,8 @@
         <script src="{{ STATIC_URL }}/js/vexflow-debug.js"></script>
         <script src="{{ STATIC_URL }}/js/vexflow-min.js"></script>
         <script src="{{ STATIC_URL }}/js/interval-names-table.js"></script>
-        <script src="{{ STATIC_URL }}/js/music-staff.js"></script>
+        <!--<script src="{{ STATIC_URL }}/js/music-staff.js"></script>-->
+        <script src="{{ STATIC_URL }}/js/melodies.js"></script>
         <script src="{{ STATIC_URL }}/js/progress-bar.js"></script>
         <script src="{{ STATIC_URL }}/js/riffwave.js"></script>
         
@@ -79,80 +80,79 @@
                 answerChosen = false;
                 var button = document.getElementById("start");
                 if(button.innerHTML=="Let's start."){
-                    button.innerHTML="Next Interval";
+                    button.innerHTML="Next Melody.";
                     $("canvas").slideToggle("slow");
-                    getNewIntervals();
-                    alert("here");
-                    playInterval(correctInterval[0], correctInterval[2], 2, 30);
-                    alert("here2");
+                    getNewMelodies();
                 }
                 else{
                     $("canvas").slideToggle("slow", function () {
-                        getNewIntervals();
+                        getNewMelodies();
                     });
                     $("canvas").slideToggle("slow");
                 }
             };
         </script>
     </head>
+    
     <body>
-      <div class="site-wrapper">
-	<div id="includeProgress"></div>
-	<div id="row">
-          <div class="cover-container">
-            <div id="includeMenu"></div>
-            <div class="inner cover">
-              <h1 class="cover-heading">Intervals</h1>
-              <p class="lead">
-                <div id="choice">
-                  <h3 id="prompt" align="center">
-                    Click the button to get an interval!
-                  </h3>
-              	  <div class="row">
-		    <div class="col-md-6">
-                      <canvas id="choice_one" onclick="chooseAnswer('choice_one')" width="220" height="100"
-                              style="border:4px solid #000000;display:none;">
-                        <script>
-                          setup("choice_one");
-                        </script>
-                      </canvas>
-                      
-		    </div>
-		    <div class="col-md-6">
-                      <canvas id="choice_two" onclick="chooseAnswer('choice_two')" width="220" height="100"
-                              style="border:4px solid #000000;display:none;">
-                        <script>
-                          setup("choice_two");
-                        </script>
-                      </canvas>
-                    </div>
-		  </div>
-		  <div class="row">
-		    <div class="col-md-6">
-                      <canvas id="choice_three" onclick="chooseAnswer('choice_three')" width="220" height="100"
+        <div class="site-wrapper">
+	  <div id="includeProgress"></div>
+	  <div id="row">
+            <div class="cover-container">
+              <div id="includeMenu"></div>
+              <div class="inner cover">
+                <h1 class="cover-heading">Melodies</h1>
+                <p class="lead">
+                  <div id="choice">
+                                <h3 id="prompt" align="center">
+                                  Click the button to get a melody!
+                                </h3>
+                                <table align="center">
+                                    <tr>
+                                        <td>
+                                            <canvas id="choice_one" onclick="chooseAnswer('choice_one')" width="440" height="100"
                                                 style="border:4px solid #000000;display:none;">
-                        <script>
-                          setup("choice_three");
-                        </script>
-                      </canvas>
-                      
-		    </div>
-		    <div class="col-md-6">
-                      <canvas id="choice_four" onclick="chooseAnswer('choice_four')" width="220" height="100"
-                              style="border:4px solid #000000;display:none;">
-                        <script>
-                          setup("choice_four");
-                        </script>
-                      </canvas>
+                                                <script>
+                                                    setup("choice_one");
+                                                    </script>
+                                            </canvas>
+                                        </td>
+                                        <td>
+                                            <canvas id="choice_two" onclick="chooseAnswer('choice_two')" width="440" height="100"
+                                                style="border:4px solid #000000;display:none;">
+                                                <script>
+                                                    setup("choice_two");
+                                                    </script>
+                                            </canvas>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <canvas id="choice_three" onclick="chooseAnswer('choice_three')" width="440" height="100"
+                                                style="border:4px solid #000000;display:none;">
+                                                <script>
+                                                    setup("choice_three");
+                                                    </script>
+                                            </canvas>
+                                        </td>
+                                        <td>
+                                            <canvas id="choice_four" onclick="chooseAnswer('choice_four')" width="440" height="100"
+                                                style="border:4px solid #000000;display:none;">
+                                                <script>
+                                                    setup("choice_four");
+                                                    </script>
+                                            </canvas>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <p class="lead">
+                        <a href="#" id="start" onclick="progress()" class="btn btn-lg btn-default">Let's start.</a>
+                        </p>
                     </div>
-		  </div>
                 </div>
             </div>
-            <p class="lead">
-              <a href="#" id="start" onclick="progress()" class="btn btn-lg btn-default">Let's start.</a>
-            </p>
-          </div>
         </div>
-      </div>
     </body>
 </html>
