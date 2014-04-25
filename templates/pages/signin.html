@@ -23,28 +23,6 @@
 		.container {width: 500px;}
 		.container input {width:100%;}
 		</style-->
-                <!-- Optional theme -->
-		<style>
-		  table.login
-		  {
-		  margin-left:auto;
-		  margin-right:auto;
-		  padding:15px;
-		  }
-		  tr.spaceUnder > td
-	  {
-	  padding-bottom: 1em;
-	  }
-	  td.spaceLeft 
-	  {
-	  padding-left: 1em;
-	  }
-	  td.spaceRight
-	  {
-	  padding-right:1em;
-	  }
-		</style>
-
                 <link href="{{ STATIC_URL }}/css/bootstrap-theme.min.css" rel="stylesheet"  type="text/css">
                                     
                 <!-- Latest compiled and minified JavaScript -->
@@ -83,42 +61,43 @@
     </head>
     
     <body>
-        <div id="includeMenu"></div>
-        
-	    <br><br><br>
-        
-	    <div style="float:left; width: 50%;">
-            <h1 class="cover-heading"> Come on in! </h1>
-                <p class="error"> Sorry, that's not a valid username or password </p>
-            <form method="post" action="/auth_user/">
-                {% csrf_token %}
-                <label for="username"> Username: </label>
-                <input type="text" name="username" value="" id="username"><br>
-                <label for="password"> Password: </label>
-                <input type ="password" name="password" value="" id="password"><br>
-                <input type="submit" name="submit" value="Log in!" />
-            </form>
-	    </div>
-	    <div style="float:left; width: 50%;">
-            <h1 class="cover-heading"> Join Ussss </h1>
-            {{ errorMsg }}
-            <form method="post" action="/register/">
-                {% csrf_token %}
-                <label for="username"> Who are you? </label>
-                <input type="text" name="username" value="" id="username"><br>
-                <label for="password1"> Secret Code: </label>
-                <input type ="password" name="password1" value="" id="password1"><br>
-                <label for="password2"> What was the code again? </label>
-                <input type ="password" name="password2" value="" id="password2"><br>
-                <input type="submit" name="submit" value="Create User" />
-            </form>
-        <div id="includeFooter"></div>
-	    <!--div id="footer" style="background-color:#FFbf00;height: 10%; width:100%; line-height: 10%; clear:both;position:fixed; bottom:0;text-align:center;">
-	      <div class="inner">
-		<p>Copyright Ear Training 2014, by <a href="pages/about/">us</a>.</p>
-	      </div>
-	    </div!>
-	  <!--/div-->
+      <div id="includeMenu"></div>
+      <div class="row">
+	<div class="col-md-6">
+          <h1 class="cover-heading"> Come on in! </h1>
+          <p class="error"> Sorry, that's not a valid username or password </p>
+          <form method="post" action="/auth_user/">
+            {% csrf_token %}
+            <label for="username"> Username: </label>
+            <input type="text" name="username" value="" id="username"><br>
+            <label for="password"> Password: </label>
+            <input type ="password" name="password" value="" id="password"><br>
+            <input type="submit" name="submit" value="Log in!" />
+          </form>
+	</div>
+	<div class="col-md-6">
+          <h1 class="cover-heading"> Join Ussss </h1>
+          {{ errorMsg }}
+          <form method="post" action="/register/">
+            {% csrf_token %}
+            <label for="username"> Who are you? </label>
+            <input type="text" name="username" value="" id="username"><br>
+            <label for="password1"> Secret Code: </label>
+            <input type ="password" name="password1" value="" id="password1"><br>
+            <label for="password2"> What was the code again? </label>
+            <input type ="password" name="password2" value="" id="password2"><br>
+            <input type="submit" name="submit" value="Create User" />
+          </form>
+	</div>
+      </div>
+      
+      <div id="includeFooter"></div>
+      <!--div id="footer" style="background-color:#FFbf00;height: 10%; width:100%; line-height: 10%; clear:both;position:fixed; bottom:0;text-align:center;">
+	  <div class="inner">
+	    <p>Copyright Ear Training 2014, by <a href="pages/about/">us</a>.</p>
+	  </div>
+</div!>
+<!--/div-->
         
             
         
