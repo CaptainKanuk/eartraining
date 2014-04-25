@@ -41,6 +41,14 @@ def help(request):
 	context=RequestContext(request)
 	return render_to_response('pages/help.html', context)
 
+def game_win(request):
+    context=RequestContext(request)
+    return render_to_response('pages/game_win.html', context)
+
+def game_loss(request):
+    context=RequestContext(request)
+    return render_to_response('pages/game_loss.html', context)
+
 def notfound(request):
 	context=RequestContext(request)
 	return render_to_response('pages/404.html', context)

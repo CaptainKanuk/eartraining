@@ -82,6 +82,9 @@
                     button.innerHTML="Next Interval";
                     $("canvas").slideToggle("slow");
                     getNewIntervals();
+                    alert("here");
+                    playInterval(correctInterval[0], correctInterval[2], 2, 30);
+                    alert("here2");
                 }
                 else{
                     $("canvas").slideToggle("slow", function () {

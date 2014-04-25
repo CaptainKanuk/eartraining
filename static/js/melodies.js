@@ -192,7 +192,16 @@ function getRandomNote()
 {
     //generate random note
     var note = Math.floor(Math.random()*13.0)+60;
-    var note_offset = Math.floor(Math.random()*3)-1;
+    var note_offset;
+    if (Math.random() < .33)
+    {
+        if (Math.random() < .5)
+            note_offset = 1;
+        else
+            note_offset = -1;
+    }
+    else
+        note_offset = 0;
     return [note, note_offset];
 }
 
@@ -233,11 +242,14 @@ function getNewMelodies()
     clearCanvases();
     resetBorderColors();
     drawStaves();
+    //melody_test = 1;  
     var length = Math.floor(Math.random()*6) + 3;
 
     //Get a random melody
     var melody = getRandomMelody(length);
-    playMelody(melody, 30);
+
+    //playMelody(melody);
+    //playMelody([[60,1], [62,1], [64,1], [60,1], [60,1], [62,1], [64,1]]);
     var notes = melodyToNotes(melody);
 
     //choose which canvas will draw it
@@ -246,35 +258,76 @@ function getNewMelodies()
     
     var outelem;
 
+    /*
+    var altmel = [];
+    for (var n = 0; n < 3; n++)
+        altmel[n] = varyMelody();
+    */
+
     correctChoice = outelem;
     correctMelody = melody;
+
     showMelody(notes, correctChoice);
 
+    //n = 0;
     //show the intervals on the canvas
     for(var i = 0; i < labels.length; i++){
         if(i != select){
             //populate the wrong answers
-            melody = getRandomMelody(length);
-            showMelody(melodyToNotes(melody), labels[i]);
+            showMelody(melodyToNotes(varyMelody(.8)), labels[i]);
+            //n++;
         }
     }
     //finally, make the correct melody name display as a prompt???
     //showMelodyPrompt();
+
 }
 
-function parseMelody(melC)
+
+function varyMelody(variance)
 {
-    var mel = new Array(melC.length);
-    for (var i = 0; i < melC.length; i++)
+    var length = correctMelody.length;
+    var newMel = new Array(length);
+    for (var i = 0; i < length; i++)
+        newMel[i] = new Array(2);
+    for (i = 0; i < length; i++)
+    {
+        if (Math.random()<variance)
+        {
+            if (Math.random()<.5)
+                newMel[i][0] = correctMelody[i][0] + Math.round(Math.random() * 3);
+            else
+                newMel[i][0] = correctMelody[i][0] - Math.round(Math.random() * 3);
+            newMel[i][1] = 0;
+        }
+        else
+        {
+            newMel[i][0] = correctMelody[i][0];
+            newMel[i][1] = correctMelody[i][1];
+        }
+    }
+    return newMel;
+
+}
+
+
+
+
+
+/*
+function parseMelody()
+{
+    var mel = new Array(correctMelody.length);
+    for (var i = 0; i < correctMelody.length; i++)
     {
         mel[i] = new Array(2);
-        mel[i][0] = melC[i][0];
+        mel[i][0] = correctMelody[i][0];
         mel[i][1] = 2;
     }
     return mel;
 
 }
-
+*/
 //convert semitone rep and offset values to parse-able note strings for vexflow
 function melodyToNotes(melody)
 {
@@ -341,6 +394,7 @@ function changeBorderColors(){
     }
 }
 
+
 //Called by the canvas on click
 //Determines whether the choice was correct
 function chooseAnswer(answer){
@@ -351,14 +405,14 @@ function chooseAnswer(answer){
         if( answer==correctChoice ){
             promptField.innerHTML = "Got it!";
             //playInterval(semitoneToFrequency(correctInterval[0]), semitoneToFrequency(correctInterval[2]), 2, 30);
-            playMelody(correctMelody, 30);
+            //playMelody(correctMelody);
             answeredCorrectly();
         }
         else{
             promptField.innerHTML = "Uh-oh!";
             answeredIncorrectly();
             //playInterval(semitoneToFrequency(correctInterval[0]), semitoneToFrequency(correctInterval[2]), 2, 30);
-            playMelody(correctMelody, 30);
+            //playMelody(correctMelody);
         }
     }
 }
@@ -369,13 +423,14 @@ function semitoneToFrequency(semitone){
 }
 
 
-function playMelody(mel, gain)
+function playMelody()
 {
+    var gain = 30;
     var audio = new Audio(); //html5 audio element
     var wave = new RIFFWAVE(); //empty wavefile
     var data = [];
     var sR = 44100;
-    var melArray = parseMelody(mel);
+    //var melArray = parseMelody();
 
     wave.header.sampleRate = sR; //set sample rate
     wave.header.numChannels = 2; //two channels
@@ -389,14 +444,15 @@ function playMelody(mel, gain)
     var gainstepI;
     var gainstepD;
     var gstep = 0;
-    while (numnote < melArray.length)
+    while (numnote < correctMelody.length)
     {
-        length = melArray[numnote][1];
+        length = 2;
 
         gainstepI = (length*2) * gain/sR;
         gainstepD = (-(length)/3)*gain/sR;
 
-        freq = semitoneToFrequency(melArray[numnote][0])/sR * 2 * Math.PI;
+        //alert(correctMelody[numnote][0]);
+        freq = semitoneToFrequency(correctMelody[numnote][0])/sR * 2 * Math.PI;
 
         samples = samples + length*sR;
 
@@ -418,9 +474,22 @@ function playMelody(mel, gain)
     }
     wave.Make(data); // make the wave file
     audio.src = wave.dataURI; // set audio source
+    //audio.setAttribute('src',wave.dataURI);
+    audio.load();
     audio.play(); // we should hear two tones one on each speaker
 
+}
 
+function deactivateMelPlay()
+{
+    document.getElementById("mel-play").setAttribute("onclick","");
+    setTimeout(activateMelPlay, correctMelody.length*1001);
+}
+
+function activateMelPlay()
+{
+    
+    document.getElementById("mel-play").setAttribute("onclick", "playMelody(); deactivateMelPlay()");
 }
 
 // function playInterval(freq1, freq2, length, gain)

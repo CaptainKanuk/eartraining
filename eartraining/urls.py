@@ -20,6 +20,8 @@ urlpatterns = patterns('',
     url(r'^melodies/', melodies, name = 'melodies'),
     url(r'^about/', about, name = 'about'),
     url(r'^help/', help, name = 'help'),
+    url(r'^game_win/', game_win, name='game_win'),
+    url(r'^game_loss/', game_loss, name='game_loss'),
     url(r'^$', index, name='index'),
     #===============USER AUTHENTICATION=============
     url(r'^auth_user/$', auth_user, name='auth_user'),
