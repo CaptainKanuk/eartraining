@@ -181,7 +181,7 @@ function getRandomInterval(){
     return [base, base_offset, top, top_offset];
 }
 
-function intervalToNotes(interval){
+function intervalToNotes(interval) {
     //convert interval int values to vexflow notes
     var base = interval[0];
     var baser = interval[1];

@@ -36,7 +36,7 @@ function answeredIncorrectly(){
 }
 
 //update the progress variable and the progress bar
-function updateProgress(){
+function updateProgress() {
 	alert(HP);
     quiz_progress = 1+ quiz_progress + (100/numberOfQuestionsInModule);
     if (quiz_progress >= 100 && HP != 0) {
