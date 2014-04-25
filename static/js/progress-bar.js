@@ -33,6 +33,7 @@ function answeredIncorrectly(){
 function updateProgress(){
     quiz_progress = quiz_progress + (100/numberOfQuestionsInModule);
     document.getElementById(p_bar_label).style.width= (quiz_progress) +'%';
+
 }
 
 function loseHP(amount){

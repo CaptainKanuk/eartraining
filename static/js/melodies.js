@@ -9,13 +9,13 @@ var prompt = "prompt";
 
 
 //For mapping the numbers to vexflow notation
-var pitchClassNames = ["c", "c#", "d", "d#", "e", "f", "f#", "g", "g#", "a", "a#", "b"];
-var middleC = 60;//semitone starting point
-var middleCHz = 261.625565;
+var pitchClassNames  = ["c", "c#", "d", "d#", "e", "f", "f#", "g", "g#", "a", "a#", "b"];
+var middleC          = 60;//semitone starting point
+var middleCHz        = 261.625565;
 var semitoneConstant = 1.05946;
 
-var defaultColor = "#000000";
-var correctColor = "#439400";
+var defaultColor   = "#000000";
+var correctColor   = "#439400";
 var incorrectColor = "#94002D";
 
 var canvas1, canvas2, canvas3, canvas4;
@@ -35,13 +35,12 @@ function drawStaff(elem)
 {
     if (elem == "choice_one")
     {
-        alert("ONE");
         canvas1 = document.getElementById("choice_one");
         renderer1 = new Vex.Flow.Renderer(canvas1,
                                           Vex.Flow.Renderer.Backends.CANVAS);
         
         ctx1 = renderer1.getContext();
-        stave1 = new Vex.Flow.Stave(0, -10, 400);
+        stave1 = new Vex.Flow.Stave(0, -10, 420);
         stave1.addClef("treble").setContext(ctx1).draw();
     }
     else if (elem == "choice_two")
@@ -51,7 +50,7 @@ function drawStaff(elem)
                                           Vex.Flow.Renderer.Backends.CANVAS);
         
         ctx2 = renderer2.getContext();
-        stave2 = new Vex.Flow.Stave(10, -10, 400);
+        stave2 = new Vex.Flow.Stave(10, -10, 420);
         stave2.addClef("treble").setContext(ctx2).draw();
     }
     else if (elem == "choice_three")
@@ -61,7 +60,7 @@ function drawStaff(elem)
                                           Vex.Flow.Renderer.Backends.CANVAS);
         
         ctx3 = renderer3.getContext();
-        stave3 = new Vex.Flow.Stave(10, -10, 400);
+        stave3 = new Vex.Flow.Stave(10, -10, 420);
         stave3.addClef("treble").setContext(ctx3).draw();
     }
     else if (elem == "choice_four")
@@ -71,7 +70,7 @@ function drawStaff(elem)
                                           Vex.Flow.Renderer.Backends.CANVAS);
         
         ctx4 = renderer4.getContext();
-        stave4 = new Vex.Flow.Stave(10, -10, 400);
+        stave4 = new Vex.Flow.Stave(10, -10, 420);
         stave4.addClef("treble").setContext(ctx4).draw();
     }
     
@@ -119,38 +118,6 @@ function noteToString(note, offset)
     return writtenNoteString;
 }
 
-/*
-function showInterval(notes, elem)
-{
-    //print out the interval to the elem canvas
-    
-    var voice = new Vex.Flow.Voice({
-                                   num_beats: 4,
-                                   beat_value: 4,
-                                   resolution: Vex.Flow.RESOLUTION
-                                   });
-    voice.addTickables(notes);
-    var formatter = new Vex.Flow.Formatter().joinVoices([voice]).format([voice], 400);
-    
-    if (elem == "choice_one")
-    {
-        voice.draw(ctx1, stave1);
-    }
-    if (elem == "choice_two")
-    {
-        voice.draw(ctx2, stave2);
-    }
-    if (elem == "choice_three")
-    {
-        voice.draw(ctx3, stave3);
-    }
-    if (elem == "choice_four")
-    {
-        voice.draw(ctx4, stave4);
-    }
-}
-*/
-
 
 function showMelody(notes, elem)
 {
@@ -160,7 +127,7 @@ function showMelody(notes, elem)
                            resolution: Vex.Flow.RESOLUTION
                            });
     voice.addTickables(notes);
-    var formatter = new Vex.Flow.Formatter().joinVoices([voice]).format([voice], 400);
+    var formatter = new Vex.Flow.Formatter().joinVoices([voice]).format([voice], 420);
     
     if (elem == "choice_one")
     {
@@ -180,17 +147,16 @@ function showMelody(notes, elem)
     }
 }
 
-function verify()
-{
-    alert("HELLO");
-}
+// function verify()
+// {
+//     alert("HELLO");
+// }
 
 function clearCanvases(){
-    alert("WHAT");
-    ctx1.clearRect(0,0,500,120);
-    ctx2.clearRect(0,0,500,120);
-    ctx3.clearRect(0,0,500,120);
-    ctx4.clearRect(0,0,500,120);
+    ctx1.clearRect(0, 0, 500, 120);
+    ctx2.clearRect(0, 0, 500, 120);
+    ctx3.clearRect(0, 0, 500, 120);
+    ctx4.clearRect(0, 0, 500, 120);
 }
 
 function drawStaves(){
@@ -222,7 +188,8 @@ function getRandomInterval(){
 }
 */
 
-function getRandomNote(){
+function getRandomNote()
+{
     //generate random note
     var note = Math.floor(Math.random()*13.0)+60;
     var note_offset = Math.floor(Math.random()*3)-1;
@@ -231,8 +198,11 @@ function getRandomNote(){
 
 function getRandomMelody(length)
 {
-    var i = 0;
-    var mel = [][];
+    var i;
+    var mel = new Array(length);
+    for (i = 0; i < length; i++) {
+      mel[i] = new Array(2);
+    }
     var note;
     for (i = 0; i < length; i++)
     {
@@ -243,6 +213,19 @@ function getRandomMelody(length)
     return mel;
 }
 
+function printMel(mel)
+{
+
+    var i = 0;
+    for (i = 0; i < mel.length; i++)
+    {
+        alert("note: " + mel[i][0].toString() + ", offset: " + mel[i][1].toString());
+    }
+}
+
+// function thisIsDumb(){
+//     alert("You better get here.");
+// }
 
 //need showMelody, melodyToNotes, getNewMelodies, getRandomMelody, also have getRandomNote
 function getNewMelodies()
@@ -250,9 +233,13 @@ function getNewMelodies()
     clearCanvases();
     resetBorderColors();
     drawStaves();
+    var length = Math.floor(Math.random()*6) + 3;
+
     //Get a random melody
-    var melody = getRandomMelody(4);
+    var melody = getRandomMelody(length);
+    playMelody(melody, 30);
     var notes = melodyToNotes(melody);
+
     //choose which canvas will draw it
     var select = Math.floor(Math.random()*labels.length);
     var outelem = labels[select];
@@ -261,23 +248,38 @@ function getNewMelodies()
 
     correctChoice = outelem;
     correctMelody = melody;
-    showMelody(melodyToNotes(melody), correctChoice);
+    showMelody(notes, correctChoice);
+
     //show the intervals on the canvas
     for(var i = 0; i < labels.length; i++){
         if(i != select){
             //populate the wrong answers
-            melody = getRandomMelody(4);
+            melody = getRandomMelody(length);
             showMelody(melodyToNotes(melody), labels[i]);
         }
     }
-    //finally, make the correct interval display as a prompt
-    //showIntervalName();
+    //finally, make the correct melody name display as a prompt???
+    //showMelodyPrompt();
+}
+
+function parseMelody(melC)
+{
+    var mel = new Array(melC.length);
+    for (var i = 0; i < melC.length; i++)
+    {
+        mel[i] = new Array(2);
+        mel[i][0] = melC[i][0];
+        mel[i][1] = 2;
+    }
+    return mel;
+
 }
 
 //convert semitone rep and offset values to parse-able note strings for vexflow
 function melodyToNotes(melody)
 {
     var i = 0;
+    var notes = new Array(melody.length);
     var note;
     var offset;
     var Snote;
@@ -297,8 +299,8 @@ function melodyToNotes(melody)
             else
                 noteVex.addAccidental(0, new Vex.Flow.Accidental("#"));
         }
-        if (note.charAt(1) == "b"){
-            if (Sbase.charAt(2) == "b")
+        if (Snote.charAt(1) == "b"){
+            if (Snote.charAt(2) == "b")
                 noteVex.addAccidental(0, new Vex.Flow.Accidental("bb"));
             else
                 noteVex.addAccidental(0, new Vex.Flow.Accidental("b"));
@@ -319,85 +321,6 @@ function melodyToNotes(melody)
     return notes;
 }
 
-//based
-function rythToString(beat, length)
-{
-    ;
-}
-
-/*
-function intervalToNotes(interval){
-    //convert interval int values to vexflow notes
-    var base = interval[0];
-    var baser = interval[1];
-    var top = interval[2];
-    var topr = interval[3]
-    var Sbase = noteToString(base,baser);
-    var Stop = noteToString(top,topr);
-    var noteB = new Vex.Flow.StaveNote({ keys: [Sbase], duration: "h" });
-    var noteT = new Vex.Flow.StaveNote({ keys: [Stop], duration: "h" });
-    if (Sbase.charAt(1) == "#"){
-        if (Sbase.charAt(2) == "#")
-            noteB.addAccidental(0, new Vex.Flow.Accidental("##"));
-        else
-            noteB.addAccidental(0, new Vex.Flow.Accidental("#"));
-    }
-    if (Sbase.charAt(1) == "b"){
-        if (Sbase.charAt(2) == "b")
-            noteB.addAccidental(0, new Vex.Flow.Accidental("bb"));
-        else
-            noteB.addAccidental(0, new Vex.Flow.Accidental("b"));
-    }
-    if (Stop.charAt(1) == "#"){
-        if (Stop.charAt(2) == "#")
-            noteT.addAccidental(0, new Vex.Flow.Accidental("##"));
-        else
-            noteT.addAccidental(0, new Vex.Flow.Accidental("#"));
-    }
-    if (Stop.charAt(1) == "b"){
-        if (Stop.charAt(2) == "b")
-            noteT.addAccidental(0, new Vex.Flow.Accidental("bb"));
-        else
-            noteT.addAccidental(0, new Vex.Flow.Accidental("b"));
-    }
-
-    var notes = [
-                 noteB, noteT
-                 ];
-    
-    return notes;
-}
-*/
-/*
-function getNewIntervals()
-{
-    clearCanvases();
-    resetBorderColors();
-    drawStaves();
-    //Get a random interval
-    var interval = getRandomInterval();
-    var notes = intervalToNotes(interval);
-    //choose which canvas will draw it
-    var select = Math.floor(Math.random()*labels.length);
-    var outelem = labels[select];
-    
-    var outelem;
-
-    correctChoice = outelem;
-    correctInterval = interval;
-    showInterval(intervalToNotes(interval), correctChoice);
-    //show the intervals on the canvas
-    for(var i = 0; i < labels.length; i++){
-        if(i != select){
-            //populate the wrong answers
-            interval = getRandomInterval();
-            showInterval(intervalToNotes(interval), labels[i]);
-        }
-    }
-    //finally, make the correct interval display as a prompt
-    showIntervalName();
-}
-*/
 function resetBorderColors(){
     for(var i = 0; i < labels.length; i++){
         var canvasElement = document.getElementById(labels[i]);
@@ -446,12 +369,13 @@ function semitoneToFrequency(semitone){
 }
 
 
-function playMelody(melArray, gain)
+function playMelody(mel, gain)
 {
     var audio = new Audio(); //html5 audio element
     var wave = new RIFFWAVE(); //empty wavefile
     var data = [];
     var sR = 44100;
+    var melArray = parseMelody(mel);
 
     wave.header.sampleRate = sR; //set sample rate
     wave.header.numChannels = 2; //two channels
@@ -499,13 +423,13 @@ function playMelody(melArray, gain)
 
 }
 
-function playInterval(freq1, freq2, length, gain)
-{
-    playMelody([ [freq1, length] , [freq2, length] ], gain);
-    //melodyMaker();
-}
+// function playInterval(freq1, freq2, length, gain)
+// {
+//     playMelody([ [freq1, length] , [freq2, length] ], gain);
+//     //melodyMaker();
+// }
 
-function melodyMaker()
-{
-    playMelody([[60,1], [62,1], [64,1], [60,1], [60,1], [62,1], [64,1], [60,1], [64,1],[65,1],[67,1]], 30);
-}
+// function melodyMaker()
+// {
+//     playMelody([[60,1], [62,1], [64,1], [60,1], [60,1], [62,1], [64,1], [60,1], [64,1],[65,1],[67,1]], 30);
+// }
