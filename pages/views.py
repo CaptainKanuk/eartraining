@@ -6,6 +6,7 @@ from django.http import HttpResponseRedirect
 from django.contrib import auth
 from django.core.context_processors import csrf
 from django.contrib.auth.forms import UserCreationForm
+from pages.models import UserProfile
 
 #=======================================================================
 #===========================PAGE LINKS==================================
@@ -34,8 +35,11 @@ def melodies(request):
 	return render_to_response('pages/melodies.html', context)
 
 def about(request):
-	context=RequestContext(request)
-	return render_to_response('pages/about.html', context)
+    context=RequestContext(request)
+    userstuff={}
+    u=UserProfile.objects.filter(user="form.username")
+    userstuff['testUser'] = u[0].intervalLevel
+    return render_to_response('pages/about.html', userstuff, context)
 
 def help(request):
 	context=RequestContext(request)
@@ -105,6 +109,8 @@ def register_user(request):
         #return render_to_response('pages/register.html', argTest, context)
         if form.is_valid():
             form.save()
+            u = UserProfile(user=user.username, intervalLevel="1", melodyLevel="1")
+            u.save()
             return HttpResponseRedirect('/register_success/', context)
         else:
             for error in form.errors:
@@ -129,3 +135,8 @@ def register_failure(request):
     args = {}
     args['errors'] = UserCreationForm(request.POST).errors
     return render_to_response('pages/register_failure.html', args, context)
+
+def get_IntervalLvl(request):
+    context=RequestContext(reqeust)
+    return UserProfile.objects.filter(user=user.username).intervalLevel
+

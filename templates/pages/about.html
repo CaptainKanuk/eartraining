@@ -46,11 +46,11 @@
                                                      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
                                                      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
                                                      <![endif]-->
-                                                    <script>
+                                                    <!--script>
                                                         $(function(){
                                                           $("#includeMenu").load("{{ STATIC_URL }}/html/menu.html");
                                                           });
-                                                        </script>
+                                                        </script-->
                                                     <script>
                                                         $(function(){
                                                           $("#includeFooter").load("{{ STATIC_URL }}/html/footer.html");
@@ -59,6 +59,32 @@
                                                     </head>
     
     <body>
+        <nav id="mainMenu" class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <a class="navbar-brand" href="/index">SuperTonic</a>
+                <u1 class="nav navbar-nav navbar-right">
+                    <li class="dropdown" id="trainingmenu">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#trainingmenu">
+                            Training
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/intervals">Intervals</a></li>
+                            <li><a href="/melodies">Melodies</a></li>
+                            <li><a href="/rhythms">Rhythms</a></li>
+                            <li><a href="/chords">Chords</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/help">Help</a></li>
+                    {% if user.is_authenticated %} <li>Welcome, '{{ user.username }}'</li>
+                    {% else %}<li><a href="/signin">Sign-In</a></li>{% endif %}
+                </u1>
+            </div>
+        </nav>
+        
+        {{ testUser }}
+        
         <div class="site-wrapper">
             
             <div class="site-wrapper-inner">
