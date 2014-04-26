@@ -382,7 +382,7 @@ function resetBorderColors(){
 }
 
 //Change the border colors to reflect a good or bad answer
-function changeBorderColors(){
+function changeBorderColors() {
     for(var i = 0; i < labels.length; i++){
         var canvasElement = document.getElementById(labels[i]);
         if(labels[i]==correctChoice){
