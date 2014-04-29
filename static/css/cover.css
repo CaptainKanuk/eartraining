@@ -2,9 +2,17 @@
 		background-image: none;
 		background-color: #2185c5;
 		border-color: #59a3d3;
+		text-shadow: none;
+}
+.nav > li:hover {
+     background-color:rgba(177, 226, 255, .5);
+     -webkit-transition: all .4s ease-in-out;
+     -moz-transition: all .4s ease-in-out;
+     transition: all .4s ease-in-out;
 }
 .navbar-default .navbar-brand {
 		color: #f8f8f8;
+		font-weight: 700;
 }
 .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
 		color: #b1e2ff;
@@ -16,7 +24,7 @@
 		color: #f8f8f8;
 }
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-		color: #b1e2ff;
+		color: #fff;
 }
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
 		color: #b1e2ff;
@@ -29,12 +37,12 @@
 .navbar-default .navbar-toggle {
 		border-color: #59a3d3;
 }
-.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+v.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
 		background-color: #59a3d3;
 }
 .navbar-default .navbar-toggle .icon-bar {
 		background-color: #f8f8f8;
-}
+    }
 .navbar-default .navbar-collapse,
 .navbar-default .navbar-form {
 		border-color: #f8f8f8;
@@ -66,25 +74,27 @@
 a,
 a:focus,
 a:hover {
-  color: #fff;
+  color: #111;
 }
 p, div {
    font-family: 'Raleway';
 }
 
 .dropdown-menu {
-text-shadow: none;
+   text-shadow: none;	
 }
+
 /* Custom default button */
 .btn-default,
 .btn-default:hover,
 .btn-default:focus {
   color: #333;
   text-shadow: none; /* Prevent inheritence from `body` */
-  background-color: #fff;
-  border: 1px solid #fff;
+  background-color: #ff606e;
+  background-image: none;
+  border-radius: 30px;
+  border:none;
 }
-
 input, textarea{
     color: #333;
 }
@@ -95,14 +105,12 @@ input, textarea{
 html,
 body {
   height: 100%;
-  background-color: #333;
+  background-color: #fff;
   padding-top: 50px;
 }
 body {
-  color: #fff;
+  color: #000;
   text-align: center;
-  text-shadow: 0 1px 3px rgba(0,0,0,.5);
-  box-shadow: inset 0 0 100px rgba(0,0,0,.5);
 }
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
@@ -130,50 +138,6 @@ body {
 }
 
 
-/*
- * Header
- */
-.masthead-brand {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.masthead-nav > li {
-  display: inline-block;
-}
-.masthead-nav > li + li {
-  margin-left: 20px;
-}
-.masthead-nav > li > a {
-  padding-right: 0;
-  padding-left: 0;
-  font-size: 16px;
-  font-weight: bold;
-  color: #fff; /* IE8 proofing */
-  color: rgba(255,255,255,.75);
-  border-bottom: 2px solid transparent;
-}
-.masthead-nav > li > a:hover,
-.masthead-nav > li > a:focus {
-  background-color: transparent;
-  border-bottom-color: rgba(255,255,255,.25);
-}
-.masthead-nav > .active > a,
-.masthead-nav > .active > a:hover,
-.masthead-nav > .active > a:focus {
-  color: #fff;
-  border-bottom-color: #fff;
-}
-
-@media (min-width: 768px) {
-  .masthead-brand {
-    float: left;
-  }
-  .masthead-nav {
-    float: right;
-  }
-}
-
 
 /*
  * Cover
@@ -194,7 +158,7 @@ body {
 
 .mastfoot {
   color: #999; /* IE8 proofing */
-  color: rgba(255,255,255,.5);
+  color: rgba(10,10,10,.5);
 }
 
 
