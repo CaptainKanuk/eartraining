@@ -1,6 +1,14 @@
 {% extends "base.html" %}
 
 {% block extrahead %}
+<!-- Vexflow Libraries -->
+<script src="{{ STATIC_URL }}/js/vexflow-debug.js"></script>
+<script src="{{ STATIC_URL }}/js/vexflow-min.js"></script>
+<script src="{{ STATIC_URL }}/js/interval-names-table.js"></script>
+<script src="{{ STATIC_URL }}/js/music-staff.js"></script>
+<script src="{{ STATIC_URL }}/js/progress-bar.js"></script>
+<script src="{{ STATIC_URL }}/js/riffwave.js"></script>
+
 <script>
     $("canvas").slideToggle("fast");
     function progress(){
@@ -105,4 +113,7 @@ div.egcode {
 <p class="lead">
 <a href="#" id="start" onclick="progress()" class="btn btn-lg btn-default">Let's start.</a>
 </p>
+{% endblock %}
+
+{% block footer %}
 {% endblock %}

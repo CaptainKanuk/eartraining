@@ -13,18 +13,12 @@
             <link href="{{ STATIC_URL }}/css/bootstrap.min.css" rel="stylesheet" type="text/css">
             <link href="{{ STATIC_URL }}/css/cover.css" rel="stylesheet" type="text/css">
                 
-            <!-- Vexflow Libraries -->
-            <script src="{{ STATIC_URL }}/js/vexflow-debug.js"></script>
-            <script src="{{ STATIC_URL }}/js/vexflow-min.js"></script>
-            <script src="{{ STATIC_URL }}/js/interval-names-table.js"></script>
-            <script src="{{ STATIC_URL }}/js/melodies.js"></script>
-            <script src="{{ STATIC_URL }}/js/music-staff.js"></script>
-            <script src="{{ STATIC_URL }}/js/progress-bar.js"></script>
-            <script src="{{ STATIC_URL }}/js/riffwave.js"></script>
-                
             <!-- Javascript Stuff -->
             <script src="http://code.jquery.com/jquery-latest.js"></script>
             <script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js"></script>
+            
+            <script src="{{STATIC_URL}}/js/bootstrap.min.js"></script>
+            <script src="{{STATIC_URL}}/js/docs.min.js"></script>
             {% block extrahead %} {% endblock %}
         </head>
 
@@ -76,7 +70,5 @@
              ================================================== -->
             <!-- Placed at the end of the document so the pages load faster -->
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-            <script src="{{STATIC_URL}}/js/bootstrap.min.js"></script>
-            <script src="{{STATIC_URL}}/js/docs.min.js"></script>
         </body>
 </html>
