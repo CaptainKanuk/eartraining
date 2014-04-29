@@ -22,9 +22,9 @@ def signin(request):
     context.update(csrf(request))
     return render_to_response('pages/signin.html', context)
 
-def train(request):
+def hub(request):
 	context=RequestContext(request)
-	return render_to_response('pages/train.html', context)
+	return render_to_response('pages/hub.html', context)
 
 def intervals(request):
 	context=RequestContext(request)
