@@ -36,8 +36,7 @@ function answeredIncorrectly(){
 }
 
 //update the progress variable and the progress bar
-function updateProgress(){
-	alert(HP);
+function updateProgress() {
     quiz_progress = 1+ quiz_progress + (100/numberOfQuestionsInModule);
     if (quiz_progress >= 100 && HP != 0) {
     	document.getElementById("start").setAttribute("href","/game_win");
@@ -73,5 +72,5 @@ function updateProgress(){
 
 function loseHP(amount){
     HP = HP - amount;
-    alert("You have "+HP+" HP left.");
+    //alert("You have "+HP+" HP left.");
 }

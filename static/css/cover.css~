@@ -1,3 +1,63 @@
+.navbar-default {
+		background-image: none;
+		background-color: #2185c5;
+		border-color: #59a3d3;
+}
+.navbar-default .navbar-brand {
+		color: #f8f8f8;
+}
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+		color: #b1e2ff;
+}
+.navbar-default .navbar-text {
+		color: #f8f8f8;
+}
+.navbar-default .navbar-nav > li > a {
+		color: #f8f8f8;
+}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+		color: #b1e2ff;
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+		color: #b1e2ff;
+		background-color: #59a3d3;
+}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+		color: #b1e2ff;
+		background-color: #59a3d3;
+}
+.navbar-default .navbar-toggle {
+		border-color: #59a3d3;
+}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+		background-color: #59a3d3;
+}
+.navbar-default .navbar-toggle .icon-bar {
+		background-color: #f8f8f8;
+}
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+		border-color: #f8f8f8;
+}
+.navbar-default .navbar-link {
+		color: #f8f8f8;
+}
+.navbar-default .navbar-default:link .navbar-link:hover {
+		color: #b1e2ff;
+}
+
+@media (max-width: 767px) {
+       .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+       		       color: #f8f8f8;
+		       }
+		       .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+		       		       color: #b1e2ff;
+				       }
+				       .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+				       		       color: #b1e2ff;
+						       	      background-color: #59a3d3;
+							      }
+}
 /*
  * Globals
  */
@@ -10,12 +70,6 @@ a:hover {
 }
 p, div {
    font-family: 'Raleway';
-}
-.pbar {
-display:table-row;
-color:#FFF;
-position: relative;
-float: right;
 }
 
 .dropdown-menu {
@@ -42,7 +96,7 @@ html,
 body {
   height: 100%;
   background-color: #333;
-  padding-top: 70px;
+  padding-top: 50px;
 }
 body {
   color: #fff;
