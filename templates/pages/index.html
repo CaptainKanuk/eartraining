@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <link href="http://fonts.googleapis.com/css?family=Raleway:300" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Raleway:300,700" rel="stylesheet" type="text/css">
             <meta charset="utf-8">
                 <meta http-equiv="X-UA-Compatible" content="IE=edge">
                     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -40,7 +40,8 @@
 		 -->
             <!-- Custom styles for this template -->
             <link href="{{ STATIC_URL }}/css/cover.css" rel="stylesheet" type="text/css">
-            
+            <link rel="stylesheet" href="http://cdn.jsdelivr.net/animatecss/2.1.0/animate.min.css"><!-- load animate -->
+
             <script>
               $(function(){
               $("#includeMenu").load("{{ STATIC_URL }}/html/menu.html");
@@ -59,10 +60,10 @@
                 <div class="cover-container">
                     <div id="includeMenu"></div>
                     <div class="inner cover">
-                        <h1 class="cover-heading">Welcome to SuperTonic!</h1>
-			<p> We've been waiting for you </p>
-                        <p class="lead">SuperTonic is the beautiful, interactive ear-training application for musicians and non-musicians alike. Improve your sight-reading and music knowledge with just a few progressive games!</p>
-                        <a href="/intervals" class="btn btn-lg btn-default">Let's start.</a>
+                        <h1 class="cover-heading animated slideInLeft">Welcome to SuperTonic!</h1>
+			<p class="animated bounceInUp"> We've been waiting for you </p>
+                        <p class="lead animated fadeInLeft">SuperTonic is the beautiful, interactive ear-training application for musicians and non-musicians alike. Improve your sight-reading and music knowledge with just a few progressive games!</p>
+                        <a href="/intervals" class="btn btn-lg btn-default animated bounceIn">Let's start.</a>
                     
                     </div>
                     
