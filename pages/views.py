@@ -9,6 +9,7 @@ from django.contrib.auth.forms import UserCreationForm
 from pages.models import UserProfile
 from django.utils import simplejson
 from django.http import Http404
+from django.contrib.auth import authenticate, login, logout
 
 #=======================================================================
 #===========================PAGE LINKS==================================
@@ -69,10 +70,10 @@ def auth_user(request):
     username = request.POST.get('username', '')
     password = request.POST.get('password', '')
     
-    user = auth.authenticate(username=username, password=password)
+    user = authenticate(username=username, password=password)
     
     if user is not None:
-        auth.login(request, user)
+        login(request, user)
         return HttpResponseRedirect('/loggedin')
     else:
         return HttpResponseRedirect('/invalid')
@@ -93,9 +94,9 @@ def auth_user(request):
 #    return render_to_response('pages/signin.html', {'form': form}, context)
 
 def logout(request):
-    context=RequestContext(request)
+    logout(request)
     #context.update(csrf(request))
-    return render_to_response('pages/logout.html', context)
+    return render_to_response('pages/404.html', context)
 
 def loggedin(request):
     context=RequestContext(request)
@@ -122,6 +123,12 @@ def register_user(request):
             form.save()
             u = UserProfile(userId=request.POST.get('username', ''), intervalLevel="1", melodyLevel="1")
             u.save()
+            username = request.POST.get('username', '')
+            password = request.POST.get('password1', '')
+            user = authenticate(username=username, password=password)
+    
+            if user is not None:
+                login(request, user)
             return HttpResponseRedirect('/register_success/', context)
         else:
             for error in form.errors:
@@ -134,12 +141,6 @@ def register_user(request):
     args.update(csrf(request))
     args['errorMsg'] = errorMsg
     
-    username = request.POST.get('username', '')
-    password = request.POST.get('password1', '')
-    user = auth.authenticate(username=username, password=password)
-    
-    if user is not None:
-        auth.login(request, user)
     return render_to_response('pages/signin.html',args, context)
 
 #Success page on registering a user
@@ -162,9 +163,9 @@ def get_IntervalLvl(request):
     context = RequestContext(request)
     userId = None
     if request.method == 'GET':
-        userId = request.GET('user.username')
+        userId = request.POST.get('username', '')
     #temp = UserProfile.objects.filter(user=user.username).intervalLevel
-    return HttpResponse(simplejson.dumps(UserProfile.objects.filter(user="form.username")[0].intervalLevel), mimetype='application/json')
+    return HttpResponse(simplejson.dumps(UserProfile.objects.filter(user=userId)[0].intervalLevel), mimetype='application/json')
 
 def intLvlUp(request):
     context = RequestContext(request)
