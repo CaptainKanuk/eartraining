@@ -1,6 +1,14 @@
 {% extends "base.html" %}
 
 {% block extrahead %}
+<!-- Vexflow Libraries -->
+<script src="{{ STATIC_URL }}/js/vexflow-debug.js"></script>
+<script src="{{ STATIC_URL }}/js/vexflow-min.js"></script>
+<script src="{{ STATIC_URL }}/js/interval-names-table.js"></script>
+<script src="{{ STATIC_URL }}/js/melodies.js"></script>
+<script src="{{ STATIC_URL }}/js/progress-bar.js"></script>
+<script src="{{ STATIC_URL }}/js/riffwave.js"></script>
+
 <style type="text/css">
     canvas {
         background: #fff;
@@ -28,7 +36,7 @@ div.egcode {
             $("canvas").slideToggle("slow", function () {
                 document.getElementById(prompt).innerHTML = "Next melody.";
                 getNewMelodies();
-                });
+            });
             $("canvas").slideToggle("slow");
         }
     };
@@ -52,9 +60,13 @@ div.egcode {
 {% endblock %}
 
 {% block content %}
+</div>
 <h1 class="cover-heading">Melodies</h1>
 <p class="lead">
 <div id="choice">
+    <h3 id="prompt" align="center">
+        Click the button to get a melody!
+    </h3>
     <h3 id="prompt" align="center">
         Play and select the correct melody.
     </h3>
@@ -104,4 +116,7 @@ div.egcode {
 </p>
 </div>
 </div>
+{% endblock %}
+
+{% block footer %}
 {% endblock %}

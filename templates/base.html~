@@ -9,7 +9,7 @@
             <title>SuperTonic</title>
             
             <!-- CSS Stuff -->
-            <link href="http://fonts.googleapis.com/css?family=Raleway:200,300,700" rel="stylesheet" type="text/css">
+            <link href="http://fonts.googleapis.com/css?family=Raleway:100" rel="stylesheet" type="text/css">
             <link href="{{ STATIC_URL }}/css/bootstrap.min.css" rel="stylesheet" type="text/css">
             <link href="{{ STATIC_URL }}/css/cover.css" rel="stylesheet" type="text/css">
                 

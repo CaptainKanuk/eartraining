@@ -3,6 +3,7 @@
 		background-color: #2185c5;
 		border-color: #59a3d3;
 		text-shadow: none;
+		padding: 7px;
 }
 .nav > li:hover {
      background-color:rgba(177, 226, 255, .5);
@@ -82,6 +83,8 @@ p, div {
 
 .dropdown-menu {
    text-shadow: none;	
+   box-shadow:none;
+   background-color: #F9F8FC;	
 }
 
 /* Custom default button */

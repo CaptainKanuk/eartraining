@@ -20,9 +20,9 @@ def index(request):
 	return render_to_response('pages/index.html', context_dict, context)
 
 def signin(request):
-    context=RequestContext(request)
-    context.update(csrf(request))
-    return render_to_response('pages/signin.html', context)
+	context=RequestContext(request)
+	context.update(csrf(request))
+	return render_to_response('pages/signin.html', context)
 
 def hub(request):
 	context=RequestContext(request)
@@ -37,11 +37,11 @@ def melodies(request):
 	return render_to_response('pages/melodies.html', context)
 
 def about(request):
-    context=RequestContext(request)
-    userstuff={}
-    u=UserProfile.objects.filter(user="form.username")
-    userstuff['testUser'] = u[0].intervalLevel
-    return render_to_response('pages/about.html', userstuff, context)
+	context=RequestContext(request)
+	userstuff={}
+	u=UserProfile.objects.filter(user="form.username")
+	userstuff['testUser'] = u[0].intervalLevel
+	return render_to_response('pages/about.html', userstuff, context)
 
 def help(request):
 	context=RequestContext(request)
