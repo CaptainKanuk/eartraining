@@ -97,7 +97,7 @@ def auth_user(request):
 def logout(request):
     logout(request)
     #context.update(csrf(request))
-    return render_to_response('pages/404.html', context)
+    return render_to_response('pages/logout.html', context)
 
 def loggedin(request):
     context=RequestContext(request)
@@ -162,17 +162,13 @@ def register_failure(request):
 #=======================================================================
 def get_IntervalLvl(request):
     context = RequestContext(request)
-    userId = None
-    if request.method == 'GET':
-        userId = request.POST.get('username', '')
+    userId = request.POST.get('username', '')
     #temp = UserProfile.objects.filter(user=user.username).intervalLevel
     return HttpResponse(simplejson.dumps(UserProfile.objects.filter(user=userId)[0].intervalLevel), mimetype='application/json')
 
 def intLvlUp(request):
     context = RequestContext(request)
-    userId = None
-    if request.method == 'GET':
-        userId = request.GET('username')
+    userId = request.POST.get('username', '')
     lvl=1
     if userId:
         user = UserProfile.objects.get(user=userId)
