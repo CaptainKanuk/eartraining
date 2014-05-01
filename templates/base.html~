@@ -9,7 +9,7 @@
             <title>SuperTonic</title>
             
             <!-- CSS Stuff -->
-            <link href="http://fonts.googleapis.com/css?family=Raleway:200,300,700" rel="stylesheet" type="text/css">
+            <link href="http://fonts.googleapis.com/css?family=Raleway:100" rel="stylesheet" type="text/css">
             <link href="{{ STATIC_URL }}/css/bootstrap.min.css" rel="stylesheet" type="text/css">
             <link href="{{ STATIC_URL }}/css/cover.css" rel="stylesheet" type="text/css">
                 
@@ -19,7 +19,6 @@
             
             <script src="{{STATIC_URL}}/js/bootstrap.min.js"></script>
             <script src="{{STATIC_URL}}/js/docs.min.js"></script>
-            
             {% block extrahead %} {% endblock %}
         </head>
 
@@ -52,11 +51,9 @@
                                 </u1>
                             </div>
                         </nav>
+            
 
                         {% block content %}{% endblock %}
-                    </div>
-                </div>
-            </div>
                         {% block footer %}
                         <!-- footer -->
                         <div class="mastfoot">
@@ -65,6 +62,9 @@
                             </div>
                         </div>
                         {% endblock %}
+                    </div>
+                <!--/div>
+            </div-->
             
             <!-- Bootstrap core JavaScript
              ================================================== -->
