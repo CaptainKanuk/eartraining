@@ -4,22 +4,30 @@
       -webkit-animation-delay:0.2s; 
 }
 #description{
-	animation-delay:0.6s; 
--moz-animation-delay:0.6s; 
--webkit-animation-delay:0.6s;
+		animation-delay:0.6s; 
+		-moz-animation-delay:0.6s; 
+		-webkit-animation-delay:0.6s;
+}
+#startbutton {
+animation-delay:1.2s; 
+-moz-animation-delay:1.2s; 
+-webkit-animation-delay:1.2s;
 
+}
 @font-face {
   font-family: 'Raleway';
   font-style: normal;
   font-weight: 200;
   src: local('Raleway ExtraLight'), local('Raleway-ExtraLight'), url(http://themes.googleusercontent.com/static/fonts/raleway/v7/8KhZd3VQBtXTAznvKjw-k73hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
 }
+
 @font-face {
   font-family: 'Raleway';
   font-style: normal;
   font-weight: 300;
   src: local('Raleway Light'), local('Raleway-Light'), url(http://themes.googleusercontent.com/static/fonts/raleway/v7/-_Ctzj9b56b8RgXW8FArib3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
 }
+
 @font-face {
   font-family: 'Raleway';
   font-style: normal;
