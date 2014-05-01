@@ -1,7 +1,11 @@
 {% extends "base.html" %}
 
+{% block extrahead %}
+<script src="{{STATIC_URL}}/js/ajax-functions.js"></script>
+{% endblock %}
+
 {% block content %}
-<div class="inner cover">
+<div class="inner cover" onclick="alert('You clicked it!');Dajaxice.database.sayhello(my_js_callback);">
     SATAN SUMMONED SATAN SUMMONED
     <p> user page </p>
     
