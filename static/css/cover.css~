@@ -42,7 +42,7 @@ v.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
 }
 .navbar-default .navbar-toggle .icon-bar {
 		background-color: #f8f8f8;
-}
+    }
 .navbar-default .navbar-collapse,
 .navbar-default .navbar-form {
 		border-color: #f8f8f8;
@@ -74,7 +74,7 @@ v.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
 a,
 a:focus,
 a:hover {
-  color: #fff;
+  color: #111;
 }
 p, div {
    font-family: 'Raleway';
@@ -82,6 +82,8 @@ p, div {
 
 .dropdown-menu {
    text-shadow: none;	
+   box-shadow:none;
+   background-color: #F9F8FC;	
 }
 
 /* Custom default button */
@@ -92,7 +94,8 @@ p, div {
   text-shadow: none; /* Prevent inheritence from `body` */
   background-color: #ff606e;
   background-image: none;
-  border-radius: 30px
+  border-radius: 30px;
+  border:none;
 }
 input, textarea{
     color: #333;
@@ -137,50 +140,6 @@ body {
 }
 
 
-/*
- * Header
- */
-.masthead-brand {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.masthead-nav > li {
-  display: inline-block;
-}
-.masthead-nav > li + li {
-  margin-left: 20px;
-}
-.masthead-nav > li > a {
-  padding-right: 0;
-  padding-left: 0;
-  font-size: 16px;
-  font-weight: bold;
-  color: #fff; /* IE8 proofing */
-  color: rgba(255,255,255,.75);
-  border-bottom: 2px solid transparent;
-}
-.masthead-nav > li > a:hover,
-.masthead-nav > li > a:focus {
-  background-color: transparent;
-  border-bottom-color: rgba(255,255,255,.25);
-}
-.masthead-nav > .active > a,
-.masthead-nav > .active > a:hover,
-.masthead-nav > .active > a:focus {
-  color: #fff;
-  border-bottom-color: #fff;
-}
-
-@media (min-width: 768px) {
-  .masthead-brand {
-    float: left;
-  }
-  .masthead-nav {
-    float: right;
-  }
-}
-
 
 /*
  * Cover
@@ -201,7 +160,7 @@ body {
 
 .mastfoot {
   color: #999; /* IE8 proofing */
-  color: rgba(255,255,255,.5);
+  color: rgba(10,10,10,.5);
 }
 
 
