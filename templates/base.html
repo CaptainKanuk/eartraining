@@ -1,3 +1,5 @@
+{% load dajaxice_templatetags %}
+
 <html>
     <html lang="en">
         <head>
@@ -18,7 +20,8 @@
             <!--script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js"></script-->
             
             <script src="{{STATIC_URL}}/js/bootstrap.min.js"></script>
-            
+            <script src="{{STATIC_URL}}/js/docs.min.js"></script>
+            {% dajaxice_js_import %}
             {% block extrahead %} {% endblock %}
         </head>
 

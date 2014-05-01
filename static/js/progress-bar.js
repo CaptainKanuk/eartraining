@@ -92,3 +92,24 @@ function loseHP(amount){
     HP = HP - amount;
     //alert("You have "+HP+" HP left.");
 }
+
+//function to request user info from the database
+//Code from http://racingtadpole.com/blog/django-ajax-and-jquery/
+function gameOver() {
+    var board = $('#game-board').attr('data-board-id');
+    $.ajax({
+           type: "POST",
+           url: $('#game-board').attr('data-done-ref'),  // or just url: "/my-url/path/"
+           data: {
+           csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,
+           board: board,
+           move_list: move_list.join(','),
+           },
+           success: function(data) {
+           alert("Congratulations! You scored: "+data);
+           },
+           error: function(xhr, textStatus, errorThrown) {
+           alert("Please report this error: "+errorThrown+xhr.status+xhr.responseText);
+           }
+           });
+}
