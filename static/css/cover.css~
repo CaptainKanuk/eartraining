@@ -3,6 +3,7 @@
 		background-color: #2185c5;
 		border-color: #59a3d3;
 		text-shadow: none;
+		padding: 7px;
 }
 .nav > li:hover {
      background-color:rgba(177, 226, 255, .5);
@@ -13,6 +14,7 @@
 .navbar-default .navbar-brand {
 		color: #f8f8f8;
 		font-weight: 700;
+		font-size: xx-large;
 }
 .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
 		color: #b1e2ff;
@@ -22,6 +24,7 @@
 }
 .navbar-default .navbar-nav > li > a {
 		color: #f8f8f8;
+		font-size: larger;
 }
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
 		color: #fff;
@@ -84,6 +87,7 @@ p, div {
    text-shadow: none;	
    box-shadow:none;
    background-color: #F9F8FC;	
+   		     margin-top: 7px;
 }
 
 /* Custom default button */

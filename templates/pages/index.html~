@@ -1,79 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <link href="http://fonts.googleapis.com/css?family=Raleway:300,700" rel="stylesheet" type="text/css">
-            <meta charset="utf-8">
-                <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                    <meta name="viewport" content="width=device-width, initial-scale=1">
-                        <meta name="description" content="">
-                            <meta name="author" content="">
-        <!--<link rel="shortcut icon" href="../../assets/ico/favicon.ico">-->
-        
-        <title>SuperTonic</title>
-	
-	<link rel="icon" type="image/ico" href="{{ STATIC_URL }}/images/favicon.ico">
-         
-         <!-- Latest compiled and minified CSS -->
-         <link href="{{ STATIC_URL }}/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-         
-         <!-- Optional theme -->
-         <link href="{{ STATIC_URL }}/css/bootstrap-theme.min.css" rel="stylesheet"  type="text/css">
-         
-         <!-- Latest compiled and minified JavaScript -->
-         <link href="{{ STATIC_URL }}/css/bootstrap.css" rel="stylesheet" type="text/css">
-         
-         <!-- Optional theme -->
-         <link href="{{ STATIC_URL }}/css/bootstrap-theme.css" rel="stylesheet"  type="text/css">
-         
-         <!-- Bootstrap core JavaScript
-              ================================================== -->
-         <!-- Placed at the end of the document so the pages load faster -->
-         <!-- Javascript Stuff -->
-         <script src="http://code.jquery.com/jquery-latest.js"></script>
-         <script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js"></script>
-         <script src="{{STATIC_URL}}/js/bootstrap.min.js"></script>
-         <script src="{{STATIC_URL}}/js/docs.min.js"></script>
-         <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-         
-            <!-- Latest compiled and minified JavaScript
-		 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-		 -->
-            <!-- Custom styles for this template -->
-            <link href="{{ STATIC_URL }}/css/cover.css" rel="stylesheet" type="text/css">
-            
-            <script>
-              $(function(){
-              $("#includeMenu").load("{{ STATIC_URL }}/html/menu.html");
-              });
-            </script>
-            <script>
-                $(function(){
-                  $("#includeFooter").load("{{ STATIC_URL }}/html/footer.html");
-                  });
-            </script>
-    </head>
-    
-    <body>
-        <div class="site-wrapper">
-            <div class="site-wrapper-inner">
-                <div class="cover-container">
-                    <div id="includeMenu"></div>
-                    <div class="inner cover">
-                        <h1 class="cover-heading">Welcome to SuperTonic!</h1>
-			<p> We've been waiting for you </p>
-                        <p class="lead">SuperTonic is the beautiful, interactive ear-training application for musicians and non-musicians alike. Improve your sight-reading and music knowledge with just a few progressive games!</p>
-                        <a href="/intervals" class="btn btn-lg btn-default">Let's start.</a>
-                    
-                    </div>
-                    
+{% extends "base.html" %}
 
-                    <div id="includeFooter"></div>
-                    
-                </div>
-                
-            </div>
-            
-        </div>
-        
-    </body>
-</html>
+{% block content %}
+<div class="inner cover">
+    <h1 class="cover-heading">Welcome to SuperTonic!</h1>
+    <p> We've been waiting for you </p>
+    <p class="lead">SuperTonic is the beautiful, interactive ear-training application for musicians and non-musicians alike. Improve your sight-reading and music knowledge with just a few progressive games!</p>
+    <a href="/intervals" class="btn btn-lg btn-default">Let's start.</a>
+    
+</div>
+{% endblock %}
