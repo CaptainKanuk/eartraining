@@ -31,7 +31,7 @@ urlpatterns = patterns('',
     #===============USER REGISTRATION===============
     url(r'^register/$', register_user, name='register_user'),
     url(r'^register_success/$', register_success, name='register_success'),
-    #url(r'^get_IntervalLvl/$', get_IntervalLvl, name='get_IntervalLvl'),
+    url(r'^getIntLvl/$', get_IntervalLvl, name='get_IntervalLvl'),
 )
 
 urlpatterns += patterns('',

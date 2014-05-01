@@ -19,6 +19,7 @@
             
             <script src="{{STATIC_URL}}/js/bootstrap.min.js"></script>
             <script src="{{STATIC_URL}}/js/docs.min.js"></script>
+            
             {% block extrahead %} {% endblock %}
         </head>
 
@@ -51,9 +52,11 @@
                                 </u1>
                             </div>
                         </nav>
-            
 
                         {% block content %}{% endblock %}
+                    </div>
+                </div>
+            </div>
                         {% block footer %}
                         <!-- footer -->
                         <div class="mastfoot">
@@ -62,9 +65,6 @@
                             </div>
                         </div>
                         {% endblock %}
-                    </div>
-                <!--/div>
-            </div-->
             
             <!-- Bootstrap core JavaScript
              ================================================== -->

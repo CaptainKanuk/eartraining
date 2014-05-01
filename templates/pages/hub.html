@@ -1,9 +1,13 @@
 {% extends "base.html" %}
 
+{% block extrahead %}
+<script src="{{ STATIC_URL }}/js/test.js"></script>
+{% endblock %}
+
 {% block content %}
-<div class="inner cover">
-    SATAN SUMMONED SATAN SUMMONED
-    <p> user page </p>
-    
+{% csrf_token %}
+<div id="testtimes" onclick="gameOver()">
+    This is some stuff?
+    <a href="/getIntLvl/"> Click here! </a>
 </div>
 {% endblock %}
