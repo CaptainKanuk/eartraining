@@ -9,15 +9,21 @@
 var pitchClassNames = ["c", "c#", "d", "d#", "e", "f", "f#", "g", "g#", "a", "a#", "b"];
 
 
+function showIntervalChoice()
+{
+
+}
+
 function showIntervalName(){
     var promptField = document.getElementById(prompt);
     
-    var base = correctInterval[0];
-    var top = correctInterval[2];
-    var tonediff = top - base;
+    var interval = correctInterval;
+    var base = interval[0];
+    var top = interval[2];
+    var tonediff = Math.abs(top - base);
     
-    var base_offset = correctInterval[1];
-    var top_offset = correctInterval[3];
+    var base_offset = interval[1];
+    var top_offset = interval[3];
 
     var base_written = base + base_offset;
     var top_written = top + top_offset;

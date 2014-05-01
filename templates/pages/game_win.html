@@ -2,61 +2,68 @@
 <html lang="en">
     <head>
         <link href="http://fonts.googleapis.com/css?family=Raleway:100" rel="stylesheet" type="text/css">
-            <meta charset="utf-8">
-                <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                    <meta name="viewport" content="width=device-width, initial-scale=1">
-                        <meta name="description" content="">
-                            <meta name="author" content="">
-                                <!--<link rel="shortcut icon" href="../../assets/ico/favicon.ico">-->
-                                
-                                <link rel="icon" type="image/ico" href="{{ STATIC_URL }}/images/favicon.ico">
-                                <title>PASS!</title>
-                                
-                                <!-- Bootstrap core CSS -->
-                                <!--<link href="{{STATIC_URL}}css/bootstrap.min.css" rel="stylesheet">
-                                 <!--<link href="{{STATIC_URL}}css/bootstrap-theme.min.css" rel="stylesheet">
-                                 
-                                 <!-- Latest compiled and minified CSS -->
-                                <link href="{{ STATIC_URL }}/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-                                    
-                                    <!-- Optional theme -->
-                                    <link href="{{ STATIC_URL }}/css/bootstrap-theme.min.css" rel="stylesheet"  type="text/css">
-                                        
-                                        <!-- Latest compiled and minified JavaScript -->
-                                        <link href="{{ STATIC_URL }}/css/bootstrap.css" rel="stylesheet" type="text/css">
-                                            
-                                            <!-- Optional theme -->
-                                            <link href="{{ STATIC_URL }}/css/bootstrap-theme.css" rel="stylesheet"  type="text/css">
-                                                <!-- Latest compiled and minified JavaScript
-                                                 <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-                                                 -->
-                                                <!-- Custom styles for this template -->
-                                                <link href="{{ STATIC_URL }}/css/cover.css" rel="stylesheet" type="text/css">
-                                                    
-                                                    <!-- Javascript Stuff -->
-                                                    <script src="http://code.jquery.com/jquery-latest.js"></script>
-                                                    <script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js"></script>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <!--<link rel="shortcut icon" href="../../assets/ico/favicon.ico">-->
+        
+        <link rel="icon" type="image/ico" href="{{ STATIC_URL }}/images/favicon.ico">
+        <title>PASS!</title>
+        
+        <!-- Bootstrap core CSS -->
+        <!--<link href="{{STATIC_URL}}css/bootstrap.min.css" rel="stylesheet">
+         <!--<link href="{{STATIC_URL}}css/bootstrap-theme.min.css" rel="stylesheet">
+         
+         <!-- Latest compiled and minified CSS -->
+        <link href="{{ STATIC_URL }}/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+            
+        <!-- Optional theme -->
+        <link href="{{ STATIC_URL }}/css/bootstrap-theme.min.css" rel="stylesheet"  type="text/css">
+                
+        <!-- Latest compiled and minified JavaScript -->
+        <link href="{{ STATIC_URL }}/css/bootstrap.css" rel="stylesheet" type="text/css">
+                    
+        <!-- Optional theme -->
+        <link href="{{ STATIC_URL }}/css/bootstrap-theme.css" rel="stylesheet"  type="text/css">
+        <!-- Latest compiled and minified JavaScript
+         <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+         -->
+        <!-- Custom styles for this template -->
+        <link href="{{ STATIC_URL }}/css/cover.css" rel="stylesheet" type="text/css">
+                            
+        <!-- Javascript Stuff -->
+        <script src="http://code.jquery.com/jquery-latest.js"></script>
+        <script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js"></script>
+
+        <script src="{{ STATIC_URL }}/js/vexflow-debug.js"></script>
+        <script src="{{ STATIC_URL }}/js/vexflow-min.js"></script>
+        <script src="{{ STATIC_URL }}/js/interval-names-table.js"></script>
+        <script src="{{ STATIC_URL }}/js/music-staff.js"></script>
+        <script src="{{ STATIC_URL }}/js/progress-bar.js"></script>
+        <script src="{{ STATIC_URL }}/js/riffwave.js"></script>
 
                                                     
-                                                    <!-- Just for debugging purposes. Don't actually copy thisd line! -->
-                                                    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-                                                    
-                                                    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-                                                    <!--[if lt IE 9]>
-                                                     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-                                                     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-                                                     <![endif]-->
-                                                    <script>
-                                                        $(function(){
-                                                          $("#includeMenu").load("{{ STATIC_URL }}/html/menu.html");
-                                                          });
-                                                        </script>
-                                                    <script>
-                                                        $(function(){
-                                                          $("#includeFooter").load("{{ STATIC_URL }}/html/footer.html");
-                                                          });
-                                                        </script>
-                                                    </head>
+    <!-- Just for debugging purposes. Don't actually copy thisd line! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+     <![endif]-->
+    <script>
+        $(function(){
+          $("#includeMenu").load("{{ STATIC_URL }}/html/menu.html");
+          });
+        </script>
+    <script>
+        $(function(){
+          $("#includeFooter").load("{{ STATIC_URL }}/html/footer.html");
+          });
+        </script>
+    </head>
     
     <body>
         <div class="site-wrapper">
@@ -70,7 +77,9 @@
                         <h1 id = "about_win" class="cover-heading"> You passed the quiz.</h1>
 
 			<p class = "lead"> SuperTonic was written by a group of Princeton students who were frustrated with how outdated all of the ear-training websites are. No one should have to force themselves to learn about music - it should be fun! And so: <br> <h2> SuperTonic WAS BORN </h2></p> 
-                        <p class = "lead"> SuperTonic uses a selection of highly interactive games to make ear training addictive and easy. Users choose from game categories such as intervals, MORE STUFF LATER, and level up as they slowly become masters at that musical skill.  </p>
+                        <p class = "lead"> 
+                            <a href="/intervals" id="start" class="btn btn-lg btn-default">Next quiz.</a>
+                         </p>
 			<br><br>
 			<p class = "lead"> Contact the makers of SuperTonic at: blahblahblah@blah.blah </p>
                     </div>

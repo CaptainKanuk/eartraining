@@ -83,35 +83,12 @@
                 var button = document.getElementById("start");
                 //test_num = 1; //DATABASE: get test number from current test number chosed out of available tests for specific user
                 //test_set = 1; //DATABASE: get current test set number (1 or 2) from user database 
-                /*
                 if(button.innerHTML=="Let's start."){
                     button.innerHTML="Next Interval";
                     $("canvas").slideToggle("slow");
                     //use this
                     //newIntervalFromTest(test_set,test_num);
-                    newIntervalFromTest(0,1);
-                    playInterval(correctInterval[0], correctInterval[2], 2, 30);
-                }
-                else{
-                    $("canvas").slideToggle("slow", function () {
-                        
-                        //newIntervalFromTest(test_set,test_num);
-                        newIntervalFromTest(0,1);
-                        playInterval(correctInterval[0], correctInterval[2], 2, 30);
-                    });
-                    $("canvas").slideToggle("slow");
-                }
-                */
-                if(button.innerHTML=="Let's start."){
-                    button.innerHTML="Next Interval";
-                    var interval_button = document.getElementById("interval-play");
-                    interval_button.setAttribute("onclick","playInterval(correctInterval[0], correctInterval[2], 2, 30);");
-                    interval_button.setAttribute("class", "btn btn-lg btn-default");
-                    interval_button.innerHTML = "Play interval.";
-                    $("canvas").slideToggle("slow");
-                    //use this
-                    //newIntervalFromTest(test_set,test_num);
-                    getNewIntervals(1,newIntervalFromTest(1,2));
+                    getNewIntervals(0,newIntervalFromTest(1,2));
                     playInterval(correctInterval[0], correctInterval[2], 2, 30);
                 }
                 else{
@@ -120,7 +97,7 @@
                     });
                     $("canvas").slideToggle("slow");
                     //newIntervalFromTest(test_set,test_num);
-                    getNewIntervals(1,newIntervalFromTest(1,2));
+                    getNewIntervals(0, newIntervalFromTest(1,2));
                     playInterval(correctInterval[0], correctInterval[2], 2, 30);
                 }
             };
@@ -135,7 +112,6 @@
             <div class="inner cover">
               <h1 class="cover-heading">Intervals</h1>
               <p class="lead">
-                <a id="interval-play" onclick="" class=""></a>
                 <div id="choice">
                   <h3 id="prompt" align="center">
                     Click the button to get an interval!
