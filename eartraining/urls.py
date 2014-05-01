@@ -5,6 +5,10 @@ from django.contrib import admin
 from pages.views import *
 admin.autodiscover()
 
+from dajaxice.core import dajaxice_autodiscover, dajaxice_config
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+dajaxice_autodiscover()
+
 handler404 = 'pages.views.notfound'
 
 urlpatterns = patterns('',
@@ -15,7 +19,7 @@ urlpatterns = patterns('',
     url(r'^home/', index, name='index'),
     url(r'^index/', index, name = 'index'),
     url(r'^signin/', signin, name = 'signin'),
-    url(r'^train/', train, name = 'train'),
+    url(r'^hub/', hub, name = 'hub'),
     url(r'^intervals/', intervals, name = 'intervals'),
     url(r'^melodies/', melodies, name = 'melodies'),
     url(r'^about/', about, name = 'about'),
@@ -31,9 +35,12 @@ urlpatterns = patterns('',
     #===============USER REGISTRATION===============
     url(r'^register/$', register_user, name='register_user'),
     url(r'^register_success/$', register_success, name='register_success'),
-    #url(r'^get_IntervalLvl/$', get_IntervalLvl, name='get_IntervalLvl'),
+    #===============DAJAX===============
+    url(dajaxice_config.dajaxice_url, include('dajaxice.urls')),
 )
 
 urlpatterns += patterns('',
                        (r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
                        )
+
+urlpatterns += staticfiles_urlpatterns()

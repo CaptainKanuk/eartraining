@@ -1,0 +1,66 @@
+{% load dajaxice_templatetags %}
+
+<html>
+    <html lang="en">
+        <head>
+            <meta charset="utf-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            
+            <link rel="icon" type="image/ico" href="{{ STATIC_URL }}/images/favicon.ico">
+            <title>SuperTonic</title>
+            
+            <!-- CSS Stuff -->
+            <link href="{{ STATIC_URL }}/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+            <link href="{{ STATIC_URL }}/css/cover.css" rel="stylesheet" type="text/css">
+	    <link href="{{ STATIC_URL }}/css/animate.css" rel="stylesheet" type="text/css">
+                
+            <!-- Javascript Stuff -->
+            <script src="http://code.jquery.com/jquery-latest.js"></script>
+            <!--script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js"></script-->
+            
+            <script src="{{STATIC_URL}}/js/bootstrap.min.js"></script>
+            <script src="{{STATIC_URL}}/js/docs.min.js"></script>
+            {% dajaxice_js_import %}
+            {% block extrahead %} {% endblock %}
+        </head>
+
+        <body>
+            <div class="site-wrapper">
+                <div class="site-wrapper-inner">
+                    {% block incProgBar %}{% endblock %}
+                    <div class="cover-container">
+                        <!-- nav bar -->
+                        <nav id="mainMenu" class="navbar navbar-default navbar-fixed-top" role="navigation">
+                            <div class="container">
+                                <a class="navbar-brand" href="/hub">SuperTonic</a>
+                                <u1 class="nav navbar-nav navbar-right">
+                                    <li class="dropdown" id="trainingmenu">
+                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#trainingmenu">
+                                            Training
+                                            <b class="caret"></b>
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="/intervals">Intervals</a></li>
+                                            <li><a href="/melodies">Melodies</a></li>
+                                            <li><a href="/rhythms">Rhythms</a></li>
+                                            <li><a href="/chords">Chords</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="/about">About</a></li>
+                                    <li><a href="/help">Help</a></li>
+                                    {% if user.is_authenticated %} <li>Try harder, '{{ user.username }}'</li>
+                                    {% else %}<li><a href="/signin">Sign-In</a></li>{% endif %}
+                                </u1>
+                            </div>
+                        </nav>
+
+                        {% block content %}{% endblock %}
+
+            
+            <!-- Bootstrap core JavaScript
+             ================================================== -->
+            <!-- Placed at the end of the document so the pages load faster -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+        </body>
+</html>
