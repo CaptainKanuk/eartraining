@@ -2,6 +2,6 @@
 
 {% block content %}
 <div class="inner cover">
-    <h1 id = "about_win" class="cover-heading animated bounceIn"> You passed the quiz!</h1>
+    <h1 id = "about_win" class="cover-heading animated bounceIn"> You passed the quiz.</h1>
 </div>
 {% endblock %}
