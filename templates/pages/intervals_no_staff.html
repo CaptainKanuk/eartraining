@@ -5,9 +5,10 @@
 <script src="{{ STATIC_URL }}/js/vexflow-debug.js"></script>
 <script src="{{ STATIC_URL }}/js/vexflow-min.js"></script>
 <script src="{{ STATIC_URL }}/js/interval-names-table.js"></script>
-<script src="{{ STATIC_URL }}/js/melodies.js"></script>
+<script src="{{ STATIC_URL }}/js/music-staff.js"></script>
 <script src="{{ STATIC_URL }}/js/progress-bar.js"></script>
 <script src="{{ STATIC_URL }}/js/riffwave.js"></script>
+<script src="{{ STATIC_URL }}/js/GLOBAL.js"></script>
 
 <style type="text/css">
     canvas {
@@ -28,16 +29,19 @@ div.egcode {
         answerChosen = false;
         var button = document.getElementById("start");
         if(button.innerHTML=="Let's start."){
-            button.innerHTML="Next Melody.";
+            button.innerHTML="Next Interval";
             $("canvas").slideToggle("slow");
-            getNewMelodies();
+            getNewIntervals(0,newIntervalFromTest(1,2));
+            playInterval(correctInterval[0], correctInterval[2], 2, 30);
         }
         else{
             $("canvas").slideToggle("slow", function () {
-                document.getElementById(prompt).innerHTML = "Next melody.";
-                getNewMelodies();
+                                    
             });
             $("canvas").slideToggle("slow");
+            //newIntervalFromTest(test_set,test_num);
+            getNewIntervals(0, newIntervalFromTest(1,2));
+            playInterval(correctInterval[0], correctInterval[2], 2, 30);
         }
     };
 </script>
@@ -60,27 +64,24 @@ div.egcode {
 {% endblock %}
 
 {% block content %}
-</div>
-<h1 class="cover-heading">Melodies</h1>
+<h1 class="cover-heading">Intervals</h1>
 <p class="lead">
 <div id="choice">
     <h3 id="prompt" align="center">
-        Play and select the correct melody.
+        Click the button to get an interval!
     </h3>
-    <p class="lead">
-    <a id="mel-play" onclick="playMelody(); deactivateMelPlay();" class="btn btn-lg btn-default">Play melody.</a>
-    </p>
     <div class="row">
-		<div class="col-md-6">
-            <canvas id="choice_one" onclick="chooseAnswer('choice_one')" width="440" height="100"
+        <div class="col-md-6">
+            <canvas id="choice_one" onclick="chooseAnswer('choice_one')" width="220" height="100"
                 style="border:4px solid #000000;display:none;">
                 <script>
                     setup("choice_one");
                     </script>
             </canvas>
+            
         </div>
-		<div class="col-md-6">
-            <canvas id="choice_two" onclick="chooseAnswer('choice_two')" width="440" height="100"
+        <div class="col-md-6">
+            <canvas id="choice_two" onclick="chooseAnswer('choice_two')" width="220" height="100"
                 style="border:4px solid #000000;display:none;">
                 <script>
                     setup("choice_two");
@@ -89,16 +90,17 @@ div.egcode {
         </div>
     </div>
     <div class="row">
-		<div class="col-md-6">
-            <canvas id="choice_three" onclick="chooseAnswer('choice_three')" width="440" height="100"
+        <div class="col-md-6">
+            <canvas id="choice_three" onclick="chooseAnswer('choice_three')" width="220" height="100"
                 style="border:4px solid #000000;display:none;">
                 <script>
                     setup("choice_three");
                     </script>
             </canvas>
+            
         </div>
-		<div class="col-md-6">
-            <canvas id="choice_four" onclick="chooseAnswer('choice_four')" width="440" height="100"
+        <div class="col-md-6">
+            <canvas id="choice_four" onclick="chooseAnswer('choice_four')" width="220" height="100"
                 style="border:4px solid #000000;display:none;">
                 <script>
                     setup("choice_four");
@@ -106,7 +108,7 @@ div.egcode {
             </canvas>
         </div>
     </div>
-    
+</div>
 </div>
 <p class="lead">
 <a href="#" id="start" onclick="progress()" class="btn btn-lg btn-default">Let's start.</a>
