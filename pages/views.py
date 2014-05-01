@@ -3,6 +3,8 @@ from django.template import RequestContext
 from django.shortcuts import render_to_response
 #from pages.forms import RegisterForm
 from django.http import HttpResponseRedirect
+from django.http import HttpResponse
+from django.http import Http404
 from django.contrib import auth
 from django.core.context_processors import csrf
 from django.contrib.auth.forms import UserCreationForm
@@ -148,3 +150,16 @@ def get_IntervalLvl(request):
     context=RequestContext(reqeust)
     return UserProfile.objects.filter(user=user.username).intervalLevel
 
+
+#AJAX request to get info from the user database
+#Code from http://racingtadpole.com/blog/django-ajax-and-jquery/
+def game_over(request):
+    if request.is_ajax():
+        try:
+            board_pk = int(request.POST['board'])
+            moves = list(map(int, request.POST['move_list'].split(',')))
+        except KeyError:
+            return HttpResponse('Error') # incorrect post
+        return HttpResponse('Error')
+    else:
+        raise Http404
