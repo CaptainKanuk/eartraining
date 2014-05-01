@@ -120,7 +120,7 @@ def register_user(request):
         #return render_to_response('pages/register.html', argTest, context)
         if form.is_valid():
             form.save()
-            u = UserProfile(user=user.username, intervalLevel="1", melodyLevel="1")
+            u = UserProfile(userId=request.POST.get('username', ''), intervalLevel="1", melodyLevel="1")
             u.save()
             return HttpResponseRedirect('/register_success/', context)
         else:
@@ -133,6 +133,13 @@ def register_user(request):
     args = {}
     args.update(csrf(request))
     args['errorMsg'] = errorMsg
+    
+    username = request.POST.get('username', '')
+    password = request.POST.get('password1', '')
+    user = auth.authenticate(username=username, password=password)
+    
+    if user is not None:
+        auth.login(request, user)
     return render_to_response('pages/signin.html',args, context)
 
 #Success page on registering a user
@@ -163,7 +170,7 @@ def intLvlUp(request):
     context = RequestContext(request)
     userId = None
     if request.method == 'GET':
-        userId = request.GET('user.username')
+        userId = request.GET('username')
     lvl=1
     if userId:
         user = UserProfile.objects.get(user=userId)

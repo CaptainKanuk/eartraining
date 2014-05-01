@@ -8,25 +8,36 @@
 <script src="{{ STATIC_URL }}/js/music-staff.js"></script>
 <script src="{{ STATIC_URL }}/js/progress-bar.js"></script>
 <script src="{{ STATIC_URL }}/js/riffwave.js"></script>
+<script src="{{ STATIC_URL }}/js/GLOBAL.js"></script>
+
 
 <script>
     $("canvas").slideToggle("fast");
+    //in_interval_test = 1;
     function progress(){
+        alert(test_num);
         answerChosen = false;
         var button = document.getElementById("start");
         if(button.innerHTML=="Let's start."){
             button.innerHTML="Next Interval";
+            var interval_button = document.getElementById("interval-play");
+            interval_button.setAttribute("onclick","playInterval(correctInterval[0], correctInterval[2], 2, 30);");
+            interval_button.setAttribute("class", "btn btn-lg btn-default");
+            interval_button.innerHTML = "Play interval.";
             $("canvas").slideToggle("slow");
-            getNewIntervals();
-            alert("here");
+            //use this
+            //newIntervalFromTest(test_set,test_num);
+            getNewIntervals(1,newIntervalFromTest(1,2));
             playInterval(correctInterval[0], correctInterval[2], 2, 30);
-            alert("here2");
         }
         else{
             $("canvas").slideToggle("slow", function () {
-                                    getNewIntervals();
+                                    
                                     });
                                     $("canvas").slideToggle("slow");
+                                    //newIntervalFromTest(test_set,test_num);
+                                    getNewIntervals(1,newIntervalFromTest(1,2));
+                                    playInterval(correctInterval[0], correctInterval[2], 2, 30);
         }
     };
 </script>
@@ -67,17 +78,18 @@ div.egcode {
 <div class="inner cover">
     <h1 class="cover-heading">Intervals</h1>
     <p class="lead">
+    <a id="interval-play" onclick="" class=""></a>
     <div id="choice">
         <h3 id="prompt" align="center">
             Click the button to get an interval!
         </h3>
         <div class="row">
-	  <div class="col-md-6">
-          <canvas id="choice_one" onclick="chooseAnswer('choice_one')" width="220" height="100"
+		    <div class="col-md-6">
+                <canvas id="choice_one" onclick="chooseAnswer('choice_one')" width="220" height="100"
                     style="border:4px solid #000000;display:none;">
-            <script>
-              setup("choice_one");
-            </script>
+                    <script>
+                        setup("choice_one");
+                        </script>
                 </canvas>
                 
 		    </div>
@@ -86,7 +98,7 @@ div.egcode {
                     style="border:4px solid #000000;display:none;">
                     <script>
                         setup("choice_two");
-                    </script>
+                        </script>
                 </canvas>
             </div>
         </div>
@@ -96,7 +108,7 @@ div.egcode {
                     style="border:4px solid #000000;display:none;">
                     <script>
                         setup("choice_three");
-                    </script>
+                        </script>
                 </canvas>
                 
 		    </div>
@@ -105,7 +117,7 @@ div.egcode {
                     style="border:4px solid #000000;display:none;">
                     <script>
                         setup("choice_four");
-                    </script>
+                        </script>
                 </canvas>
             </div>
         </div>

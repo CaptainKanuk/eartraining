@@ -1,4 +1,14 @@
-function gameOver() {
+$(document).ready(function() {
+                  $('#upLvl').click(function() {
+                                    var userid;
+                                    userid = $(this).attr("data-userid");
+                                    $.get('/intLvlUp/', {username: userid}, function(data){
+                                          $('#int_lvl').html(data);
+                                          }); 
+                                    }
+                  });
+
+/*function gameOver() {
     alert('here!');
     $.getJSON('/getIntLvl/', {userid: user.username}, function() {alert('hello!');});
     //var board = $('#testtimes');//.attr('data-board-id');
@@ -18,6 +28,6 @@ function gameOver() {
            error: function(xhr, textStatus, errorThrown) {
            alert("Please report this error: "+errorThrown+xhr.status+xhr.responseText);
            }
-           });*/
+           });
     alert('done!');
-}
+}*/

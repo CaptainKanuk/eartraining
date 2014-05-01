@@ -32,6 +32,7 @@ urlpatterns = patterns('',
     url(r'^register/$', register_user, name='register_user'),
     url(r'^register_success/$', register_success, name='register_success'),
     url(r'^getIntLvl/$', get_IntervalLvl, name='get_IntervalLvl'),
+    url(r'^upIntLvl/$', intLvlUp, name='intLvlUp')
 )
 
 urlpatterns += patterns('',

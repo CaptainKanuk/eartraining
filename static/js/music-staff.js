@@ -4,6 +4,7 @@
 
 var labels = ["choice_one", "choice_two", "choice_three", "choice_four"];
 var prompt = "prompt";
+var direction = 0;   //1 == up, -1 == down
 
 //Summon Satan
 
@@ -26,9 +27,7 @@ var ctx1, ctx2, ctx3, ctx4;
 
 var stave1, stave2, stave3, stave4;
 
-var correctChoice;
-//intervals are [basetone, baseoffset, toptone, topoffset]
-var correctInterval;
+
 var answerChosen = true;
 
 function drawStaff(elem)
@@ -176,9 +175,40 @@ function getRandomInterval(){
     var base = Math.floor(Math.random()*13.0)+60;
     var interval = Math.floor(Math.random()*13.0);
     var top = base + interval;
-    var base_offset = Math.floor(Math.random()*3)-1;
-    var top_offset = Math.floor(Math.random()*3)-1;
+    var base_offset = Math.floor(Math.random()*2)-1;
+    var top_offset = Math.floor(Math.random()*2)-1;
     return [base, base_offset, top, top_offset];
+}
+
+function getRandomIntervalNotX(displace){
+    //Generate random interval
+    var base = Math.floor(Math.random()*13.0)+60;
+    var interval = Math.floor(Math.random()*13.0);
+    while (interval == displace)
+        interval = Math.floor(Math.random()*13.0);
+    var top = base + interval;
+    var base_offset = Math.floor(Math.random()*2)-1;
+    var top_offset = Math.floor(Math.random()*2)-1;
+    return [base, base_offset, top, top_offset];
+}
+
+function toInterval(disp){
+    //Generate random interval
+    var base = Math.floor(Math.random()*13.0)+60;
+    var interval = disp;
+    var top = base + interval;
+    //var base_offset = Math.floor(Math.random()*2)-1;
+    var base_offset = 0;
+    var top_offset = Math.floor(Math.random()*2)-1;
+    if (Math.random() < .5) {
+        return [base, base_offset, top, top_offset];
+        direction = 1;
+    }
+    else    
+    {
+        return [top, top_offset, base, base_offset];
+        direction = -1;
+    }
 }
 
 function intervalToNotes(interval) {
@@ -216,20 +246,167 @@ function intervalToNotes(interval) {
             noteT.addAccidental(0, new Vex.Flow.Accidental("b"));
     }
 
-    var notes = [
-                 noteB, noteT
-                 ];
-    
+    notes =  [noteB, noteT];
     return notes;
 }
 
-function getNewIntervals()
+
+function newIntervalFromTest(set, test)
+{
+    if (set == 0)
+    {
+        switch(test)
+        {
+            case 1:
+                var notesI = [0, 12];
+                break;
+            case 2:
+                var notesI = [0,1];
+                break;
+            case 3:
+                var notesI = [1,2];
+                break;
+            case 4:
+                var notesI = [2,3];
+                break;
+            case 5:
+                var notesI = [1,2,3];
+                break;
+            case 6:
+                var notesI = [3,4];
+                break;
+            case 7:
+                var notesI = [1,2,3,4];
+                break;
+            case 8:
+                var notesI = [4,5];
+                break;
+            case 9:
+                var notesI = [5,6];
+                break;
+            case 10:
+                var notesI = [6,7];
+                break;
+            case 11:
+                var notesI = [5,6,7];
+                break;
+            case 12:
+                var notesI = [1,2,3,4,5,6,7];
+                break;
+            case 13:
+                var notesI = [7,8];
+                break;
+            case 14:
+                var notesI = [8,9];
+                break;
+            case 15:
+                var notesI = [6,7,8,9];
+                break;
+            case 16:
+                var notesI = [1,2,3,4,5,6,7,8,9];
+                break;
+            case 17:
+                var notesI = [9,10];
+                break;
+            case 19:
+                var notesI = [10,11];
+                break;
+            case 20:
+                var notesI = [10, 11, 12];
+                break;
+            case 21:
+                var notesI = [8,9,10,11,12];
+                break;
+            case 22:
+                var notesI = [0,1,2,3,4,5,6,7,8,9,10,11,12];
+                break;
+        }
+    }
+    else if (set == 1)
+    {
+        switch(test)
+        {
+            case 1:
+                var notesI = [0,12];
+                break;
+            case 2:
+                var notesI = [12,11];
+                break;
+            case 3:
+                var notesI = [12,10];
+                break;
+            case 4:
+                var notesI = [10,9];
+                break;
+            case 5:
+                var notesI = [12,11,10,9];
+                break;
+            case 6:
+                var notesI = [9,8];
+                break;
+            case 7:
+                var notesI = [12,11,10,9,8];
+                break;
+            case 8:
+                var notesI = [8,7];
+                break;
+            case 9:
+                var notesI = [7,6];
+                break;
+            case 10:
+                var notesI = [6,5];
+                break;
+            case 11:
+                var notesI = [12,8,7,6];
+                break;
+            case 12:
+                var notesI = [12,11,10,9,8,7,6];
+                break;
+            case 13:
+                var notesI = [6,5];
+                break;
+            case 14:
+                var notesI = [5,4];
+                break;
+            case 15:
+                var notesI = [7,6,5,4];
+                break;
+            case 16:
+                var notesI = [12,11,10,9,8,7,6,5,4];
+                break;
+            case 17:
+                var notesI = [4,3];
+                break;
+            case 19:
+                var notesI = [3,2];
+                break;
+            case 20:
+                var notesI = [12,4,3,2];
+                break;
+            case 21:
+                var notesI = [12,2,1];
+                break;
+            case 22:
+                var notesI = [0,1,2,3,4,5,6,7,8,9,10,11,12];
+                break;
+        }
+    }
+
+    var rand_ind = Math.floor(Math.random()*notesI.length);
+    return notesI[rand_ind];
+}
+
+
+function getNewIntervals(staff, correct_int)//interval_class arg
 {
     clearCanvases();
     resetBorderColors();
     drawStaves();
     //Get a random interval
-    var interval = getRandomInterval();
+
+    //var index = Math.floor(Math.random()*interval_class.length);
+    // var interval = interval_class[index];
+    var interval = toInterval(correct_int);
     var notes = intervalToNotes(interval);
     //choose which canvas will draw it
     var select = Math.floor(Math.random()*labels.length);
@@ -239,17 +416,26 @@ function getNewIntervals()
 
     correctChoice = outelem;
     correctInterval = interval;
-    showInterval(intervalToNotes(interval), correctChoice);
+    var displace = Math.abs(correctInterval[2]-correctInterval[0]);
+    if (staff == 1)
+        showInterval(intervalToNotes(interval), correctChoice);
+    if (staff == 0)
+        showIntervalChoice(correctInterval, correctChoice);
+
     //show the intervals on the canvas
     for(var i = 0; i < labels.length; i++){
         if(i != select){
             //populate the wrong answers
-            interval = getRandomInterval();
-            showInterval(intervalToNotes(interval), labels[i]);
+            interval = getRandomIntervalNotX(displace);
+            if (staff == 1)
+                showInterval(intervalToNotes(interval), labels[i]);
+            if (staff == 0)
+                showIntervalChoice(interval, labels[i]);
         }
     }
-    //finally, make the correct interval display as a prompt
-    showIntervalName();
+    
+    if (staff == 1)
+        showIntervalName();
 }
 
 function resetBorderColors(){
@@ -300,7 +486,7 @@ function semitoneToFrequency(semitone){
 }
 
 
-function playMelody(melArray, gain)
+function playIMelody(melArray, gain)
 {
     var audio = new Audio(); //html5 audio element
     var wave = new RIFFWAVE(); //empty wavefile
@@ -353,57 +539,16 @@ function playMelody(melArray, gain)
 
 }
 
+
 function playInterval(freq1, freq2, length, gain)
 {
-    playMelody([ [freq1, length] , [freq2, length] ], gain);
+    playIMelody([ [freq1, length] , [freq2, length] ], gain);
     //melodyMaker();
 }
 
+
 function melodyMaker()
 {
-    playMelody([[60,1], [62,1], [64,1], [60,1], [60,1], [62,1], [64,1], [60,1], [64,1],[65,1],[67,1]], 30);
+    playIMelody([[60,1], [62,1], [64,1], [60,1], [60,1], [62,1], [64,1], [60,1], [64,1],[65,1],[67,1]], 30);
 }
 
-/*function playInterval(freq1, freq2, length, gain){
-    
-    var audio = new Audio(); // create the HTML5 audio element
-    var wave = new RIFFWAVE(); // create an empty wave file
-    var data = []; // yes, it's an array
-    var sR = 44100;
-    var gainI = 0;
-    var gainstep = 4 * gain/sR;
-    
-    wave.header.sampleRate = sR; // set sample rate to 44KHz
-    wave.header.numChannels = 2; // two channels (stereo)
-    
-    var newF1 = freq1/sR * 2 * Math.PI;
-    var newF2 = freq2/sR * 2 * Math.PI;
-    
-    var samples = length * sR;
-    
-    var i = 0;
-
-    while (i<samples) {
-        data[i++] = 128+Math.round(gainI*Math.sin(newF1*i)); // left speaker
-        data[i++] = 128+Math.round(gainI*Math.sin(newF1*i)); // right speaker
-        if (gainI > 40)
-            gainstep = (-4/3)*gain/sR
-        gainI = gainI + gainstep;
-
-    }
-    gainstep = 4 * gain/sR;
-    gainI = 0;
-    while (i<2*samples) {
-        data[i++] = 128+Math.round(gainI*Math.sin(newF2*i)); // left speaker
-        data[i++] = 128+Math.round(gainI*Math.sin(newF2*i)); // right speaker
-        if (gainI > 40)
-            gainstep = (-4/3)*gain/sR
-        gainI = gainI + gainstep;
-    }
-    
-    wave.Make(data); // make the wave file
-    audio.src = wave.dataURI; // set audio source
-    audio.play(); // we should hear two tones one on each speaker
-    
-}
-*/
