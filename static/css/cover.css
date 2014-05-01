@@ -1,3 +1,31 @@
+#logo {
+      animation-delay:0.2s; 
+      -moz-animation-delay:0.2s; 
+      -webkit-animation-delay:0.2s; 
+}
+#description{
+	animation-delay:0.6s; 
+-moz-animation-delay:0.6s; 
+-webkit-animation-delay:0.6s;
+
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 200;
+  src: local('Raleway ExtraLight'), local('Raleway-ExtraLight'), url(http://themes.googleusercontent.com/static/fonts/raleway/v7/8KhZd3VQBtXTAznvKjw-k73hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Raleway Light'), local('Raleway-Light'), url(http://themes.googleusercontent.com/static/fonts/raleway/v7/-_Ctzj9b56b8RgXW8FArib3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Raleway Bold'), local('Raleway-Bold'), url(http://themes.googleusercontent.com/static/fonts/raleway/v7/JbtMzqLaYbbbCL9X6EvaI73hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
 .navbar-default {
 		background-image: none;
 		background-color: #2185c5;
@@ -14,6 +42,7 @@
 .navbar-default .navbar-brand {
 		color: #f8f8f8;
 		font-weight: 700;
+		font-size: xx-large;
 }
 .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
 		color: #b1e2ff;
@@ -23,6 +52,7 @@
 }
 .navbar-default .navbar-nav > li > a {
 		color: #f8f8f8;
+		font-size: larger;
 }
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
 		color: #fff;
@@ -85,6 +115,7 @@ p, div {
    text-shadow: none;	
    box-shadow:none;
    background-color: #F9F8FC;	
+   		     margin-top: 7px;
 }
 
 /* Custom default button */

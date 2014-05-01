@@ -2,13 +2,14 @@ from django.shortcuts import render
 from django.template import RequestContext
 from django.shortcuts import render_to_response
 #from pages.forms import RegisterForm
-from django.http import HttpResponseRedirect
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse
 from django.http import Http404
 from django.contrib import auth
 from django.core.context_processors import csrf
 from django.contrib.auth.forms import UserCreationForm
 from pages.models import UserProfile
+from django.utils import simplejson
+from django.http import Http404
 
 #=======================================================================
 #===========================PAGE LINKS==================================
@@ -25,8 +26,9 @@ def signin(request):
 	return render_to_response('pages/signin.html', context)
 
 def hub(request):
-	context=RequestContext(request)
-	return render_to_response('pages/hub.html', context)
+    context=RequestContext(request)
+    #context.update(csrf(request))
+    return render_to_response('pages/hub.html', context)
 
 def intervals(request):
 	context=RequestContext(request)
@@ -119,7 +121,7 @@ def register_user(request):
         #return render_to_response('pages/register.html', argTest, context)
         if form.is_valid():
             form.save()
-            u = UserProfile(user=user.username, intervalLevel="1", melodyLevel="1")
+            u = UserProfile(userId=request.POST.get('username', ''), intervalLevel="1", melodyLevel="1")
             u.save()
             return HttpResponseRedirect('/register_success/', context)
         else:
@@ -132,6 +134,13 @@ def register_user(request):
     args = {}
     args.update(csrf(request))
     args['errorMsg'] = errorMsg
+    
+    username = request.POST.get('username', '')
+    password = request.POST.get('password1', '')
+    user = auth.authenticate(username=username, password=password)
+    
+    if user is not None:
+        auth.login(request, user)
     return render_to_response('pages/signin.html',args, context)
 
 #Success page on registering a user
@@ -146,9 +155,33 @@ def register_failure(request):
     args['errors'] = UserCreationForm(request.POST).errors
     return render_to_response('pages/register_failure.html', args, context)
 
+
+#=======================================================================
+#==========================DATABASE INTERACTION=========================
+#=======================================================================
 def get_IntervalLvl(request):
-    context=RequestContext(reqeust)
-    return UserProfile.objects.filter(user=user.username).intervalLevel
+    context = RequestContext(request)
+    userId = None
+    if request.method == 'GET':
+        userId = request.GET('user.username')
+    #temp = UserProfile.objects.filter(user=user.username).intervalLevel
+    return HttpResponse(simplejson.dumps(UserProfile.objects.filter(user="form.username")[0].intervalLevel), mimetype='application/json')
+
+def intLvlUp(request):
+    context = RequestContext(request)
+    userId = None
+    if request.method == 'GET':
+        userId = request.GET('username')
+    lvl=1
+    if userId:
+        user = UserProfile.objects.get(user=userId)
+        if user:
+            lvl = user.intervalLevel + 1
+            user.intervalLevel = lvl
+            user.save()
+    #temp = UserProfile.objects.filter(user=user.username).intervalLevel
+    return HttpResponse(lvl)
+
 
 
 #AJAX request to get info from the user database

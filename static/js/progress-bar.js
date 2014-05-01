@@ -14,13 +14,17 @@ var incorrectColor = "#94002D";
 //=================VARIABLES FOR GAME DETAILS===================
 var game_category = 0;
 var category_level = 0;
-var interval_test = 0;
-var melody_test = 0;
+var in_interval_test = 0;
+var in_melody_test = 0;
 
 //=================VARIABLES FOR PROGRESS IN THE GAME===================
 var quiz_progress = 0;//expressed as percent completion (1-100)
 var HP = 3;//Number of chances to get it wrong
-var numberOfQuestionsInModule = 5;//default to 10 questions, need this for progress
+var numberOfQuestionsInModule = 3;//default to 10 questions, need this for progress
+
+//=================VARIABLES FOR PROGRESS IN WEBSITE===================
+//DATABASE: get test number from current test number chosed out of available tests for specific user
+ //DATABASE: get current test set number (1 or 2) from user database
 
 //Invoked on correct answer.
 //Update the progress bar.
@@ -41,30 +45,44 @@ function updateProgress() {
     if (quiz_progress >= 100 && HP != 0) {
     	document.getElementById("start").setAttribute("href","/game_win");
     	document.getElementById("start").innerHTML = "You passed! Get results.";
-    	if (melody_test == 1)
+    	if (test_num == 22){
+    		test_num = 1; //USER_TEST_NUM = 1;
+    		test_set = 2; //USER_TEST_SET = 2;
+    	}
+    	else
+    		test_num++; //USER_TEST_NUM_AVAILABILITY++;
+
+    	//TO DATABASE, store test completed number, increment test availability number
+
+    	/*
+    	if (in_melody_test == 1)
     	{
     		document.getElementById("about_win").innerHTML = "You passed the melody quiz.";
-    		melody_test = 0;
+    		in_melody_test = 0;
     	}
-    	if (interval_test == 1)
+    	if (in_interval_test == 1)
     	{
     		document.getElementById("about_win").innerHTML = "You passed the interval quiz.";
-    		interval_test = 0;
+    		in_interval_test = 0;
     	}
+    	*/
     }
     if (HP == 0) {
     	document.getElementById("start").setAttribute("href","/game_loss");
     	document.getElementById("start").innerHTML = "Bummer, man, you failed... Get results.";
-    	if (melody_test == 1)
+    	//based on number of fails of a test, potentially decrement test availability so user must retake previous test
+    	/*
+    	if (in_melody_test == 1)
     	{
     		document.getElementById("about_loss").innerHTML = "You failed the melody quiz.";
-    		melody_test = 0;
+    		in_melody_test = 0;
     	}
-    	if (interval_test == 1)
+    	if (in_interval_test == 1)
     	{
     		document.getElementById("about_loss").innerHTML = "You failed the interval quiz.";
-    		interval_test = 0;
+    		in_interval_test = 0;
     	}
+    	*/
     }
     document.getElementById(p_bar_label).style.width= (quiz_progress) +'%';
 

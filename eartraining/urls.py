@@ -35,7 +35,6 @@ urlpatterns = patterns('',
     #===============USER REGISTRATION===============
     url(r'^register/$', register_user, name='register_user'),
     url(r'^register_success/$', register_success, name='register_success'),
-    #url(r'^get_IntervalLvl/$', get_IntervalLvl, name='get_IntervalLvl'),
     #===============DAJAX===============
     url(dajaxice_config.dajaxice_url, include('dajaxice.urls')),
 )
