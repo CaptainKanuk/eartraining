@@ -12,33 +12,33 @@
 
 
 <script>
-    $("canvas").slideToggle("fast");
-    //in_interval_test = 1;
-    function progress(){
-        alert(test_num);
-        answerChosen = false;
-        var button = document.getElementById("start");
-        if(button.innerHTML=="Let's start."){
-            button.innerHTML="Next Interval";
-            var interval_button = document.getElementById("interval-play");
-            interval_button.setAttribute("onclick","playInterval(correctInterval[0], correctInterval[2], 2, 30);");
-            interval_button.setAttribute("class", "btn btn-lg btn-default");
-            interval_button.innerHTML = "Play interval.";
-            $("canvas").slideToggle("slow");
-            //use this
-            //newIntervalFromTest(test_set,test_num);
-            getNewIntervals(1,newIntervalFromTest(1,2));
-            playInterval(correctInterval[0], correctInterval[2], 2, 30);
-        }
-        else{
-            $("canvas").slideToggle("slow", function () {
-                                    
-                                    });
-                                    $("canvas").slideToggle("slow");
-                                    //newIntervalFromTest(test_set,test_num);
-                                    getNewIntervals(1,newIntervalFromTest(1,2));
-                                    playInterval(correctInterval[0], correctInterval[2], 2, 30);
-        }
+  $("canvas").slideToggle("fast");
+  //in_interval_test = 1;
+  function progress(){
+  alert(test_num);
+  answerChosen = false;
+  var button = document.getElementById("start");
+  if(button.innerHTML=="Let's start."){
+  button.innerHTML="Next Interval";
+  var interval_button = document.getElementById("interval-play");
+  interval_button.setAttribute("onclick","playInterval(correctInterval[0], correctInterval[2], 2, 30);");
+  interval_button.setAttribute("class", "btn btn-lg btn-default");
+  interval_button.innerHTML = "Play interval.";
+  $("canvas").slideToggle("slow");
+  //use this
+  //newIntervalFromTest(test_set,test_num);
+  getNewIntervals(1,newIntervalFromTest(1,2));
+  playInterval(correctInterval[0], correctInterval[2], 2, 30);
+  }
+  else{
+  //$("canvas").slideToggle("slow", function () {
+  
+  //});
+  //$("canvas").slideToggle("slow");
+  //newIntervalFromTest(test_set,test_num);
+  getNewIntervals(1,newIntervalFromTest(1,2));
+  playInterval(correctInterval[0], correctInterval[2], 2, 30);
+    }
     };
 </script>
 
