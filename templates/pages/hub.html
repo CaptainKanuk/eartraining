@@ -9,7 +9,15 @@
     This is some stuff?
     <a href="/getIntLvl/"> Click here! </a>
 </div>-->
-<div class="inner cover" onclick="Dajaxice.database.sayhello(my_js_callback);">
+<script type="text/javascript">
+    function add_comment(){
+        var user = '{{ user.username }}';
+        Dajaxice.database.save_comment(Dajaxice.process, {'user_username': user});
+        return false;
+    }
+</script>
+
+<input type="button" onclick="Dajaxice.database.sayhello(my_js_callback, {'text':'{{user.username}}' })" value="Send!"/>
     SATAN SUMMONED SATAN SUMMONED
     <p> user page </p>
 {% endblock %}
