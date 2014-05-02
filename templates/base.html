@@ -17,8 +17,6 @@
                 
             <!-- Javascript Stuff -->
             <script src="http://code.jquery.com/jquery-latest.js"></script>
-            <!--script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js"></script-->
-            
             <script src="{{STATIC_URL}}/js/bootstrap.min.js"></script>
             <script src="{{STATIC_URL}}/js/docs.min.js"></script>
             <script src="{{STATIC_URL}}/js/ajax-functions.js"></script>
@@ -50,12 +48,10 @@
                                     </li>
                                     <li><a href="/about">About</a></li>
                                     <li><a href="/help">Help</a></li>
-<<<<<<< HEAD
+
                                     {% if user.is_authenticated %} <li>Try harder, '{{ user.username }}'</li>
                                         <a href="/logout"> Logout </a></li>
-=======
-                                    {% if user.is_authenticated %} <li><a>Try harder, {{ user.username }}</a></li>
->>>>>>> dd5785c470ab28190313d33cfb0f87c29b2aebf4
+
                                     {% else %}<li><a href="/signin">Sign-In</a></li>{% endif %}
                                 </u1>
                             </div>
