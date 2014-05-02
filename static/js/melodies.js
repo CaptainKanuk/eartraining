@@ -31,6 +31,9 @@ var correctChoice;
 var correctMelody;
 var answerChosen = true;
 
+var melcount = 0;
+var mel_button = document.getElementById("mel-play");
+
 function drawStaff(elem)
 {
     if (elem == "choice_one")
@@ -444,6 +447,8 @@ function playMelody()
     var gainstepI;
     var gainstepD;
     var gstep = 0;
+
+    alert(melcount);
     while (numnote < correctMelody.length)
     {
         length = 2;
@@ -482,14 +487,38 @@ function playMelody()
 
 function deactivateMelPlay()
 {
-    document.getElementById("mel-play").setAttribute("onclick","");
-    setTimeout(activateMelPlay, correctMelody.length*1001);
+    var mel_button = document.getElementById("mel-play");
+    mel_button.setAttribute("onclick","");
+    if (melcount == 2)
+    {
+        deleteMelPlay();
+    }
+    if (melcount < 3)
+        setTimeout(activateMelPlay, correctMelody.length*1001);
+
+}
+
+function deleteMelPlay()
+{
+    // mel_button.setAttribute("onclick","");
+    // mel_button.innerHTML = "";
+    // mel_button.class="";
+    alert("hey...");
+    mel_button.setAttribute("display", "none");
+}
+
+function instantiateMelPlay()
+{
+    // mel_button.setAttribute("onclick","playMelody(); melcount++; deactivateMelPlay();");
+    // mel_button.innerHTML = "Play melody.";
+    // mel_button.class="btn btn-lg btn-default";
+    mel_button.setAttribute("display", "initial");
+
 }
 
 function activateMelPlay()
 {
-    
-    document.getElementById("mel-play").setAttribute("onclick", "playMelody(); deactivateMelPlay()");
+    document.getElementById("mel-play").setAttribute("onclick", "playMelody(); melcount++; deactivateMelPlay()");
 }
 
 // function playInterval(freq1, freq2, length, gain)

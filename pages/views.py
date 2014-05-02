@@ -41,10 +41,7 @@ def melodies(request):
 
 def about(request):
 	context=RequestContext(request)
-	userstuff={}
-	u=UserProfile.objects.filter(user="form.username")
-	userstuff['testUser'] = u[0].intervalLevel
-	return render_to_response('pages/about.html', userstuff, context)
+	return render_to_response('pages/about.html', context)
 
 def help(request):
 	context=RequestContext(request)
