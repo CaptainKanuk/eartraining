@@ -5,8 +5,12 @@
 {% endblock %}
 
 {% block content %}
-<div class="inner cover" onclick="alert('You clicked it!');Dajaxice.database.sayhello(my_js_callback);">
+<div class="inner cover"> <!-- onclick="alert('You clicked it!');Dajaxice.database.sayhello(my_js_callback);"-->
     SATAN SUMMONED SATAN SUMMONED
     <p> user page </p>
+</div>
+	<button onclick = "var toplevel = 1; alert('You clicked it!'); test_function();">Click for level.</button>
+    <button onclick = "var toplevel = 2; alert('You clicked it!'); Dajaxice.user_level.update(toplevel,level_callback);">Click to change level.</button>
+	<button onclick = "var toplevel = 3; alert('You clicked it!'); Dajaxice.user_level.info(toplevel, level_callback);">Click for new level.</button>
 <script src="{{ STATIC_URL }}/js/test.js"></script>
 {% endblock %}
