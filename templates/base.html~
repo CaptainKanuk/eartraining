@@ -1,3 +1,5 @@
+{% load dajaxice_templatetags %}
+
 <html>
     <html lang="en">
         <head>
@@ -9,16 +11,17 @@
             <title>SuperTonic</title>
             
             <!-- CSS Stuff -->
-            <link href="http://fonts.googleapis.com/css?family=Raleway:200,300,700" rel="stylesheet" type="text/css">
             <link href="{{ STATIC_URL }}/css/bootstrap.min.css" rel="stylesheet" type="text/css">
             <link href="{{ STATIC_URL }}/css/cover.css" rel="stylesheet" type="text/css">
+	    <link href="{{ STATIC_URL }}/css/animate.css" rel="stylesheet" type="text/css">
                 
             <!-- Javascript Stuff -->
             <script src="http://code.jquery.com/jquery-latest.js"></script>
-            <script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js"></script>
+            <!--script type="text/javascript" src="http://twitter.github.com/bootstrap/assets/js/bootstrap-dropdown.js"></script-->
             
             <script src="{{STATIC_URL}}/js/bootstrap.min.js"></script>
             <script src="{{STATIC_URL}}/js/docs.min.js"></script>
+            {% dajaxice_js_import %}
             {% block extrahead %} {% endblock %}
         </head>
 
@@ -46,25 +49,14 @@
                                     </li>
                                     <li><a href="/about">About</a></li>
                                     <li><a href="/help">Help</a></li>
-                                    {% if user.is_authenticated %} <li>Try harder, '{{ user.username }}'</li>
+                                    {% if user.is_authenticated %} <li><a>Try harder, {{ user.username }}</a></li>
                                     {% else %}<li><a href="/signin">Sign-In</a></li>{% endif %}
                                 </u1>
                             </div>
                         </nav>
-            
 
                         {% block content %}{% endblock %}
-                        {% block footer %}
-                        <!-- footer -->
-                        <div class="mastfoot">
-                            <div class="inner">
-                                <p> Copyright Ear Training 2014, by <a href="/about">us</a>. </p>
-                            </div>
-                        </div>
-                        {% endblock %}
-                    </div>
-                <!--/div>
-            </div-->
+
             
             <!-- Bootstrap core JavaScript
              ================================================== -->

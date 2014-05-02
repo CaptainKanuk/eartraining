@@ -4,7 +4,7 @@ $(document).ready(function() {
                                     userid = $(this).attr("data-userid");
                                     $.get('/intLvlUp/', {username: userid}, function(data){
                                           $('#int_lvl').html(data);
-                                          }); 
+                                          });
                                     }
                   });
 
