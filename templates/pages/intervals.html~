@@ -12,33 +12,33 @@
 
 
 <script>
-    $("canvas").slideToggle("fast");
-    //in_interval_test = 1;
-    function progress(){
-        alert(test_num);
-        answerChosen = false;
-        var button = document.getElementById("start");
-        if(button.innerHTML=="Let's start."){
-            button.innerHTML="Next Interval";
-            var interval_button = document.getElementById("interval-play");
-            interval_button.setAttribute("onclick","playInterval(correctInterval[0], correctInterval[2], 2, 30);");
-            interval_button.setAttribute("class", "btn btn-lg btn-default");
-            interval_button.innerHTML = "Play interval.";
-            $("canvas").slideToggle("slow");
-            //use this
-            //newIntervalFromTest(test_set,test_num);
-            getNewIntervals(1,newIntervalFromTest(1,2));
-            playInterval(correctInterval[0], correctInterval[2], 2, 30);
-        }
-        else{
-            $("canvas").slideToggle("slow", function () {
-                                    
-                                    });
-                                    $("canvas").slideToggle("slow");
-                                    //newIntervalFromTest(test_set,test_num);
-                                    getNewIntervals(1,newIntervalFromTest(1,2));
-                                    playInterval(correctInterval[0], correctInterval[2], 2, 30);
-        }
+  $("canvas").slideToggle("fast");
+  //in_interval_test = 1;
+  function progress(){
+  alert(test_num);
+  answerChosen = false;
+  var button = document.getElementById("start");
+  if(button.innerHTML=="Let's start."){
+  button.innerHTML="Next Interval";
+  var interval_button = document.getElementById("interval-play");
+  interval_button.setAttribute("onclick","playInterval(correctInterval[0], correctInterval[2], 2, 30);");
+  interval_button.setAttribute("class", "btn btn-lg btn-default");
+  interval_button.innerHTML = "Play interval.";
+  $("canvas").slideToggle("slow");
+  //use this
+  //newIntervalFromTest(test_set,test_num);
+  getNewIntervals(1,newIntervalFromTest(1,2));
+  playInterval(correctInterval[0], correctInterval[2], 2, 30);
+  }
+  else{
+  //$("canvas").slideToggle("slow", function () {
+  
+  //});
+  //$("canvas").slideToggle("slow");
+  //newIntervalFromTest(test_set,test_num);
+  getNewIntervals(1,newIntervalFromTest(1,2));
+  playInterval(correctInterval[0], correctInterval[2], 2, 30);
+    }
     };
 </script>
 
@@ -59,18 +59,20 @@ div.egcode {
 
 {% block incProgBar %}
 </div>
-    <div class = "row" style="font-weight:bolder">
-        <div class="col-md-6">How much HP left?</div>
-        <div class="col-md-6" style="float:right;width:40%;margin-right:25px;">
-            Progress</br>
-            <div class="progress progress-striped active">
+<div class = "col-md-3" style="font-weight:bolder">
+  {% if user.is_authenticated %}<div class="row">Welcome back, {{user.username}}!</div> 
+  <div class="row">How much HP left?</div>
+  <div class="row"><img src="{{STATIC_URL}}/images/musicnote.png" alt="Music note" width="42" height="42">
+  <div class="row" style="margin:2px;">
+    Progress</br>
+    <div class="progress progress-striped active">
                 <div id="progress-bar" class="progress-bar progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
                     <span class="sr-only">0% Complete</span>
                 </div>
             </div>
         </div>
     </div>
-<div id="row">
+<div class="col-md-9">
 {% endblock %}
 
 {% block content %}
