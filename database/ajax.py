@@ -10,7 +10,7 @@ def getIntervalLvl(request, text):
 
 @dajaxice_register(method='GET')
 def intervalLvlUp(request, text):
-    u=UserProfile.objects.filter(userId=text)
+    u=UserProfile.objects.filter(userId=text)[0]
     lvl = u.intervalLevel + 1
     u.intervalLevel = lvl
     u.save()

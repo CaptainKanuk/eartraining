@@ -31,6 +31,7 @@ div.egcode {
             button.innerHTML="Next Melody.";
             $("canvas").slideToggle("slow");
             getNewMelodies();
+            instantiateMelPlay();
         }
         else{
             $("canvas").slideToggle("slow", function () {
@@ -38,6 +39,7 @@ div.egcode {
                 getNewMelodies();
             });
             $("canvas").slideToggle("slow");
+            instantiateMelPlay();
         }
     };
 </script>
@@ -69,7 +71,7 @@ div.egcode {
         Play and select the correct melody.
     </h3>
     <p class="lead">
-    <a id="mel-play" onclick="playMelody(); deactivateMelPlay();" class="btn btn-lg btn-default">Play melody.</a>
+    <a id="mel-play" display = "initial" onclick="playMelody(); melcount++; deactivateMelPlay();" class="btn btn-lg btn-default">Play melody.</a>
     </p>
     <div class="row">
 		<div class="col-md-6">

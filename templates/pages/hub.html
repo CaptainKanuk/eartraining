@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 
 {% block content %}
-<<<<<<< HEAD
 <!--{% csrf_token %}
 <b id="int_lvl"> {{userprofile.intervalLevel}} </b> this is ur lvl
 <button id="upLvl" data-userid="{{user.username}}" class="btn btn-mini btn-primary" type="button">Level up!</button>
@@ -10,6 +9,16 @@
     This is some stuff?
     <a href="/getIntLvl/"> Click here! </a>
 </div>-->
+
+<script src="{{ STATIC_URL }}/js/vexflow-debug.js"></script>
+<script src="{{ STATIC_URL }}/js/vexflow-min.js"></script>
+<script src="{{ STATIC_URL }}/js/interval-names-table.js"></script>
+<script src="{{ STATIC_URL }}/js/melodies.js"></script>
+<script src="{{ STATIC_URL }}/js/progress-bar.js"></script>
+<script src="{{ STATIC_URL }}/js/riffwave.js"></script>
+<script src="{{ STATIC_URL }}/js/music-staff.js"></script>
+<script src="{{ STATIC_URL }}/js/ajax-functions.js"></script>
+
 <script type="text/javascript">
     function add_comment(){
         var user = '{{ user.username }}';
@@ -18,17 +27,13 @@
     }
 </script>
 
-<input type="button" onclick="Dajaxice.database.sayhello(my_js_callback, {'text':'{{user.username}}' })" value="Send!"/>
-    SATAN SUMMONED SATAN SUMMONED
-    <p> user page </p>
-=======
+
 <div class="inner cover"> <!-- onclick="alert('You clicked it!');Dajaxice.database.sayhello(my_js_callback);"-->
-    SATAN SUMMONED SATAN SUMMONED
-    <p> user page </p>
+
 </div>
-	<button onclick = "var toplevel = 1; alert('You clicked it!'); test_function();">Click for level.</button>
-    <button onclick = "var toplevel = 2; alert('You clicked it!'); Dajaxice.user_level.update(toplevel,level_callback);">Click to change level.</button>
-	<button onclick = "var toplevel = 3; alert('You clicked it!'); Dajaxice.user_level.info(toplevel, level_callback);">Click for new level.</button>
+	<button onclick = "Dajaxice.database.getIntervalLvl(level_callback, {'text':'{{user.username}}' });">Click for level.</button>
+    <button onclick = "Dajaxice.database.intervalLvlUp(level_callback, {'text':'{{user.username}}' });">Click to change level.</button>
+	<button onclick = "Dajaxice.database.getIntervalLvl(level_callback, {'text':'{{user.username}}' });">Click for new level.</button>
+
 <script src="{{ STATIC_URL }}/js/test.js"></script>
->>>>>>> dd5785c470ab28190313d33cfb0f87c29b2aebf4
 {% endblock %}
