@@ -14,3 +14,12 @@ def intervalLvlUp(request, text):
     lvl = u.intervalLevel + 1
     u.intervalLevel = lvl
     u.save()
+
+@dajaxice_register(method='POST', name='user_level.update')
+@dajaxice_register(method='GET', name='user_level.info')
+def user_level(request):
+	# return simplejson.dumps({'message':'hello'})
+	if request.method == 'POST':
+		return simplejson.dumps({'top_level': level})
+	else:
+		return simplejson.loads({'top_level'})
