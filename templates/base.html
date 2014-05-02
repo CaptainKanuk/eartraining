@@ -48,8 +48,7 @@
                                     </li>
                                     <li><a href="/about">About</a></li>
                                     <li><a href="/help">Help</a></li>
-
-                                    {% if user.is_authenticated %} <li>Try harder, '{{ user.username }}'</li>
+                                    {% if user.is_authenticated %} <li>Welcome, {{ user.username }}</li>
                                         <a href="/logout"> Logout </a></li>
 
                                     {% else %}<li><a href="/signin">Sign-In</a></li>{% endif %}
