@@ -58,21 +58,21 @@ div.egcode {
 {% endblock %}
 
 {% block incProgBar %}
-</div>
+<!--/div>
 <div class = "col-md-3" style="font-weight:bolder">
-  {{% if user.is_authenticated %}}<div class="row">Welcome back, {{user.username}}!</div> 
-  <div class="row">How much HP left?</div>
-  <div class="row"><img src="{{STATIC_URL}}/musicnote.png" alt="Music note" width="42" height="42">
-  <div class="row" style="margin:2px;">
-    Progress</br>
-    <div class="progress progress-striped active">
-                <div id="progress-bar" class="progress-bar progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
-                    <span class="sr-only">0% Complete</span>
-                </div>
+    <{% if user.is_authenticated %}<div class="row">Welcome back, {{user.username}}!</div>
+    <div class="row">How much HP left?</div>
+    <div class="row"><img src="{{ STATIC_URL }}/images/musicnote.png" alt="Music note" width="42" height="42">
+    <div class="row" style="margin:2px;">
+        Progress</br>
+        <div class="progress progress-striped active">
+            <div id="progress-bar" class="progress-bar progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                <span class="sr-only">0% Complete</span>
             </div>
         </div>
     </div>
-<div class="col-md-9">
+</div>
+<div class="col-md-9"-->
 {% endblock %}
 
 {% block content %}
