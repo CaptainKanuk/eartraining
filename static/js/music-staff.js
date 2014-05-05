@@ -417,20 +417,26 @@ function getNewIntervals(staff, correct_int)//interval_class arg
     correctChoice = outelem;
     correctInterval = interval;
     var displace = Math.abs(correctInterval[2]-correctInterval[0]);
+    showInterval(intervalToNotes(interval), correctChoice);
+    /*
     if (staff == 1)
         showInterval(intervalToNotes(interval), correctChoice);
     if (staff == 0)
         showIntervalChoice(correctInterval, correctChoice);
+    */
 
     //show the intervals on the canvas
     for(var i = 0; i < labels.length; i++){
         if(i != select){
             //populate the wrong answers
             interval = getRandomIntervalNotX(displace);
+            showInterval(intervalToNotes(interval), labels[i]);
+            /*
             if (staff == 1)
-                showInterval(intervalToNotes(interval), labels[i]);
+                
             if (staff == 0)
                 showIntervalChoice(interval, labels[i]);
+            */
         }
     }
     

@@ -28,7 +28,7 @@
             <div class="site-wrapper">
                 <div class="site-wrapper-inner">
                     {% block incProgBar %}{% endblock %}
-                    <div class="cover-container">
+                    <!--div class="cover-container"-->
                         <!-- nav bar -->
                         <nav id="mainMenu" class="navbar navbar-default navbar-fixed-top" role="navigation">
                             <div class="container">
@@ -48,18 +48,12 @@
                                     </li>
                                     <li><a href="/about">About</a></li>
                                     <li><a href="/help">Help</a></li>
-<<<<<<< HEAD
-                                    {% if user.is_authenticated %} <li><a>Welcome, {{ user.username }}!</a></li>
-				    {% else %}<li><a href="/signin">Sign-In</a></li>{% endif %}
-=======
-
-                                    {% if user.is_authenticated %} <li>Try harder, '{{ user.username }}'</li>
+                                    {% if user.is_authenticated %} <li>Welcome, {{ user.username }}</li>
                                         <a href="/logout"> Logout </a></li>
 
                                     {% else %}<li><a href="/signin">Sign-In</a></li>{% endif %}
->>>>>>> 5a3b8a277af552bbfd1c0007f30a265e96634b8e
                                 </u1>
-                            </div>
+                            <!--/div-->
                         </nav>
 
                         {% block content %}{% endblock %}
