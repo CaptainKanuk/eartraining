@@ -48,7 +48,7 @@ function passButton()
 function updateProgress() {
     quiz_progress = 1+ quiz_progress + (100/numberOfQuestionsInModule);
     if (quiz_progress >= 100 && HP != 0) {
-      setInterval(passButton, 100);
+      setTimeout(passButton, 100);
     	if (test_num == 22){
     		test_num = 1; //USER_TEST_NUM = 1;
     		test_set = 2; //USER_TEST_SET = 2;

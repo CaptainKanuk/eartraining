@@ -17,7 +17,27 @@ def intervalLvlUp(request, text):
     u.save()
 
 @dajaxice_register(method='GET')
-def resetLvls(request, text):
+def resetIntervalLvl(request, text):
+    u=UserProfile.objects.filter(userId=text)[0]
+    lvl = 0
+    u.intervalLevel = lvl
+    u.save()
+
+@dajaxice_register(method='GET')
+def getMelodyLvl(request, text):
+    u=UserProfile.objects.filter(userId=text)[0].intervalLevel
+    #return simplejson.dumps({'message':'Your message is %s!' % u})
+    return simplejson.dumps({'message':u})
+
+@dajaxice_register(method='GET')
+def melodyLvlUp(request, text):
+    u=UserProfile.objects.filter(userId=text)[0]
+    lvl = u.intervalLevel + 1
+    u.intervalLevel = lvl
+    u.save()
+
+@dajaxice_register(method='GET')
+def resetMelodyLvl(request, text):
     u=UserProfile.objects.filter(userId=text)[0]
     lvl = 0
     u.intervalLevel = lvl

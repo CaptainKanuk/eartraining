@@ -8,6 +8,8 @@
 <script src="{{ STATIC_URL }}/js/melodies.js"></script>
 <script src="{{ STATIC_URL }}/js/progress-bar.js"></script>
 <script src="{{ STATIC_URL }}/js/riffwave.js"></script>
+<script src="{{ STATIC_URL }}/js/ajax-functions.js"></script>
+<script src="{{ STATIC_URL }}/js/GLOBAL.js"></script>
 
 <style type="text/css">
     canvas {
@@ -30,13 +32,14 @@ div.egcode {
         if(button.innerHTML=="Let's start."){
             button.innerHTML="Next Melody.";
             $("canvas").slideToggle("slow");
-            getNewMelodies();
+            getNewMelodies(levToLength(mel_level));
             instantiateMelPlay();
         }
         else{
+            document.getElementById("play-mel").setAttribute("display", "initial");
             $("canvas").slideToggle("slow", function () {
                 document.getElementById(prompt).innerHTML = "Next melody.";
-                getNewMelodies();
+                getNewMelodies(levToLength(mel_level));
             });
             $("canvas").slideToggle("slow");
             instantiateMelPlay();
@@ -70,8 +73,8 @@ div.egcode {
     <h3 id="prompt" align="center">
         Play and select the correct melody.
     </h3>
-    <p class="lead">
-    <a id="mel-play" display = "initial" onclick="playMelody(); melcount++; deactivateMelPlay();" class="btn btn-lg btn-default">Play melody.</a>
+    <p id = "play-mel" display = "none" class="lead">
+    <a id="mel-play" onclick="playMelody(); melcount++; deactivateMelPlay();" class="btn btn-lg btn-default">Play melody.</a>
     </p>
     <div class="row">
 		<div class="col-md-6">
@@ -112,7 +115,7 @@ div.egcode {
     
 </div>
 <p class="lead">
-<a href="#" id="start" onclick="progress()" class="btn btn-lg btn-default">Let's start.</a>
+<a href="#" id="start" onclick="melcount = 0; progress();" class="btn btn-lg btn-default">Let's start.</a>
 </p>
 {% endblock %}
 
