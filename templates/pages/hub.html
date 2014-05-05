@@ -1,22 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-<script src="{{ STATIC_URL }}/js/vexflow-debug.js"></script>
-<script src="{{ STATIC_URL }}/js/vexflow-min.js"></script>
-<script src="{{ STATIC_URL }}/js/interval-names-table.js"></script>
-<script src="{{ STATIC_URL }}/js/melodies.js"></script>
-<script src="{{ STATIC_URL }}/js/progress-bar.js"></script>
-<script src="{{ STATIC_URL }}/js/riffwave.js"></script>
-<script src="{{ STATIC_URL }}/js/music-staff.js"></script>
-<script src="{{ STATIC_URL }}/js/ajax-functions.js"></script>
+<div class="inner cover" onclick="Dajaxice.database.sayhello(my_js_callback);">
 
-
-<div class="inner cover"> <!-- onclick="alert('You clicked it!');Dajaxice.database.sayhello(my_js_callback);"-->
-
-</div>
+<div>
 	<button onclick = "Dajaxice.database.getIntervalLvl(level_callback, {'text':'{{user.username}}' });">Click for level.</button>
     <button onclick = "Dajaxice.database.intervalLvlUp(level_callback, {'text':'{{user.username}}' });">Click to change level.</button>
 	<button onclick = "Dajaxice.database.getIntervalLvl(level_callback, {'text':'{{user.username}}' });">Click for new level.</button>
-
-<script src="{{ STATIC_URL }}/js/test.js"></script>
+</div>
 {% endblock %}

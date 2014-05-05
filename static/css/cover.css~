@@ -14,6 +14,10 @@ animation-delay:1.2s;
 -webkit-animation-delay:1.2s;
 
 }
+.img-circle{
+height:auto;
+max-width:50%;
+}
 @font-face {
   font-family: 'Raleway';
   font-style: normal;
@@ -234,7 +238,6 @@ body {
   .masthead,
   .mastfoot,
   .cover-container {
-    width: 700px;
+    width: 1000px;
   }
 }
-
