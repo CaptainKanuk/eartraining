@@ -2,10 +2,10 @@
 
 {% block extrahead %}
 <!-- Vexflow Libraries -->
+
 <script src="{{ STATIC_URL }}/js/vexflow-debug.js"></script>
 <script src="{{ STATIC_URL }}/js/vexflow-min.js"></script>
 <script src="{{ STATIC_URL }}/js/interval-names-table.js"></script>
-<script src="{{ STATIC_URL }}/js/melodies.js"></script>
 <script src="{{ STATIC_URL }}/js/progress-bar.js"></script>
 <script src="{{ STATIC_URL }}/js/riffwave.js"></script>
 <script src="{{ STATIC_URL }}/js/music-staff.js"></script>
@@ -13,15 +13,23 @@
 <script src="{{ STATIC_URL }}/js/GLOBAL.js"></script>
 
 
-<script >
-  Dajaxice.database.getIntervalLvl(level_callback, {'text':'{{user.username}}'});
+<script>
   //alert(test_set);
   $("canvas").slideToggle("fast");
   //in_interval_test = 1;
+
+  function getLevel()
+  {
+    Dajaxice.database.getIntervalLvl(level_callback, {'text':'{{user.username}}'});
+  }
+  function incLevel()
+  {
+    Dajaxice.database.intervalLvlUp(level_callback, {'text':'{{user.username}}' });
+  }
   function progress(){
     answerChosen = false;
     var button = document.getElementById("start");
-    if(button.innerHTML=="Let's start.")
+    if (button.innerHTML=="Let's start.")
     {
       button.innerHTML="Next Interval";
       var interval_button = document.getElementById("interval-play");
@@ -31,11 +39,12 @@
       $("canvas").slideToggle("slow");
       
       //getNewIntervals(test_set,newIntervalFromTest(1,max_level));
-      getNewIntervals(0,newIntervalFromTest(0,max_level));
+      //getNewIntervals(0,newIntervalFromTest(0,max_level));
+      getLevel();
+      setTimeout(function(){getNewIntervals(0,newIntervalFromTest(0,max_level));playInterval(correctInterval[0], correctInterval[2], 2, 30);}, 100);
       alert(max_level);
-      //getNewIntervals(0,newIntervalFromTest(1,5));
       
-      playInterval(correctInterval[0], correctInterval[2], 2, 30);
+      //playInterval(correctInterval[0], correctInterval[2], 2, 30);
     }
     else
     {
@@ -44,10 +53,11 @@
       //});
       //$("canvas").slideToggle("slow");
       //getNewIntervals(test_set,newIntervalFromTest(1,max_level));
-      getNewIntervals(0,newIntervalFromTest(0,max_level));
+      //getNewIntervals(0,newIntervalFromTest(0,max_level));
+      getLevel();
+      setTimeout(function(){getNewIntervals(0,newIntervalFromTest(0,max_level));playInterval(correctInterval[0], correctInterval[2], 2, 30);}, 100);
       alert(max_level);
-      //getNewIntervals(0,newIntervalFromTest(1,5));
-      playInterval(correctInterval[0], correctInterval[2], 2, 30);
+      //playInterval(correctInterval[0], correctInterval[2], 2, 30);
     }
   };
 </script>

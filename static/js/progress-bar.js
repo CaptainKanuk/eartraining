@@ -38,23 +38,26 @@ function answeredIncorrectly(){
 	loseHP(1);
     updateProgress();
 }
+function passButton()
+{
+  document.getElementById("start").setAttribute("href", "/game_win");
+  document.getElementById("start").innerHTML = "You passed! Continue.";
+}
 
 //update the progress variable and the progress bar
 function updateProgress() {
     quiz_progress = 1+ quiz_progress + (100/numberOfQuestionsInModule);
     if (quiz_progress >= 100 && HP != 0) {
-    	document.getElementById("start").setAttribute("href", "/game_win");
-      //Dajaxice.database.intervalLvlUp(level_callback, {'text':'{{user.username}}'});
-      document.getElementById("start").setAttribute("onclick", "progress(); Dajaxice.database.intervalLvlUp(level_callback, {'text':'{{user.username}}'});");
-    	document.getElementById("start").innerHTML = "You passed! Continue.";
+      setInterval(passButton, 100);
     	if (test_num == 22){
     		test_num = 1; //USER_TEST_NUM = 1;
     		test_set = 2; //USER_TEST_SET = 2;
     	}
     	else {
     		test_num++;
-        /*Dajaxice.database.intervalLvlUp(level_callback, {'text':'{{user.username}}' });
-        alert(max_level);*/
+        incLevel();
+        //Dajaxice.database.intervalLvlUp(level_callback, {'text':'{{user.username}}' });
+        //alert(max_level);
       }
 
     	//TO DATABASE, store test completed number, increment test availability number
