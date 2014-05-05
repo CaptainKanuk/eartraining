@@ -50,7 +50,7 @@ function updateProgress() {
     		test_set = 2; //USER_TEST_SET = 2;
     	}
     	else
-    		Dajaxice.database.intervalLvlUp(level_callback, {'text':'{{user.username}}' });
+    		test_num++;//Dajaxice.database.intervalLvlUp(level_callback, {'text':'{{user.username}}' });
 
     	//TO DATABASE, store test completed number, increment test availability number
 
