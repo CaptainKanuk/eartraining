@@ -29,7 +29,7 @@ urlpatterns = patterns('',
     url(r'^$', index, name='index'),
     #===============USER AUTHENTICATION=============
     url(r'^auth_user/$', auth_user, name='auth_user'),
-    url(r'^logout/$', logout, name='logout'),
+    url(r'^logout/$', logoutview, name='logoutview'),
     url(r'^loggedin/$', loggedin, name='loggedin'),
     url(r'^invalid/$', invalid_login, name='invalid_login'),
     #===============USER REGISTRATION===============
