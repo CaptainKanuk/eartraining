@@ -7,7 +7,7 @@
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1">
             
-            <link rel="icon" type="image/ico" href="{{ STATIC_URL }}/images/favicon3.ico">
+            <link rel="icon" type="image/ico" href="{{ STATIC_URL }}/images/favicon.ico">
             <title>Mezzo</title>
             
             <!-- CSS Stuff -->
@@ -34,6 +34,7 @@
                             <div class="container">
                                 <a class="navbar-brand" href="/hub">M</a>
                                 <u1 class="nav navbar-nav navbar-right">
+                                    {% if user.is_authenticated %}
                                     <li class="dropdown" id="trainingmenu">
                                         <a class="dropdown-toggle" data-toggle="dropdown" href="#trainingmenu">
                                             Training
@@ -46,6 +47,7 @@
                                             <li><a href="/chords">Chords</a></li>
                                         </ul>
                                     </li>
+                                    {% endif %}
                                     <li><a href="/about">About</a></li>
                                     <li><a href="/help">Help</a></li>
                                     {% if user.is_authenticated %} <li> <a href="/hub"> Welcome, {{ user.username }} </a></li>

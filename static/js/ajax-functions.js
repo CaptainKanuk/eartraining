@@ -14,6 +14,12 @@ function level_callback(data)
 	//alert(max_level);
 }
 
+function Mlevel_callback(data)
+{
+	mel_level = data.message;
+	//alert(max_level);
+}
+
 function test_function()
 {
 	Dajaxice.database.sayhello(level_callback);

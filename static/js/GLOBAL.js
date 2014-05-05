@@ -8,5 +8,6 @@ var test_set = 0;
 var test_num = 0;
 var mel_level = 0;
 
+
 //DATABASE: get test number from current test number chosed out of available tests for specific user
 //DATABASE: get current test set number (1 or 2) from user database

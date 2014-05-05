@@ -10,6 +10,16 @@
 <script src="{{ STATIC_URL }}/js/riffwave.js"></script>
 <script src="{{ STATIC_URL }}/js/ajax-functions.js"></script>
 <script src="{{ STATIC_URL }}/js/GLOBAL.js"></script>
+<script>
+  function getMLevel()
+  {
+    Dajaxice.database.getMelodyLvl(level_callback, {'text':'{{user.username}}'});
+  }
+  function incMLevel()
+  {
+    Dajaxice.database.melodyLvlUp(level_callback, {'text':'{{user.username}}' });
+  }
+</script>
 
 <style type="text/css">
     canvas {
@@ -32,14 +42,17 @@ div.egcode {
         if(button.innerHTML=="Let's start."){
             button.innerHTML="Next Melody.";
             $("canvas").slideToggle("slow");
-            getNewMelodies(levToLength(mel_level));
+
+            getMLevel();
+            setTimeout(function(){ getNewMelodies(levToLength(mel_level));}, 100);
             instantiateMelPlay();
         }
         else{
             document.getElementById("play-mel").setAttribute("display", "initial");
             $("canvas").slideToggle("slow", function () {
                 document.getElementById(prompt).innerHTML = "Next melody.";
-                getNewMelodies(levToLength(mel_level));
+                getMLevel();
+                setTimeout(function(){ getNewMelodies(levToLength(mel_level));}, 100);
             });
             $("canvas").slideToggle("slow");
             instantiateMelPlay();
@@ -78,7 +91,7 @@ div.egcode {
     </p>
     <div class="row">
 		<div class="col-md-6">
-            <canvas id="choice_one" onclick="chooseAnswer('choice_one')" width="440" height="100"
+            <canvas id="choice_one" onclick="chooseAnswerMel('choice_one')" width="440" height="100"
                 style="border:4px solid #000000;display:none;">
                 <script>
                     setup("choice_one");
@@ -86,7 +99,7 @@ div.egcode {
             </canvas>
         </div>
 		<div class="col-md-6">
-            <canvas id="choice_two" onclick="chooseAnswer('choice_two')" width="440" height="100"
+            <canvas id="choice_two" onclick="chooseAnswerMel('choice_two')" width="440" height="100"
                 style="border:4px solid #000000;display:none;">
                 <script>
                     setup("choice_two");
@@ -96,7 +109,7 @@ div.egcode {
     </div>
     <div class="row">
 		<div class="col-md-6">
-            <canvas id="choice_three" onclick="chooseAnswer('choice_three')" width="440" height="100"
+            <canvas id="choice_three" onclick="chooseAnswerMel('choice_three')" width="440" height="100"
                 style="border:4px solid #000000;display:none;">
                 <script>
                     setup("choice_three");
@@ -104,7 +117,7 @@ div.egcode {
             </canvas>
         </div>
 		<div class="col-md-6">
-            <canvas id="choice_four" onclick="chooseAnswer('choice_four')" width="440" height="100"
+            <canvas id="choice_four" onclick="chooseAnswerMel('choice_four')" width="440" height="100"
                 style="border:4px solid #000000;display:none;">
                 <script>
                     setup("choice_four");
