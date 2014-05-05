@@ -188,7 +188,11 @@ body {
 /*
  * Cover
  */
-
+.bluerow{
+	padding:50 300 50 300;
+	margin:0 -300 0 -300;
+	background-color:rgb(131, 218, 252);
+}
 .cover {
   padding: 20 20px;
 }
