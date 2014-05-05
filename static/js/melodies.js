@@ -240,13 +240,20 @@ function printMel(mel)
 // }
 
 //need showMelody, melodyToNotes, getNewMelodies, getRandomMelody, also have getRandomNote
-function getNewMelodies()
+
+function levToLength(level)
+{
+    return level + 3;
+
+}
+function getNewMelodies(len)
 {
     clearCanvases();
     resetBorderColors();
     drawStaves();
     //melody_test = 1;  
-    var length = Math.floor(Math.random()*6) + 3;
+    //var length = Math.floor(Math.random()*6) + 3;
+    var length = len;
 
     //Get a random melody
     var melody = getRandomMelody(length);
@@ -398,9 +405,7 @@ function changeBorderColors() {
 }
 
 
-//Called by the canvas on click
-//Determines whether the choice was correct
-function chooseAnswer(answer){
+function chooseAnswerMel(answer){
     if(!answerChosen){
         answerChosen = true;
         var promptField = document.getElementById(prompt);
@@ -408,14 +413,12 @@ function chooseAnswer(answer){
         if( answer==correctChoice ){
             promptField.innerHTML = "Got it!";
             //playInterval(semitoneToFrequency(correctInterval[0]), semitoneToFrequency(correctInterval[2]), 2, 30);
-            //playMelody(correctMelody);
-            answeredCorrectly();
+            answeredCorrectlyMel();
         }
         else{
             promptField.innerHTML = "Uh-oh!";
-            answeredIncorrectly();
+            answeredIncorrectlyMel();
             //playInterval(semitoneToFrequency(correctInterval[0]), semitoneToFrequency(correctInterval[2]), 2, 30);
-            //playMelody(correctMelody);
         }
     }
 }
@@ -488,7 +491,7 @@ function playMelody()
 function deactivateMelPlay()
 {
     var mel_button = document.getElementById("mel-play");
-    mel_button.setAttribute("onclick","");
+    mel_button.setAttribute("onclick","none");
     if (melcount == 2)
     {
         deleteMelPlay();
@@ -503,8 +506,8 @@ function deleteMelPlay()
     // mel_button.setAttribute("onclick","");
     // mel_button.innerHTML = "";
     // mel_button.class="";
-    alert("hey...");
-    mel_button.setAttribute("display", "none");
+    //alert("hey...");
+    //mel_button.setAttribute("display", "none");
 }
 
 function instantiateMelPlay()
@@ -512,7 +515,7 @@ function instantiateMelPlay()
     // mel_button.setAttribute("onclick","playMelody(); melcount++; deactivateMelPlay();");
     // mel_button.innerHTML = "Play melody.";
     // mel_button.class="btn btn-lg btn-default";
-    mel_button.setAttribute("display", "initial");
+   // mel_button.setAttribute("display", "initial");
 
 }
 
