@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 
 {% block content %}
-<<<<<<< HEAD
 <script src="{{ STATIC_URL }}/js/vexflow-debug.js"></script>
 <script src="{{ STATIC_URL }}/js/vexflow-min.js"></script>
 <script src="{{ STATIC_URL }}/js/interval-names-table.js"></script>
@@ -25,7 +24,6 @@
 	<button onclick = "Dajaxice.database.resetLvls(level_callback, {'text':'{{user.username}}'}); alert(max_level);">Click to reset levels.</button>
 
 <script src="{{ STATIC_URL }}/js/test.js"></script>
-=======
 <div class="inner cover" onclick="Dajaxice.database.sayhello(my_js_callback);">
 
 <div>
@@ -33,5 +31,4 @@
     <button onclick = "Dajaxice.database.intervalLvlUp(level_callback, {'text':'{{user.username}}' });">Click to change level.</button>
 	<button onclick = "Dajaxice.database.getIntervalLvl(level_callback, {'text':'{{user.username}}' });">Click for new level.</button>
 </div>
->>>>>>> 4371d2e9576018e65a5e292a0680170826aed1e3
 {% endblock %}

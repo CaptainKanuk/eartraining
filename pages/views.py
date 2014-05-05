@@ -49,13 +49,21 @@ def help(request):
 	context=RequestContext(request)
 	return render_to_response('pages/help.html', context)
 
-def game_win(request):
+def game_winInt(request):
     context=RequestContext(request)
-    return render_to_response('pages/game_win.html', context)
+    return render_to_response('pages/game_winInt.html', context)
 
-def game_loss(request):
+def game_winMel(request):
     context=RequestContext(request)
-    return render_to_response('pages/game_loss.html', context)
+    return render_to_response('pages/game_winMel.html', context)
+
+def game_lossInt(request):
+    context=RequestContext(request)
+    return render_to_response('pages/game_lossInt.html', context)
+
+def game_lossMel(request):
+    context=RequestContext(request)
+    return render_to_response('pages/game_lossMel.html', context)
 
 def notfound(request):
 	context=RequestContext(request)

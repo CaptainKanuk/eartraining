@@ -466,7 +466,7 @@ function changeBorderColors(){
 
 //Called by the canvas on click
 //Determines whether the choice was correct
-function chooseAnswer(answer){
+function chooseAnswerInt(answer){
     if(!answerChosen){
         answerChosen = true;
         var promptField = document.getElementById(prompt);
@@ -475,11 +475,31 @@ function chooseAnswer(answer){
             promptField.innerHTML = "Got it!";
             //playInterval(semitoneToFrequency(correctInterval[0]), semitoneToFrequency(correctInterval[2]), 2, 30);
             playInterval(correctInterval[0], correctInterval[2], 2, 30);
-            answeredCorrectly();
+            answeredCorrectlyInt();
         }
         else{
             promptField.innerHTML = "Uh-oh!";
-            answeredIncorrectly();
+            answeredIncorrectlyInt();
+            //playInterval(semitoneToFrequency(correctInterval[0]), semitoneToFrequency(correctInterval[2]), 2, 30);
+            playInterval(correctInterval[0], correctInterval[2], 2, 30);
+        }
+    }
+}
+
+function chooseAnswerMel(answer){
+    if(!answerChosen){
+        answerChosen = true;
+        var promptField = document.getElementById(prompt);
+        changeBorderColors();
+        if( answer==correctChoice ){
+            promptField.innerHTML = "Got it!";
+            //playInterval(semitoneToFrequency(correctInterval[0]), semitoneToFrequency(correctInterval[2]), 2, 30);
+            playInterval(correctInterval[0], correctInterval[2], 2, 30);
+            answeredCorrectlyMel();
+        }
+        else{
+            promptField.innerHTML = "Uh-oh!";
+            answeredIncorrectlyMel();
             //playInterval(semitoneToFrequency(correctInterval[0]), semitoneToFrequency(correctInterval[2]), 2, 30);
             playInterval(correctInterval[0], correctInterval[2], 2, 30);
         }

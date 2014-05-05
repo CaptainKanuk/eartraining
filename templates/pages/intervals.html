@@ -2,26 +2,33 @@
 
 {% block extrahead %}
 <!-- Vexflow Libraries -->
+
 <script src="{{ STATIC_URL }}/js/vexflow-debug.js"></script>
 <script src="{{ STATIC_URL }}/js/vexflow-min.js"></script>
 <script src="{{ STATIC_URL }}/js/interval-names-table.js"></script>
-<script src="{{ STATIC_URL }}/js/melodies.js"></script>
 <script src="{{ STATIC_URL }}/js/progress-bar.js"></script>
 <script src="{{ STATIC_URL }}/js/riffwave.js"></script>
 <script src="{{ STATIC_URL }}/js/music-staff.js"></script>
-<script src="{{ STATIC_URL }}/js/ajax-functions.js"></script>
 <script src="{{ STATIC_URL }}/js/GLOBAL.js"></script>
 
 
-<script >
-  Dajaxice.database.getIntervalLvl(level_callback, {'text':'{{user.username}}'});
+<script>
   //alert(test_set);
   $("canvas").slideToggle("fast");
   //in_interval_test = 1;
+
+  function getLevel()
+  {
+    Dajaxice.database.getIntervalLvl(level_callback, {'text':'{{user.username}}'});
+  }
+  function incLevel()
+  {
+    Dajaxice.database.intervalLvlUp(level_callback, {'text':'{{user.username}}' });
+  }
   function progress(){
     answerChosen = false;
     var button = document.getElementById("start");
-    if(button.innerHTML=="Let's start.")
+    if (button.innerHTML=="Let's start.")
     {
       button.innerHTML="Next Interval";
       var interval_button = document.getElementById("interval-play");
@@ -31,11 +38,18 @@
       $("canvas").slideToggle("slow");
       
       //getNewIntervals(test_set,newIntervalFromTest(1,max_level));
+<<<<<<< HEAD
       getNewIntervals(0,newIntervalFromTest(0,max_level));
-      alert(max_level);
+      //alert(max_level);
       //getNewIntervals(0,newIntervalFromTest(1,5));
+=======
+      //getNewIntervals(0,newIntervalFromTest(0,max_level));
+      getLevel();
+      setTimeout(function(){getNewIntervals(0,newIntervalFromTest(0,max_level));playInterval(correctInterval[0], correctInterval[2], 2, 30);}, 100);
+      alert(max_level);
+>>>>>>> 804772fa29d4178c4d4cae7b341ac0b433564940
       
-      playInterval(correctInterval[0], correctInterval[2], 2, 30);
+      //playInterval(correctInterval[0], correctInterval[2], 2, 30);
     }
     else
     {
@@ -44,10 +58,18 @@
       //});
       //$("canvas").slideToggle("slow");
       //getNewIntervals(test_set,newIntervalFromTest(1,max_level));
+<<<<<<< HEAD
       getNewIntervals(0,newIntervalFromTest(0,max_level));
-      alert(max_level);
+      //alert(max_level);
       //getNewIntervals(0,newIntervalFromTest(1,5));
       playInterval(correctInterval[0], correctInterval[2], 2, 30);
+=======
+      //getNewIntervals(0,newIntervalFromTest(0,max_level));
+      getLevel();
+      setTimeout(function(){getNewIntervals(0,newIntervalFromTest(0,max_level));playInterval(correctInterval[0], correctInterval[2], 2, 30);}, 100);
+      alert(max_level);
+      //playInterval(correctInterval[0], correctInterval[2], 2, 30);
+>>>>>>> 804772fa29d4178c4d4cae7b341ac0b433564940
     }
   };
 </script>
@@ -97,7 +119,7 @@ div.egcode {
         </h3>
         <div class="row">
 		    <div class="col-md-6">
-                <canvas id="choice_one" onclick="chooseAnswer('choice_one')" width="220" height="100"
+                <canvas id="choice_one" onclick="chooseAnswerInt('choice_one')" width="220" height="100"
                     style="border:4px solid #000000;display:none;">
                     <script>
                         setup("choice_one");
@@ -106,7 +128,7 @@ div.egcode {
                 
 		    </div>
 		    <div class="col-md-6">
-                <canvas id="choice_two" onclick="chooseAnswer('choice_two')" width="220" height="100"
+                <canvas id="choice_two" onclick="chooseAnswerInt('choice_two')" width="220" height="100"
                     style="border:4px solid #000000;display:none;">
                     <script>
                         setup("choice_two");
@@ -116,7 +138,7 @@ div.egcode {
         </div>
         <div class="row">
 		    <div class="col-md-6">
-                <canvas id="choice_three" onclick="chooseAnswer('choice_three')" width="220" height="100"
+                <canvas id="choice_three" onclick="chooseAnswerInt('choice_three')" width="220" height="100"
                     style="border:4px solid #000000;display:none;">
                     <script>
                         setup("choice_three");
@@ -125,7 +147,7 @@ div.egcode {
                 
 		    </div>
 		    <div class="col-md-6">
-                <canvas id="choice_four" onclick="chooseAnswer('choice_four')" width="220" height="100"
+                <canvas id="choice_four" onclick="chooseAnswerInt('choice_four')" width="220" height="100"
                     style="border:4px solid #000000;display:none;">
                     <script>
                         setup("choice_four");
