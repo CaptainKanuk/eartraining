@@ -10,7 +10,9 @@ from django.contrib.auth.forms import UserCreationForm
 from pages.models import UserProfile
 from django.utils import simplejson
 from django.http import Http404
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login
+from django.contrib.auth import logout
+from django.shortcuts import redirect
 
 #=======================================================================
 #===========================PAGE LINKS==================================
@@ -91,10 +93,9 @@ def auth_user(request):
 #    
 #    return render_to_response('pages/signin.html', {'form': form}, context)
 
-def logout(request):
+def logoutview(request):
     logout(request)
-    #context.update(csrf(request))
-    return render_to_response('pages/logout.html', context)
+    return redirect('index')
 
 def loggedin(request):
     context=RequestContext(request)
