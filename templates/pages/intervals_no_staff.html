@@ -31,7 +31,7 @@ div.egcode {
         if(button.innerHTML=="Let's start."){
             button.innerHTML="Next Interval";
             $("canvas").slideToggle("slow");
-            getNewIntervals(0,newIntervalFromTest(1,2));
+            getNewIntervals(1,newIntervalFromTest(0,2));
             playInterval(correctInterval[0], correctInterval[2], 2, 30);
         }
         else{
@@ -40,7 +40,7 @@ div.egcode {
             });
             $("canvas").slideToggle("slow");
             //newIntervalFromTest(test_set,test_num);
-            getNewIntervals(0, newIntervalFromTest(1,2));
+            getNewIntervals(1, newIntervalFromTest(0,2));
             playInterval(correctInterval[0], correctInterval[2], 2, 30);
         }
     };

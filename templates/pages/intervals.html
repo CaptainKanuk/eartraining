@@ -5,48 +5,51 @@
 <script src="{{ STATIC_URL }}/js/vexflow-debug.js"></script>
 <script src="{{ STATIC_URL }}/js/vexflow-min.js"></script>
 <script src="{{ STATIC_URL }}/js/interval-names-table.js"></script>
-<script src="{{ STATIC_URL }}/js/music-staff.js"></script>
+<script src="{{ STATIC_URL }}/js/melodies.js"></script>
 <script src="{{ STATIC_URL }}/js/progress-bar.js"></script>
 <script src="{{ STATIC_URL }}/js/riffwave.js"></script>
-<script src="{{ STATIC_URL }}/js/GLOBAL.js"></script>
+<script src="{{ STATIC_URL }}/js/music-staff.js"></script>
 <script src="{{ STATIC_URL }}/js/ajax-functions.js"></script>
+<script src="{{ STATIC_URL }}/js/GLOBAL.js"></script>
 
 
-<script>
-  //Dajaxice.database.getIntervalLvl(level_callback, {'text':'{{user.username}}' });
-  //alert(max_level);
+<script >
+  Dajaxice.database.getIntervalLvl(level_callback, {'text':'{{user.username}}'});
   //alert(test_set);
   $("canvas").slideToggle("fast");
   //in_interval_test = 1;
   function progress(){
-  answerChosen = false;
-  var button = document.getElementById("start");
-  if(button.innerHTML=="Let's start."){
-  button.innerHTML="Next Interval";
-  var interval_button = document.getElementById("interval-play");
-  interval_button.setAttribute("onclick","playInterval(correctInterval[0], correctInterval[2], 2, 30);");
-  interval_button.setAttribute("class", "btn btn-lg btn-default");
-  interval_button.innerHTML = "Play interval.";
-  $("canvas").slideToggle("slow");
-  //use this
-  //newIntervalFromTest(test_set,test_num);
-  //alert(max_level);
-  //getNewIntervals(test_set,newIntervalFromTest(1,max_level));
-  getNewIntervals(0,newIntervalFromTest(1,5));
-  playInterval(correctInterval[0], correctInterval[2], 2, 30);
-  }
-  else{
-  //$("canvas").slideToggle("slow", function () {
-  
-  //});
-  //$("canvas").slideToggle("slow");
-  //newIntervalFromTest(test_set,test_num);
-  //alert(max_level);
-  //getNewIntervals(test_set,newIntervalFromTest(1,max_level));
-  getNewIntervals(0,newIntervalFromTest(1,5));
-  playInterval(correctInterval[0], correctInterval[2], 2, 30);
+    answerChosen = false;
+    var button = document.getElementById("start");
+    if(button.innerHTML=="Let's start.")
+    {
+      button.innerHTML="Next Interval";
+      var interval_button = document.getElementById("interval-play");
+      interval_button.setAttribute("onclick","playInterval(correctInterval[0], correctInterval[2], 2, 30);");
+      interval_button.setAttribute("class", "btn btn-lg btn-default");
+      interval_button.innerHTML = "Play interval.";
+      $("canvas").slideToggle("slow");
+      
+      //getNewIntervals(test_set,newIntervalFromTest(1,max_level));
+      getNewIntervals(0,newIntervalFromTest(0,max_level));
+      alert(max_level);
+      //getNewIntervals(0,newIntervalFromTest(1,5));
+      
+      playInterval(correctInterval[0], correctInterval[2], 2, 30);
     }
-    };
+    else
+    {
+      //$("canvas").slideToggle("slow", function () {
+      
+      //});
+      //$("canvas").slideToggle("slow");
+      //getNewIntervals(test_set,newIntervalFromTest(1,max_level));
+      getNewIntervals(0,newIntervalFromTest(0,max_level));
+      alert(max_level);
+      //getNewIntervals(0,newIntervalFromTest(1,5));
+      playInterval(correctInterval[0], correctInterval[2], 2, 30);
+    }
+  };
 </script>
 
 <style type="text/css">

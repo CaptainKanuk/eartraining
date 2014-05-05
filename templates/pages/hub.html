@@ -9,14 +9,19 @@
 <script src="{{ STATIC_URL }}/js/riffwave.js"></script>
 <script src="{{ STATIC_URL }}/js/music-staff.js"></script>
 <script src="{{ STATIC_URL }}/js/ajax-functions.js"></script>
+<script src="{{ STATIC_URL }}/js/GLOBAL.js"></script>
 
 
 <div class="inner cover"> <!-- onclick="alert('You clicked it!');Dajaxice.database.sayhello(my_js_callback);"-->
 
 </div>
-	<button onclick = "Dajaxice.database.getIntervalLvl(level_callback, {'text':'{{user.username}}' });">Click for level.</button>
-    <button onclick = "Dajaxice.database.intervalLvlUp(level_callback, {'text':'{{user.username}}' });">Click to change level.</button>
-	<button onclick = "Dajaxice.database.getIntervalLvl(level_callback, {'text':'{{user.username}}' });">Click for new level.</button>
+	<button onclick = "Dajaxice.database.getIntervalLvl(level_callback, {'text':'{{user.username}}'});">Click to load level.</button>
+	<button onclick = "alert(max_level);">Click for level.</button>
+    <button onclick = "Dajaxice.database.intervalLvlUp(level_callback, {'text':'{{user.username}}'});">Click to change level.</button>
+	<button onclick = "Dajaxice.database.getIntervalLvl(level_callback, {'text':'{{user.username}}'});">Click to load new level.</button>
+	<button onclick = "alert(max_level);">Click for new level.</button>
+	<br>
+	<button onclick = "Dajaxice.database.resetLvls(level_callback, {'text':'{{user.username}}'}); alert(max_level);">Click to reset levels.</button>
 
 <script src="{{ STATIC_URL }}/js/test.js"></script>
 {% endblock %}
