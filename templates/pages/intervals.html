@@ -13,9 +13,9 @@
 
 
 <script>
-  Dajaxice.database.getIntervalLvl(level_callback, {'text':'{{user.username}}' });
-  alert(max_level);
-  alert(test_set);
+  //Dajaxice.database.getIntervalLvl(level_callback, {'text':'{{user.username}}' });
+  //alert(max_level);
+  //alert(test_set);
   $("canvas").slideToggle("fast");
   //in_interval_test = 1;
   function progress(){
@@ -30,8 +30,9 @@
   $("canvas").slideToggle("slow");
   //use this
   //newIntervalFromTest(test_set,test_num);
-  alert(max_level);
-  getNewIntervals(test_set,newIntervalFromTest(1,max_level));
+  //alert(max_level);
+  //getNewIntervals(test_set,newIntervalFromTest(1,max_level));
+  getNewIntervals(0,newIntervalFromTest(1,5));
   playInterval(correctInterval[0], correctInterval[2], 2, 30);
   }
   else{
@@ -40,8 +41,9 @@
   //});
   //$("canvas").slideToggle("slow");
   //newIntervalFromTest(test_set,test_num);
-  alert(max_level);
-  getNewIntervals(test_set,newIntervalFromTest(1,max_level));
+  //alert(max_level);
+  //getNewIntervals(test_set,newIntervalFromTest(1,max_level));
+  getNewIntervals(0,newIntervalFromTest(1,5));
   playInterval(correctInterval[0], correctInterval[2], 2, 30);
     }
     };
