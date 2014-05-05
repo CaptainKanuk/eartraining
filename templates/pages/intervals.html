@@ -9,13 +9,16 @@
 <script src="{{ STATIC_URL }}/js/progress-bar.js"></script>
 <script src="{{ STATIC_URL }}/js/riffwave.js"></script>
 <script src="{{ STATIC_URL }}/js/GLOBAL.js"></script>
+<script src="{{ STATIC_URL }}/js/ajax-functions.js"></script>
 
 
 <script>
+  Dajaxice.database.getIntervalLvl(level_callback, {'text':'{{user.username}}' });
+  alert(max_level);
+  alert(test_set);
   $("canvas").slideToggle("fast");
   //in_interval_test = 1;
   function progress(){
-  alert(test_num);
   answerChosen = false;
   var button = document.getElementById("start");
   if(button.innerHTML=="Let's start."){
@@ -27,7 +30,8 @@
   $("canvas").slideToggle("slow");
   //use this
   //newIntervalFromTest(test_set,test_num);
-  getNewIntervals(1,newIntervalFromTest(1,2));
+  alert(max_level);
+  getNewIntervals(test_set,newIntervalFromTest(1,max_level));
   playInterval(correctInterval[0], correctInterval[2], 2, 30);
   }
   else{
@@ -36,7 +40,8 @@
   //});
   //$("canvas").slideToggle("slow");
   //newIntervalFromTest(test_set,test_num);
-  getNewIntervals(1,newIntervalFromTest(1,2));
+  alert(max_level);
+  getNewIntervals(test_set,newIntervalFromTest(1,max_level));
   playInterval(correctInterval[0], correctInterval[2], 2, 30);
     }
     };
@@ -77,7 +82,7 @@ div.egcode {
 
 {% block content %}
 
-<div class="inner cover">
+<div class="inner cover" onload= "">
     <h1 class="cover-heading">Intervals</h1>
     <p class="lead">
     <a id="interval-play" onclick="" class=""></a>
@@ -126,6 +131,6 @@ div.egcode {
     </div>
 </div>
 <p class="lead">
-<a href="#" id="start" onclick="progress()" class="btn btn-lg btn-default">Let's start.</a>
+<a href="#" id="start" onclick="progress();" class="btn btn-lg btn-default">Let's start.</a>
 </p>
 {% endblock %}
