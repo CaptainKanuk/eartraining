@@ -37,18 +37,10 @@
       interval_button.innerHTML = "Play interval.";
       $("canvas").slideToggle("slow");
       
-      //getNewIntervals(test_set,newIntervalFromTest(1,max_level));
-      //getNewIntervals(0,newIntervalFromTest(0,max_level));
+      getLevel();
+      setTimeout(function(){getNewIntervals(0,newIntervalFromTest(0,max_level));playInterval(correctInterval[0], correctInterval[2], 2, 30);}, 100);
       //alert(max_level);
-      //getNewIntervals(0,newIntervalFromTest(1,5));
-      //getNewIntervals(0,newIntervalFromTest(0,max_level));
-      getLevel();
-      setTimeout(function(){getNewIntervals(0,newIntervalFromTest(0,max_level));playInterval(correctInterval[0], correctInterval[2], 2, 30);}, 100);
-      alert(max_level);
 
-      getLevel();
-      setTimeout(function(){getNewIntervals(0,newIntervalFromTest(0,max_level));playInterval(correctInterval[0], correctInterval[2], 2, 30);}, 100);
-      
       //playInterval(correctInterval[0], correctInterval[2], 2, 30);
     }
     else
@@ -57,19 +49,10 @@
       
       });
       $("canvas").slideToggle("slow");
-      //getNewIntervals(test_set,newIntervalFromTest(1,max_level));
-      //getNewIntervals(0,newIntervalFromTest(0,max_level));
+
+      getLevel();
+      setTimeout(function(){getNewIntervals(0,newIntervalFromTest(0,max_level));playInterval(correctInterval[0], correctInterval[2], 2, 30);}, 100);
       //alert(max_level);
-      //getNewIntervals(0,newIntervalFromTest(1,5));
-      //playInterval(correctInterval[0], correctInterval[2], 2, 30);
-      //getNewIntervals(0,newIntervalFromTest(0,max_level));
-      getLevel();
-      setTimeout(function(){getNewIntervals(0,newIntervalFromTest(0,max_level));playInterval(correctInterval[0], correctInterval[2], 2, 30);}, 100);
-      alert(max_level);
-      //playInterval(correctInterval[0], correctInterval[2], 2, 30);
-      $("canvas").slideToggle("slow", function () { });
-      getLevel();
-      setTimeout(function(){getNewIntervals(0,newIntervalFromTest(0,max_level));playInterval(correctInterval[0], correctInterval[2], 2, 30);}, 100);
     }
   };
 </script>
