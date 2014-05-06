@@ -486,26 +486,6 @@ function chooseAnswerInt(answer){
     }
 }
 
-function chooseAnswerMel(answer){
-    if(!answerChosen){
-        answerChosen = true;
-        var promptField = document.getElementById(prompt);
-        changeBorderColors();
-        if( answer==correctChoice ){
-            promptField.innerHTML = "Got it!";
-            //playInterval(semitoneToFrequency(correctInterval[0]), semitoneToFrequency(correctInterval[2]), 2, 30);
-            playInterval(correctInterval[0], correctInterval[2], 2, 30);
-            answeredCorrectlyMel();
-        }
-        else{
-            promptField.innerHTML = "Uh-oh!";
-            answeredIncorrectlyMel();
-            //playInterval(semitoneToFrequency(correctInterval[0]), semitoneToFrequency(correctInterval[2]), 2, 30);
-            playInterval(correctInterval[0], correctInterval[2], 2, 30);
-        }
-    }
-}
-
 //convert the semitone number to a frequency
 function semitoneToFrequency(semitone){
     return middleCHz * Math.pow(semitoneConstant, semitone - middleC );

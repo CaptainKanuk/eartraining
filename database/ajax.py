@@ -17,8 +17,27 @@ def intervalLvlUp(request, text):
     u.save()
 
 @dajaxice_register(method='GET')
+def intervalLvlUp(request, text):
+    u=UserProfile.objects.filter(userId=text)[0]
+    lvl = u.intervalLevel + 1
+    u.intervalLevel = lvl
+    u.save()
+
+@dajaxice_register(method='GET')
 def resetLvls(request, text):
     u=UserProfile.objects.filter(userId=text)[0]
     lvl = 0
     u.intervalLevel = lvl
+    u.save()
+
+@dajaxice_register(method='GET')
+def sendIntLvl(request, text, curIntLvl):
+    u=UserProfile.objects.filter(userId=text)[0]
+    u.currentIntLevel = curIntLvl
+    u.save()
+
+@dajaxice_register(method='GET')
+def sendMelLvl(request, text, curMelLvl):
+    u=UserProfile.objects.filter(userId=text)[0]
+    u.currentMelLevel = curMelLvl
     u.save()

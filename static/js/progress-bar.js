@@ -47,9 +47,9 @@ function answeredIncorrectlyMel(){
 	loseHP(1);
     updateProgressMelodies();
 }
-function passButton()
+function passButtonInt()
 {
-  document.getElementById("start").setAttribute("href", "/game_win");
+  document.getElementById("start").setAttribute("href", "/game_winInt");
   document.getElementById("start").innerHTML = "You passed! Continue.";
 }
 
@@ -57,14 +57,11 @@ function passButton()
 function updateProgressIntervals() {
     quiz_progress = 1+ quiz_progress + (100/numberOfQuestionsInModule);
     if (quiz_progress >= 100 && HP != 0) {
-<<<<<<< HEAD
-    	document.getElementById("start").setAttribute("href", "/game_winInt");
-      //Dajaxice.database.intervalLvlUp(level_callback, {'text':'{{user.username}}'});
-      document.getElementById("start").setAttribute("onclick", "progress(); Dajaxice.database.intervalLvlUp(level_callback, {'text':'{{user.username}}'});");
-    	document.getElementById("start").innerHTML = "You passed! Continue.";
-=======
-      setInterval(passButton, 100);
->>>>>>> 804772fa29d4178c4d4cae7b341ac0b433564940
+//    	document.getElementById("start").setAttribute("href", "/game_winInt");
+//      //Dajaxice.database.intervalLvlUp(level_callback, {'text':'{{user.username}}'});
+//      document.getElementById("start").setAttribute("onclick", "progress(); Dajaxice.database.intervalLvlUp(level_callback, {'text':'{{user.username}}'});");
+//    	document.getElementById("start").innerHTML = "You passed! Continue.";
+      setInterval(passButtonInt, 100);
     	if (test_num == 22){
     		test_num = 1; //USER_TEST_NUM = 1;
     		test_set = 2; //USER_TEST_SET = 2;
@@ -169,25 +166,4 @@ function updateProgressMelodies() {
 function loseHP(amount){
     HP = HP - amount;
     //alert("You have "+HP+" HP left.");
-}
-
-//function to request user info from the database
-//Code from http://racingtadpole.com/blog/django-ajax-and-jquery/
-function gameOver() {
-    var board = $('#game-board').attr('data-board-id');
-    $.ajax({
-           type: "POST",
-           url: $('#game-board').attr('data-done-ref'),  // or just url: "/my-url/path/"
-           data: {
-           csrfmiddlewaretoken: document.getElementsByName('csrfmiddlewaretoken')[0].value,
-           board: board,
-           move_list: move_list.join(','),
-           },
-           success: function(data) {
-           alert("Congratulations! You scored: "+data);
-           },
-           error: function(xhr, textStatus, errorThrown) {
-           alert("Please report this error: "+errorThrown+xhr.status+xhr.responseText);
-           }
-           });
 }

@@ -400,7 +400,7 @@ function changeBorderColors() {
 
 //Called by the canvas on click
 //Determines whether the choice was correct
-function chooseAnswer(answer){
+function chooseAnswerMel(answer){
     if(!answerChosen){
         answerChosen = true;
         var promptField = document.getElementById(prompt);
@@ -408,14 +408,14 @@ function chooseAnswer(answer){
         if( answer==correctChoice ){
             promptField.innerHTML = "Got it!";
             //playInterval(semitoneToFrequency(correctInterval[0]), semitoneToFrequency(correctInterval[2]), 2, 30);
-            //playMelody(correctMelody);
-            answeredCorrectly();
+            playInterval(correctInterval[0], correctInterval[2], 2, 30);
+            answeredCorrectlyMel();
         }
         else{
             promptField.innerHTML = "Uh-oh!";
-            answeredIncorrectly();
+            answeredIncorrectlyMel();
             //playInterval(semitoneToFrequency(correctInterval[0]), semitoneToFrequency(correctInterval[2]), 2, 30);
-            //playMelody(correctMelody);
+            playInterval(correctInterval[0], correctInterval[2], 2, 30);
         }
     }
 }

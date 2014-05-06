@@ -128,7 +128,7 @@ def register_user(request):
         #return render_to_response('pages/register.html', argTest, context)
         if form.is_valid():
             form.save()
-            u = UserProfile(userId=request.POST.get('username', ''), intervalLevel="1", melodyLevel="1")
+            u = UserProfile(userId=request.POST.get('username', ''), intervalLevel="1", melodyLevel="1", currentIntLvl="1")
             u.save()
             username = request.POST.get('username', '')
             password = request.POST.get('password1', '')
