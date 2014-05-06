@@ -20,9 +20,9 @@ function decreaseCurMelLvl()
     }
 }
 
-function increaseCurMelLvl()
+function increaseCurMelLvl(max)
 {
-    if(currentMelodyLevel < maxMelodyLevel){
+    if(currentMelodyLevel < maxMelodyLevel && currentMelodyLevel < max){
         currentMelodyLevel = currentMelodyLevel + 1;
         //update the counter
         document.getElementById("curMelLvl").innerHTML=currentMelodyLevel.toString();
@@ -38,9 +38,9 @@ function decreaseCurIntLvl()
     }
 }
 
-function increaseCurIntLvl()
+function increaseCurIntLvl(max)
 {
-    if(currentIntervalLevel < maxIntervalLevel){
+    if(currentIntervalLevel < maxIntervalLevel && currentIntervalLevel < max){
         currentIntervalLevel = currentIntervalLevel + 1;
         //update the counter
         document.getElementById("curIntLvl").innerHTML=currentIntervalLevel.toString();
