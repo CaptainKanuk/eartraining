@@ -33,13 +33,13 @@ def resetIntervalLvl(request, text):
 @dajaxice_register(method='GET')
 def sendIntLvl(request, text, curIntLvl):
     u=UserProfile.objects.filter(userId=text)[0]
-    u.currentIntLevel = curIntLvl
+    u.currentInt = curIntLvl
     u.save()
 
 @dajaxice_register(method='GET')
 def sendMelLvl(request, text, curMelLvl):
     u=UserProfile.objects.filter(userId=text)[0]
-    u.currentMelLevel = curMelLvl
+    u.currentMel = curMelLvl
     u.save()
 
 @dajaxice_register(method='GET')

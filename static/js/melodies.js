@@ -243,7 +243,7 @@ function printMel(mel)
 
 function levToLength(level)
 {
-    return level + 3;
+    return level + 2;
 
 }
 function getNewMelodies(len)
@@ -413,13 +413,11 @@ function chooseAnswerMel(answer){
         changeBorderColors();
         if( answer==correctChoice ){
             promptField.innerHTML = "Got it!";
-
             answeredCorrectlyMel();
         }
         else{
             promptField.innerHTML = "Uh-oh!";
             answeredIncorrectlyMel();
-
         }
     }
 }
@@ -452,7 +450,6 @@ function playMelody()
     var gainstepD;
     var gstep = 0;
 
-    alert(melcount);
     while (numnote < correctMelody.length)
     {
         length = 2;
