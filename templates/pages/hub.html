@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block content %}
+{% block extrahead %}
 <script src="{{ STATIC_URL }}/js/vexflow-debug.js"></script>
 <script src="{{ STATIC_URL }}/js/vexflow-min.js"></script>
 <script src="{{ STATIC_URL }}/js/interval-names-table.js"></script>
@@ -10,12 +10,50 @@
 <script src="{{ STATIC_URL }}/js/music-staff.js"></script>
 <script src="{{ STATIC_URL }}/js/ajax-functions.js"></script>
 <script src="{{ STATIC_URL }}/js/GLOBAL.js"></script>
+<script src="{{ STATIC_URL }}/js/hub.js"></script>
 
+{% endblock %}
 
-<div class="inner cover"> <!-- onclick="alert('You clicked it!');Dajaxice.database.sayhello(my_js_callback);"-->
-
+{% block content %}
+<div>
+        <h1 class="cover-heading"> Choose a Melody Level! </h1>
+        
+        <span id="curMelLvl" align="center" style="font-size:60px">
+                10
+        </span>
+        <p class = "tpbutton btn-toolbar" style="text-align:center">
+            <button type="button" class="btn btn-default btn-lg" onclick="decreaseCurMelLvl()">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </button>
+            <button type="button" class="btn btn-default btn-lg" onclick = "submitMelInfo()">
+                Go
+            </button>
+            <button type="button" class="btn btn-default btn-lg" onclick="increaseCurMelLvl()">
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </button>
+        </p>
 </div>
-	<button onclick = "Dajaxice.database.getIntervalLvl(level_callback, {'text':'{{user.username}}'});">Click to load level.</button>
+
+<div>
+    <h1 class="cover-heading"> Choose an Interval Level! </h1>
+    
+    <span id="curIntLvl" align="center" style="font-size:60px">
+        10
+    </span>
+    <p class = "tpbutton btn-toolbar" style="text-align:center">
+    <button type="button" class="btn btn-default btn-lg" onclick="decreaseCurIntLvl()">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+    </button>
+    <button type="button" class="btn btn-default btn-lg" onclick = "submitIntInfo()">
+        Go
+    </button>
+    <button type="button" class="btn btn-default btn-lg" onclick="increaseCurIntLvl()">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+    </button>
+    </p>
+</div>
+
+	<!--button onclick = "Dajaxice.database.getIntervalLvl(level_callback, {'text':'{{user.username}}'});">Click to load level.</button>
 	<button onclick = "alert(max_level);">Click for level.</button>
     <button onclick = "Dajaxice.database.intervalLvlUp(level_callback, {'text':'{{user.username}}'});">Click to change level.</button>
 	<button onclick = "Dajaxice.database.getIntervalLvl(level_callback, {'text':'{{user.username}}'});">Click to load new level.</button>
@@ -30,5 +68,5 @@
 	<button onclick = "Dajaxice.database.getIntervalLvl(level_callback, {'text':'{{user.username}}' });">Click for level.</button>
     <button onclick = "Dajaxice.database.intervalLvlUp(level_callback, {'text':'{{user.username}}' });">Click to change level.</button>
 	<button onclick = "Dajaxice.database.getIntervalLvl(level_callback, {'text':'{{user.username}}' });">Click for new level.</button>
-</div>
+</div-->
 {% endblock %}

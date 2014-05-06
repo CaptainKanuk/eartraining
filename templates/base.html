@@ -32,7 +32,11 @@
                         <!-- nav bar -->
                         <nav id="mainMenu" class="navbar navbar-default navbar-fixed-top" role="navigation">
                             <div class="container">
-                                <a class="navbar-brand" href="/hub">Mezzo</a>
+                                {% if user.is_authenticated %}
+                                    <a class="navbar-brand" href="/hub">Mezzo</a>
+                                {% else %}
+                                    <a class="navbar-brand" href="/signin">Mezzo</a>
+                                {% endif %}
                                 <u1 class="nav navbar-nav navbar-right">
                                     {% if user.is_authenticated %}
                                     <li class="dropdown" id="trainingmenu">
