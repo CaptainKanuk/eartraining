@@ -13,11 +13,11 @@
 <script>
   function getMLevel()
   {
-    Dajaxice.database.getMelodyLvl(level_callback, {'text':'{{user.username}}'});
+    Dajaxice.database.getMelodyLvl(Mlevel_callback, {'text':'{{user.username}}'});
   }
   function incMLevel()
   {
-    Dajaxice.database.melodyLvlUp(level_callback, {'text':'{{user.username}}' });
+    Dajaxice.database.melodyLvlUp(Mlevel_callback, {'text':'{{user.username}}' });
   }
 </script>
 
