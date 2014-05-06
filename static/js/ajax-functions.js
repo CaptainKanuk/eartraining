@@ -29,6 +29,7 @@ function melcurlevel_callback(data)
 function Mlevel_callback(data)
 {
 	mel_level = data.message;
+    alert(mel_level);
 	//alert(max_level);
 }
 
