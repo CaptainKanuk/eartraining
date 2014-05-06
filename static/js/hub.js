@@ -1,13 +1,15 @@
 
 //SHOULD BE LOADED FROM DATABASE AS MAX LEVEL
-var currentMelodyLevel = 10;
+var currentMelodyLevel = 1;
 //SHOULD ALSO BE LOADED FROM DATABASE
 var maxMelodyLevel = 20;
 
 //SHOULD BE LOADED FROM DATABASE AS MAX LEVEL
-var currentIntervalLevel = 10;
+var currentIntervalLevel = 1;
 //SHOULD ALSO BE LOADED FROM DATABASE
 var maxIntervalLevel = 20;
+
+
 
 function decreaseCurMelLvl()
 {
@@ -46,9 +48,11 @@ function increaseCurIntLvl()
 }
 
 function submitIntInfo() {
-    Dajaxice.database.sendIntLvl(intcurlevel_callback, {'text':'{{user.username}}', 'curIntLvl':curIntLvl});
+    Dajaxice.database.sendIntLvl(intcurlevel_callback, {'text':'{{user.username}}', 'curIntLvl': currentIntervalLevel});
+    //Dajaxice.database.sendIntLvl(intcurlevel_callback, {'text':'{{user.username}}'}, currentIntervalLevel);
 }
 
 function submitMelInfo() {
-    Dajaxice.database.sendMelLvl(melcurlevel_callback, {'text':'{{user.username}}', 'curMelLvl': curMelLvl});
+    Dajaxice.database.sendMelLvl(melcurlevel_callback, {'text':'{{user.username}}', 'curMelLvl': currentMelodyLevel});
+    //Dajaxice.database.sendMelLvl(melcurlevel_callback, {'text':'{{user.username}}'}, currentMelodyLevel);
 }

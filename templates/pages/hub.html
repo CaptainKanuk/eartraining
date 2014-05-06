@@ -11,15 +11,60 @@
 <script src="{{ STATIC_URL }}/js/ajax-functions.js"></script>
 <script src="{{ STATIC_URL }}/js/GLOBAL.js"></script>
 <script src="{{ STATIC_URL }}/js/hub.js"></script>
+<script>
+  function getILevel()
+  {
+    Dajaxice.database.getIntervalLvl(level_callback, {'text':'{{user.username}}'});
+  }
 
+  function getMLevel()
+  {
+    Dajaxice.database.getMelodyLvl(Mlevel_callback, {'text':'{{user.username}}'});
+  }
+  function setCurInt()
+  {
+    Dajaxice.database.getIntervalLvl(level_callback, {'text':'{{user.username}}'});
+  }
+
+  function setCurInt()
+  {
+    Dajaxice.database.getMelodyLvl(Mlevel_callback, {'text':'{{user.username}}'});
+  }
+
+  getILevel(); 
+  getMLevel(); 
+  setTimeout(function(){document.getElementById('curIntLvl').innerHTML = max_level;}, 100);
+  setTimeout(function(){document.getElementById('curMelLvl').innerHTML = mel_level;}, 100);
+
+</script>
 {% endblock %}
 
 {% block content %}
+
+<div>
+    <h1 class="cover-heading"> Choose an Interval Level! </h1>
+    
+    <span id="curIntLvl" align="center" style="font-size:60px">
+        1
+    </span>
+    <p class = "tpbutton btn-toolbar" style="text-align:center">
+    <button type="button" class="btn btn-default btn-lg" onclick="decreaseCurIntLvl()">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+    </button>
+    <button type="button" class="btn btn-default btn-lg" onclick = "submitIntInfo()">
+        Go
+    </button>
+    <button type="button" class="btn btn-default btn-lg" onclick="increaseCurIntLvl()">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+    </button>
+    </p>
+</div>
+<br>
 <div>
         <h1 class="cover-heading"> Choose a Melody Level! </h1>
         
         <span id="curMelLvl" align="center" style="font-size:60px">
-                10
+                1
         </span>
         <p class = "tpbutton btn-toolbar" style="text-align:center">
             <button type="button" class="btn btn-default btn-lg" onclick="decreaseCurMelLvl()">
@@ -34,24 +79,6 @@
         </p>
 </div>
 
-<div>
-    <h1 class="cover-heading"> Choose an Interval Level! </h1>
-    
-    <span id="curIntLvl" align="center" style="font-size:60px">
-        10
-    </span>
-    <p class = "tpbutton btn-toolbar" style="text-align:center">
-    <button type="button" class="btn btn-default btn-lg" onclick="decreaseCurIntLvl()">
-        <span class="glyphicon glyphicon-chevron-left"></span>
-    </button>
-    <button type="button" class="btn btn-default btn-lg" onclick = "submitIntInfo()">
-        Go
-    </button>
-    <button type="button" class="btn btn-default btn-lg" onclick="increaseCurIntLvl()">
-        <span class="glyphicon glyphicon-chevron-right"></span>
-    </button>
-    </p>
-</div>
 
 	<!--button onclick = "Dajaxice.database.getIntervalLvl(level_callback, {'text':'{{user.username}}'});">Click to load level.</button>
 	<button onclick = "alert(max_level);">Click for level.</button>

@@ -16,12 +16,14 @@ function level_callback(data)
 
 function intcurlevel_callback(data)
 {
-    alert(data.message);
+	alert("int");
+    curIntLvl = data.message;
 }
 
 function melcurlevel_callback(data)
 {
-    alert(data.message);
+	alert("mel");
+    curMelLvl = data.message;
 }
 
 function Mlevel_callback(data)
