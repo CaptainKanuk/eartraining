@@ -128,7 +128,7 @@ def register_user(request):
         #return render_to_response('pages/register.html', argTest, context)
         if form.is_valid():
             form.save()
-            u = UserProfile(userId=request.POST.get('username', ''), intervalLevel="1", melodyLevel="1", currentIntLvl="1")
+            u = UserProfile(userId=request.POST.get('username', ''), intervalLevel="1", melodyLevel="1", currentInt="0", currentMel="0")
             u.save()
             username = request.POST.get('username', '')
             password = request.POST.get('password1', '')
@@ -184,18 +184,3 @@ def intLvlUp(request):
             user.save()
     #temp = UserProfile.objects.filter(user=user.username).intervalLevel
     return HttpResponse(lvl)
-
-
-
-#AJAX request to get info from the user database
-#Code from http://racingtadpole.com/blog/django-ajax-and-jquery/
-def game_over(request):
-    if request.is_ajax():
-        try:
-            board_pk = int(request.POST['board'])
-            moves = list(map(int, request.POST['move_list'].split(',')))
-        except KeyError:
-            return HttpResponse('Error') # incorrect post
-        return HttpResponse('Error')
-    else:
-        raise Http404

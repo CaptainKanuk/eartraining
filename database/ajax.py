@@ -42,6 +42,7 @@ def sendMelLvl(request, text, curMelLvl):
     u.currentMelLevel = curMelLvl
     u.save()
 
+@dajaxice_register(method='GET')
 def getMelodyLvl(request, text):
     u=UserProfile.objects.filter(userId=text)[0].melodyLevel
     #return simplejson.dumps({'message':'Your message is %s!' % u})

@@ -404,12 +404,8 @@ function changeBorderColors() {
     }
 }
 
-
-<<<<<<< HEAD
 //Called by the canvas on click
 //Determines whether the choice was correct
-=======
->>>>>>> fdedc93d3b4a48792bb1822534682838b4a071fc
 function chooseAnswerMel(answer){
     if(!answerChosen){
         answerChosen = true;
@@ -417,21 +413,13 @@ function chooseAnswerMel(answer){
         changeBorderColors();
         if( answer==correctChoice ){
             promptField.innerHTML = "Got it!";
-            //playInterval(semitoneToFrequency(correctInterval[0]), semitoneToFrequency(correctInterval[2]), 2, 30);
-<<<<<<< HEAD
-            playInterval(correctInterval[0], correctInterval[2], 2, 30);
-=======
->>>>>>> fdedc93d3b4a48792bb1822534682838b4a071fc
+
             answeredCorrectlyMel();
         }
         else{
             promptField.innerHTML = "Uh-oh!";
             answeredIncorrectlyMel();
-            //playInterval(semitoneToFrequency(correctInterval[0]), semitoneToFrequency(correctInterval[2]), 2, 30);
-<<<<<<< HEAD
-            playInterval(correctInterval[0], correctInterval[2], 2, 30);
-=======
->>>>>>> fdedc93d3b4a48792bb1822534682838b4a071fc
+
         }
     }
 }
