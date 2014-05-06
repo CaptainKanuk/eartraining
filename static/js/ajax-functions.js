@@ -14,7 +14,6 @@ function level_callback(data)
 	//alert(max_level);
 }
 
-<<<<<<< HEAD
 function intcurlevel_callback(data)
 {
     alert(data.message);
@@ -23,12 +22,12 @@ function intcurlevel_callback(data)
 function melcurlevel_callback(data)
 {
     alert(data.message);
-=======
+}
+
 function Mlevel_callback(data)
 {
 	mel_level = data.message;
 	//alert(max_level);
->>>>>>> fdedc93d3b4a48792bb1822534682838b4a071fc
 }
 
 function test_function()
