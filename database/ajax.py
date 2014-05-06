@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import simplejson
 from dajaxice.decorators import dajaxice_register
 from pages.models import UserProfile
+from django.shortcuts import render_to_response
 
 @dajaxice_register(method='GET')
 def getIntervalLvl(request, text):
@@ -35,17 +36,19 @@ def sendIntLvl(request, text, curIntLvl):
     u=UserProfile.objects.filter(userId=text)[0]
     u.currentInt = curIntLvl
     u.save()
+    return simplejson.dumps({'message':'hello'})
+#return render_to_response('pages/intervals.html')
 
 @dajaxice_register(method='GET')
 def sendMelLvl(request, text, curMelLvl):
     u=UserProfile.objects.filter(userId=text)[0]
     u.currentMel = curMelLvl
     u.save()
+    #return render_to_response('pages/melodies.html')
 
 @dajaxice_register(method='GET')
 def getMelodyLvl(request, text):
     u=UserProfile.objects.filter(userId=text)[0].melodyLevel
-    #return simplejson.dumps({'message':'Your message is %s!' % u})
     return simplejson.dumps({'message':u})
 
 @dajaxice_register(method='GET')
