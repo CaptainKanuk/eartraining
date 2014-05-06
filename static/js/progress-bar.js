@@ -47,21 +47,30 @@ function answeredIncorrectlyMel(){
 	loseHP(1);
     updateProgressMelodies();
 }
+<<<<<<< HEAD
 function passButtonInt()
 {
   document.getElementById("start").setAttribute("href", "/game_winInt");
   document.getElementById("start").innerHTML = "You passed! Continue.";
 }
+=======
+
+>>>>>>> fdedc93d3b4a48792bb1822534682838b4a071fc
 
 //update the progress variable and the progress bar
 function updateProgressIntervals() {
     quiz_progress = 1+ quiz_progress + (100/numberOfQuestionsInModule);
     if (quiz_progress >= 100 && HP != 0) {
+<<<<<<< HEAD
 //    	document.getElementById("start").setAttribute("href", "/game_winInt");
 //      //Dajaxice.database.intervalLvlUp(level_callback, {'text':'{{user.username}}'});
 //      document.getElementById("start").setAttribute("onclick", "progress(); Dajaxice.database.intervalLvlUp(level_callback, {'text':'{{user.username}}'});");
 //    	document.getElementById("start").innerHTML = "You passed! Continue.";
       setInterval(passButtonInt, 100);
+=======
+      document.getElementById("start").setAttribute("href", "/game_winInt");
+      document.getElementById("start").innerHTML = "You passed! Continue.";
+>>>>>>> fdedc93d3b4a48792bb1822534682838b4a071fc
     	if (test_num == 22){
     		test_num = 1; //USER_TEST_NUM = 1;
     		test_set = 2; //USER_TEST_SET = 2;
@@ -69,41 +78,13 @@ function updateProgressIntervals() {
     	else {
     		test_num++;
         incLevel();
-        //Dajaxice.database.intervalLvlUp(level_callback, {'text':'{{user.username}}' });
-        //alert(max_level);
+
       }
 
-    	//TO DATABASE, store test completed number, increment test availability number
-
-    	/*
-    	if (in_melody_test == 1)
-    	{
-    		document.getElementById("about_win").innerHTML = "You passed the melody quiz.";
-    		in_melody_test = 0;
-    	}
-    	if (in_interval_test == 1)
-    	{
-    		document.getElementById("about_win").innerHTML = "You passed the interval quiz.";
-    		in_interval_test = 0;
-    	}
-    	*/
     }
     if (HP == 0) {
     	document.getElementById("start").setAttribute("href","/game_lossInt");
     	document.getElementById("start").innerHTML = "Bummer, man, you failed... Get results.";
-    	//based on number of fails of a test, potentially decrement test availability so user must retake previous test
-    	/*
-    	if (in_melody_test == 1)
-    	{
-    		document.getElementById("about_loss").innerHTML = "You failed the melody quiz.";
-    		in_melody_test = 0;
-    	}
-    	if (in_interval_test == 1)
-    	{
-    		document.getElementById("about_loss").innerHTML = "You failed the interval quiz.";
-    		in_interval_test = 0;
-    	}
-    	*/
     }
     document.getElementById(p_bar_label).style.width= (quiz_progress) +'%';
 
@@ -113,51 +94,15 @@ function updateProgressIntervals() {
 function updateProgressMelodies() {
     quiz_progress = 1+ quiz_progress + (100/numberOfQuestionsInModule);
     if (quiz_progress >= 100 && HP != 0) {
-    	document.getElementById("start").setAttribute("href", "/game_winMel");
-        //Dajaxice.database.intervalLvlUp(level_callback, {'text':'{{user.username}}'});
-        document.getElementById("start").setAttribute("onclick", "progress(); Dajaxice.database.melodiesLvlUp(level_callback, {'text':'{{user.username}}'});");
-    	document.getElementById("start").innerHTML = "You passed! Continue.";
-    	if (test_num == 22){
-    		test_num = 1; //USER_TEST_NUM = 1;
-    		test_set = 2; //USER_TEST_SET = 2;
-    	}
-    	else {
     		test_num++;
-            /*Dajaxice.database.intervalLvlUp(level_callback, {'text':'{{user.username}}' });
-             alert(max_level);*/
-        }
-        
-    	//TO DATABASE, store test completed number, increment test availability number
-        
-    	/*
-         if (in_melody_test == 1)
-         {
-         document.getElementById("about_win").innerHTML = "You passed the melody quiz.";
-         in_melody_test = 0;
-         }
-         if (in_interval_test == 1)
-         {
-         document.getElementById("about_win").innerHTML = "You passed the interval quiz.";
-         in_interval_test = 0;
-         }
-         */
+        document.getElementById("start").setAttribute("href", "/game_winMel");
+        document.getElementById("start").innerHTML = "You passed! Continue.";
+        incMLevel();
     }
     if (HP == 0) {
     	document.getElementById("start").setAttribute("href","/game_lossMel");
     	document.getElementById("start").innerHTML = "Bummer, man, you failed... Get results.";
-    	//based on number of fails of a test, potentially decrement test availability so user must retake previous test
-    	/*
-         if (in_melody_test == 1)
-         {
-         document.getElementById("about_loss").innerHTML = "You failed the melody quiz.";
-         in_melody_test = 0;
-         }
-         if (in_interval_test == 1)
-         {
-         document.getElementById("about_loss").innerHTML = "You failed the interval quiz.";
-         in_interval_test = 0;
-         }
-         */
+
     }
     document.getElementById(p_bar_label).style.width= (quiz_progress) +'%';
     

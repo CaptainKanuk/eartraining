@@ -486,6 +486,10 @@ function chooseAnswerInt(answer){
     }
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> fdedc93d3b4a48792bb1822534682838b4a071fc
 //convert the semitone number to a frequency
 function semitoneToFrequency(semitone){
     return middleCHz * Math.pow(semitoneConstant, semitone - middleC );
