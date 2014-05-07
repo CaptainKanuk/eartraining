@@ -86,6 +86,9 @@ div.egcode {
 {% endblock %}
 
 {% block incProgBar %}
+
+{% if user.is_authenticated %}
+
   <div class="row">How much HP left?</div>
   <div class="row">
     <img src="{{STATIC_URL}}/images/musicnote.png" alt="Music note" width="42" height="42">
@@ -102,9 +105,14 @@ div.egcode {
 </div>
 
 <div class="col-md-9">
+
+{% endif %}
+    
 {% endblock %}
 
 {% block content %}
+
+{% if user.is_authenticated %}
 
 <div class="inner cover" onload= "">
     <h1 class="cover-heading">Intervals</h1>
@@ -158,4 +166,17 @@ div.egcode {
 <p class="lead">
 <a href="#" id="start" onclick="progress();" class="btn btn-lg btn-default">Let's start.</a>
 </p>
+
+{% else %}
+
+<div class="inner cover">
+    <h1 class="cover-heading">Nice try!</h1>
+    <p class="lead">Thou art a fusty nut with no kernel.</p>
+    <p class="lead">
+    <a href="/signin" class="btn btn-lg btn-default">Concede defeat.</a>
+    </p>
+</div>
+
+{% endif %}
+
 {% endblock %}

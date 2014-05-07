@@ -80,7 +80,9 @@ div.egcode {
 
 
 {% block incProgBar %}
-</div>
+
+{% if user.is_authenticated %}
+
 <div class = "row" style="font-weight:bolder">
     <div class="col-md-6">How much HP left?</div>
     <div class="col-md-6" style="float:right;width:40%;margin-right:25px;">
@@ -102,10 +104,16 @@ div.egcode {
     </div>
 </div>
 <div id="row">
+    
+{% endif %}
+
+
 {% endblock %}
 
 {% block content %}
-</div>
+
+{% if user.is_authenticated %}
+
 <h1 class="cover-heading">Melodies</h1>
 <h2 id = "level_heading">?</h2>
 <p class="lead">
@@ -157,6 +165,19 @@ div.egcode {
 <p class="lead">
 <a href="#" id="start" onclick="melcount = 0; progress();" class="btn btn-lg btn-default">Let's start.</a>
 </p>
+
+{% else %}
+
+<div class="inner cover">
+    <h1 class="cover-heading">Nice try!</h1>
+    <p class="lead">Thou art a fusty nut with no kernel.</p>
+    <p class="lead">
+    <a href="/signin" class="btn btn-lg btn-default">Concede defeat.</a>
+    </p>
+</div>
+
+{% endif %}
+
 {% endblock %}
 
 {% block footer %}
