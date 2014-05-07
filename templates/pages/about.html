@@ -1,13 +1,23 @@
 {% extends "base.html" %}
 
 {% block content %} 
-
+<style>
+body 
+{
+background-image:url("{{STATIC_URL}}/images/sexy_piano.jpg");
+color:white;
+height:auto;
+}
+</style>
 <div class="inner cover">
-  <h1 class="cover-heading" style="font-weight:700">Ear-Training Made Beautiful</h1>
+<div class="row" style="background-color:rgba(0,0,0,.5)">
+  <h1 class="about-heading">Ear-Training Made Beautiful</h1>
   <p class = "lead"> Mezzo is an interactive, fun, and beautiful way to train your ear and strengthen your musicianship skills. Using a selection of highly interactive games, Mezzo makes ear training addictive and easy. Users choose from game categories such as intervals, melodies, and chords, and level up as they slowly become masters at each musical skill.  </p>
   <br><br>
   <p class="lead">Mezzo was developed in a CS course at Princeton University by four undergraduates who were frustrated by the lack of modern and interactive ear-training tools available. With Mezzo, they hope to bring musicianship skills to the masses.</p>
+  </div>
   <br><br>
+
   <h1 class="cover-heading">The Team</h1>
   <div class="row">
 

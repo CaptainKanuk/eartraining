@@ -157,6 +157,11 @@ li {
    		     margin-top: 7px;
 }
 
+#statusbar{
+  background-color:rgba(0,0,0,.5);
+  background-radius:30px;
+  margin-top:50px;
+}
 /* Custom default button */
 .btn-default,
 .btn-default:hover,
@@ -194,13 +199,14 @@ html,
 body {
   height: 100%;
   background-color: #fff;
-  padding-top: 30px;
+  padding-top: 70px;
 
 }
 body {
   color: #000;
   text-align: center;
 }
+
 /* Extra markup and styles for table-esque vertical and horizontal centering */
 .site-wrapper {
 
