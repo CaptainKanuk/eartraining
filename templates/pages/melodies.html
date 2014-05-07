@@ -25,11 +25,12 @@
   {
     Dajaxice.database.getMaxMelodyLvl(Mlevel_callback, {'text':'{{user.username}}'});
     setTimeout(function(){
-      if (curMelLvl == mel_level)
+      if (curMelLvl == mel_level && curMelLvl < 6)
       {
           incMLevel();
       }
-      Dajaxice.database.sendMelLvl(melcurlevel_callback, {'text':'{{user.username}}', 'curMelLvl': curMelLvl+1});}, 250);
+      if (curMelLvl < 5)
+        Dajaxice.database.sendMelLvl(melcurlevel_callback, {'text':'{{user.username}}', 'curMelLvl': curMelLvl+1});}, 250);
   }
 </script>
 
@@ -162,7 +163,7 @@ div.egcode {
     
 </div>
 <p class="lead">
-<a href="#" id="start" onclick="melcount = 0; progress();" class="btn btn-lg btn-default">Let's start.</a>
+<a href="#" id="start" onclick="melcount = 0; progress(); document.getElementById('prompt').innerHTML = 'Try this one.'" class="btn btn-lg btn-default">Let's start.</a>
 </p>
 
 {% else %}
