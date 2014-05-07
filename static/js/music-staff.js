@@ -474,14 +474,14 @@ function chooseAnswerInt(answer){
         if( answer==correctChoice ){
             promptField.innerHTML = "Got it!";
             //playInterval(semitoneToFrequency(correctInterval[0]), semitoneToFrequency(correctInterval[2]), 2, 30);
-            playInterval(correctInterval[0], correctInterval[2], 2, 30);
+            //playInterval(correctInterval[0], correctInterval[2], 2, 30);
             answeredCorrectlyInt();
         }
         else{
             promptField.innerHTML = "Uh-oh!";
             answeredIncorrectlyInt();
             //playInterval(semitoneToFrequency(correctInterval[0]), semitoneToFrequency(correctInterval[2]), 2, 30);
-            playInterval(correctInterval[0], correctInterval[2], 2, 30);
+            //playInterval(correctInterval[0], correctInterval[2], 2, 30);
         }
     }
 }
