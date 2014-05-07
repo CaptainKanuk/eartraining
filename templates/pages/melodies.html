@@ -42,6 +42,10 @@ div.egcode {
         var button = document.getElementById("start");
         if(button.innerHTML=="Let's start."){
             button.innerHTML="Next Melody.";
+            var mel_button = document.getElementById("play-mel");
+            mel_button.setAttribute("onclick", "playMelody(); melcount++; deactivateMelPlay();");
+            mel_button.setAttribute("class", "btn btn-lg btn-default");
+            mel_button.innerHTML = "Play melody.";
             $("canvas").slideToggle("slow");
 
             getMLevel();
@@ -95,9 +99,9 @@ div.egcode {
     <h3 id="prompt" align="center">
         Play and select the correct melody.
     </h3>
-    <p id = "play-mel" display = "none" class="lead">
-    <a id="mel-play" onclick="playMelody(); melcount++; deactivateMelPlay();" class="btn btn-lg btn-default">Play melody.</a>
-    </p>
+
+    <a id="play-mel" onclick="" class=""></a>
+
     <div class="row">
 		<div class="col-md-6">
             <canvas id="choice_one" onclick="chooseAnswerMel('choice_one')" width="440" height="100"
