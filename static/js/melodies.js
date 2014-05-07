@@ -10,6 +10,7 @@ var prompt = "prompt";
 
 //For mapping the numbers to vexflow notation
 var pitchClassNames  = ["c", "c#", "d", "d#", "e", "f", "f#", "g", "g#", "a", "a#", "b"];
+
 var middleC          = 60;//semitone starting point
 var middleCHz        = 261.625565;
 var semitoneConstant = 1.05946;
@@ -196,14 +197,17 @@ function getRandomNote()
     //generate random note
     var note = Math.floor(Math.random()*13.0)+60;
     var note_offset;
-    if (Math.random() < .33)
+    var chance = Math.random();
+    if (note == 1 || note == 3 || note == 6 || note == 8 || note == 10)
     {
-        if (Math.random() < .5)
+        if (chance < .6)
             note_offset = 1;
-        else
+        else if (chance < .8)
+            note_offset = 0;
+        else 
             note_offset = -1;
     }
-    else
+    else 
         note_offset = 0;
     return [note, note_offset];
 }
@@ -298,16 +302,23 @@ function varyMelody(variance)
 {
     var length = correctMelody.length;
     var newMel = new Array(length);
+    var change;
+    var temp = -10;
     for (var i = 0; i < length; i++)
         newMel[i] = new Array(2);
     for (i = 0; i < length; i++)
     {
         if (Math.random()<variance)
         {
+            change = Math.round(Math.random()*3);
+            while (change == temp){
+                change = Math.round(Math.random()*3);
+            }
+            temp = change;
             if (Math.random()<.5)
-                newMel[i][0] = correctMelody[i][0] + Math.round(Math.random() * 3);
+                newMel[i][0] = correctMelody[i][0] + change;
             else
-                newMel[i][0] = correctMelody[i][0] - Math.round(Math.random() * 3);
+                newMel[i][0] = correctMelody[i][0] - change;
             newMel[i][1] = 0;
         }
         else
@@ -489,7 +500,7 @@ function playMelody()
 function deactivateMelPlay()
 {
     var mel_button = document.getElementById("mel-play");
-    mel_button.setAttribute("onclick","none");
+    mel_button.setAttribute("onclick","");
     if (melcount == 2)
     {
         deleteMelPlay();

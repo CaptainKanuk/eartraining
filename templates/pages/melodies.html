@@ -25,11 +25,12 @@
   {
     Dajaxice.database.getMaxMelodyLvl(Mlevel_callback, {'text':'{{user.username}}'});
     setTimeout(function(){
-      if (curMelLvl == mel_level)
+      if (curMelLvl == mel_level && curMelLvl < 6)
       {
           incMLevel();
       }
-      Dajaxice.database.sendMelLvl(melcurlevel_callback, {'text':'{{user.username}}', 'curMelLvl': curMelLvl+1});}, 250);
+      if (curMelLvl < 5)
+        Dajaxice.database.sendMelLvl(melcurlevel_callback, {'text':'{{user.username}}', 'curMelLvl': curMelLvl+1});}, 250);
   }
 </script>
 
@@ -67,7 +68,7 @@ div.egcode {
         else{
             document.getElementById("play-mel").setAttribute("display", "initial");
             $("canvas").slideToggle("slow", function () {
-                document.getElementById(prompt).innerHTML = "Next melody.";
+                document.getElementById(prompt).innerHTML = "Try this one.";
                 getMLevel();
                 setTimeout(function(){ getNewMelodies(levToLength(curMelLvl));}, 100);
             });
@@ -104,7 +105,6 @@ div.egcode {
             </div>
         </div>
     </div>
-    <p id ="level_label">?</p>
     <div class="col-md-6" style="float:right;width:40%;margin-right:25px;">
         <div class="progress progress-striped active">
             <div id="progress-bar" class="progress-bar progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%" />
@@ -172,16 +172,19 @@ div.egcode {
     
 </div>
 <p class="lead">
-<a href="#" id="start" onclick="melcount = 0; progress();" class="btn btn-lg btn-default">Let's start.</a>
+<a href="#" id="start" onclick="melcount = 0; progress(); document.getElementById('prompt').innerHTML = 'Try this one.'" class="btn btn-lg btn-default">Let's start.</a>
 </p>
 
 {% else %}
 
 <div class="inner cover">
-    <h1 class="cover-heading">Nice try!</h1>
+    <h1 class="cover-heading">Nice try, hoser!</h1>
     <p class="lead">Thou art a fusty nut with no kernel.</p>
     <p class="lead">
     <a href="/signin" class="btn btn-lg btn-default">Concede defeat.</a>
+    </p>
+    <p class="lead">
+    <a href="http://www.theworldsworstwebsiteever.com/" class="btn btn-lg btn-default">Never!</a>
     </p>
 </div>
 
