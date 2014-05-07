@@ -163,11 +163,23 @@ li {
 .btn-default:focus {
   color: #333;
   text-shadow: none; /* Prevent inheritence from `body` */
-  background-color: #ff606e;
   background-image: none;
   border-radius: 30px;
   border:none;
   font-weight: bold;
+}
+
+.btn-default {
+  background-color: #ff606e;
+}
+.btn-primary,
+.btn-success,
+.btn-info {
+  text-shadow:none;
+  background-image: none;
+  border-radius:30px;
+  border:none;
+  font-weight:bold;
 }
 input, textarea{
     color: #333;
