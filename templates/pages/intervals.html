@@ -23,7 +23,6 @@
     setTimeout(function(){
       if (curIntLvl == max_level)
       {
-          alert(curIntLvl, max_level);
           incLevel();
       }
       Dajaxice.database.sendIntLvl(intcurlevel_callback, {'text':'{{user.username}}', 'curIntLvl': curIntLvl+1});}, 250);
@@ -50,8 +49,8 @@
       $("canvas").slideToggle("slow");
 
       getLevel();
-      setTimeout(function(){document.getElementById("level_heading").innerHTML = curIntLvl.toString();},100);
-      setTimeout(function(){ getNewIntervals(0,newIntervalFromTest(0,curIntLvl)); playInterval(correctInterval[0], correctInterval[2], 2, 30);}, 100);
+      setTimeout(function(){document.getElementById("page-title").innerHTML = 'Intervals '.concat(curIntLvl.toString());},100);
+      setTimeout(function(){ getNewIntervals(0,newIntervalFromTest(0,curIntLvl)); /*playInterval(correctInterval[0], correctInterval[2], 2, 30);*/}, 100);
 
       //alert(max_level);
     }
@@ -63,7 +62,7 @@
 
       $("canvas").slideToggle("slow");
       getLevel();
-      setTimeout(function(){getNewIntervals(0,newIntervalFromTest(0,curIntLvl));playInterval(correctInterval[0], correctInterval[2], 2, 30);}, 100);
+      setTimeout(function(){getNewIntervals(0,newIntervalFromTest(0,curIntLvl));/*playInterval(correctInterval[0], correctInterval[2], 2, 30);*/}, 100);
       //alert(max_level);
 
     }
@@ -86,11 +85,13 @@ div.egcode {
 {% endblock %}
 
 {% block incProgBar %}
+
+{% if user.is_authenticated %}
+
   <div class="row">How much HP left?</div>
   <div class="row">
     <img src="{{STATIC_URL}}/images/musicnote.png" alt="Music note" width="42" height="42">
     </div>
-    <p id ="level_label">?</p>
   <div class="row" style="margin:2px;">
     Progress</br>
     <div class="progress progress-striped active">
@@ -102,13 +103,17 @@ div.egcode {
 </div>
 
 <div class="col-md-9">
+
+{% endif %}
+    
 {% endblock %}
 
 {% block content %}
 
+{% if user.is_authenticated %}
+
 <div class="inner cover" onload= "">
-    <h1 class="cover-heading">Intervals</h1>
-    <h2 id = "level_heading">?</h2>
+    <h1 class="cover-heading" id="page-title">Intervals</h1>
     <p class="lead">
     <a id="interval-play" onclick="" class=""></a>
     <div id="choice">
@@ -156,6 +161,19 @@ div.egcode {
     </div>
 </div>
 <p class="lead">
-<a href="#" id="start" onclick="progress();" class="btn btn-lg btn-default">Let's start.</a>
+<a href="#" id="start" onclick="progress(); document.getElementById('prompt').innerHTML = 'Try this one.'" class="btn btn-lg btn-default">Let's start.</a>
 </p>
+
+{% else %}
+
+<div class="inner cover">
+    <h1 class="cover-heading">Nice try!</h1>
+    <p class="lead">Thou art a fusty nut with no kernel.</p>
+    <p class="lead">
+    <a href="/signin" class="btn btn-lg btn-default">Concede defeat.</a>
+    </p>
+</div>
+
+{% endif %}
+
 {% endblock %}

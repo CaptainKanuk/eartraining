@@ -60,7 +60,7 @@ div.egcode {
             $("canvas").slideToggle("slow");
 
             getMLevel();
-            setTimeout(function(){document.getElementById("level_heading").innerHTML = curMelLvl.toString();},100);
+            setTimeout(function(){document.getElementById("page-title").innerHTML = 'Melodies '.concat(curMelLvl.toString());},100);
             setTimeout(function(){ getNewMelodies(levToLength(curMelLvl));}, 100);
             instantiateMelPlay();
         }
@@ -80,7 +80,9 @@ div.egcode {
 
 
 {% block incProgBar %}
-</div>
+
+{% if user.is_authenticated %}
+
 <div class = "row" style="font-weight:bolder">
     <div class="col-md-6">How much HP left?</div>
     <div class="col-md-6" style="float:right;width:40%;margin-right:25px;">
@@ -93,7 +95,6 @@ div.egcode {
             <img src="{{ STATIC_URL }}/images/heart.jpg" height="10%" width="4.5%" />
         </div>
     </div>
-    <p id ="level_label">?</p>
     <div class="col-md-6" style="float:right;width:40%;margin-right:25px;">
         <div class="progress progress-striped active">
             <div id="progress-bar" class="progress-bar progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%" />
@@ -102,12 +103,18 @@ div.egcode {
     </div>
 </div>
 <div id="row">
+    
+{% endif %}
+
+
 {% endblock %}
 
 {% block content %}
-</div>
-<h1 class="cover-heading">Melodies</h1>
-<h2 id = "level_heading">?</h2>
+
+{% if user.is_authenticated %}
+
+<h1 class="cover-heading" id="page-title">Melodies</h1>
+<!--h2 id = "level_heading">?</h2-->
 <p class="lead">
 <div id="choice">
     <h3 id="prompt" align="center">
@@ -157,6 +164,19 @@ div.egcode {
 <p class="lead">
 <a href="#" id="start" onclick="melcount = 0; progress();" class="btn btn-lg btn-default">Let's start.</a>
 </p>
+
+{% else %}
+
+<div class="inner cover">
+    <h1 class="cover-heading">Nice try!</h1>
+    <p class="lead">Thou art a fusty nut with no kernel.</p>
+    <p class="lead">
+    <a href="/signin" class="btn btn-lg btn-default">Concede defeat.</a>
+    </p>
+</div>
+
+{% endif %}
+
 {% endblock %}
 
 {% block footer %}
