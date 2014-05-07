@@ -51,18 +51,11 @@ function answeredIncorrectlyMel(){
 //update the progress variable and the progress bar
 function updateProgressIntervals() {
     quiz_progress = 1+ quiz_progress + (100/numberOfQuestionsInModule);
-    if (quiz_progress >= 100 && HP != 0) {
+    if (quiz_progress >= 100 && HP != 0) 
+    {
         document.getElementById("start").setAttribute("href", "/game_winInt");
         document.getElementById("start").innerHTML = "You passed! Continue.";
-    	if (test_num == 22){
-    		test_num = 1; //USER_TEST_NUM = 1;
-    		test_set = 2; //USER_TEST_SET = 2;
-    	}
-    	else {
-    		test_num++;
-        incLevel();
-
-      }
+        checkAndUpdateI();
 
     }
     if (HP == 0) {
@@ -77,10 +70,9 @@ function updateProgressIntervals() {
 function updateProgressMelodies() {
     quiz_progress = 1+ quiz_progress + (100/numberOfQuestionsInModule);
     if (quiz_progress >= 100 && HP != 0) {
-    		test_num++;
         document.getElementById("start").setAttribute("href", "/game_winMel");
         document.getElementById("start").innerHTML = "You passed! Continue.";
-        incMLevel();
+        checkAndUpdateM();
     }
     if (HP == 0) {
     	document.getElementById("start").setAttribute("href","/game_lossMel");

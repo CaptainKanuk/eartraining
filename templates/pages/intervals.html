@@ -17,6 +17,18 @@
   $("canvas").slideToggle("fast");
   //in_interval_test = 1;
 
+  function checkAndUpdateI()
+  {
+    Dajaxice.database.getMaxIntervalLvl(level_callback, {'text':'{{user.username}}'});
+    setTimeout(function(){
+      if (curIntLvl == max_level)
+      {
+          alert(curIntLvl, max_level);
+          incLevel();
+      }
+      Dajaxice.database.sendIntLvl(intcurlevel_callback, {'text':'{{user.username}}', 'curIntLvl': curIntLvl+1});}, 250);
+  }
+
   function getLevel()
   {
     Dajaxice.database.getIntervalLvl(intcurlevel_callback, {'text':'{{user.username}}'});
@@ -38,7 +50,9 @@
       $("canvas").slideToggle("slow");
 
       getLevel();
-      setTimeout(function(){getNewIntervals(0,newIntervalFromTest(0,curIntLvl));playInterval(correctInterval[0], correctInterval[2], 2, 30);}, 100);
+      setTimeout(function(){document.getElementById("level_heading").innerHTML = curIntLvl.toString();},100);
+      setTimeout(function(){ getNewIntervals(0,newIntervalFromTest(0,curIntLvl)); playInterval(correctInterval[0], correctInterval[2], 2, 30);}, 100);
+
       //alert(max_level);
     }
     else
@@ -74,6 +88,7 @@ div.egcode {
   <div class="row">
     <img src="{{STATIC_URL}}/images/musicnote.png" alt="Music note" width="42" height="42">
     </div>
+    <p id ="level_label">?</p>
   <div class="row" style="margin:2px;">
     Progress</br>
     <div class="progress progress-striped active">
@@ -91,6 +106,7 @@ div.egcode {
 
 <div class="inner cover" onload= "">
     <h1 class="cover-heading">Intervals</h1>
+    <h2 id = "level_heading">?</h2>
     <p class="lead">
     <a id="interval-play" onclick="" class=""></a>
     <div id="choice">
