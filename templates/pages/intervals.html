@@ -57,7 +57,9 @@
     }
     else
     {
-      $("canvas").slideToggle("slow", function () { });
+        document.getElementById("interval-play").setAttribute("display", "initial");
+        $("canvas").slideToggle("slow", function () {
+            document.getElementById(prompt).innerHTML = "Next interval.";});
 
       $("canvas").slideToggle("slow");
       getLevel();
