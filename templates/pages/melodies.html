@@ -60,7 +60,7 @@ div.egcode {
             $("canvas").slideToggle("slow");
 
             getMLevel();
-            setTimeout(function(){document.getElementById("level_heading").innerHTML = curMelLvl.toString();},100);
+            setTimeout(function(){document.getElementById("page-title").innerHTML = 'Melodies '.concat(curMelLvl.toString());},100);
             setTimeout(function(){ getNewMelodies(levToLength(curMelLvl));}, 100);
             instantiateMelPlay();
         }
@@ -114,8 +114,8 @@ div.egcode {
 
 {% if user.is_authenticated %}
 
-<h1 class="cover-heading">Melodies</h1>
-<h2 id = "level_heading">?</h2>
+<h1 class="cover-heading" id="page-title">Melodies</h1>
+<!--h2 id = "level_heading">?</h2-->
 <p class="lead">
 <div id="choice">
     <h3 id="prompt" align="center">

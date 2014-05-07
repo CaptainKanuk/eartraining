@@ -50,7 +50,7 @@
       $("canvas").slideToggle("slow");
 
       getLevel();
-      setTimeout(function(){document.getElementById("level_heading").innerHTML = curIntLvl.toString();},100);
+      setTimeout(function(){document.getElementById("page-title").innerHTML = 'Intervals '.concat(curIntLvl.toString());},100);
       setTimeout(function(){ getNewIntervals(0,newIntervalFromTest(0,curIntLvl)); playInterval(correctInterval[0], correctInterval[2], 2, 30);}, 100);
 
       //alert(max_level);
@@ -93,7 +93,6 @@ div.egcode {
   <div class="row">
     <img src="{{STATIC_URL}}/images/musicnote.png" alt="Music note" width="42" height="42">
     </div>
-    <p id ="level_label">?</p>
   <div class="row" style="margin:2px;">
     Progress</br>
     <div class="progress progress-striped active">
@@ -115,8 +114,7 @@ div.egcode {
 {% if user.is_authenticated %}
 
 <div class="inner cover" onload= "">
-    <h1 class="cover-heading">Intervals</h1>
-    <h2 id = "level_heading">?</h2>
+    <h1 class="cover-heading" id="page-title">Intervals</h1>
     <p class="lead">
     <a id="interval-play" onclick="" class=""></a>
     <div id="choice">
