@@ -197,6 +197,7 @@ input, textarea{
 
 html,
 body {
+  width: 1400px;
   height: 100%;
   background-color: #fff;
   padding-top: 10px;
