@@ -9,11 +9,6 @@
 var pitchClassNames = ["c", "c#", "d", "d#", "e", "f", "f#", "g", "g#", "a", "a#", "b"];
 
 
-function showIntervalChoice()
-{
-
-}
-
 function showIntervalName(){
     var promptField = document.getElementById(prompt);
     
