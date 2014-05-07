@@ -145,6 +145,11 @@ p, div {
    font-family: 'Raleway';
 }
 
+li {
+  font-size: 18px;
+  margin-bottom: 8px;
+  font-weight:  200;
+}
 .dropdown-menu {
    text-shadow: none;	
    box-shadow:none;
