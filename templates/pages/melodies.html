@@ -84,35 +84,34 @@ div.egcode {
 
 {% if user.is_authenticated %}
 
-<div class = "row" style="font-weight:bolder">
-    <div class="col-md-6">How much HP left?</div>
-    <div class="col-md-6" style="float:right;width:40%;margin-right:25px;">
-        Progress</br>
-    </div>
-    <div class="col-md-6">
-        <div align="center">
-            <div id="content3" style="display:block;">
-                <img src="{{ STATIC_URL }}/images/heart.jpg" height="10%" width="4.5%" />
-                <img src="{{ STATIC_URL }}/images/heart.jpg" height="10%" width="4.5%" />
-                <img src="{{ STATIC_URL }}/images/heart.jpg" height="10%" width="4.5%" />
-            </div>
-            <div id="content2" style="display:none;">
-                <img src="{{ STATIC_URL }}/images/heart.jpg" height="10%" width="4.5%" />
-                <img src="{{ STATIC_URL }}/images/heart.jpg" height="10%" width="4.5%" />
-            </div>
-            <div id="content1" style="display:none;">
-                <img src="{{ STATIC_URL }}/images/heart.jpg" height="10%" width="4.5%" />
-            </div>
+<div class="col-md-3" id="statusbar">
+  <div class="row" style="color:#333;margin-bottom:5px;font-weight:700">How much HP left?</div>
+  <div class="row">
+    <div align="center">
+        <div id="content3" style="display:block;">
+            <img src="{{ STATIC_URL }}/images/musicnote.png" height="45" width="45" />
+            <img src="{{ STATIC_URL }}/images/musicnote.png" height="45" width="45" />
+            <img src="{{ STATIC_URL }}/images/musicnote.png" height="45" width="45" />
+        </div>
+        <div id="content2" style="display:none;">
+            <img src="{{ STATIC_URL }}/images/musicnote.png" height="45" width="45" />
+            <img src="{{ STATIC_URL }}/images/musicnote.png" height="45" width="45" />
+        </div>
+        <div id="content1" style="display:none;">
+            <img src="{{ STATIC_URL }}/images/musicnote.png" height="45" width="45" />
         </div>
     </div>
-    <div class="col-md-6" style="float:right;width:40%;margin-right:25px;">
-        <div class="progress progress-striped active">
-            <div id="progress-bar" class="progress-bar progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%" />
-            <span class="sr-only">0% Complete</span>
-        </div>
+  </div>
+  <div class="row" style="margin:2px;">
+    <div class="progress progress-striped active">
+      <div id="progress-bar" class="progress-bar progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+        <span class="sr-only">0% Complete</span>
+      </div>
     </div>
+  </div>
 </div>
-<div id="row">
+
+<div class="col-md-9">
     
 {% endif %}
 
@@ -122,7 +121,7 @@ div.egcode {
 {% block content %}
 
 {% if user.is_authenticated %}
-
+<div class="inner cover" onload= "">
 <h1 class="cover-heading" id="page-title">Melodies</h1>
 <!--h2 id = "level_heading">?</h2-->
 <p class="lead">

@@ -10,7 +10,14 @@
 <script src="{{ STATIC_URL }}/js/riffwave.js"></script>
 <script src="{{ STATIC_URL }}/js/music-staff.js"></script>
 <script src="{{ STATIC_URL }}/js/GLOBAL.js"></script>
-
+<style>
+body 
+{
+background-image:url("{{STATIC_URL}}/images/sexy_piano.jpg");
+background-color:#cccccc;
+color:white;
+}
+</style>
 
 <script>
   //alert(test_set);
@@ -87,26 +94,25 @@ div.egcode {
 {% block incProgBar %}
 
 {% if user.is_authenticated %}
-
-  <div class="row">How much HP left?</div>
-<div class="col-md-6">
+<div class="col-md-3" id="statusbar">
+  <div class="row" style="color:#333;margin-bottom:5px;font-weight:700">How much HP left?</div>
+  <div class="row">
     <div align="center">
         <div id="content3" style="display:block;">
-            <img src="{{ STATIC_URL }}/images/heart.jpg" height="10%" width="4.5%" />
-            <img src="{{ STATIC_URL }}/images/heart.jpg" height="10%" width="4.5%" />
-            <img src="{{ STATIC_URL }}/images/heart.jpg" height="10%" width="4.5%" />
+            <img src="{{ STATIC_URL }}/images/musicnote.png" height="45" width="45" />
+            <img src="{{ STATIC_URL }}/images/musicnote.png" height="45" width="45" />
+            <img src="{{ STATIC_URL }}/images/musicnote.png" height="45" width="45" />
         </div>
         <div id="content2" style="display:none;">
-            <img src="{{ STATIC_URL }}/images/heart.jpg" height="10%" width="4.5%" />
-            <img src="{{ STATIC_URL }}/images/heart.jpg" height="10%" width="4.5%" />
+            <img src="{{ STATIC_URL }}/images/musicnote.png" height="45" width="45" />
+            <img src="{{ STATIC_URL }}/images/musicnote.png" height="45" width="45" />
         </div>
         <div id="content1" style="display:none;">
-            <img src="{{ STATIC_URL }}/images/heart.jpg" height="10%" width="4.5%" />
+            <img src="{{ STATIC_URL }}/images/musicnote.png" height="45" width="45" />
         </div>
     </div>
-</div>
+  </div>
   <div class="row" style="margin:2px;">
-    Progress</br>
     <div class="progress progress-striped active">
       <div id="progress-bar" class="progress-bar progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
         <span class="sr-only">0% Complete</span>

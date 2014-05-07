@@ -157,6 +157,10 @@ li {
    		     margin-top: 7px;
 }
 
+#statusbar{
+  background-color:rgba(0,0,0,.5);
+
+}
 /* Custom default button */
 .btn-default,
 .btn-default:hover,
