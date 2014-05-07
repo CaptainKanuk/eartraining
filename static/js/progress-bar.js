@@ -20,7 +20,8 @@ var in_melody_test = 0;
 //=================VARIABLES FOR PROGRESS IN THE GAME===================
 var quiz_progress = 0;//expressed as percent completion (1-100)
 var HP = 3;//Number of chances to get it wrong
-var numberOfQuestionsInModule = 20;//default to 10 questions, need this for progress
+//var numberOfQuestionsInModule = 20;//default to 20 questions, need this for progress
+var numberOfQuestionsInModule = 5;
 
 //=================VARIABLES FOR PROGRESS IN WEBSITE===================
 //DATABASE: get test number from current test number chosed out of available tests for specific user
