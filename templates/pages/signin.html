@@ -1,35 +1,41 @@
 {% extends "base.html" %}
 
 {% block content %}
+  <h1 class="cover-heading">Register for Mezzo!</h1>
 
 <div class="row">
-	<div class="col-md-6">
-        <h1 class="cover-heading"> Come on in! </h1>
-        <form method="post" action="/auth_user/">
-            {% csrf_token %}
-            <label for="username"> Username: </label>
-            <input type="text" name="username" value="" id="username"><br>
-                <label for="password"> Password: </label>
-                <input type ="password" name="password" value="" id="password"><br>
-                    <input type="submit" name="submit" value="Log in!" />
-                    </form>
-	</div>
-	<div class="col-md-6">
-        <h1 class="cover-heading"> Join Ussss </h1>
-        {{ errorMsg }}
-        <form method="post" action="/register/">
-            {% csrf_token %}
-            <label for="username"> Who are you? </label>
-            <input type="text" name="username" value="" id="username"><br>
-            <label for="password1"> Secret Code: </label>
-            <input type ="password" name="password1" value="" id="password1"><br>
-            <label for="password2"> What was the code again? </label>
-            <input type ="password" name="password2" value="" id="password2"><br>
-            <input type="submit" name="submit" value="Create User" />
+  <div class="col-md-6">
+    <h1 class="cover-heading">Sign in!</h1>
+        <form role="form" method="post" action="/auth_user/">
+          {% csrf_token %}
+	  <div class="form-group">
+            <input type="text" class="form-control" name="username" placeholder="Username" id="username"><br>
+          </div>
+	  <div class="form-group">
+            <input type="password" class="form-control" name="password" placeholder="Password" id="password"><br>
+	  </div>
+	  <button type="submit" class="btn btn-default">Login</button>
         </form>
-	</div>
+  </div>
+  <div class="col-md-6">
+    <h1 class="cover-heading">Sign up!</h1>
+        {{ errorMsg }}
+        <form role="form" method="post" action="/register/">
+            {% csrf_token %}
+            <div class="form-group">
+              <input type="text" class="form-control" name="username" placeholder="Username" id="username"><br>
+	    </div>
+	    <div class="form-group">
+              <input type="password" class="form-control" name="password1" placeholder="Password" id="password1"><br>
+	    </div>
+	    <div class="form-group">
+              <input type ="password" class="form-control" name="password2" placeholder="Re-enter Password" id="password2">
+            </div>
+	    <button type="submit" name="submit" class="btn btn-default">Create Account</button>
+        </form>
+  </div>
 </div>
 <div class="site-wrapper">
-    <div class="site-wrapper-inner">
-        <div class="cover-container">
+  <div class="site-wrapper-inner">
+    <div class="cover-container">
 {% endblock %}
