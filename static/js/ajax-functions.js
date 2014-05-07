@@ -22,8 +22,9 @@ function intcurlevel_callback(data)
 
 function melcurlevel_callback(data)
 {
-	//alert("mel");
+	alert("mel");
     curMelLvl = data.message;
+    alert(curMelLvl);
 }
 
 function Mlevel_callback(data)

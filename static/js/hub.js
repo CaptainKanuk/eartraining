@@ -54,7 +54,7 @@ function submitIntInfo() {
 }
 
 function submitMelInfo() {
-    Dajaxice.database.sendMelLvl(melcurlevel_callback, {'text':'{{user.username}}', 'curMelLvl': currentMelodyLevel});
+    Dajaxice.database.sendMelLvl(melcurlevel_callback, {'text':'{{user.username}}','curMelLvl': currentMelodyLevel});
     window.location.href = '/melodies/';
     //Dajaxice.database.sendMelLvl(melcurlevel_callback, {'text':'{{user.username}}'}, currentMelodyLevel);
 }

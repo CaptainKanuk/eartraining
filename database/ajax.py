@@ -38,7 +38,7 @@ def resetIntervalLvl(request, text):
     u.save()
 
 @dajaxice_register
-def sendIntLvl(request, text, curIntLvl):
+def sendIntLvl(request, text):
     u=UserProfile.objects.filter(userId=text)[0]
     u.currentInt = curIntLvl
     u.save()
