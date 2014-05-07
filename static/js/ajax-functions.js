@@ -6,6 +6,7 @@ function my_js_callback(data)
 
 function level_callback(data)
 {
+    alert(data.message);
 	max_level = data.message;
 	if (max_level > 22)
 		test_set = 1;
