@@ -23,7 +23,6 @@
     setTimeout(function(){
       if (curIntLvl == max_level)
       {
-          alert(curIntLvl, max_level);
           incLevel();
       }
       Dajaxice.database.sendIntLvl(intcurlevel_callback, {'text':'{{user.username}}', 'curIntLvl': curIntLvl+1});}, 250);
@@ -51,7 +50,7 @@
 
       getLevel();
       setTimeout(function(){document.getElementById("page-title").innerHTML = 'Intervals '.concat(curIntLvl.toString());},100);
-      setTimeout(function(){ getNewIntervals(0,newIntervalFromTest(0,curIntLvl)); playInterval(correctInterval[0], correctInterval[2], 2, 30);}, 100);
+      setTimeout(function(){ getNewIntervals(0,newIntervalFromTest(0,curIntLvl)); /*playInterval(correctInterval[0], correctInterval[2], 2, 30);*/}, 100);
 
       //alert(max_level);
     }
@@ -63,7 +62,7 @@
 
       $("canvas").slideToggle("slow");
       getLevel();
-      setTimeout(function(){getNewIntervals(0,newIntervalFromTest(0,curIntLvl));playInterval(correctInterval[0], correctInterval[2], 2, 30);}, 100);
+      setTimeout(function(){getNewIntervals(0,newIntervalFromTest(0,curIntLvl));/*playInterval(correctInterval[0], correctInterval[2], 2, 30);*/}, 100);
       //alert(max_level);
 
     }
@@ -162,7 +161,7 @@ div.egcode {
     </div>
 </div>
 <p class="lead">
-<a href="#" id="start" onclick="progress();" class="btn btn-lg btn-default">Let's start.</a>
+<a href="#" id="start" onclick="progress(); document.getElementById('prompt').innerHTML = 'Try this one.'" class="btn btn-lg btn-default">Let's start.</a>
 </p>
 
 {% else %}
