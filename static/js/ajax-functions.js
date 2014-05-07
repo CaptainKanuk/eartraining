@@ -16,7 +16,8 @@ function level_callback(data)
 
 function intcurlevel_callback(data)
 {
-	//alert("int");
+    alert("int");
+    alert(data.message);
     curIntLvl = data.message;
 }
 

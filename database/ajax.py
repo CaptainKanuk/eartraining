@@ -42,7 +42,8 @@ def sendIntLvl(request, text):
     u=UserProfile.objects.filter(userId=text)[0]
     u.currentInt = curIntLvl
     u.save()
-    #return render_to_response('pages/intervals.html')
+    return simplejson.dumps({'message':'hello'})
+#return render_to_response('pages/intervals.html')
 
 @dajaxice_register
 def sendMelLvl(request, text, curMelLvl):
