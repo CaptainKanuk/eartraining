@@ -3,4 +3,4 @@ venv
 staticfiles
 *.DS_Store
 .DS_*
-db*
+*.sqlite3

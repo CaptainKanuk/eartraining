@@ -46,3 +46,15 @@ function increaseCurIntLvl(max)
         document.getElementById("curIntLvl").innerHTML=currentIntervalLevel.toString();
     }
 }
+
+function submitIntInfo() {
+    Dajaxice.database.sendIntLvl(intcurlevel_callback, {'text':'{{user.username}}', 'curIntLvl': currentIntervalLevel});
+    window.location.href = '/intervals/';
+    //Dajaxice.database.sendIntLvl(intcurlevel_callback, {'text':'{{user.username}}'}, currentIntervalLevel);
+}
+
+function submitMelInfo() {
+    Dajaxice.database.sendMelLvl(melcurlevel_callback, {'text':'{{user.username}}', 'curMelLvl': currentMelodyLevel});
+    window.location.href = '/melodies/';
+    //Dajaxice.database.sendMelLvl(melcurlevel_callback, {'text':'{{user.username}}'}, currentMelodyLevel);
+}

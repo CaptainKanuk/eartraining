@@ -6,6 +6,12 @@ from django.shortcuts import render_to_response
 
 @dajaxice_register(method='GET')
 def getIntervalLvl(request, text):
+    u=UserProfile.objects.filter(userId=text)[0].currentInt
+    #return simplejson.dumps({'message':'Your message is %s!' % u})
+    return simplejson.dumps({'message':u})
+
+@dajaxice_register(method='GET')
+def getMaxIntervalLvl(request, text):
     u=UserProfile.objects.filter(userId=text)[0].intervalLevel
     #return simplejson.dumps({'message':'Your message is %s!' % u})
     return simplejson.dumps({'message':u})
@@ -48,6 +54,11 @@ def sendMelLvl(request, text, curMelLvl):
 
 @dajaxice_register(method='GET')
 def getMelodyLvl(request, text):
+    u=UserProfile.objects.filter(userId=text)[0].currentMel
+    return simplejson.dumps({'message':u})
+
+@dajaxice_register(method='GET')
+def getMaxMelodyLvl(request, text):
     u=UserProfile.objects.filter(userId=text)[0].melodyLevel
     return simplejson.dumps({'message':u})
 

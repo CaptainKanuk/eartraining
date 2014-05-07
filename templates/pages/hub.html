@@ -59,22 +59,22 @@ function increaseCurIntLvl(max)
 }
   function getILevel()
   {
-    Dajaxice.database.getIntervalLvl(level_callback, {'text':'{{user.username}}'});
+    Dajaxice.database.getMaxIntervalLvl(level_callback, {'text':'{{user.username}}'});
   }
 
   function getMLevel()
   {
-    Dajaxice.database.getMelodyLvl(Mlevel_callback, {'text':'{{user.username}}'});
+    Dajaxice.database.getMaxMelodyLvl(Mlevel_callback, {'text':'{{user.username}}'});
   }
-  function setCurInt()
-  {
-    Dajaxice.database.getIntervalLvl(level_callback, {'text':'{{user.username}}'});
-  }
-
-  function setCurInt()
-  {
-    Dajaxice.database.getMelodyLvl(Mlevel_callback, {'text':'{{user.username}}'});
-  }
+//  function setCurInt()
+//  {
+//    Dajaxice.database.getIntervalLvl(level_callback, {'text':'{{user.username}}'});
+//  }
+//
+//  function setCurInt()
+//  {
+//    Dajaxice.database.getMelodyLvl(Mlevel_callback, {'text':'{{user.username}}'});
+//  }
 
 function submitIntInfo() {
     Dajaxice.database.sendIntLvl(intcurlevel_callback, {'text':'{{user.username}}', 'curIntLvl': currentIntervalLevel});
