@@ -38,16 +38,7 @@
                                 {% endif %}
                                 <u1 class="nav navbar-nav navbar-right">
                                     {% if user.is_authenticated %}
-                                    <li class="dropdown" id="trainingmenu">
-                                        <a class="dropdown-toggle" data-toggle="dropdown" href="#trainingmenu">
-                                            Training
-                                            <b class="caret"></b>
-                                        </a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="/intervals">Intervals</a></li>
-                                            <li><a href="/melodies">Melodies</a></li>
-                                        </ul>
-                                    </li>
+                                    <li><a href="/hub">The Hub</a></li>
                                     {% endif %}
                                     <li><a href="/about">About</a></li>
                                     <li><a href="/help">Help</a></li>

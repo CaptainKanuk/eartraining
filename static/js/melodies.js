@@ -489,7 +489,7 @@ function playMelody()
 function deactivateMelPlay()
 {
     var mel_button = document.getElementById("mel-play");
-    mel_button.setAttribute("onclick","none");
+    mel_button.setAttribute("onclick","");
     if (melcount == 2)
     {
         deleteMelPlay();

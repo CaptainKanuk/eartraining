@@ -91,6 +91,8 @@
 
 {% block content %}
 
+{% if user.is_authenticated %}
+
 <div>
     <h1 class="cover-heading"> Choose an Interval Level! </h1>
     
@@ -128,5 +130,17 @@
             </button>
         </p>
 </div>
+
+{% else %}
+
+<div class="inner cover">
+    <h1 class="cover-heading">Nice try!</h1>
+    <p class="lead">Thou art a fusty nut with no kernel.</p>
+    <p class="lead">
+    <a href="/signin" class="btn btn-lg btn-default">Concede defeat.</a>
+    </p>
+</div>
+
+{% endif %}
 
 {% endblock %}
