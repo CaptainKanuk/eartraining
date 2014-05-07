@@ -63,8 +63,8 @@ max-width:50%;
 .navbar-default {
 		background-image: none;
 		background-color: #2185c5;
-		border-color: #59a3d3;
-		text-shadow: none;
+    border:none;
+  	text-shadow: none;
 		padding: 7px;
 }
 .nav > li:hover {
@@ -161,16 +161,18 @@ li {
 .btn-default,
 .btn-default:hover,
 .btn-default:focus {
-  color: #333;
+  color: #191919;
   text-shadow: none; /* Prevent inheritence from `body` */
   background-image: none;
   border-radius: 30px;
   border:none;
   font-weight: bold;
+  background-color: #ff606e;
+
 }
 
-.btn-default {
-  background-color: #ff606e;
+.btn-default:hover {
+  background-color: #ff4757;
 }
 .btn-primary,
 .btn-success,
