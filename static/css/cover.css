@@ -63,8 +63,8 @@ max-width:50%;
 .navbar-default {
 		background-image: none;
 		background-color: #2185c5;
-		border-color: #59a3d3;
-		text-shadow: none;
+    border:none;
+  	text-shadow: none;
 		padding: 7px;
 }
 .nav > li:hover {
@@ -145,6 +145,11 @@ p, div {
    font-family: 'Raleway';
 }
 
+li {
+  font-size: 18px;
+  margin-bottom: 8px;
+  font-weight:  200;
+}
 .dropdown-menu {
    text-shadow: none;	
    box-shadow:none;
@@ -156,13 +161,27 @@ p, div {
 .btn-default,
 .btn-default:hover,
 .btn-default:focus {
-  color: #333;
+  color: #191919;
   text-shadow: none; /* Prevent inheritence from `body` */
-  background-color: #ff606e;
   background-image: none;
   border-radius: 30px;
   border:none;
   font-weight: bold;
+  background-color: #ff606e;
+
+}
+
+.btn-default:hover {
+  background-color: #ff4757;
+}
+.btn-primary,
+.btn-success,
+.btn-info {
+  text-shadow:none;
+  background-image: none;
+  border-radius:30px;
+  border:none;
+  font-weight:bold;
 }
 input, textarea{
     color: #333;

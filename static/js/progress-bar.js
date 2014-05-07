@@ -50,6 +50,7 @@ function answeredIncorrectlyMel(){
 
 //update the progress variable and the progress bar
 function updateProgressIntervals() {
+    showHearts();
     quiz_progress = 1+ quiz_progress + (100/numberOfQuestionsInModule);
     if (quiz_progress >= 100 && HP != 0) 
     {
@@ -66,8 +67,32 @@ function updateProgressIntervals() {
 
 }
 
+function showHearts() {
+    var contentId1 = document.getElementById("content1");
+    var contentId2 = document.getElementById("content2");
+    var contentId3 = document.getElementById("content3");
+    if (HP == 1 ) {
+        contentId2.style.display = "none";
+        contentId3.style.display = "none";
+        contentId1.style.display = "block";
+    }
+    
+    if (HP == 2) {
+        contentId1.style.display = "none";
+        contentId3.style.display = "none";
+        contentId2.style.display = "block";
+    }
+    
+    if (HP == 3)  {
+        contentId1.style.display = "none";
+        contentId2.style.display = "none";
+        contentId3.style.display = "block";
+    }
+}
+
 //update the progress variable and the progress bar
 function updateProgressMelodies() {
+    showHearts();
     quiz_progress = 1+ quiz_progress + (100/numberOfQuestionsInModule);
     if (quiz_progress >= 100 && HP != 0) {
         document.getElementById("start").setAttribute("href", "/game_winMel");

@@ -89,9 +89,22 @@ div.egcode {
 {% if user.is_authenticated %}
 
   <div class="row">How much HP left?</div>
-  <div class="row">
-    <img src="{{STATIC_URL}}/images/musicnote.png" alt="Music note" width="42" height="42">
+<div class="col-md-6">
+    <div align="center">
+        <div id="content3" style="display:block;">
+            <img src="{{ STATIC_URL }}/images/heart.jpg" height="10%" width="4.5%" />
+            <img src="{{ STATIC_URL }}/images/heart.jpg" height="10%" width="4.5%" />
+            <img src="{{ STATIC_URL }}/images/heart.jpg" height="10%" width="4.5%" />
+        </div>
+        <div id="content2" style="display:none;">
+            <img src="{{ STATIC_URL }}/images/heart.jpg" height="10%" width="4.5%" />
+            <img src="{{ STATIC_URL }}/images/heart.jpg" height="10%" width="4.5%" />
+        </div>
+        <div id="content1" style="display:none;">
+            <img src="{{ STATIC_URL }}/images/heart.jpg" height="10%" width="4.5%" />
+        </div>
     </div>
+</div>
   <div class="row" style="margin:2px;">
     Progress</br>
     <div class="progress progress-striped active">

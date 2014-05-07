@@ -3,12 +3,72 @@
 {% block content %}
 <div class="inner cover">
     <h1 class="cover-heading" style="font-size:50px">Help</h1>
-    <p class="lead">To get started with SuperTonic, choose a game category from the train menu above: either intervals or melodies. It is recommended that you pass all of the Intervals tests before moving on to Melodies.</p>
-    <p class = "lead" style = "font-size: 14px"> Interval instructions </p>
-    <p class = "lead" style = "font-size: 14px"> Melody instructions </p>
-    <p class="lead">
-    <a href="/intervals" class="btn btn-lg btn-default">Try Intervals!</a>
-    <a href="/melodies" class="btn btn-lg btn-default">Try Melodies!</a>
-    </p>
+    <p class="lead">To get started with SuperTonic, choose a game category: either intervals or melodies. It is recommended that you pass all of the intervals tests before moving on to melodies.</p>
+
+    <p class="lead">For both Intervals and Melodies, you will work your way through several intervals or melodies questions. You start each test with 3 Hit Points (HP) and you must finish each test with more than 0 HP in order to pass. You lose HP by selecting the wrong interval or melody.</p>
+
+
+    <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#myModal">
+  Interval instructions
+</button>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Interval Instructions</h4>
+      </div>
+      <div class="modal-body">
+        <ol>
+    <li>Click the "Let's start." button to start! You will see four staves with two notes on each staff.</li>
+
+	<li>Click the "Play interval." button to hear an interval. No two intervals should be the same, regardless of starting pitch, so you don't need to worry about starting pitch.</li>
+
+	<li>Select the staff with the notes of the interval that you heard. You will be told whether or not you selected the correct interval. Click the "Next interval." button to continue to the next interval.</li>
+
+	<li>When you have passed or failed the test, the "Next interval." button will change text. Click to continue.</li>
+	</ol>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        {% if user.is_authenticated %}<button type="button" class="btn btn-primary"onclick="window.location='/intervals';">Try Intervals!</button>
+        {% else %}<button type="button" class="btn btn-primary"onclick="window.location='/signin';">Signin to Play!</button>{% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+  <button class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">
+  Melody Instructions
+</button>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Melody Instructions</h4>
+      </div>
+      <div class="modal-body">
+   <ol>
+    <li>Click the "Let's start." button to start! You will see four staves with a certain number of notes depending on which melody level you are on.</li>
+
+	<li>Click the "Play melody." button to hear the melody. No two melodies should contain the same intervals between successive notes, so you don't need to worry about starting pitch.</li>
+
+	<li>Select the staff with the notes of the melody that you heard. You will be told whether or not you selected the correct melody. Click the "Next melody." button to continue to the next melody.</li>
+
+	<li>When you have passed or failed the test, the "Next melody." button will change text. Click to continue.</li>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        {% if user.is_authenticated %}<button type="button" class="btn btn-primary"onclick="window.location='/intervals';">Try Melodies!</button>
+        {% else %}<button type="button" class="btn btn-primary"onclick="window.location='/signin';">Signin to Play!</button>{% endif %}
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 {% endblock %}

@@ -258,135 +258,78 @@ function newIntervalFromTest(set, test)
         switch(test)
         {
             case 1:
-                var notesI = [0, 12];
+                var notesI = [0,12];
                 break;
             case 2:
-                var notesI = [0,1];
+                var notesI = [5 ,7];
                 break;
             case 3:
-                var notesI = [1,2];
+                var notesI = [0, 5, 7, 12];
                 break;
             case 4:
-                var notesI = [2,3];
+                var notesI = [1,2];
                 break;
             case 5:
-                var notesI = [1,2,3];
+                var notesI = [2,3];
                 break;
             case 6:
                 var notesI = [3,4];
                 break;
             case 7:
+                var notesI = [2,3,4];
+                break;
+            case 8:
                 var notesI = [1,2,3,4];
                 break;
-            case 8:
+            case 9:
                 var notesI = [4,5];
                 break;
-            case 9:
+            case 10:
+                var notesI = [6];
+                break;
+            case 11:
                 var notesI = [5,6];
                 break;
-            case 10:
+            case 12:
                 var notesI = [6,7];
                 break;
-            case 11:
+            case 13:
                 var notesI = [5,6,7];
                 break;
-            case 12:
+            case 14:
                 var notesI = [1,2,3,4,5,6,7];
                 break;
-            case 13:
+            case 15:
                 var notesI = [7,8];
                 break;
-            case 14:
+            case 16:
                 var notesI = [8,9];
                 break;
-            case 15:
-                var notesI = [6,7,8,9];
+            case 17:
+                var notesI = [7,8,9];
                 break;
-            case 16:
+            case 18:
                 var notesI = [1,2,3,4,5,6,7,8,9];
                 break;
-            case 17:
+            case 19:
+                var notesI = [10];
+                break;
+            case 20:
                 var notesI = [9,10];
                 break;
-            case 19:
-                var notesI = [10,11];
-                break;
-            case 20:
-                var notesI = [10, 11, 12];
-                break;
             case 21:
-                var notesI = [8,9,10,11,12];
+                var notesI = [11];
                 break;
             case 22:
-                var notesI = [0,1,2,3,4,5,6,7,8,9,10,11,12];
+                var notesI = [10, 11];
                 break;
-        }
-    }
-    else if (set == 1)
-    {
-        switch(test)
-        {
-            case 1:
-                var notesI = [0,12];
+            case 23:
+                var notesI = [9,10,11];
                 break;
-            case 2:
-                var notesI = [12,11];
+            case 24:
+                var notesI = [1,2,3,4,5,6,7,8,9,10,11];
                 break;
-            case 3:
-                var notesI = [12,10];
-                break;
-            case 4:
-                var notesI = [10,9];
-                break;
-            case 5:
-                var notesI = [12,11,10,9];
-                break;
-            case 6:
-                var notesI = [9,8];
-                break;
-            case 7:
-                var notesI = [12,11,10,9,8];
-                break;
-            case 8:
-                var notesI = [8,7];
-                break;
-            case 9:
-                var notesI = [7,6];
-                break;
-            case 10:
-                var notesI = [6,5];
-                break;
-            case 11:
-                var notesI = [12,8,7,6];
-                break;
-            case 12:
-                var notesI = [12,11,10,9,8,7,6];
-                break;
-            case 13:
-                var notesI = [6,5];
-                break;
-            case 14:
-                var notesI = [5,4];
-                break;
-            case 15:
-                var notesI = [7,6,5,4];
-                break;
-            case 16:
-                var notesI = [12,11,10,9,8,7,6,5,4];
-                break;
-            case 17:
-                var notesI = [4,3];
-                break;
-            case 19:
-                var notesI = [3,2];
-                break;
-            case 20:
-                var notesI = [12,4,3,2];
-                break;
-            case 21:
-                var notesI = [12,2,1];
-                break;
-            case 22:
+            case 25:
                 var notesI = [0,1,2,3,4,5,6,7,8,9,10,11,12];
                 break;
         }
