@@ -10,8 +10,53 @@
 <script src="{{ STATIC_URL }}/js/music-staff.js"></script>
 <script src="{{ STATIC_URL }}/js/ajax-functions.js"></script>
 <script src="{{ STATIC_URL }}/js/GLOBAL.js"></script>
-<script src="{{ STATIC_URL }}/js/hub.js"></script>
+<!--script src="{{ STATIC_URL }}/js/hub.js"></script-->
 <script>
+    //SHOULD BE LOADED FROM DATABASE AS MAX LEVEL
+    var currentMelodyLevel = 1;
+    //SHOULD ALSO BE LOADED FROM DATABASE
+    var maxMelodyLevel = 20;
+    
+    //SHOULD BE LOADED FROM DATABASE AS MAX LEVEL
+    var currentIntervalLevel = 1;
+    //SHOULD ALSO BE LOADED FROM DATABASE
+    var maxIntervalLevel = 20;
+    
+    function decreaseCurMelLvl()
+    {
+        if(currentMelodyLevel > 1){
+            currentMelodyLevel = currentMelodyLevel - 1;
+            //update the counter
+            document.getElementById("curMelLvl").innerHTML=currentMelodyLevel.toString();
+        }
+    }
+
+function increaseCurMelLvl(max)
+{
+    if(currentMelodyLevel < maxMelodyLevel && currentMelodyLevel < max){
+        currentMelodyLevel = currentMelodyLevel + 1;
+        //update the counter
+        document.getElementById("curMelLvl").innerHTML=currentMelodyLevel.toString();
+    }
+}
+
+function decreaseCurIntLvl()
+{
+    if(currentIntervalLevel > 1){
+        currentIntervalLevel = currentIntervalLevel - 1;
+        //update the counter
+        document.getElementById("curIntLvl").innerHTML=currentIntervalLevel.toString();
+    }
+}
+
+function increaseCurIntLvl(max)
+{
+    if(currentIntervalLevel < maxIntervalLevel && currentIntervalLevel < max){
+        currentIntervalLevel = currentIntervalLevel + 1;
+        //update the counter
+        document.getElementById("curIntLvl").innerHTML=currentIntervalLevel.toString();
+    }
+}
   function getILevel()
   {
     Dajaxice.database.getIntervalLvl(level_callback, {'text':'{{user.username}}'});
@@ -31,10 +76,21 @@
     Dajaxice.database.getMelodyLvl(Mlevel_callback, {'text':'{{user.username}}'});
   }
 
-  getILevel(); 
-  getMLevel(); 
-  setTimeout(function(){document.getElementById('curIntLvl').innerHTML = max_level;}, 100);
-  setTimeout(function(){document.getElementById('curMelLvl').innerHTML = mel_level;}, 100);
+function submitIntInfo() {
+    Dajaxice.database.sendIntLvl(intcurlevel_callback, {'text':'{{user.username}}', 'curIntLvl': currentIntervalLevel});
+    //Dajaxice.database.sendIntLvl(intcurlevel_callback, {'text':'{{user.username}}'}, currentIntervalLevel);
+}
+
+function submitMelInfo() {
+    Dajaxice.database.sendMelLvl(melcurlevel_callback, {'text':'{{user.username}}', 'curMelLvl': currentMelodyLevel});
+    //Dajaxice.database.sendMelLvl(melcurlevel_callback, {'text':'{{user.username}}'}, currentMelodyLevel);
+}
+
+  getILevel();
+  getMLevel();
+  setTimeout(function(){document.getElementById('curIntLvl').innerHTML = max_level; currentIntervalLevel = max_level;}, 100);
+  setTimeout(function(){document.getElementById('curMelLvl').innerHTML = mel_level; currentMelodyLevel = mel_level}, 100);
+
 
 </script>
 {% endblock %}
@@ -54,7 +110,7 @@
     <button type="button" class="btn btn-default btn-lg" onclick = "submitIntInfo()">
         Go
     </button>
-    <button type="button" class="btn btn-default btn-lg" onclick="increaseCurIntLvl()">
+    <button type="button" class="btn btn-default btn-lg" onclick="increaseCurIntLvl(max_level)">
         <span class="glyphicon glyphicon-chevron-right"></span>
     </button>
     </p>
@@ -73,27 +129,10 @@
             <button type="button" class="btn btn-default btn-lg" onclick = "submitMelInfo()">
                 Go
             </button>
-            <button type="button" class="btn btn-default btn-lg" onclick="increaseCurMelLvl()">
+            <button type="button" class="btn btn-default btn-lg" onclick="increaseCurMelLvl(mel_level)">
                 <span class="glyphicon glyphicon-chevron-right"></span>
             </button>
         </p>
 </div>
 
-
-	<!--button onclick = "Dajaxice.database.getIntervalLvl(level_callback, {'text':'{{user.username}}'});">Click to load level.</button>
-	<button onclick = "alert(max_level);">Click for level.</button>
-    <button onclick = "Dajaxice.database.intervalLvlUp(level_callback, {'text':'{{user.username}}'});">Click to change level.</button>
-	<button onclick = "Dajaxice.database.getIntervalLvl(level_callback, {'text':'{{user.username}}'});">Click to load new level.</button>
-	<button onclick = "alert(max_level);">Click for new level.</button>
-	<br>
-	<button onclick = "Dajaxice.database.resetLvls(level_callback, {'text':'{{user.username}}'}); alert(max_level);">Click to reset levels.</button>
-
-<script src="{{ STATIC_URL }}/js/test.js"></script>
-<div class="inner cover" onclick="Dajaxice.database.sayhello(my_js_callback);">
-
-<div>
-	<button onclick = "Dajaxice.database.getIntervalLvl(level_callback, {'text':'{{user.username}}' });">Click for level.</button>
-    <button onclick = "Dajaxice.database.intervalLvlUp(level_callback, {'text':'{{user.username}}' });">Click to change level.</button>
-	<button onclick = "Dajaxice.database.getIntervalLvl(level_callback, {'text':'{{user.username}}' });">Click for new level.</button>
-</div-->
 {% endblock %}

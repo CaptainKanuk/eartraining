@@ -20,9 +20,9 @@ function decreaseCurMelLvl()
     }
 }
 
-function increaseCurMelLvl()
+function increaseCurMelLvl(max)
 {
-    if(currentMelodyLevel < maxMelodyLevel){
+    if(currentMelodyLevel < maxMelodyLevel && currentMelodyLevel < max){
         currentMelodyLevel = currentMelodyLevel + 1;
         //update the counter
         document.getElementById("curMelLvl").innerHTML=currentMelodyLevel.toString();
@@ -38,21 +38,11 @@ function decreaseCurIntLvl()
     }
 }
 
-function increaseCurIntLvl()
+function increaseCurIntLvl(max)
 {
-    if(currentIntervalLevel < maxIntervalLevel){
+    if(currentIntervalLevel < maxIntervalLevel && currentIntervalLevel < max){
         currentIntervalLevel = currentIntervalLevel + 1;
         //update the counter
         document.getElementById("curIntLvl").innerHTML=currentIntervalLevel.toString();
     }
-}
-
-function submitIntInfo() {
-    Dajaxice.database.sendIntLvl(intcurlevel_callback, {'text':'{{user.username}}', 'curIntLvl': currentIntervalLevel});
-    //Dajaxice.database.sendIntLvl(intcurlevel_callback, {'text':'{{user.username}}'}, currentIntervalLevel);
-}
-
-function submitMelInfo() {
-    Dajaxice.database.sendMelLvl(melcurlevel_callback, {'text':'{{user.username}}', 'curMelLvl': currentMelodyLevel});
-    //Dajaxice.database.sendMelLvl(melcurlevel_callback, {'text':'{{user.username}}'}, currentMelodyLevel);
 }

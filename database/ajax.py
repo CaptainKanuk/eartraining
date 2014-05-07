@@ -31,7 +31,7 @@ def resetIntervalLvl(request, text):
     u.intervalLevel = lvl
     u.save()
 
-@dajaxice_register(method='GET')
+@dajaxice_register
 def sendIntLvl(request, text, curIntLvl):
     u=UserProfile.objects.filter(userId=text)[0]
     u.currentInt = curIntLvl
@@ -39,7 +39,7 @@ def sendIntLvl(request, text, curIntLvl):
     return simplejson.dumps({'message':'hello'})
 #return render_to_response('pages/intervals.html')
 
-@dajaxice_register(method='GET')
+@dajaxice_register
 def sendMelLvl(request, text, curMelLvl):
     u=UserProfile.objects.filter(userId=text)[0]
     u.currentMel = curMelLvl
