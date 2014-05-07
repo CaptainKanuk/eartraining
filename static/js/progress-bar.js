@@ -72,12 +72,16 @@ function showHearts() {
     var contentId1 = document.getElementById("content1");
     var contentId2 = document.getElementById("content2");
     var contentId3 = document.getElementById("content3");
+    if (HP == 0 ) {
+        contentId2.style.display = "none";
+        contentId3.style.display = "none";
+        contentId1.style.display = "none";
+    }
     if (HP == 1 ) {
         contentId2.style.display = "none";
         contentId3.style.display = "none";
         contentId1.style.display = "block";
     }
-    
     if (HP == 2) {
         contentId1.style.display = "none";
         contentId3.style.display = "none";
