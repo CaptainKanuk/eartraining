@@ -6,7 +6,6 @@ function my_js_callback(data)
 
 function level_callback(data)
 {
-    alert(data.message);
 	max_level = data.message;
 }
 

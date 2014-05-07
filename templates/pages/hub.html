@@ -57,15 +57,16 @@
             document.getElementById("curIntLvl").innerHTML=currentIntervalLevel.toString();
         }
     }
-  function getILevel()
-  {
-    Dajaxice.database.getMaxIntervalLvl(level_callback, {'text':'{{user.username}}'});
-  }
+    
+      function getILevel()
+      {
+        Dajaxice.database.getMaxIntervalLvl(level_callback, {'text':'{{user.username}}'});
+      }
 
-  function getMLevel()
-  {
-    Dajaxice.database.getMaxMelodyLvl(Mlevel_callback, {'text':'{{user.username}}'});
-  }
+      function getMLevel()
+      {
+        Dajaxice.database.getMaxMelodyLvl(Mlevel_callback, {'text':'{{user.username}}'});
+      }
 
 
     function submitIntInfo() {

@@ -14,11 +14,22 @@
 <script>
   function getMLevel()
   {
-      Dajaxice.database.getMelodyLvl(Mlevel_callback, {'text':'{{user.username}}'});
+      Dajaxice.database.getMelodyLvl(melcurlevel_callback, {'text':'{{user.username}}'});
   }
   function incMLevel()
   {
       Dajaxice.database.melodyLvlUp(Mlevel_callback, {'text':'{{user.username}}' });
+  }
+
+  function checkAndUpdateM()
+  {
+    Dajaxice.database.getMaxMelodyLvl(Mlevel_callback, {'text':'{{user.username}}'});
+    setTimeout(function(){
+      if (curMelLvl == mel_level)
+      {
+          incMLevel();
+      }
+      Dajaxice.database.sendMelLvl(melcurlevel_callback, {'text':'{{user.username}}', 'curMelLvl': curMelLvl+1});}, 250);
   }
 </script>
 
@@ -49,7 +60,8 @@ div.egcode {
             $("canvas").slideToggle("slow");
 
             getMLevel();
-            setTimeout(function(){ getNewMelodies(levToLength(mel_level));}, 100);
+            setTimeout(function(){document.getElementById("level_heading").innerHTML = curMelLvl.toString();},100);
+            setTimeout(function(){ getNewMelodies(levToLength(curMelLvl));}, 100);
             instantiateMelPlay();
         }
         else{
@@ -57,7 +69,7 @@ div.egcode {
             $("canvas").slideToggle("slow", function () {
                 document.getElementById(prompt).innerHTML = "Next melody.";
                 getMLevel();
-                setTimeout(function(){ getNewMelodies(levToLength(mel_level));}, 100);
+                setTimeout(function(){ getNewMelodies(levToLength(curMelLvl));}, 100);
             });
             $("canvas").slideToggle("slow");
             instantiateMelPlay();
@@ -81,6 +93,7 @@ div.egcode {
             <img src="{{ STATIC_URL }}/images/heart.jpg" height="10%" width="4.5%" />
         </div>
     </div>
+    <p id ="level_label">?</p>
     <div class="col-md-6" style="float:right;width:40%;margin-right:25px;">
         <div class="progress progress-striped active">
             <div id="progress-bar" class="progress-bar progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%" />
@@ -94,6 +107,7 @@ div.egcode {
 {% block content %}
 </div>
 <h1 class="cover-heading">Melodies</h1>
+<h2 id = "level_heading">?</h2>
 <p class="lead">
 <div id="choice">
     <h3 id="prompt" align="center">
