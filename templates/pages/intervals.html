@@ -57,7 +57,7 @@ color:white;
       $("canvas").slideToggle("slow");
 
       getLevel();
-      setTimeout(function(){document.getElementById("page-title").innerHTML = 'Intervals '.concat(curIntLvl.toString());},100);
+      setTimeout(function(){document.getElementById("page-title").innerHTML = 'Intervals: Level '.concat(curIntLvl.toString());},100);
       setTimeout(function(){ getNewIntervals(0,newIntervalFromTest(0,curIntLvl)); /*playInterval(correctInterval[0], correctInterval[2], 2, 30);*/}, 100);
 
       //alert(max_level);
@@ -76,20 +76,6 @@ color:white;
     }
   }
 </script>
-
-<style type="text/css">
-    canvas {
-        background: #fff;
-        padding: 10px;
-        border-radius: 8px;
-        border: 2px solid #000000;
-    }
-
-div.egcode {
-    font-family: Courier;
-    font-size: 14px;
-}
-</style>
 {% endblock %}
 
 {% block incProgBar %}
@@ -97,8 +83,8 @@ div.egcode {
 {% if user.is_authenticated %}
 <div class="inner cover" onload= "">
   <div class="cover-container">
-    <div class="row" id="statusbar" style="padding-top:15px">
-      <div class="col-md-6" style="color:white;margin-bottom:5px;font-weight:700">How many HP left?
+    <div class="row" id="statusbar">
+      <div class="col-md-6">How much HP remaining?
         <div align="center">
           <div id="content3" style="display:block;">
             <img src="{{ STATIC_URL }}/images/musicnote.png" height="45" width="45" />
@@ -114,7 +100,7 @@ div.egcode {
           </div>
         </div>
       </div>
-      <div class="col-md-6" style="color:white;margin-bottom:5px;font-weight:700">
+      <div class="col-md-6">
         Progress:
         <div class="progress progress-striped active">
           <div id="progress-bar" class="progress-bar progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
@@ -123,8 +109,7 @@ div.egcode {
       </div>
     </div>
     </div>
-    <div class="row" style="background-color:rgba(250,250,250,.8);border-radius: 20px;
-margin-top: 2%;color:black">
+    <div class="row" id="game">
 
 {% endif %}
     
@@ -180,7 +165,7 @@ margin-top: 2%;color:black">
     </div>
 </div>
 <p class="lead">
-<a href="#" id="start" onclick="progress(); document.getElementById('prompt').innerHTML = 'Try this one.'" class="btn btn-lg btn-default">Let's start.</a>
+<a href="#" id="start" onclick="progress(); document.getElementById('prompt').innerHTML = 'Select the correct interval:'" class="btn btn-lg btn-default">Let's start.</a>
 </p>
 
 {% else %}
