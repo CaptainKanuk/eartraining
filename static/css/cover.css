@@ -157,7 +157,7 @@ li {
 #game{
   background-color:rgba(235,245,255,.85);
   border-radius: 30px;
-  margin-top: 2%;
+  margin-top: 5px;
   color:black;
   padding:14px;
 
@@ -171,12 +171,13 @@ li {
   font-weight:700;
 }
 canvas {
-        margin-bottom: 20px;
-        background: #fff;
-        padding: 10px;
-        border-radius: 40px;
-        border:4px solid #000000;
-        display:none;
+  margin-bottom: 20px;
+  background: #fff;
+  padding: 10px;
+  border-radius: 40px;
+  border:4px solid #000000;
+  display:none;
+  cursor: pointer;
 }
 
 div.egcode {
@@ -185,8 +186,10 @@ div.egcode {
 }
 
 .progress{
-  background-color:#fff;
+  background-color:#EFF8FC;
+  border: solid 2px white;
 }
+
 .btn-default,
 .btn-default:hover,
 .btn-default:focus {

@@ -55,18 +55,18 @@ color:white;
             $("canvas").slideToggle("slow");
 
             getMLevel();
-            setTimeout(function(){document.getElementById("page-title").innerHTML = 'Melodies '.concat(curMelLvl.toString());},100);
+            setTimeout(function(){document.getElementById("page-title").innerHTML = 'Melodies: Level '.concat(curMelLvl.toString());},100);
             setTimeout(function(){ getNewMelodies(levToLength(curMelLvl));}, 100);
             instantiateMelPlay();
         }
         else{
             document.getElementById("play-mel").setAttribute("display", "initial");
-            $("canvas").slideToggle("slow", function () {
+            $("canvas").slideDown("slow", function () {
                 document.getElementById(prompt).innerHTML = "Try this one.";
                 getMLevel();
                 setTimeout(function(){ getNewMelodies(levToLength(curMelLvl));}, 100);
             });
-            $("canvas").slideToggle("slow");
+            $("canvas").slideDown("slow");
             instantiateMelPlay();
         }
     };
@@ -110,7 +110,6 @@ color:white;
     
 {% endif %}
 
-
 {% endblock %}
 
 {% block content %}
@@ -118,12 +117,11 @@ color:white;
 {% if user.is_authenticated %}
     <h1 class="cover-heading" id="page-title">Melodies</h1>
     <p class="lead">
+    <a id="play-mel" onclick="" class=""></a>
     <div id="choice">
         <h3 id="prompt" align="center">
         Play and select the correct melody.
         </h3>
-
-    <a id="play-mel" onclick="" class=""></a>
 
     <div class="row">
 		<div class="col-md-6">
@@ -160,7 +158,7 @@ color:white;
     
 </div>
 <p class="lead">
-<a href="#" id="start" onclick="melcount = 0; progress(); document.getElementById('prompt').innerHTML = 'Try this one.'" class="btn btn-lg btn-default">Let's start.</a>
+<a href="#" id="start" onclick="melcount = 0; progress(); document.getElementById('prompt').innerHTML = 'Try this one.'" class="btn btn-lg btn-success">Let's start.</a>
 </p>
 
 {% else %}
