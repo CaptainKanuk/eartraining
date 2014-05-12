@@ -171,12 +171,13 @@ li {
   font-weight:700;
 }
 canvas {
-        margin-bottom: 20px;
-        background: #fff;
-        padding: 10px;
-        border-radius: 40px;
-        border:4px solid #000000;
-        display:none;
+  margin-bottom: 20px;
+  background: #fff;
+  padding: 10px;
+  border-radius: 40px;
+  border:4px solid #000000;
+  display:none;
+  cursor: pointer;
 }
 
 div.egcode {
@@ -186,7 +187,9 @@ div.egcode {
 
 .progress{
   background-color:#fff;
+  border: solid 2px white;
 }
+
 .btn-default,
 .btn-default:hover,
 .btn-default:focus {
