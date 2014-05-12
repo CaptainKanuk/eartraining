@@ -167,6 +167,10 @@ li {
 
 #helpModal{
   color:black;
+  text-align:left;
+}
+.modal-header{
+  font-weight:700;
 }
 canvas {
         margin-bottom: 20px;
