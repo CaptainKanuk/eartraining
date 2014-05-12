@@ -12,14 +12,14 @@
 <script src="{{ STATIC_URL }}/js/GLOBAL.js"></script>
 <script src="{{ STATIC_URL }}/js/hub.js"></script>
 <script src="{{ STATIC_URL }}/js/melodies_script.js"></script>
-<link href="{{ STATIC_URL }}/css/cover3.css" rel="stylesheet" type="text/css">
+<link href="{{ STATIC_URL }}/css/cover.css" rel="stylesheet" type="text/css">
 <style>
-    body
-    {
-        background-image:url("{{STATIC_URL}}/images/sexy_piano.jpg");
-        background-color:#cccccc;
-        color:white;
-    }
+body 
+{
+background-image:url("{{STATIC_URL}}/images/sexy_piano.jpg");
+background-color:#cccccc;
+color:white;
+}
 </style>
 
 
@@ -50,26 +50,6 @@ function checkAndUpdateM()
 }
 </script>
 
-<style type="text/css">
-    body
-    {
-        background-image:url("{{STATIC_URL}}/images/sexy_piano.jpg");
-        background-color:#cccccc;
-        color:white;
-        width: 1600px;
-    }
-    canvas {
-        background: #fff;
-        padding: 10px;
-        border-radius: 8px;
-        border: 2px solid #000000;
-    }
-
-div.egcode {
-    font-family: Courier;
-    font-size: 14px;
-}
-</style>
 
 {% endblock %}
 
@@ -78,66 +58,61 @@ div.egcode {
 
 {% if user.is_authenticated %}
 
-<div class="col-md-3" id="statusbar">
-  <div class="row" style="color:#fff;margin-bottom:5px;font-weight:700">How many HP left?</div>
-  <div class="row">
-    <div align="center">
-        <div id="content3" style="display:block;">
+<div class="inner cover" onload= "">
+  <div class="cover-container">
+    <div class="row" id="statusbar">
+      <div class="col-md-6">How much HP remaining?
+        <div align="center">
+          <div id="content3" style="display:block;">
             <span class="glyphicon glyphicon-heart" style="font-size:30px;"></span>
             <span class="glyphicon glyphicon-heart" style="font-size:30px;"></span>
             <span class="glyphicon glyphicon-heart" style="font-size:30px;"></span>
+          </div>
+          <div id="content2" style="display:none;">
+            <span class="glyphicon glyphicon-heart" style="font-size:30px;"></span>
+            <span class="glyphicon glyphicon-heart" style="font-size:30px;"></span>
+          </div>
+          <div id="content1" style="display:none;">
+            <span class="glyphicon glyphicon-heart" style="font-size:30px;"></span>
+          </div>
         </div>
-        <div id="content2" style="display:none;">
-            <span class="glyphicon glyphicon-heart" style="font-size:30px;"></span>
-            <span class="glyphicon glyphicon-heart" style="font-size:30px;"></span>
+      </div>
+      <div class="col-md-6">
+        Progress:
+        <div class="progress progress-striped active">
+          <div id="progress-bar" class="progress-bar progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+          <span class="sr-only">0% Complete</span>
         </div>
-        <div id="content1" style="display:none;">
-            <span class="glyphicon glyphicon-heart" style="font-size:30px;"></span>
-        </div>
-    </div>
-  </div>
-  <div class="row" style="margin:2px;">
-    <div class="progress progress-striped active">
-      <div id="progress-bar" class="progress-bar progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
-        <span class="sr-only">0% Complete</span>
       </div>
     </div>
-  </div>
-</div>
-
-<div class="col-md-9" style="background-color:rgba(250,250,250,.8);border-radius: 20px;
-    margin-top: 5%;color:black">
+    </div>
+    <div class="row" id="game">
     
 {% endif %}
-
 
 {% endblock %}
 
 {% block content %}
 
 {% if user.is_authenticated %}
-<div class="inner cover" onload= "">
-<h1 class="cover-heading" id="page-title">Melodies</h1>
-<p class="lead">
-<div id="choice">
-    <h3 id="prompt" align="center">
-        Play and select the correct melody.
-    </h3>
-
+    <h1 class="cover-heading" id="page-title">Melodies</h1>
+    <p class="lead">
     <a id="play-mel" onclick="" class=""></a>
+    <div id="choice">
+        <h3 id="prompt" align="center">
+        Play and select the correct melody.
+        </h3>
 
     <div class="row">
 		<div class="col-md-6">
-            <canvas id="choice_one" onclick="chooseAnswerMel('choice_one')" width="440" height="100"
-                style="border:4px solid #000000;display:none;">
+            <canvas id="choice_one" onclick="chooseAnswerMel('choice_one')" width="440" height="100">
                 <script>
                     setup("choice_one");
                     </script>
             </canvas>
         </div>
 		<div class="col-md-6">
-            <canvas id="choice_two" onclick="chooseAnswerMel('choice_two')" width="440" height="100"
-                style="border:4px solid #000000;display:none;">
+            <canvas id="choice_two" onclick="chooseAnswerMel('choice_two')" width="440" height="100">
                 <script>
                     setup("choice_two");
                     </script>
@@ -146,16 +121,14 @@ div.egcode {
     </div>
     <div class="row">
 		<div class="col-md-6">
-            <canvas id="choice_three" onclick="chooseAnswerMel('choice_three')" width="440" height="100"
-                style="border:4px solid #000000;display:none;">
+            <canvas id="choice_three" onclick="chooseAnswerMel('choice_three')" width="440" height="100">
                 <script>
                     setup("choice_three");
                     </script>
             </canvas>
         </div>
 		<div class="col-md-6">
-            <canvas id="choice_four" onclick="chooseAnswerMel('choice_four')" width="440" height="100"
-                style="border:4px solid #000000;display:none;">
+            <canvas id="choice_four" onclick="chooseAnswerMel('choice_four')" width="440" height="100"> 
                 <script>
                     setup("choice_four");
                     </script>
@@ -165,7 +138,7 @@ div.egcode {
     
 </div>
 <p class="lead">
-<a href="#" id="start" onclick="melcount = 0; progress(); document.getElementById('prompt').innerHTML = 'Try this one.'" class="btn btn-lg btn-default">Let's start.</a>
+<a href="#" id="start" onclick="melcount = 0; progress(); document.getElementById('prompt').innerHTML = 'Try this one.'" class="btn btn-lg btn-success">Let's start.</a>
 </p>
  
 {% else %}
