@@ -162,6 +162,11 @@ li {
   margin-top: 2%;
   color:black;
   padding:14px;
+
+}
+
+#helpModal{
+  color:black;
 }
 canvas {
         margin-bottom: 20px;
