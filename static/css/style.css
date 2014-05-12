@@ -181,7 +181,7 @@ canvas {
   padding: 10px;
   border-radius: 40px;
   border:4px solid #000000;
-  display:none;
+  display:inline-block;
   cursor: pointer;
 }
 
