@@ -11,6 +11,7 @@
 <script src="{{ STATIC_URL }}/js/ajax-functions.js"></script>
 <script src="{{ STATIC_URL }}/js/GLOBAL.js"></script>
 <script src="{{ STATIC_URL }}/js/hub.js"></script>
+<script src="{{ STATIC_URL }}/js/melodies_script.js"></script>
 <link href="{{ STATIC_URL }}/css/cover3.css" rel="stylesheet" type="text/css">
 <style>
     body
@@ -23,26 +24,30 @@
 
 
 <script>
-  function getMLevel()
-  {
-      Dajaxice.database.getMelodyLvl(melcurlevel_callback, {'text':'{{user.username}}'});
-  }
-  function incMLevel()
-  {
-      Dajaxice.database.melodyLvlUp(Mlevel_callback, {'text':'{{user.username}}' });
-  }
+function getMLevel()
+{
+  Dajaxice.database.getMelodyLvl(melcurlevel_callback, {'text':'{{user.username}}'});
+}
+function incMLevel()
+{
+  Dajaxice.database.melodyLvlUp(Mlevel_callback, {'text':'{{user.username}}' });
+}
 
-  function checkAndUpdateM()
-  {
+function checkAndUpdateM()
+{
     Dajaxice.database.getMaxMelodyLvl(Mlevel_callback, {'text':'{{user.username}}'});
     setTimeout(function(){
-      if (curMelLvl == mel_level && curMelLvl < 6)
-      {
-          incMLevel();
-      }
-      if (curMelLvl < 5)
-        Dajaxice.database.sendMelLvl(melcurlevel_callback, {'text':'{{user.username}}', 'curMelLvl': curMelLvl+1});}, 250);
-  }
+        if (curMelLvl == mel_level && mel_level < maxMLevel)
+        {
+             incMLevel();
+             Dajaxice.database.sendMelLvl(melcurlevel_callback, {'text':'{{user.username}}', 'curMelLvl': curMelLvl+1});
+        }
+        else if (curMelLvl < maxMLevel) 
+        {
+            Dajaxice.database.sendMelLvl(melcurlevel_callback, {'text':'{{user.username}}', 'curMelLvl': curMelLvl+1});
+        }
+    }, 300);
+}
 </script>
 
 <style type="text/css">
@@ -65,36 +70,7 @@ div.egcode {
     font-size: 14px;
 }
 </style>
-<script>
-    $("canvas").slideToggle("fast");
-    function progress(){
-        answerChosen = false;
-        var button = document.getElementById("start");
-        if(button.innerHTML=="Let's start."){
-            button.innerHTML="Next Melody.";
-            var mel_button = document.getElementById("play-mel");
-            mel_button.setAttribute("onclick", "playMelody(); melcount++; deactivateMelPlay();");
-            mel_button.setAttribute("class", "btn btn-lg btn-default");
-            mel_button.innerHTML = "Play melody.";
-            $("canvas").slideToggle("slow");
 
-            getMLevel();
-            setTimeout(function(){document.getElementById("page-title").innerHTML = 'Melodies '.concat(curMelLvl.toString());},100);
-            setTimeout(function(){ getNewMelodies(levToLength(curMelLvl));}, 100);
-            instantiateMelPlay();
-        }
-        else{
-            document.getElementById("play-mel").setAttribute("display", "initial");
-            $("canvas").slideToggle("slow", function () {
-                document.getElementById(prompt).innerHTML = "Try this one.";
-                getMLevel();
-                setTimeout(function(){ getNewMelodies(levToLength(curMelLvl));}, 100);
-            });
-            $("canvas").slideToggle("slow");
-            instantiateMelPlay();
-        }
-    };
-</script>
 {% endblock %}
 
 
@@ -191,7 +167,7 @@ div.egcode {
 <p class="lead">
 <a href="#" id="start" onclick="melcount = 0; progress(); document.getElementById('prompt').innerHTML = 'Try this one.'" class="btn btn-lg btn-default">Let's start.</a>
 </p>
-
+ 
 {% else %}
 
 <div class="inner cover">

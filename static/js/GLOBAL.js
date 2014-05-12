@@ -12,6 +12,9 @@ var test_num = 0;
 var curIntLvl = 0;
 var curMelLvl = 0;
 
+var maxMLevel = 6;
+var maxILevel = 25;
+
 
 
 //DATABASE: get test number from current test number chosed out of available tests for specific user
