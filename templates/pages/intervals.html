@@ -12,14 +12,6 @@
 <script src="{{ STATIC_URL }}/js/GLOBAL.js"></script>
 <script src="{{ STATIC_URL }}/js/intervals_script.js"></script>
 
-<style>
-body 
-{
-background-image:url("{{STATIC_URL}}/images/sexy_piano.jpg");
-background-color:#cccccc;
-color:white;
-}
-</style>
 <script>
   //alert(test_set);
   $("canvas").slideToggle("fast");
@@ -154,8 +146,7 @@ color:white;
         </div>
         <div class="row">
 		    <div class="col-md-6">
-                <canvas id="choice_three" onclick="chooseAnswerInt('choice_three')" width="220" height="100"
-                    style="border:4px solid #000000;display:none;">
+                <canvas id="choice_three" onclick="chooseAnswerInt('choice_three')" width="220" height="100">
                     <script>
                         setup("choice_three");
                         </script>
@@ -163,8 +154,7 @@ color:white;
                 
 		    </div>
 		    <div class="col-md-6">
-                <canvas id="choice_four" onclick="chooseAnswerInt('choice_four')" width="220" height="100"
-                    style="border:4px solid #000000;display:none;">
+                <canvas id="choice_four" onclick="chooseAnswerInt('choice_four')" width="220" height="100">
                     <script>
                         setup("choice_four");
                         </script>
