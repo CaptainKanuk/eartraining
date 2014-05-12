@@ -32,7 +32,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        {% if user.is_authenticated %}<button type="button" class="btn btn-primary"onclick="window.location='/intervals';">Try Intervals!</button>
+        {% if user.is_authenticated %}<button type="button" class="btn btn-primary"onclick="window.location='/hub';">Try Intervals!</button>
         {% else %}<button type="button" class="btn btn-primary"onclick="window.location='/signin';">Signin to Play!</button>{% endif %}
       </div>
     </div>
@@ -64,7 +64,7 @@
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        {% if user.is_authenticated %}<button type="button" class="btn btn-primary"onclick="window.location='/intervals';">Try Melodies!</button>
+        {% if user.is_authenticated %}<button type="button" class="btn btn-primary"onclick="window.location='/hub';">Try Melodies!</button>
         {% else %}<button type="button" class="btn btn-primary"onclick="window.location='/signin';">Signin to Play!</button>{% endif %}
       </div>
     </div>

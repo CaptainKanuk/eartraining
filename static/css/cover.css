@@ -34,30 +34,25 @@
 		-moz-animation-delay:1.6s; 
 		-webkit-animation-delay:1.6s;
 }
+
 #startbutton {
 animation-delay:1.3s; 
     -moz-animation-delay:1.3s; 
     -webkit-animation-delay:1.3s;
 
 }
-/*#startbutton:hover {
-  -webkit-animation:pulse .5s;
-  animation-fill-moe:forwards;
-  -moz-animation-fill-mode:forwards;
-  -webkit-animation-fill-mode:forwards;
-  opacity:1;
-}*/
+
 .form-group {
-margin-bottom:20px
+  margin-bottom:20px
 }
 .form-control {
-display:inline;
-width:75%;
+  display:inline;
+  width:75%;
 }
 
 .img-circle{
-height:auto;
-max-width:50%;
+  height:auto;
+  max-width:50%;
 }
 
 .navbar-default {
@@ -131,11 +126,7 @@ v.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
 						       	      background-color: #59a3d3;
 							      }
 }
-/*
- * Globals
- */
 
-/* Links */
 a,
 a:focus,
 a:hover {
@@ -158,7 +149,7 @@ li {
 }
 
 #statusbar{
-  background-color:rgba(80,80,80,.5);
+  background-color:rgba(40,45,50,.5);
   border-radius:30px;
   padding-top:15px;
   color:white;
@@ -166,10 +157,11 @@ li {
 }
 
 #game{
-  background-color:rgba(250,250,250,.8);
+  background-color:rgba(235,245,255,.85);
   border-radius: 30px;
   margin-top: 2%;
-  color:black
+  color:black;
+  padding:14px;
 }
 canvas {
         margin-bottom: 20px;
@@ -188,12 +180,11 @@ div.egcode {
 .progress{
   background-color:#fff;
 }
-/* Custom default button */
 .btn-default,
 .btn-default:hover,
 .btn-default:focus {
   color: #191919;
-  text-shadow: none; /* Prevent inheritence from `body` */
+  text-shadow: none;
   background-image: none;
   border-radius: 30px;
   border:none;
@@ -214,26 +205,23 @@ div.egcode {
   border:none;
   font-weight:bold;
 }
+
 input, textarea{
     color: #333;
 }
-/*
- * Base structure
- */
 
 html,
 body {
-  height: 110%;
-  background-color: #fff;
   padding-top: 30px;
-
+  background-size: 100%;
 }
+
 body {
-  color: #000;
   text-align: center;
+  background-image:url("../images/sexy_piano.jpg");
+  color:white;
 }
 
-/* Extra markup and styles for table-esque vertical and horizontal centering */
 .site-wrapper {
 
   display: table;
@@ -252,21 +240,10 @@ body {
   margin-left: auto;
 }
 
-/* Padding for spacing */
 .inner {
   padding: 30px;
 }
 
-
-
-/*
- * Cover
- */
-.bluerow{
-	padding:50 300 50 300;
-	margin:0 -300 0 -300;
-	background-color:rgb(131, 218, 252);
-}
 .cover {
   padding: 20 20px;
 }
@@ -275,45 +252,20 @@ body {
   font-weight: bold;
 }
 
-
-/*
- * Footer
- */
-
 .contactfooter {
   padding-top:30px;
 }
 
-
-/*
- * Affix and center
- */
-
 @media (min-width: 768px) {
-  /* Pull out the header and footer */
-  .masthead {
-    position: fixed;
-    top: 0;
-  }
-  .mastfoot {
-    position: fixed;
-    bottom: 0;
-  }
-  /* Start the vertical centering */
   .site-wrapper-inner {
     vertical-align: middle;
   }
-  /* Handle the widths */
-  .masthead,
-  .mastfoot,
   .cover-container {
-    width: 100%; /* Must be percentage or pixels for horizontal alignment */
+    width: 100%;
   }
 }
 
 @media (min-width: 992px) {
-  .masthead,
-  .mastfoot,
   .cover-container {
     width: 1000px;
   }
