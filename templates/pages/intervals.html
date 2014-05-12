@@ -13,10 +13,6 @@
 <script src="{{ STATIC_URL }}/js/intervals_script.js"></script>
 
 <script>
-  //alert(test_set);
-  $("canvas").slideToggle("fast");
-  //in_interval_test = 1;
-
   function checkAndUpdateI()
   {
     Dajaxice.database.getMaxIntervalLvl(level_callback, {'text':'{{user.username}}'});
@@ -43,42 +39,7 @@
     Dajaxice.database.intervalLvlUp(level_callback, {'text':'{{user.username}}' });
   }
   </script>
-  <!--
-  <script>
-  function progress(){
-    answerChosen = false;
-    var button = document.getElementById("start");
-    if (button.innerHTML=="Let's start.")
-    {
-      button.innerHTML="Next Interval";
-      var interval_button = document.getElementById("interval-play");
-      interval_button.setAttribute("onclick","playInterval(correctInterval[0], correctInterval[2], 2, 30);");
-      interval_button.setAttribute("class", "btn btn-lg btn-default");
-      interval_button.innerHTML = "Play interval.";
-      $("canvas").slideToggle("slow");
 
-      getLevel('text','{{user.username}}');
-      setTimeout(function(){document.getElementById("page-title").innerHTML = 'Intervals: Level '.concat(curIntLvl.toString());},100);
-      setTimeout(function(){ getNewIntervals(0,newIntervalFromTest(0,curIntLvl)); /*playInterval(correctInterval[0], correctInterval[2], 2, 30);*/}, 100);
-
-      //alert(max_level);
-    }
-    else
-    {
-        document.getElementById("interval-play").setAttribute("display", "initial");
-        $("canvas").slideDown("slow", function () {
-            document.getElementById(prompt).innerHTML = "Next interval.";
-          });
-
-      $("canvas").slideDown("slow");
-      getLevel('text','{{user.username}}');
-      setTimeout(function(){getNewIntervals(0,newIntervalFromTest(0,curIntLvl));/*playInterval(correctInterval[0], correctInterval[2], 2, 30);*/}, 100);
-      //alert(max_level);
-
-    }
-  }
-
-</script> -->
 {% endblock %}
 
 {% block incProgBar %}
@@ -130,14 +91,16 @@
         </h3>
         <div class="row">
 		    <div class="col-md-6">
-                <canvas id="choice_one" onclick="chooseAnswerInt('choice_one')" width="220" height="100">
+                <canvas id="choice_one" onclick="chooseAnswerInt('choice_one')" width="220" height="100"
+                style="display:none;">
                     <script>
                         setup("choice_one");
                         </script>
                 </canvas>  
 		    </div>
 		    <div class="col-md-6">
-                <canvas id="choice_two" onclick="chooseAnswerInt('choice_two')" width="220" height="100">
+                <canvas id="choice_two" onclick="chooseAnswerInt('choice_two')" width="220" height="100"
+                style="display:none;">
                     <script>
                         setup("choice_two");
                         </script>
@@ -146,7 +109,8 @@
         </div>
         <div class="row">
 		    <div class="col-md-6">
-                <canvas id="choice_three" onclick="chooseAnswerInt('choice_three')" width="220" height="100">
+                <canvas id="choice_three" onclick="chooseAnswerInt('choice_three')" width="220" height="100"
+                style="display:none;">
                     <script>
                         setup("choice_three");
                         </script>
@@ -154,7 +118,8 @@
                 
 		    </div>
 		    <div class="col-md-6">
-                <canvas id="choice_four" onclick="chooseAnswerInt('choice_four')" width="220" height="100">
+                <canvas id="choice_four" onclick="chooseAnswerInt('choice_four')" width="220" height="100"
+                style="display:none;">
                     <script>
                         setup("choice_four");
                         </script>

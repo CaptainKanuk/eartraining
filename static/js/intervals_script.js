@@ -1,5 +1,4 @@
 function progress(){
-
 answerChosen = false;
 var button = document.getElementById("start");
 if (button.innerHTML=="Let's start.")
