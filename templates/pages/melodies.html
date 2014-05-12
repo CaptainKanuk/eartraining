@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "gamebase.html" %}
 
 {% block extrahead %}
 <!-- Vexflow Libraries -->
@@ -8,9 +8,21 @@
 <script src="{{ STATIC_URL }}/js/melodies.js"></script>
 <script src="{{ STATIC_URL }}/js/progress-bar.js"></script>
 <script src="{{ STATIC_URL }}/js/riffwave.js"></script>
+<<<<<<< HEAD
 <script src="{{ STATIC_URL }}/js/ajax-functions.js"></script>
 <script src="{{ STATIC_URL }}/js/GLOBAL.js"></script>
 <script src="{{ STATIC_URL }}/js/hub.js"></script>
+=======
+<link href="{{ STATIC_URL }}/css/cover3.css" rel="stylesheet" type="text/css">
+<style>
+    body
+    {
+        background-image:url("{{STATIC_URL}}/images/sexy_piano.jpg");
+        background-color:#cccccc;
+        color:white;
+    }
+</style>
+>>>>>>> 7896e5e87254c8156a0e424f3a05b176bfa7464f
 
 <script>
   function getMLevel()
@@ -36,6 +48,13 @@
 </script>
 
 <style type="text/css">
+    body
+    {
+        background-image:url("{{STATIC_URL}}/images/sexy_piano.jpg");
+        background-color:#cccccc;
+        color:white;
+        width: 1600px;
+    }
     canvas {
         background: #fff;
         padding: 10px;
@@ -86,7 +105,7 @@ div.egcode {
 {% if user.is_authenticated %}
 
 <div class="col-md-3" id="statusbar">
-  <div class="row" style="color:#333;margin-bottom:5px;font-weight:700">How much HP left?</div>
+  <div class="row" style="color:#fff;margin-bottom:5px;font-weight:700">How many HP left?</div>
   <div class="row">
     <div align="center">
         <div id="content3" style="display:block;">
@@ -112,7 +131,8 @@ div.egcode {
   </div>
 </div>
 
-<div class="col-md-9">
+<div class="col-md-9" style="background-color:rgba(250,250,250,.8);border-radius: 20px;
+    margin-top: 5%;color:black">
     
 {% endif %}
 
@@ -124,7 +144,6 @@ div.egcode {
 {% if user.is_authenticated %}
 <div class="inner cover" onload= "">
 <h1 class="cover-heading" id="page-title">Melodies</h1>
-<!--h2 id = "level_heading">?</h2-->
 <p class="lead">
 <div id="choice">
     <h3 id="prompt" align="center">

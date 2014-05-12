@@ -20,7 +20,8 @@ var in_melody_test = 0;
 //=================VARIABLES FOR PROGRESS IN THE GAME===================
 var quiz_progress = 0;//expressed as percent completion (1-100)
 var HP = 3;//Number of chances to get it wrong
-var numberOfQuestionsInModule = 5;//default to 10 questions, need this for progress
+//var numberOfQuestionsInModule = 20;//default to 20 questions, need this for progress
+var numberOfQuestionsInModule = 5;
 
 //=================VARIABLES FOR PROGRESS IN WEBSITE===================
 //DATABASE: get test number from current test number chosed out of available tests for specific user
@@ -71,12 +72,16 @@ function showHearts() {
     var contentId1 = document.getElementById("content1");
     var contentId2 = document.getElementById("content2");
     var contentId3 = document.getElementById("content3");
+    if (HP == 0 ) {
+        contentId2.style.display = "none";
+        contentId3.style.display = "none";
+        contentId1.style.display = "none";
+    }
     if (HP == 1 ) {
         contentId2.style.display = "none";
         contentId3.style.display = "none";
         contentId1.style.display = "block";
     }
-    
     if (HP == 2) {
         contentId1.style.display = "none";
         contentId3.style.display = "none";
