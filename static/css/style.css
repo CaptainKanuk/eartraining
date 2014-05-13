@@ -171,15 +171,19 @@ li {
   color: #30ACFC;
 }
 #description{
-    animation-delay:1.6s; 
-    -moz-animation-delay:1.6s; 
-    -webkit-animation-delay:1.6s;
+    animation-delay:1.2s; 
+    -moz-animation-delay:1.2s; 
+    -webkit-animation-delay:1.2s;
+    animation-duration:2s; 
+
 }
 
 #startbutton {
-animation-delay:1.3s; 
-    -moz-animation-delay:1.3s; 
-    -webkit-animation-delay:1.3s;
+animation-delay:1.5s; 
+    -moz-animation-delay:1.5s; 
+    -webkit-animation-delay:1.5s;
+      animation-duration:2s; 
+
 
 }
 #blueglass{
