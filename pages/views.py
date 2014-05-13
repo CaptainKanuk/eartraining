@@ -133,10 +133,3 @@ def register_user(request):
 def register_success(request):
     context=RequestContext(request)
     return render_to_response('pages/register_success.html',context)
-
-#Failure page with tips on how to fix it
-def register_failure(request):
-    context=RequestContext(request)
-    args = {}
-    args['errors'] = UserCreationForm(request.POST).errors
-    return render_to_response('pages/register_failure.html', args, context)
