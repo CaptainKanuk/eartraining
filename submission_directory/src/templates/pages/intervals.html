@@ -1,0 +1,150 @@
+{% extends "gamebase.html" %}
+
+{% block extrahead %}
+<!-- Vexflow Libraries -->
+
+<script src="{{ STATIC_URL }}/js/vexflow-debug.js"></script>
+<script src="{{ STATIC_URL }}/js/vexflow-min.js"></script>
+<script src="{{ STATIC_URL }}/js/interval-names-table.js"></script>
+<script src="{{ STATIC_URL }}/js/progress-bar.js"></script>
+<script src="{{ STATIC_URL }}/js/riffwave.js"></script>
+<script src="{{ STATIC_URL }}/js/music-staff.js"></script>
+<script src="{{ STATIC_URL }}/js/GLOBAL.js"></script>
+<script src="{{ STATIC_URL }}/js/intervals_script.js"></script>
+
+<script>
+  function checkAndUpdateI()
+  {
+    Dajaxice.database.getMaxIntervalLvl(level_callback, {'text':'{{user.username}}'});
+    setTimeout(function(){
+      if (curIntLvl == max_level && max_level < maxILevel)
+      {
+          incLevel();
+          Dajaxice.database.sendIntLvl(intcurlevel_callback, {'text':'{{user.username}}', 'curIntLvl': curIntLvl+1});
+      }
+      else if (curIntLvl < maxILevel) 
+      {
+        Dajaxice.database.sendIntLvl(intcurlevel_callback, {'text':'{{user.username}}', 'curIntLvl': curIntLvl+1});
+      }
+
+      }, 300);
+  }
+
+  function getLevel()
+  {
+    Dajaxice.database.getIntervalLvl(intcurlevel_callback, {'text':'{{user.username}}'});
+  }
+  function incLevel()
+  {
+    Dajaxice.database.intervalLvlUp(level_callback, {'text':'{{user.username}}' });
+  }
+  </script>
+
+{% endblock %}
+
+{% block incProgBar %}
+
+{% if user.is_authenticated %}
+<div class="inner cover" onload= "">
+  <div class="cover-container">
+    <div class="row" id="statusbar">
+      <div class="col-md-6">How much HP remaining?
+        <div align="center">
+          <div id="content3" style="display:block;">
+            <span class="glyphicon glyphicon-heart"></span>
+            <span class="glyphicon glyphicon-heart"></span>
+            <span class="glyphicon glyphicon-heart"></span>
+          </div>
+          <div id="content2" style="display:none;">
+            <span class="glyphicon glyphicon-heart"></span>
+            <span class="glyphicon glyphicon-heart"></span>
+          </div>
+          <div id="content1" style="display:none;">
+            <span class="glyphicon glyphicon-heart"></span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        Progress:
+        <div class="progress progress-striped active">
+          <div id="progress-bar" class="progress-bar progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+          <span class="sr-only">0% Complete</span>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="row" id="game">
+
+{% endif %}
+    
+{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+    <h1 class="cover-heading" id="page-title">Intervals</h1>
+    <p class="lead">
+    <a id="interval-play" onclick="" class=""></a>
+    <div id="choice">
+        <h3 id="prompt" align="center">
+            Click the button to get an interval!
+        </h3>
+        <div class="row">
+		    <div class="col-md-6">
+                <canvas id="choice_one" onclick="chooseAnswerInt('choice_one')" width="220" height="100"
+                style="display:none;">
+                    <script>
+                        setup("choice_one");
+                        </script>
+                </canvas>  
+		    </div>
+		    <div class="col-md-6">
+                <canvas id="choice_two" onclick="chooseAnswerInt('choice_two')" width="220" height="100"
+                style="display:none;">
+                    <script>
+                        setup("choice_two");
+                        </script>
+                </canvas>
+            </div>
+        </div>
+        <div class="row">
+		    <div class="col-md-6">
+                <canvas id="choice_three" onclick="chooseAnswerInt('choice_three')" width="220" height="100"
+                style="display:none;">
+                    <script>
+                        setup("choice_three");
+                        </script>
+                </canvas>
+                
+		    </div>
+		    <div class="col-md-6">
+                <canvas id="choice_four" onclick="chooseAnswerInt('choice_four')" width="220" height="100"
+                style="display:none;">
+                    <script>
+                        setup("choice_four");
+                        </script>
+                </canvas>
+        </div>
+      </div>
+    </div>
+</div>
+<p class="lead">
+<a href="#" id="start" onclick="progress(); document.getElementById('prompt').innerHTML = 'Select the correct interval:'" class="btn btn-lg btn-success">Let's start.</a>
+</p>
+
+{% else %}
+
+<div class="inner cover">
+    <h1 class="cover-heading">Nice try!</h1>
+    <p class="lead">"Thou art a fusty nut with no kernel."</p>
+    <p class="lead">
+    <a href="/signin" class="btn btn-lg btn-primary">Concede defeat.</a>
+    </p>
+    <p class="lead">
+    <a href="http://www.theworldsworstwebsiteever.com/" class="btn btn-lg btn-default">Never!</a>
+    </p>
+</div>
+
+{% endif %}
+
+{% endblock %}

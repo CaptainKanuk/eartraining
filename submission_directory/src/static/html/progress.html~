@@ -1,0 +1,19 @@
+<<<<<<< HEAD
+<div class = "row" style="font-weight:bolder">
+  <div class="col-md-6">How much HP left?</div>
+  <div class="col-md-6" style="float:right;width:40%;margin-right:25px;">
+    Progress</br>
+        <div class="progress progress-striped active">
+=======
+<div class = "row">
+  How much HP left?
+  <span style="float:right;width:40%;margin-right:25px;">
+        Progress</br>
+        <div class="progress progress-striped-active">
+>>>>>>> 9de437f4c0209b44d4ef5280f9b978e5605ee7f2
+            <div id="progress-bar" class="progress-bar progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                <span class="sr-only">0% Complete</span>
+            </div>
+        </div>
+    </div>
+</div>

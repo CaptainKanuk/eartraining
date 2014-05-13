@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<script>
+setTimeout(function(){
+	document.getElementById("replay").setAttribute("href","/melodies");
+}, 1000);
+</script>
+
+<div class="inner cover">
+    <h1 id = "about_win" class="cover-heading"> You failed the quiz.</h1>
+    <a id = "replay" href="" class="btn btn-lg btn-default">Try again, buddy!</a>
+</div>
+{% endblock %}
