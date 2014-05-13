@@ -21,6 +21,13 @@
     var currentIntervalLevel = 1;
     //SHOULD ALSO BE LOADED FROM DATABASE
     var maxIntervalLevel = 25;
+
+    
+    setTimeout(function(){
+        document.getElementById("int_go").setAttribute("onclick","submitIntInfo()");
+        document.getElementById("mel_go").setAttribute("onclick","submitMelInfo()");
+    }, 1250);
+    
     
     function decreaseCurMelLvl()
     {
@@ -108,7 +115,7 @@
                 <button type="button" class="btn btn-default btn-lg" onclick="decreaseCurIntLvl()">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </button>
-                <button type="button" class="btn btn-default btn-lg" onclick = "submitIntInfo()">
+                <button id = "int_go" type="button" class="btn btn-default btn-lg" onclick = "">
                     Go
                 </button>
                 <button type="button" class="btn btn-default btn-lg" onclick="increaseCurIntLvl(max_level)">
@@ -126,7 +133,7 @@
                 <button type="button" class="btn btn-default btn-lg" onclick="decreaseCurMelLvl()">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                 </button>
-                <button type="button" class="btn btn-default btn-lg" onclick = "submitMelInfo()">
+                <button  id = "mel_go" type="button" class="btn btn-default btn-lg" onclick = "">
                     Go
                 </button>
                 <button type="button" class="btn btn-default btn-lg" onclick="increaseCurMelLvl(mel_level)">

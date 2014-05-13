@@ -1,16 +1,15 @@
 
 var correctChoice;
-var staff_flag = 1;
 //intervals are [basetone, baseoffset, toptone, topoffset]
 var correctInterval;
-var max_level = 0;
-var mel_level = 0;
+var max_level = 1;
+var mel_level = 1;
 
-var test_set = 0;
-var test_num = 0;
+var test_set = 1;
+var test_num = 1;
 
-var curIntLvl = 0;
-var curMelLvl = 0;
+var curIntLvl = 1;
+var curMelLvl = 1;
 
 var maxMLevel = 6;
 var maxILevel = 25;
