@@ -96,22 +96,22 @@ function melodyClassName(level)
     switch(level)
     {
         case 1:
-            return "Three notes.";
+            return "three notes";
             break;
         case 2:
-            return "Four notes.";
+            return "four notes";
             break;
         case 3:
-            return "Five notes.";
+            return "five notes";
             break;
         case 4:
-            return "Six notes.";
+            return "six notes";
             break;
         case 5:
-            return "Seven notes.";
+            return "seven notes";
             break;
         case 6:
-            return "Eight notes.";
+            return "eight notes";
             break;
     }
 }
