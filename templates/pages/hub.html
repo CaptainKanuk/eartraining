@@ -80,13 +80,13 @@
 
     function submitIntInfo() {
         Dajaxice.database.sendIntLvl(intcurlevel_callback, {'text':'{{user.username}}', 'curIntLvl': currentIntervalLevel});
-        window.location.href = '/intervals/';
+        setTimeout(function(){window.location.href = '/intervals/';},500);
         //Dajaxice.database.sendIntLvl(intcurlevel_callback, {'text':'{{user.username}}'}, currentIntervalLevel);
     }
 
     function submitMelInfo() {
         Dajaxice.database.sendMelLvl(melcurlevel_callback, {'text':'{{user.username}}', 'curMelLvl': currentMelodyLevel});
-        window.location.href = '/melodies/';
+        setTimeout(function(){window.location.href = '/melodies/';},500);
         //Dajaxice.database.sendMelLvl(melcurlevel_callback, {'text':'{{user.username}}'}, currentMelodyLevel);
     }
 
