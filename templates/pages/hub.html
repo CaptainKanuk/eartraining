@@ -93,43 +93,48 @@
 
 {% if user.is_authenticated %}
 <div id="game">
-<div>
-    <h1 class="cover-heading"> Choose an Interval Level! </h1>
-    
-    <span id="curIntLvl" align="center" style="font-size:60px">
-        ?
-    </span>
-    <p class = "tpbutton btn-toolbar" style="text-align:center">
-    <button type="button" class="btn btn-default btn-lg" onclick="decreaseCurIntLvl()">
-        <span class="glyphicon glyphicon-chevron-left"></span>
-    </button>
-    <button type="button" class="btn btn-default btn-lg" onclick = "submitIntInfo()">
-        Go
-    </button>
-    <button type="button" class="btn btn-default btn-lg" onclick="increaseCurIntLvl(max_level)">
-        <span class="glyphicon glyphicon-chevron-right"></span>
-    </button>
-    </p>
-</div>
-<br>
-<div>
-        <h1 class="cover-heading"> Choose a Melody Level! </h1>
-        
-        <span id="curMelLvl" align="center" style="font-size:60px">
+    <div class="row">
+        <h1 class="cover-heading">Choose a game type and level to start:</h1> 
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-6">
+            <h2 class="cover-heading">Intervals</h2>
+
+            <span id="curIntLvl" align="center" style="font-size:60px">
                 ?
-        </span>
-        <p class = "tpbutton btn-toolbar" style="text-align:center">
-            <button type="button" class="btn btn-default btn-lg" onclick="decreaseCurMelLvl()">
-                <span class="glyphicon glyphicon-chevron-left"></span>
-            </button>
-            <button type="button" class="btn btn-default btn-lg" onclick = "submitMelInfo()">
-                Go
-            </button>
-            <button type="button" class="btn btn-default btn-lg" onclick="increaseCurMelLvl(mel_level)">
-                <span class="glyphicon glyphicon-chevron-right"></span>
-            </button>
-        </p>
-</div>
+            </span>
+            <p class = "tpbutton btn-toolbar" style="text-align:center">
+                <button type="button" class="btn btn-default btn-lg" onclick="decreaseCurIntLvl()">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </button>
+                <button type="button" class="btn btn-default btn-lg" onclick = "submitIntInfo()">
+                    Go
+                </button>
+                <button type="button" class="btn btn-default btn-lg" onclick="increaseCurIntLvl(max_level)">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </button>
+            </p>
+        </div>
+        <div class="col-md-6">
+            <h2 class="cover-heading">Melodies</h2>
+
+            <span id="curMelLvl" align="center" style="font-size:60px">
+                ?
+            </span>
+            <p class = "tpbutton btn-toolbar" style="text-align:center">
+                <button type="button" class="btn btn-default btn-lg" onclick="decreaseCurMelLvl()">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </button>
+                <button type="button" class="btn btn-default btn-lg" onclick = "submitMelInfo()">
+                    Go
+                </button>
+                <button type="button" class="btn btn-default btn-lg" onclick="increaseCurMelLvl(mel_level)">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </button>
+            </p>
+        </div>
+    </div>
 </div>
 {% else %}
 
