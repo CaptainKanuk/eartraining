@@ -1,9 +1,15 @@
 {% extends "base.html" %}
 
 {% block content %}
+<script>
+setTimeout(function(){
+	document.getElementById("next").setAttribute("href","/melodies");
+}, 500);
+</script>
+
 <div class="inner cover">
     <h1 id = "about_win" class="cover-heading animated bounceIn"> You passed the quiz!</h1>
     <a href="/hub" class="btn btn-lg btn-default">How's my progress?</a>
-    <a href="/melodies" class="btn btn-lg btn-default">Next quiz!</a>
+    <a id = "next" href="" class="btn btn-lg btn-default">Next quiz!</a>
 </div>
 {% endblock %}
