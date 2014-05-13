@@ -1,50 +1,42 @@
 {% extends "base.html" %}
 
 {% block content %} 
-<style>
-body 
-{
-background-image:url("{{STATIC_URL}}/images/sexy_piano.jpg");
-color:white;
-height:auto;
-}
-</style>
 <div class="inner cover">
-<div class="row" style="background-color:rgba(0,0,0,.5)">
-  <h1 class="about-heading">Ear-Training Made Beautiful</h1>
-  <p class = "lead"> Mezzo is an interactive, fun, and beautiful way to train your ear and strengthen your musicianship skills. Using a selection of highly interactive games, Mezzo makes ear training addictive and easy. Users choose from game categories such as intervals, melodies, and chords, and level up as they slowly become masters at each musical skill.  </p>
-  <br><br>
-  <p class="lead">Mezzo was developed in a CS course at Princeton University by four undergraduates who were frustrated by the lack of modern and interactive ear-training tools available. With Mezzo, they hope to bring musicianship skills to the masses.</p>
+<div class="row" id="blueglass">
+    <h1 class="about-heading" id="slogan">musicianship made easy.</h1>
+    <p class = "lead"> Mezzo is an interactive, fun, and beautiful way to train your ear and strengthen your musicianship skills. Using a selection of highly interactive games, Mezzo makes ear training addictive and easy. Users choose from game categories such as intervals, melodies, and chords, and level up as they slowly become masters at each musical skill.  </p>
+    <br><br>
+    <p class="lead">Mezzo was developed in a CS course at Princeton University by four undergraduates who were frustrated by the lack of modern and interactive ear-training tools available. With Mezzo, they hope to bring musicianship skills to the masses.</p>
   </div>
   <br><br>
+  <div id="glass">
+    <h1 class="cover-heading">The Team</h1>
+    <div class="row">
 
-  <h1 class="cover-heading">The Team</h1>
-  <div class="row">
+      <div class="col-md-6">
+        <img src="{{STATIC_URL}}/images/mike.jpg" alt="mikesface" class="img-circle">
+        <h2>Mike Mulshine</h2>
+      </div>
+      <div class="col-md-6">
+        <img src="{{STATIC_URL}}/images/delaney.jpg" alt="delaneysface" class="img-circle">
+        <h2>Delaney Granizo-Mackenzie</h2>
+      </div>
+    </div>
 
-    <div class="col-md-6">
-      <img src="{{STATIC_URL}}/images/mike.jpg" alt="mikesface" class="img-circle">
-      <h2>Mike Mulshine</h2>
+    <br><br>
+    <div class="row">
+      <div class="col-md-6">
+        <img src="{{STATIC_URL}}/images/anna.jpg" alt="annasface" class="img-circle">
+        <h2>Anna Ren</h2>
+      </div>
+      <div class="col-md-6">
+        <img src="{{STATIC_URL}}/images/steven.jpg" alt="stevensface" class="img-circle">
+        <h2>Steven Tran</h2>
+      </div>
     </div>
-    <div class="col-md-6">
-      <img src="{{STATIC_URL}}/images/delaney.jpg" alt="delaneysface" class="img-circle">
-      <h2>Delaney Granizo-Mackenzie</h2>
-    </div>
-  </div>
-
-  <br><br>
-  <div class="row">
-    <div class="col-md-6">
-      <img src="{{STATIC_URL}}/images/anna.jpg" alt="annasface" class="img-circle">
-      <h2>Anna Ren</h2>
-    </div>
-    <div class="col-md-6">
-      <img src="{{STATIC_URL}}/images/steven.jpg" alt="stevensface" class="img-circle">
-      <h2>Steven Tran</h2>
-    </div>
-  </div>
     <div class="contactfooter">
-    <p>Contact the makers at princetonmezzo@gmail.com</p>
-
-</div>
+      <p>contact the makers at princetonmezzo@gmail.com</p>
+    </div>
+  </div>
 </div>
 {% endblock %}

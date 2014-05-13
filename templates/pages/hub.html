@@ -10,7 +10,9 @@
 <script src="{{ STATIC_URL }}/js/music-staff.js"></script>
 <script src="{{ STATIC_URL }}/js/ajax-functions.js"></script>
 <script src="{{ STATIC_URL }}/js/GLOBAL.js"></script>
-<!--script src="{{ STATIC_URL }}/js/hub.js"></script-->
+<style>
+.cover-container{width:750px;}
+</style>
 <script>
     //SHOULD BE LOADED FROM DATABASE AS MAX LEVEL
     var currentMelodyLevel = 1;
@@ -21,6 +23,13 @@
     var currentIntervalLevel = 1;
     //SHOULD ALSO BE LOADED FROM DATABASE
     var maxIntervalLevel = 25;
+
+    
+    setTimeout(function(){
+        document.getElementById("int_go").setAttribute("onclick","submitIntInfo()");
+        document.getElementById("mel_go").setAttribute("onclick","submitMelInfo()");
+    }, 1500);
+    
     
     function decreaseCurMelLvl()
     {
@@ -85,7 +94,6 @@
   getMLevel();
   setTimeout(function(){document.getElementById("curIntLvl").innerHTML = max_level.toString(); currentIntervalLevel = max_level;}, 1000);
   setTimeout(function(){document.getElementById("curMelLvl").innerHTML = mel_level.toString(); currentMelodyLevel = mel_level}, 1000);
-
 </script>
 {% endblock %}
 
@@ -93,43 +101,121 @@
 
 {% if user.is_authenticated %}
 <div id="game">
-<div>
-    <h1 class="cover-heading"> Choose an Interval Level! </h1>
-    
-    <span id="curIntLvl" align="center" style="font-size:60px">
-        ?
-    </span>
-    <p class = "tpbutton btn-toolbar" style="text-align:center">
-    <button type="button" class="btn btn-default btn-lg" onclick="decreaseCurIntLvl()">
-        <span class="glyphicon glyphicon-chevron-left"></span>
-    </button>
-    <button type="button" class="btn btn-default btn-lg" onclick = "submitIntInfo()">
-        Go
-    </button>
-    <button type="button" class="btn btn-default btn-lg" onclick="increaseCurIntLvl(max_level)">
-        <span class="glyphicon glyphicon-chevron-right"></span>
-    </button>
-    </p>
-</div>
-<br>
-<div>
-        <h1 class="cover-heading"> Choose a Melody Level! </h1>
-        
-        <span id="curMelLvl" align="center" style="font-size:60px">
+    <div class="row">
+        <h1 class="cover-heading">Choose a game type and level to start:</h1> 
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-md-5 col-md-offset-1">
+            <h2 class="cover-heading">Intervals</h2>
+
+            <span id="curIntLvl" align="center" style="font-size:60px">
                 ?
-        </span>
-        <p class = "tpbutton btn-toolbar" style="text-align:center">
-            <button type="button" class="btn btn-default btn-lg" onclick="decreaseCurMelLvl()">
-                <span class="glyphicon glyphicon-chevron-left"></span>
+            </span>
+            <p class = "tpbutton btn-toolbar" style="text-align:center">
+                <button type="button" class="btn btn-default btn-lg" onclick="decreaseCurIntLvl()">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </button>
+                <button id = "int_go" type="button" class="btn btn-default btn-lg" onclick = "">
+                    Go
+                </button>
+                <button type="button" class="btn btn-default btn-lg" onclick="increaseCurIntLvl(max_level)">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </button>
+            </p>
+            <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#intdesc">
+                Level Descriptions
             </button>
-            <button type="button" class="btn btn-default btn-lg" onclick = "submitMelInfo()">
-                Go
+        </div>
+        <div class="col-md-5">
+            <h2 class="cover-heading">Melodies</h2>
+
+            <span id="curMelLvl" align="center" style="font-size:60px">
+                ?
+            </span>
+            <p class = "tpbutton btn-toolbar" style="text-align:center">
+                <button type="button" class="btn btn-default btn-lg" onclick="decreaseCurMelLvl()">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </button>
+                <button  id = "mel_go" type="button" class="btn btn-default btn-lg" onclick = "">
+                    Go
+                </button>
+                <button type="button" class="btn btn-default btn-lg" onclick="increaseCurMelLvl(mel_level)">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </button>
+            </p>
+            <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#meldesc">
+                Level Descriptions
             </button>
-            <button type="button" class="btn btn-default btn-lg" onclick="increaseCurMelLvl(mel_level)">
-                <span class="glyphicon glyphicon-chevron-right"></span>
-            </button>
-        </p>
+        </div>
+    </div>
 </div>
+
+<div class="modal fade" id="intdesc" tabindex="-1" role="dialog" aria-labelledby="intdescLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="intdescLabel">Interval Level Descriptions</h4>
+      </div>
+      <div class="modal-body">
+        <ol>
+          <p>Level 1: unisons, octaves</p>
+          <p>Level 2: fourths, fifths</p>
+          <p>Level 3: unisons, fourths, fifths, octaves</p>
+          <p>Level 4: minor seconds, major seconds</p>
+          <p>Level 5: major seconds, minor thirds</p>
+          <p>Level 6: minor thirds, major thirds</p>
+          <p>Level 7: major seconds, minor thirds, major thirds</p>
+          <p>Level 8: review!</p>
+          <p>Level 9: major thirds, perfect fourths</p>
+          <p>Level 10: tritones</p>
+          <p>Level 11: perfect fourths, tritones</p>
+          <p>Level 12: tritones, perfect fifths</p>
+          <p>Level 13: perfect fourths, tritones, perfect fifths</p>
+          <p>Level 14: review!</p>
+          <p>Level 15: perfect fifths, minor sixths</p>
+          <p>Level 16: minor sixths, major sixths</p>
+          <p>Level 17: perfect fifths, minor sixths, major sixths</p>
+          <p>Level 18: review!</p>
+          <p>Level 19: minor sevenths</p>
+          <p>Level 20: major sixths, minor sevenths</p>
+          <p>Level 21: major sevenths</p>
+          <p>Level 22: minor sevenths, major sevenths</p>
+          <p>Level 23: major sixths, minor sevenths, major sevenths</p>
+          <p>Level 24: review!</p>
+          <p>Level 25: review everything!</p>
+        </ol>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="meldesc" tabindex="-1" role="dialog" aria-labelledby="meldescLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="meldescLabel">Melody Level Descriptions</h4>
+      </div>
+      <div class="modal-body">
+        <ol>
+          <p>Level 1: three notes</p>
+          <p>Level 2: four notes</p>
+          <p>Level 3: five notes</p>
+          <p>Level 4: six notes</p>
+          <p>Level 5: seven notes</p>
+          <p>Level 6: eight notes</p>
+        </ol>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
 {% else %}
 

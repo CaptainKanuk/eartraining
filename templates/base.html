@@ -8,13 +8,13 @@
             <meta name="viewport" content="width=device-width, initial-scale=1">
             
             <link rel="icon" type="image/ico" href="{{ STATIC_URL }}/images/favicon.ico">
-            <title>Mezzo</title>
+            <title>Mezzo | musicianship made easy.</title>
             
             <!-- CSS Stuff -->
             <link href="{{ STATIC_URL }}/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-            <link href="{{ STATIC_URL }}/css/cover.css" rel="stylesheet" type="text/css">
-            <link href="{{ STATIC_URL }}/css/animate.css" rel="stylesheet" type="text/css">
-                
+            <link href="{{ STATIC_URL }}/css/style.min.css" rel="stylesheet" type="text/css">
+            <link href="{{ STATIC_URL }}/css/animate.min.css" rel="stylesheet" type="text/css">
+
             <!-- Javascript Stuff -->
             <script src="http://code.jquery.com/jquery-latest.js"></script>
             <script src="{{STATIC_URL}}/js/bootstrap.min.js"></script>
@@ -38,13 +38,13 @@
                                 {% endif %}
                                 <u1 class="nav navbar-nav navbar-right">
                                     {% if user.is_authenticated %}
-                                    <li><a href="/hub">The Hub</a></li>
+                                    <li><a href="/hub">games</a></li>
                                     {% endif %}
-                                    <li><a href="/about">About</a></li>
-                                    <li><a href="/help">Help</a></li>
-                                    {% if user.is_authenticated %} <li> <a href="/hub"> Welcome, {{ user.username }} </a></li>
-                                    <li><a href="/logout">Logout</a></li>
-                                    {% else %}<li><a href="/signin">Sign-In</a></li>{% endif %}
+                                    <li><a href="/about">about</a></li>
+                                    <li><a href="/help">help</a></li>
+                                    {% if user.is_authenticated %} <li> <a href="/hub"> welcome, {{ user.username }}!</a></li>
+                                    <li><a href="/logout">logout</a></li>
+                                    {% else %}<li><a href="/signin">sign-in</a></li>{% endif %}
                                 </u1>
                             </div>
                         </nav>

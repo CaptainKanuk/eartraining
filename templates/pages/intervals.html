@@ -10,30 +10,24 @@
 <script src="{{ STATIC_URL }}/js/riffwave.js"></script>
 <script src="{{ STATIC_URL }}/js/music-staff.js"></script>
 <script src="{{ STATIC_URL }}/js/GLOBAL.js"></script>
-<link href="{{ STATIC_URL }}/css/cover.css" rel="stylesheet" type="text/css">
-<style>
-body 
-{
-background-image:url("{{STATIC_URL}}/images/sexy_piano.jpg");
-background-color:#cccccc;
-color:white;
-}
-</style>
+<script src="{{ STATIC_URL }}/js/intervals_script.js"></script>
 
 <script>
-  //alert(test_set);
-  $("canvas").slideToggle("fast");
-  //in_interval_test = 1;
-
   function checkAndUpdateI()
   {
     Dajaxice.database.getMaxIntervalLvl(level_callback, {'text':'{{user.username}}'});
     setTimeout(function(){
-      if (curIntLvl == max_level)
+      if (curIntLvl == max_level && max_level < maxILevel)
       {
           incLevel();
+          Dajaxice.database.sendIntLvl(intcurlevel_callback, {'text':'{{user.username}}', 'curIntLvl': curIntLvl+1});
       }
-      Dajaxice.database.sendIntLvl(intcurlevel_callback, {'text':'{{user.username}}', 'curIntLvl': curIntLvl+1});}, 250);
+      else if (curIntLvl < maxILevel) 
+      {
+        Dajaxice.database.sendIntLvl(intcurlevel_callback, {'text':'{{user.username}}', 'curIntLvl': curIntLvl+1});
+      }
+
+      }, 300);
   }
 
   function getLevel()
@@ -44,39 +38,8 @@ color:white;
   {
     Dajaxice.database.intervalLvlUp(level_callback, {'text':'{{user.username}}' });
   }
-  function progress(){
-    answerChosen = false;
-    var button = document.getElementById("start");
-    if (button.innerHTML=="Let's start.")
-    {
-      button.innerHTML="Next Interval";
-      var interval_button = document.getElementById("interval-play");
-      interval_button.setAttribute("onclick","playInterval(correctInterval[0], correctInterval[2], 2, 30);");
-      interval_button.setAttribute("class", "btn btn-lg btn-default");
-      interval_button.innerHTML = "Play interval.";
-      $("canvas").slideToggle("slow");
+  </script>
 
-      getLevel();
-      setTimeout(function(){document.getElementById("page-title").innerHTML = 'Intervals: Level '.concat(curIntLvl.toString());},100);
-      setTimeout(function(){ getNewIntervals(0,newIntervalFromTest(0,curIntLvl)); /*playInterval(correctInterval[0], correctInterval[2], 2, 30);*/}, 100);
-
-      //alert(max_level);
-    }
-    else
-    {
-        document.getElementById("interval-play").setAttribute("display", "initial");
-        $("canvas").slideDown("slow", function () {
-            document.getElementById(prompt).innerHTML = "Next interval.";
-          });
-
-      $("canvas").slideDown("slow");
-      getLevel();
-      setTimeout(function(){getNewIntervals(0,newIntervalFromTest(0,curIntLvl));/*playInterval(correctInterval[0], correctInterval[2], 2, 30);*/}, 100);
-      //alert(max_level);
-
-    }
-  }
-</script>
 {% endblock %}
 
 {% block incProgBar %}
@@ -88,16 +51,16 @@ color:white;
       <div class="col-md-6">How much HP remaining?
         <div align="center">
           <div id="content3" style="display:block;">
-            <span class="glyphicon glyphicon-heart" style="font-size:30px;"></span>
-            <span class="glyphicon glyphicon-heart" style="font-size:30px;"></span>
-            <span class="glyphicon glyphicon-heart" style="font-size:30px;"></span>
+            <span class="glyphicon glyphicon-heart"></span>
+            <span class="glyphicon glyphicon-heart"></span>
+            <span class="glyphicon glyphicon-heart"></span>
           </div>
           <div id="content2" style="display:none;">
-            <span class="glyphicon glyphicon-heart" style="font-size:30px;"></span>
-            <span class="glyphicon glyphicon-heart" style="font-size:30px;"></span>
+            <span class="glyphicon glyphicon-heart"></span>
+            <span class="glyphicon glyphicon-heart"></span>
           </div>
           <div id="content1" style="display:none;">
-            <span class="glyphicon glyphicon-heart" style="font-size:30px;"></span>
+            <span class="glyphicon glyphicon-heart"></span>
           </div>
         </div>
       </div>
@@ -128,14 +91,16 @@ color:white;
         </h3>
         <div class="row">
 		    <div class="col-md-6">
-                <canvas id="choice_one" onclick="chooseAnswerInt('choice_one')" width="220" height="100">
+                <canvas id="choice_one" onclick="chooseAnswerInt('choice_one')" width="220" height="100"
+                style="display:none;">
                     <script>
                         setup("choice_one");
                         </script>
                 </canvas>  
 		    </div>
 		    <div class="col-md-6">
-                <canvas id="choice_two" onclick="chooseAnswerInt('choice_two')" width="220" height="100">
+                <canvas id="choice_two" onclick="chooseAnswerInt('choice_two')" width="220" height="100"
+                style="display:none;">
                     <script>
                         setup("choice_two");
                         </script>
@@ -145,7 +110,7 @@ color:white;
         <div class="row">
 		    <div class="col-md-6">
                 <canvas id="choice_three" onclick="chooseAnswerInt('choice_three')" width="220" height="100"
-                    style="border:4px solid #000000;display:none;">
+                style="display:none;">
                     <script>
                         setup("choice_three");
                         </script>
@@ -154,7 +119,7 @@ color:white;
 		    </div>
 		    <div class="col-md-6">
                 <canvas id="choice_four" onclick="chooseAnswerInt('choice_four')" width="220" height="100"
-                    style="border:4px solid #000000;display:none;">
+                style="display:none;">
                     <script>
                         setup("choice_four");
                         </script>
