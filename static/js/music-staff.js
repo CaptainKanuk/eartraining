@@ -6,9 +6,6 @@ var labels = ["choice_one", "choice_two", "choice_three", "choice_four"];
 var prompt = "prompt";
 var direction = 0;   //1 == up, -1 == down
 
-//Summon Satan
-
-
 //For mapping the numbers to vexflow notation
 var pitchClassNames = ["c", "c#", "d", "d#", "e", "f", "f#", "g", "g#", "a", "a#", "b"];
 var middleC = 60;//semitone starting point

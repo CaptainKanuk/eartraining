@@ -1,10 +1,6 @@
 //Code to map note intervals to the english music theory names
 //MM, DGM, AR, ST for COS 333 Spring 2014
 
-
-//Summon Satan
-
-
 //For mapping the numbers to vexflow notation
 var pitchClassNames = ["c", "c#", "d", "d#", "e", "f", "f#", "g", "g#", "a", "a#", "b"];
 

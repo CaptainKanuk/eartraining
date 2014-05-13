@@ -5,8 +5,6 @@ var labels = ["choice_one", "choice_two", "choice_three", "choice_four"];
 var prompt = "prompt";
 var p_bar_label = "progress-bar";
 
-//Summon Satan
-
 var defaultColor = "#000000";
 var correctColor = "#439400";
 var incorrectColor = "#94002D";

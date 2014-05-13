@@ -5,9 +5,6 @@
 var labels = ["choice_one", "choice_two", "choice_three", "choice_four"];
 var prompt = "prompt";
 
-//Summon Satan
-
-
 //For mapping the numbers to vexflow notation
 var pitchClassNames  = ["c", "c#", "d", "d#", "e", "f", "f#", "g", "g#", "a", "a#", "b"];
 
